@@ -1,6 +1,3 @@
-import pandas as pd
-from pathlib import Path
-
 def calculate_annual_investment(name, r, fn):
     """Calculate the annual investment for an installation given a selected WACC.
     
@@ -22,6 +19,9 @@ def calculate_annual_investment(name, r, fn):
     
     """
     
+    import pandas as pd
+    from pathlib import Path
+    
     fn = Path(fn)
     assert fn.exists()
     
@@ -35,3 +35,42 @@ def calculate_annual_investment(name, r, fn):
     annuity_factor = r/(1. - 1./(r+1.)**(costs.loc["lifetime", "value"]))
 
     return (annuity_factor + costs.loc["FOM", "value"]/100.)*costs.loc["investment", "value"]
+    
+def configure_logging(snakemake, skip_handlers=False):
+    """
+    Configure the basic behaviour for the logging module.
+
+    Note: Must only be called once from the __main__ section of a script.
+
+    The setup includes printing log messages to STDERR and to a log file defined
+    by either (in priority order): snakemake.log.python, snakemake.log[0] or "logs/{rulename}.log".
+    Additional keywords from logging.basicConfig are accepted via the snakemake configuration
+    file under snakemake.config.logging.
+
+    Parameters
+    ----------
+    snakemake : snakemake object
+        Your snakemake object containing a snakemake.config and snakemake.log.
+    skip_handlers : True | False (default)
+        Do (not) skip the default handlers created for redirecting output to STDERR and file.
+    """
+
+    import logging
+    from pathlib import Path
+
+    kwargs = snakemake.config.get('logging', dict())
+    kwargs.setdefault("level", "INFO")
+
+    if skip_handlers is False:
+        fallback_path = Path(__file__).parent.joinpath('..', 'logs', f"{snakemake.rule}.log")
+        logfile = snakemake.log.get('python', snakemake.log[0] if snakemake.log
+                                    else fallback_path)
+        kwargs.update(
+            {'handlers': [
+                # Prefer the 'python' log, otherwise take the first log for each
+                # Snakemake rule
+                logging.FileHandler(logfile),
+                logging.StreamHandler()
+                ]
+            })
+    logging.basicConfig(**kwargs)
