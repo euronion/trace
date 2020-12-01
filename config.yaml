@@ -14,7 +14,7 @@ scenario:
     synthetic_demand: gegis # 'gegis' or 'custom'
     
 GlobalEnergyGIS:
-    base_dir: "GEGIS/"
+    base_dir: "resources/GEGIS/"
     synthetic_demand:
         # SSP scenario and radiative forcing target to base prediction upon
         ssp_scenario: "ssp2-34"
