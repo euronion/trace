@@ -1,17 +1,15 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-from _helpers import configure_logging
-
 import h5py
 import numpy as np
 #import tables # Need this, otherwise errors from h5py show up (no idea why; SO be praised)
 from pathlib import Path
 import pandas as pd
 import xarray as xr
+
+from _helpers import configure_logging
 import logging
-
-
 logger = logging.getLogger(__name__)
 
 
