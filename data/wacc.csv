@@ -1,0 +1,10 @@
+# WACC assumptions per region (two letter code, as used for region selection in config.yaml) in % for different WACC scenarios (selection in config.yaml),,
+region,homogeneous,irena
+AU,10,7.5
+AR,10,10
+DE,10,7.5
+DK,10,7.5
+EG,10,10
+ES,10,7.5
+MA,10,10
+SA,10,10
