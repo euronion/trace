@@ -36,7 +36,7 @@ rule attach_supply:
         
 ## - GEGIS rules: Require Julia to be setup seperately, see Readme.md - ##
 
-if config.get("init_gegis", False) is True:
+if config["GlobalEnergyGIS"].get("init_gegis", False) is True:
 # Configure GlobalEnergyGIS to output files saves output files in a preconfigured location.
     rule set_GEGIS_base_dir:
         output:
