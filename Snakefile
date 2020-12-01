@@ -91,8 +91,8 @@ rule create_renewables:
        config['GlobalEnergyGIS']['base_dir']+"era5solar{era_year}.h5",
        config['GlobalEnergyGIS']['base_dir']+"regions_{region}.jld"
     output:
-        wind=config['GlobalEnergyGIS']['base_dir']+"output/GISdata_wind{era_year}_{region}_classes-{classes}.mat",
-        solar=config['GlobalEnergyGIS']['base_dir']+"output/GISdata_solar{era_year}_{region}_classes-{classes}.mat"
+        wind=config['GlobalEnergyGIS']['base_dir']+"output/GISdata_wind{era_year}_{region}.mat",
+        solar=config['GlobalEnergyGIS']['base_dir']+"output/GISdata_solar{era_year}_{region}.mat"
     script:
         "actions/create_renewables.jl"
         
@@ -100,12 +100,12 @@ rule create_renewables:
 # (Supply: Renewables)
 rule combine_GEGIS_supply:
     input:
-        wind=config['GlobalEnergyGIS']['base_dir']+"output/GISdata_wind{year}_{region}_classes-{classes}.mat",
-        solar=config['GlobalEnergyGIS']['base_dir']+"output/GISdata_solar{year}_{region}_classes-{classes}.mat"
+        wind=config['GlobalEnergyGIS']['base_dir']+"output/GISdata_wind{year}_{region}.mat",
+        solar=config['GlobalEnergyGIS']['base_dir']+"output/GISdata_solar{year}_{region}.mat"
     output:
-        "resources/supply_{region}_{year}_c-{classes}.nc"
+        "resources/supply_{region}_{year}.nc"
     log:
-        "logs/combine_GEGIS_supply_{region}_{year}_c-{classes}.log"
+        "logs/combine_GEGIS_supply_{region}_{year}.log"
     script:
         "actions/combine_GEGIS_supply.py"
 
