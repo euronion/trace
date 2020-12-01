@@ -1,0 +1,14 @@
+logging:
+    level: INFO
+
+scenario:
+    # Year used to select cost assumptions and demand projection
+    year: 2050
+
+    # WACC scenario assumptions, see "data/wacc.csv"
+    # Currently supported: homogeneous, irena
+    wacc: "homogeneous"
+    
+    # Synthetic electricity demand (local for the exporter) can either be automatically
+    # generated using GEGIS or custom values provided via "data/overwrite/demand.csv" .
+    synthetic_demand: gegis # 'gegis' or 'custom'
