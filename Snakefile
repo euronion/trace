@@ -1,12 +1,23 @@
 configfile: "config.yaml"
 
+rule create_additional_components:
+    output:
+        additional_components="resources/additional_components.pkl"
+    log:
+        python="logs/create_additional_components.log",
+        notebook="logs/notebooks_processed/create_additional_components.ipynb"
+    notebook:
+        "actions/create_additional_components.py.ipynb"
+
 rule create_network:
     input:
         efficiencies="data/efficiencies.csv",
-        network="escs/{esc}"
+        network="escs/{esc}",
+        additional_components="resources/additional_components.pkl"
     output:
-        directory("resources/networks/{esc}/{from}")
+        network=directory("resources/networks/{esc}/{from}")
     log:
+        python="logs/create_network_{esc}_{from}.log",
         notebook="logs/notebooks_processed/create_network/{esc}/{from}.ipynb"
     notebook:
         "actions/create_network.py.ipynb"
@@ -25,15 +36,28 @@ rule attach_supply:
         demand=demand_i,
         costs="data/costs.csv",
         wacc="data/wacc.csv",
-        network="resources/networks/{esc}/{from}"
+        network="resources/networks/{esc}/{from}",
+        additional_components="resources/additional_components.pkl"
     output:
         network=directory("resources/networks_supplied/{esc}/{from}")
     log:
+        python="logs/attach_supply_{esc}_{from}.log",
         notebook="logs/notebooks_processed/attach_supply/{esc}/{from}.ipynb"
     notebook:
         "actions/attach_supply.py.ipynb"
         
-        
+rule solve_network:
+    input:
+        network="resources/networks_supplied/{esc}/{from}",
+        additional_components="resources/additional_components.pkl"
+    output:
+        network="results/{esc}/{from}/network.nc"
+    log:
+        python="logs/solve_network_{esc}_{from}.log",
+        notebook="logs/notebooks_processed/solve_network/{esc}/{from}.ipynb"
+    notebook:
+        "actions/solve_network.py.ipynb"
+
 ## - GEGIS rules: Require Julia to be setup seperately, see Readme.md - ##
 
 if config["GlobalEnergyGIS"].get("init_gegis", False) is True:
