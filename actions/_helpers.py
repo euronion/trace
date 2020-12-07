@@ -71,6 +71,8 @@ def configure_logging(snakemake, skip_handlers=False):
                 # Snakemake rule
                 logging.FileHandler(logfile),
                 logging.StreamHandler()
-                ]
+                ],
+             'datefmt':'%Y-%m-%d %H:%M:%S',
+             'format':'%(asctime)s %(name)-14s %(levelname)-8s %(message)s'
             })
     logging.basicConfig(**kwargs)
