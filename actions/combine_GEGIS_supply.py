@@ -18,11 +18,10 @@ if __name__ == "__main__":
 
     region = snakemake.config["regions"][snakemake.wildcards["region"]]
     year = int(snakemake.wildcards["year"])
-    classes = int(snakemake.wildcards["classes"])
 
-    # Different classes ("qualities") of cells for renewables
+    # Different classes (site qualities) of cells for renewables
     r_classes = {
-        r:snakemake.config["GlobalEnergyGIS"][r]["classes"][classes]["min"] for r in {"wind","solar"}
+        res:snakemake.config["GlobalEnergyGIS"][res]["classes"]["min"] for res in {"wind","solar"}
     }
 
 
