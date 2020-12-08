@@ -19,22 +19,28 @@ def calculate_annual_investment(name, r, fn):
     
     """
     
+    import logging
     import pandas as pd
     from pathlib import Path
     
     fn = Path(fn)
     assert fn.exists()
     
-    costs = pd.read_csv(fn)
+    costs = pd.read_csv(fn, comment='#')
 
-    costs = costs[costs["technology"] == name]
-    costs = costs.set_index("parameter")
+    costs = costs[costs['technology'] == name]
+    
+    if costs.empty is True:
+        logging.info(f"No cost assumptions found for {name}.")
+        return 0
+    
+    costs = costs.set_index('parameter')
 
     r = r/100.
 
-    annuity_factor = r/(1. - 1./(r+1.)**(costs.loc["lifetime", "value"]))
+    annuity_factor = r/(1. - 1./(r+1.)**(costs.loc['lifetime', 'value']))
 
-    return (annuity_factor + costs.loc["FOM", "value"]/100.)*costs.loc["investment", "value"]
+    return (annuity_factor + costs.loc['FOM', 'value']/100.)*costs.loc['investment', 'value']
     
 def configure_logging(snakemake, skip_handlers=False):
     """
