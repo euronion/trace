@@ -82,3 +82,34 @@ def configure_logging(snakemake, skip_handlers=False):
              'format':'%(asctime)s %(name)-14s %(levelname)-8s %(message)s'
             })
     logging.basicConfig(**kwargs)
+
+def extract_technology(b):
+    """Extract the technology from a bus name 'b' by removing trailing '(exp)' or '(imp)'.
+    
+    Examples
+    --------
+    > extract_technology("hydrogen (g) storage (exp)")
+    'hydrogen (g) storage (exp)'
+
+    > extract_technology("hydrogen (g) storage")
+    'hydrogen (g) storage'
+    """
+    
+    return b.replace("(exp)","").replace("(imp)", "").strip()
+
+def extract_unit(b, n):
+    """Extract the unit of a bus 'b' in the PyPSA network 'n' based on its carrier.
+    
+    Carrier name must be '<something> [unit]'.
+    
+    Examples
+    --------
+    > extract_unit('hydrogen (g) (exp)', network)
+    't'
+
+    > extract_unit('electricity (exp)', network)
+    'MWh'
+    """
+    
+    import re
+    return re.match('^.*?\s*\[?(\w*)\]?$', n.buses.loc[b]['carrier']).group(1)
