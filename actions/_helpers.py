@@ -36,12 +36,24 @@ def calculate_annual_investment(name, r, fn):
     
     costs = costs.set_index('parameter')
 
+    return calculate_annuity(costs.loc['investment', 'value'], costs.loc['FOM', 'value'], costs.loc['lifetime', 'value'], r)
+
+def calculate_annuity(invest, fom, lifetime, r):
+    """
+    Calculate annuity based on EAC.
+    
+    invest - investment
+    fom    - annual FOM in percentage of investment
+    lifetime - lifetime of investment in years
+    r      - discount rate in percent
+    """
+    
     r = r/100.
 
-    annuity_factor = r/(1. - 1./(r+1.)**(costs.loc['lifetime', 'value']))
+    annuity_factor = r/(1. - 1./(r+1.)**(lifetime))
 
-    return (annuity_factor + costs.loc['FOM', 'value']/100.)*costs.loc['investment', 'value']
-    
+    return (annuity_factor + fom/100.)*invest
+
 def configure_logging(snakemake, skip_handlers=False):
     """
     Configure the basic behaviour for the logging module.
