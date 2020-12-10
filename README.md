@@ -40,3 +40,21 @@ so that the resulting structure looks like this
     ├── trace
     └── ...
 ```
+
+## Defining ESCs
+
+ESCs are defined in the `esc` subfolder as PyPSA networks.
+For each ESC, its specific subfolder is parsed and converted into a region-specific PyPSA network representing the ESC.
+
+### Conventions
+
+* Chemicals are specified with their lower heating value (LHV) and use of LHV at this point is indicated
+* Other input chemicals like water or CO2 are specified by their weight (t)
+* The demand of the importing region is specified in `<esc>/loads.csv` in MWh/h
+
+| energy carrier | hourly amount [t] | annual amount [t] | hourly amount [MWh] |annual amount [TWh] | HV assumed |
+|----------------|-------------------|-------------------|---------------------|--------------------|------------|
+| H2             | 410.96            | 3.6e6             | 13 698.65           | 120                | LHV        |
+
+* "bus0" for links is always the input for which the cost.csv data is defined (preferred: electricity)
+* "bus1" for links is always the output of the link
