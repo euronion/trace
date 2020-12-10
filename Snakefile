@@ -12,6 +12,8 @@ rule create_additional_components:
 rule create_network:
     input:
         efficiencies="data/efficiencies.csv",
+        costs=f"../technology-data/outputs/costs_{config['scenario']['year']}.csv",
+        wacc="data/wacc.csv",
         network="escs/{esc}",
         additional_components="resources/additional_components.pkl"
     output:
@@ -34,7 +36,7 @@ rule attach_supply:
     input:
         supply="resources/supply_TRACES_2013.nc",
         demand=demand_i,
-        costs="data/costs.csv",
+        costs=f"../technology-data/outputs/costs_{config['scenario']['year']}.csv",
         wacc="data/wacc.csv",
         network="resources/networks/{esc}/{from}",
         additional_components="resources/additional_components.pkl"
