@@ -2,10 +2,9 @@ using GlobalEnergyGIS
 
 region = snakemake.wildcards["region"]
 year = parse(Int64, snakemake.wildcards["era_year"])
-classes = snakemake.wildcards["classes"]
 
-classes_solar_min = snakemake.config["GlobalEnergyGIS"]["solar"]["classes"][classes]["min"]
-classes_solar_max = snakemake.config["GlobalEnergyGIS"]["solar"]["classes"][classes]["max"]
+classes_solar_min = snakemake.config["GlobalEnergyGIS"]["solar"]["classes"]["min"]
+classes_solar_max = snakemake.config["GlobalEnergyGIS"]["solar"]["classes"]["max"]
 
 solar_options = GlobalEnergyGIS.solaroptions()
 merge!(solar_options, Dict(Symbol(k) => v for (k,v) in snakemake.config["GlobalEnergyGIS"]["solar"]["options"]))
@@ -19,8 +18,8 @@ merge!(solar_options,
 
 GISsolar(;solar_options...)
 
-classes_wind_min = snakemake.config["GlobalEnergyGIS"]["wind"]["classes"][classes]["min"]
-classes_wind_max = snakemake.config["GlobalEnergyGIS"]["wind"]["classes"][classes]["max"]
+classes_wind_min = snakemake.config["GlobalEnergyGIS"]["wind"]["classes"]["min"]
+classes_wind_max = snakemake.config["GlobalEnergyGIS"]["wind"]["classes"]["max"]
 
 wind_options = GlobalEnergyGIS.windoptions()
 merge!(wind_options, Dict(Symbol(k) => v for (k,v) in snakemake.config["GlobalEnergyGIS"]["wind"]["options"]))
