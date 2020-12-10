@@ -58,3 +58,4 @@ For each ESC, its specific subfolder is parsed and converted into a region-speci
 
 * "bus0" for links is always the input for which the cost.csv data is defined (preferred: electricity)
 * "bus1" for links is always the output of the link
+* RES are always attached to the bus "electricity (exp)" (in attach_supply.py.ipynb). This bus name must therefore exist in each ESC.
