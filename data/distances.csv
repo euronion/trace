@@ -1,0 +1,17 @@
+region_a,region_b,type,value,unit,source
+AR,DE,as-the-crow-flies,12280,km,Measure using Google Maps / Geographical centers per country used from here: https://developers.google.com/public-data/docs/canonical/countries_csv
+AU,DE,as-the-crow-flies,14450,km,Measure using Google Maps / Geographical centers per country used from here: https://developers.google.com/public-data/docs/canonical/countries_csv
+DK,DE,as-the-crow-flies,580,km,Measure using Google Maps / Geographical centers per country used from here: https://developers.google.com/public-data/docs/canonical/countries_csv
+EG,DE,as-the-crow-flies,3220,km,Measure using Google Maps / Geographical centers per country used from here: https://developers.google.com/public-data/docs/canonical/countries_csv
+DE,DE,as-the-crow-flies,0,km,Measure using Google Maps / Geographical centers per country used from here: https://developers.google.com/public-data/docs/canonical/countries_csv
+MA,DE,as-the-crow-flies,3330,km,Measure using Google Maps / Geographical centers per country used from here: https://developers.google.com/public-data/docs/canonical/countries_csv
+SA,DE,as-the-crow-flies,4240,km,Measure using Google Maps / Geographical centers per country used from here: https://developers.google.com/public-data/docs/canonical/countries_csv
+EG,DE,as-the-crow-flies,1600,km,Measure using Google Maps / Geographical centers per country used from here: https://developers.google.com/public-data/docs/canonical/countries_csv
+AR,DE,sea route,13056,km,Via https://www.searates.com/de/services/distances-time/; sea route share without land route share between centers of countries.
+AU,DE,sea route,20284,km,Via https://www.searates.com/de/services/distances-time/; sea route share without land route share between centers of countries.
+DK,DE,sea route,812,km,Via https://www.searates.com/de/services/distances-time/; sea route share without land route share between centers of countries.
+EG,DE,sea route,6605,km,Via https://www.searates.com/de/services/distances-time/; sea route share without land route share between centers of countries.
+DE,DE,sea route,0,km,Via https://www.searates.com/de/services/distances-time/; sea route share without land route share between centers of countries.
+MA,DE,sea route,2938,km,Via https://www.searates.com/de/services/distances-time/; sea route share without land route share between centers of countries.
+SA,DE,sea route,12174,km,Via https://www.searates.com/de/services/distances-time/; sea route share without land route share between centers of countries.
+EG,DE,sea route,3587,km,Via https://www.searates.com/de/services/distances-time/; sea route share without land route share between centers of countries.

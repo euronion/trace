@@ -14,13 +14,14 @@ rule create_network:
         efficiencies="data/efficiencies.csv",
         costs=f"../technology-data/outputs/costs_{config['scenario']['year']}.csv",
         wacc="data/wacc.csv",
+        distances="data/distances.csv",
         network="escs/{esc}",
         additional_components="resources/additional_components.pkl"
     output:
-        network=directory("resources/networks/{esc}/{from}")
+        network=directory("resources/networks/{esc}/{from}-{to}")
     log:
-        python="logs/create_network_{esc}_{from}.log",
-        notebook="logs/notebooks_processed/create_network/{esc}/{from}.ipynb"
+        python="logs/create_network_{esc}_{from}-{to}.log",
+        notebook="logs/notebooks_processed/create_network/{esc}/{from}-{to}.ipynb"
     notebook:
         "actions/create_network.py.ipynb"
 
@@ -38,25 +39,25 @@ rule attach_supply:
         demand=demand_i,
         costs=f"../technology-data/outputs/costs_{config['scenario']['year']}.csv",
         wacc="data/wacc.csv",
-        network="resources/networks/{esc}/{from}",
+        network="resources/networks/{esc}/{from}-{to}",
         additional_components="resources/additional_components.pkl"
     output:
-        network=directory("resources/networks_supplied/{esc}/{from}")
+        network=directory("resources/networks_supplied/{esc}/{from}-{to}")
     log:
-        python="logs/attach_supply_{esc}_{from}.log",
-        notebook="logs/notebooks_processed/attach_supply/{esc}/{from}.ipynb"
+        python="logs/attach_supply_{esc}_{from}-{to}.log",
+        notebook="logs/notebooks_processed/attach_supply/{esc}/{from}-{to}.ipynb"
     notebook:
         "actions/attach_supply.py.ipynb"
         
 rule solve_network:
     input:
-        network="resources/networks_supplied/{esc}/{from}",
+        network="resources/networks_supplied/{esc}/{from}-{to}",
         additional_components="resources/additional_components.pkl"
     output:
-        network="results/{esc}/{from}/network.nc"
+        network="results/{esc}/{from}-{to}/network.nc"
     log:
-        python="logs/solve_network_{esc}_{from}.log",
-        notebook="logs/notebooks_processed/solve_network/{esc}/{from}.ipynb"
+        python="logs/solve_network_{esc}_{from}-{to}.log",
+        notebook="logs/notebooks_processed/solve_network/{esc}/{from}-{to}.ipynb"
     notebook:
         "actions/solve_network.py.ipynb"
 

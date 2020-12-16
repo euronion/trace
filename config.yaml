@@ -40,6 +40,11 @@ regions:
     SaudiArabia:
         "SA": "Saudi Arabia"
 
+detour_factors:
+    transmission_line: 1.2
+    pipeline: 1.4
+    shipping: 1.
+
 GlobalEnergyGIS:
     # Download GEGIS data files and set home dir for workflow
     init_gegis: False
