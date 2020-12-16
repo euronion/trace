@@ -1,0 +1,12 @@
+process,from,from_amount,from_unit,to,to_amount,to_unit,efficiency,comment,source
+desalination,electricity,0.003,MWh,water,1,m^3,333.333333333333,SWRO,TODO
+electrolysis,water,9,t,hydrogen (g),33.3333,MWh_LHV,3.7037,Based on ideal conversion process of stochiometric composition.,Reuß et al 2017
+electrolysis,electricity,47.6,MWh,hydrogen (g),33.3333,MWh_LHV,0.700279411764706,PEM,Reuß et al 2017
+battery inverter,electricity,1,MWh,battery,0.979795897113271,MWh,0.979795897113271,from DEA technology assumptions via technology-data repository,DEA
+battery inverter,battery,1,MWh,electricity,0.979795897113271,MWh,0.979795897113271,from DEA technology assumptions via technology-data repository,DEA
+hydrogen (g) tank charging,hydrogen (g),1,p.u.,hydrogen (g) tank,0.99,p.u.,0.99,guess. TODO: update,Guess.
+hydrogen (g) tank discharging,hydrogen (g) tank,1,p.u.,hydrogen (g),0.99,p.u.,0.99,guess. TODO: update,Guess.
+HVDC inverter pair,electricity,1,p.u.,hvdc,1,p.u.,1,guess. TODO: update,Guess.
+HVDC inverter pair,hvdc,1,p.u.,electricity,1,p.u.,1,guess. TODO: update,Guess.
+HVDC overhead,hvdc,1,p.u.,hvdc,0.975,p.u.,0.975,Per 1000 km HVDC transmission line,Teichmann et al 2012: 10.1016/j.ijhydene.2012.08.066
+dummy hydrogen transport between exporter and importer,hydrogen (g),1,p.u.,hydrogen (g),1,p.u.,1,Dummy transport process to connect two buses directly.,None.
