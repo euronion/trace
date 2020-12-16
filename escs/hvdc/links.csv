@@ -1,0 +1,12 @@
+name,bus0,bus1,bus2,p_nom_extendable,p_min_pu,p_max_pu
+"battery inverter (charging, exp)",electricity (exp),battery (exp),,True,0,1
+"battery inverter (discharging, exp)",battery (exp),electricity (exp),,True,0,1
+HVDC inverter pair (exp),electricity (exp),hvdc (exp),,True,0,1
+HVDC overhead,hvdc (exp),hvdc (imp),,True,0,1
+HVDC inverter pair (imp),hvdc (imp),electricity (imp),,True,0,1
+"battery inverter (charging, imp)",electricity (imp),battery (imp),,True,0,1
+"battery inverter (discharging, imp)",battery (imp),electricity (imp),,True,0,1
+seawater desalination (imp),electricity (imp),water (imp),,True,0,1
+electrolysis (imp),electricity (imp),hydrogen (g) (imp),water (imp),True,0,1
+hydrogen storage charging (imp),hydrogen (g) (imp),hydrogen (g) tank (imp),,True,0,1
+hydrogen storage discharging (imp),hydrogen (g) tank (imp),hydrogen (g) (imp),,True,0,1

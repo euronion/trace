@@ -1,0 +1,10 @@
+name,unit,carrier
+electricity (exp),MW,electricity
+electricity (imp),MW,electricity
+battery (exp),MW,battery
+battery (imp),MW,battery
+water (imp),m^3,water
+hydrogen (g) (imp),MW,hydrogen
+hydrogen (g) tank (imp),MW,hydrogen
+hvdc (imp),MW,electricity
+hvdc (exp),MW,electricity
