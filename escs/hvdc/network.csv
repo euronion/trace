@@ -1,2 +1,2 @@
-name,pypsa_version
-Simple ESC,0.17.1
+name,pypsa_version,description
+HVDC,0.17.1,HVDC electricity export and domestic H2 production in importer’s region
