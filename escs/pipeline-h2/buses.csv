@@ -1,0 +1,9 @@
+name,unit,carrier
+electricity (exp),MW,electricity
+battery (exp),MW,battery
+water (exp),m^3,water
+hydrogen (g) (exp),MW,hydrogen
+hydrogen (g) tank (exp),MW,hydrogen
+hydrogen (g) (imp),MW,hydrogen
+hydrogen (g) compressed (exp),MW,hydrogen
+hydrogen (g) compressed (imp),MW,hydrogen
