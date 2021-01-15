@@ -129,3 +129,4 @@ dmypy.json
 resources/
 logs/
 .snakemake/
+results/
