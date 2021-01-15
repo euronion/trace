@@ -15,6 +15,7 @@ rule create_network:
         costs=f"../technology-data/outputs/costs_{config['scenario']['year']}.csv",
         wacc="data/wacc.csv",
         distances="data/distances.csv",
+        shipping_properties="data/shipping.csv",
         network="escs/{esc}",
         additional_components="resources/additional_components.pkl"
     output:
