@@ -19,7 +19,7 @@ rule create_network:
         network="escs/{esc}",
         additional_components="resources/additional_components.pkl"
     output:
-        network=directory("resources/networks/{esc}/{from}-{to}")
+        network="resources/networks/{esc}/{from}-{to}/network.nc"
     log:
         python="logs/create_network_{esc}_{from}-{to}.log",
         notebook="logs/notebooks_processed/create_network/{esc}/{from}-{to}.ipynb"
@@ -40,10 +40,11 @@ rule attach_supply:
         demand=demand_i,
         costs=f"../technology-data/outputs/costs_{config['scenario']['year']}.csv",
         wacc="data/wacc.csv",
-        network="resources/networks/{esc}/{from}-{to}",
+        network="resources/networks/{esc}/{from}-{to}/network.nc",
         additional_components="resources/additional_components.pkl"
     output:
-        network=directory("resources/networks_supplied/{esc}/{from}-{to}")
+        network="resources/networks_supplied/{esc}/{from}-{to}/network.nc",
+        lcoes="resources/networks_supplied/{esc}/{from}-{to}/lcoes.csv",
     log:
         python="logs/attach_supply_{esc}_{from}-{to}.log",
         notebook="logs/notebooks_processed/attach_supply/{esc}/{from}-{to}.ipynb"
@@ -52,7 +53,7 @@ rule attach_supply:
         
 rule solve_network:
     input:
-        network="resources/networks_supplied/{esc}/{from}-{to}",
+        network="resources/networks_supplied/{esc}/{from}-{to}/network.nc",
         additional_components="resources/additional_components.pkl"
     output:
         network="results/{esc}/{from}-{to}/network.nc"
