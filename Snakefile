@@ -5,7 +5,6 @@ rule create_additional_components:
         additional_components="resources/additional_components.pkl"
     log:
         python="logs/create_additional_components.log",
-        notebook="logs/notebooks_processed/create_additional_components.ipynb"
     notebook:
         "actions/create_additional_components.py.ipynb"
 
@@ -21,8 +20,8 @@ rule create_network:
     output:
         network="resources/networks/{esc}/{from}-{to}/network.nc"
     log:
-        python="logs/create_network_{esc}_{from}-{to}.log",
-        notebook="logs/notebooks_processed/create_network/{esc}/{from}-{to}.ipynb"
+        python="logs/create_network/{esc}/{from}-{to}.log",
+        notebook="logs/create_network/{esc}/{from}-{to}.ipynb"
     notebook:
         "actions/create_network.py.ipynb"
 
@@ -46,8 +45,8 @@ rule attach_supply:
         network="resources/networks_supplied/{esc}/{from}-{to}/network.nc",
         lcoes="resources/networks_supplied/{esc}/{from}-{to}/lcoes.csv",
     log:
-        python="logs/attach_supply_{esc}_{from}-{to}.log",
-        notebook="logs/notebooks_processed/attach_supply/{esc}/{from}-{to}.ipynb"
+        python="logs/attach_supply/{esc}/{from}-{to}.log",
+        notebook="logs/attach_supply/{esc}/{from}-{to}.ipynb"
     notebook:
         "actions/attach_supply.py.ipynb"
         
@@ -58,8 +57,8 @@ rule solve_network:
     output:
         network="results/{esc}/{from}-{to}/network.nc"
     log:
-        python="logs/solve_network_{esc}_{from}-{to}.log",
-        notebook="logs/notebooks_processed/solve_network/{esc}/{from}-{to}.ipynb"
+        python="logs/solve_network/{esc}/{from}-{to}.log",
+        notebook="logs/solve_network/{esc}/{from}-{to}.ipynb"
     notebook:
         "actions/solve_network.py.ipynb"
 
@@ -134,7 +133,7 @@ rule combine_GEGIS_supply:
     output:
         "resources/supply_{region}_{year}.nc"
     log:
-        "logs/combine_GEGIS_supply_{region}_{year}.log"
+        "logs/GEGIS/combine_GEGIS_supply_{region}_{year}.log"
     script:
         "actions/combine_GEGIS_supply.py"
 
@@ -147,7 +146,7 @@ rule combine_GEGIS_demand:
         netcdf="resources/demand_{region}_{era_year}.nc",
         csv="resources/demand_annual_{region}_{era_year}.csv"
     log:
-        "logs/combine_GEGIS_demand_{region}_{era_year}.log"
+        "logs/GEGIS/combine_GEGIS_demand/{region}_{era_year}.log"
     script:
         "actions/combine_GEGIS_demand.py"
         
