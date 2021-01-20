@@ -3,9 +3,7 @@ electricity (exp),MW,electricity
 battery (exp),MW,battery
 water (exp),m^3/h,water
 hydrogen (g) (exp),MW,hydrogen
-hydrogen (g) tank (exp),MW,hydrogen
 methane (g) (exp),MW,methane
-methane (g) tank (exp),MW,methane
 methane (g) (imp),MW,methane
 methane (g) compressed (exp),MW,methane
 methane (g) compressed (imp),MW,methane
