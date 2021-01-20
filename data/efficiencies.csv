@@ -1,9 +1,9 @@
 process,from,from_amount,from_unit,to,to_amount,to_unit,efficiency,comment,source
-desalination,electricity,0.003,MWh,water,1,m^3,333.333333333333,SWRO,TODO
+seawater desalination,electricity,0.003,MWh,water,1,m^3,333.3333,SWRO,TODO
 electrolysis,water,9,t,hydrogen (g),33.3333,MWh_LHV,3.7037,Based on ideal conversion process of stochiometric composition.,Reuß et al 2017
-electrolysis,electricity,47.6,MWh,hydrogen (g),33.3333,MWh_LHV,0.700279411764706,PEM,Reuß et al 2017
-battery inverter,electricity,1,MWh,battery,0.979795897113271,MWh,0.979795897113271,from DEA technology assumptions via technology-data repository,DEA
-battery inverter,battery,1,MWh,electricity,0.979795897113271,MWh,0.979795897113271,from DEA technology assumptions via technology-data repository,DEA
+electrolysis,electricity,47.6,MWh,hydrogen (g),33.3333,MWh_LHV,0.7,PEM,Reuß et al 2017
+battery inverter,electricity,1,MWh,battery,0.979795897113271,MWh,0.9798,from DEA technology assumptions via technology-data repository,DEA
+battery inverter,battery,1,MWh,electricity,0.979795897113271,MWh,0.9798,from DEA technology assumptions via technology-data repository,DEA
 hydrogen (g) tank charging,hydrogen (g),1,p.u.,hydrogen (g) tank,0.99,p.u.,0.99,guess. TODO: update,Guess.
 hydrogen (g) tank discharging,hydrogen (g) tank,1,p.u.,hydrogen (g),0.99,p.u.,0.99,guess. TODO: update,Guess.
 HVDC inverter pair,electricity,1,p.u.,hvdc,1,p.u.,1,guess. TODO: update,Guess.
@@ -13,15 +13,15 @@ dummy hydrogen transport between exporter and importer,hydrogen (g),1,p.u.,hydro
 H2 pipeline,hydrogen (g) compressed,1,p.u.,hydrogen (g) compressed,0.995,p.u.,0.995,"Assumed per 1000km here. Original source using CH4/NG pipelines, averages and industry consultancy as reference for H2.
 TODO: update if possible.","DoE report: Fuell Cell Technologies Office Multi-Year Research, Development, and Demonstration Plan (https://www.energy.gov/sites/prod/files/2015/08/f25/fcto_myrdd_delivery.pdf, Table 3.2.4)"
 H2 pipeline compressors,hydrogen (g),1,p.u.,hydrogen (g) compressed,1,p.u.,1,,
-H2 pipeline compressors,electricity,300,MW,hydrogen (g) compressed,13000,MW_LHV,43.3333333333333,330 MW_el per 13 GW_H2 (LHV) and 1000 km,Guidehouse 2020: European Hydrogen Backbone Report.
+H2 pipeline compressors,electricity,300,MW,hydrogen (g) compressed,13000,MW_LHV,43.3333,330 MW_el per 13 GW_H2 (LHV) and 1000 km,Guidehouse 2020: European Hydrogen Backbone Report.
 H2 pipeline decompressor,hydrogen (g) compressed,1,p.u.,hydrogen (g),1,p.u.,1,Arbitrary componenet for degrading gas pipeline content to regular hydrogen (g) bus.,Guess.
 industrial heat pump medium temperature,electricity,1,MW,heat,3,MW_th,3,"based on DEA technology data catalogue for industrial process heat (302, pg. 48, 2020). Conservative for ~20°C → ~100°C .",DEA
 direct air capture,electricity,0.4,MWh,CO2 (g),1,t,2.5,"0.4 MWh based on Beuttler et al (2019) for Climeworks LT DAC, alternative value: 0.182 MWh based on Breyer et al (2019).","Beuttler et al (2019), alternative:  Breyer et al (2019)."
 direct air capture,heat,1.6,MWh_th,CO2 (g),1,t,0.625,"Thermal energy demand. Provided via air-sourced heat pumps. 1.6 MWh based on Beuttler et al (2019) for Climeworks LT DAC, alternative value: 1.102 MWh based on Breyer et al (2019).","Beuttler et al (2019), alternative:  Breyer et al (2019)."
 methane (g) pipeline compressors,methane (g),1,p.u.,methane (g) compressed,1,p.u.,1,,
-methane (g) pipeline compressors,electricity,300,MW,methane (g) compressed,19000,MW_LHV,63.3333333333333,330 MW_el per 19 GW_CH4 (LHV) and 1000 km from H2 pipeline publication.,Guidehouse 2020: European Hydrogen Backbone Report.
+methane (g) pipeline compressors,electricity,300,MW,methane (g) compressed,19000,MW_LHV,63.3333,330 MW_el per 19 GW_CH4 (LHV) and 1000 km from H2 pipeline publication.,Guidehouse 2020: European Hydrogen Backbone Report.
 methane (g) pipeline decompressors,methane (g) compressed,1,p.u.,methane (g),1,p.u.,1,Arbitrary componenet for degrading gas pipeline content to regular methane (g) bus.,Guess.
-methanation,CO2 (g),2.75,t,methane (g),13.8888,MWh_LHV,5.05047272727273,Based on ideal conversion process of stochiometric composition (1 t CH4 contains 750 kg of carbon).,
+methanation,CO2 (g),2.75,t,methane (g),13.8888,MWh_LHV,5.0505,Based on ideal conversion process of stochiometric composition (1 t CH4 contains 750 kg of carbon).,
 methanation,hydrogen (g),17.8062,MWh_LHV,methane (g),13.8888,MWh_LHV,0.78,Additional H2 required for methanation process (2x H2 amount compared to stochiometric conversion).,"Götz et al. (2016), fig. 11 ."
 methane (g) tank charging,methane (g),1,p.u.,methane (g) tank,0.99,p.u.,0.99,guess. TODO: update,
 methane (g) tank discharging,methane (g) tank,1,p.u.,methane (g),0.99,p.u.,0.99,guess. TODO: update,
@@ -31,3 +31,23 @@ energy by means of combustion.
 Approach: Calculate CO2-eq emissions for 1 MWh from burning CH4 (LHV) (=198 kg CO2) and determine amount of CH4 which has to leak to have the same CO2-eq effect (=2.357 kg CH4, assuming GWP-20 of 84 for CH4; = 32.74 kWh_LHV,CH4). The ratio between this amount of CH4 and the amount of CH4 required for 1 MWh from burning is then the maximum leakage rate.
 Similar numbers are reported e.g. here: https://www.energyvoice.com/otherenergy/207433/wave-of-drones-and-cameras-to-help-bp-snuff-out-methane-leaks/.
 Estimate might be too high (let us hope it is).",
+H2 liquefaction,hydrogen (g),1,p.u.,hydrogen (l),0.9835,p.u.,0.9835,'= 1.65% losses.,"Heuser et al. 2019: https://doi.org/10.1016/j.ijhydene.2018.12.156, table 1."
+H2 liquefaction,electricity,6.78,MWh,hydrogen (l),33.3333,MWh_LHV,4.9164,6.78 kWh/kg_H2,"Heuser et al. 2019: https://doi.org/10.1016/j.ijhydene.2018.12.156, table 1."
+H2 evaporation,hydrogen (l),1,p.u.,hydrogen (g),1,p.u.,1,,"Heuser et al. 2019: https://doi.org/10.1016/j.ijhydene.2018.12.156, table 1."
+H2 evaporation,electricity,0.6,MWh,hydrogen (g),33.3333,MWh_LHV,55.5555,.6 kWh/kg_H2,"Heuser et al. 2019: https://doi.org/10.1016/j.ijhydene.2018.12.156, table 1."
+CH4 liquefaction,methane (g),1,p.u.,methane (l),1,p.u.,1,"For refrigeration cycle, cleaning of gas presumed unnecessary as it should be nearly pure CH4 (=SNG). Assuming energy required is only electricity which is for Table 3 in the source provided with efficiencies of ~50% of LHV, making the numbers consistent with the numbers in Table 2.","Pospíšil et al. 2019: https://doi.org/10.1016/j.rser.2018.09.027 , Table 2 and Table 3."
+CH4 liquefaction,electricity,0.5,MWh,methane (l),13.8888,MWh_LHV,27.7776,"Assuming 0.5 MWh/t_CH4 for refigeration cycle based on Table 2 of source; cleaning of gas presumed unnecessary as it should be nearly pure CH4 (=SNG). Assuming energy required is only electricity which is for Table 3 in the source provided with efficiencies of ~50% of LHV, making the numbers consistent with the numbers in Table 2.","Pospíšil et al. 2019: https://doi.org/10.1016/j.rser.2018.09.027 , Table 2 and Table 3."
+CH4 evaporation,methane (l),1,p.u.,methane (g),0.98,p.u.,0.98,,"Pospíšil et al. 2019: https://doi.org/10.1016/j.rser.2018.09.027 , Fig. 14."
+Haber-Bosch synthesis,electricity,1.2777,MWh,ammonia (g),5.1666,MWh_LHV,4.0436,Assume 5 GJ/t_NH3 for compressors and NH3 LHV = 5.16666 MWh/t_NH3.,"DECHEMA 2017: DECHEMA: Low carbon energy and feedstock for the European chemical industry , table 11."
+Haber-Bosch synthesis,nitrogen (g),0.825,t_N2,ammonia (g),5.1666,MWh_LHV,6.2625,".33 MWh electricity are required for ASU per t_NH3, considering 0.4 MWh are required per t_N2 and LHV of NH3 of 5.1666 Mwh.","DECHEMA 2017: DECHEMA: Low carbon energy and feedstock for the European chemical industry , pg. 57."
+Haber-Bosch synthesis,hydrogen (g),5.9333274,MWh_LHV,ammonia (g),5.1666,MWh_LHV,0.8707,"178 kg_H2 per t_NH3, LHV for both assumed.","DECHEMA 2017: DECHEMA: Low carbon energy and feedstock for the European chemical industry , pg. 57."
+air separation unit,electricity,0.4,MWh,nitrogen (g),1,t_N2,2.5,,"DECHEMA 2017: DECHEMA: Low carbon energy and feedstock for the European chemical industry , pg. 57."
+NH3 liquefaction,ammonia (g),1,p.u.,ammonia (l),1,p.u.,1,,
+NH3 liquefaction,electricity,0.001,p.u.,ammonia (l),1,p.u.,1000,0.1% of energy content of ammonia required for refrigeration.,Dias et al. 2020: https://www.frontiersin.org/articles/10.3389/fmech.2020.00021/full
+NH3 evaporation,ammonia (l),1,p.u.,ammonia (g),1,p.u.,1,guess. TODO: update,
+LOHC hydrogenation,LOHC (unloaded),1,p.u.,LOHC (loaded),1,p.u.,1,,
+LOHC hydrogenation,electricity,0.2,MWh,LOHC (loaded),96.4326,MWh_LHV,482.163,0.2 MW for 114 MW_HHV = 96.4326 MW_LHV hydrogen,"Niermann et al 2019: https://pubs.rsc.org/en/content/articlelanding/2019/ee/c8ee02700e , fig. 6A ."
+LOHC dehydrogenation,LOHC (loaded),1,MWh_LHV,LOHC (unloaded),0.7193,MWh_LHV,0.7193,"Consider hydrogen content here: 114 MWh to 82 MWh in source. Worst case assumption: Dehydrogenation heat has to be provided by burning hydrogen (no other heat source available). Assume small electricity demand (power = 0.2 MW) also already included, which seems reasonable as the energy flow is missing 1 MW_HHV of hydrogen which is enough to provide this electricity).",
+methanolisation,hydrogen (g),6.2999937,MWh_LHV,methanol,5.5361,MWh_LHV,0.8787,"189 kg_H2 per t_MeOH, LHV for both assumed.","DECHEMA 2017: DECHEMA: Low carbon energy and feedstock for the European chemical industry , pg. 64."
+methanolisation,CO2 (g),1.373,t,methanol,5.5361,MWh_LHV,4.0321,,"DECHEMA 2017: DECHEMA: Low carbon energy and feedstock for the European chemical industry , pg. 66."
+methanolisation,electricity,1.5,MWh,methanol,5.5361,MWh_LHV,3.6907,,"DECHEMA 2017: DECHEMA: Low carbon energy and feedstock for the European chemical industry , pg. 65."
