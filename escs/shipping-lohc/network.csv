@@ -1,0 +1,2 @@
+name,pypsa_version,description
+LOHC shipping,0.17.1,Transport of hydrogen as hydrogenated form of an LOHC (DBT) by ship.

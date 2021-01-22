@@ -1,0 +1,9 @@
+name,color,nice_name
+wind,blue,Wind energy
+pv,orange,Photovoltaics
+hydrogen,light blue,Hydrogen
+electricity,yellow,Electricity
+battery,black, Battery
+water,green,Water
+H0-DBT,gray,Unloaded LOHC (H0-DBT)
+H18-DBT,black,Loaded LOHC (H18-DBT)
