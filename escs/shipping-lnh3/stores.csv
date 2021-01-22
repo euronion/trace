@@ -1,0 +1,9 @@
+name,bus,e_nom_extendable,e_cyclic
+battery storage (exp),battery (exp),True,True
+clean water tank storage (exp),water (exp),True,True
+nitrogen (g) tank (exp),nitrogen (g) (exp),True,True
+hydrogen storage tank (exp),hydrogen (g) (exp),True,True
+ammonia (g) tank (exp),ammonia (g) (exp),True,True
+ammonia (l) storage tank (exp),ammonia (l) (exp),True,True
+ammonia (l) storage tank (imp),ammonia (l) (imp),True,True
+ammonia (g) demand buffer (imp),ammonia (g) (imp),True,True
