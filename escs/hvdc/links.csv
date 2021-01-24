@@ -8,5 +8,3 @@ HVDC inverter pair (imp),hvdc (imp),electricity (imp),,True,0,1
 "battery inverter (discharging, imp)",battery (imp),electricity (imp),,True,0,1
 seawater desalination (imp),electricity (imp),water (imp),,True,0,1
 electrolysis (imp),electricity (imp),hydrogen (g) (imp),water (imp),True,0,1
-hydrogen storage charging (imp),hydrogen (g) (imp),hydrogen (g) tank (imp),,True,0,1
-hydrogen storage discharging (imp),hydrogen (g) tank (imp),hydrogen (g) (imp),,True,0,1
