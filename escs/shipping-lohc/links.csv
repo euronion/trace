@@ -3,7 +3,7 @@ name,bus0,bus1,bus2,bus3,p_nom_extendable,p_min_pu,p_max_pu
 "battery inverter (discharging, exp)",battery (exp),electricity (exp),,,True,0,1
 seawater desalination (exp),electricity (exp),water (exp),,,True,0,1
 electrolysis (exp),electricity (exp),hydrogen (g) (exp),water (exp),,True,0,1
-LOHC hydrogenation,electricity (exp),LOHC (loaded) (exp),LOHC (unloaded) (exp),hydrogen (g) (exp),True,0,1
+LOHC hydrogenation,hydrogen (g) (exp),LOHC (loaded) (exp),LOHC (unloaded) (exp),electricity (exp),True,0,1
 LOHC dehydrogenation,LOHC (loaded) (imp),hydrogen (g) (imp),LOHC (unloaded) (imp),,True,0,1
-LOHC (loaded) loading with LOHC (unloaded) unloading (exp),LOHC (loaded) (exp),LOHC berth (exp),LOHC (unloaded) (exp),,True,0,1
-LOHC (loaded) unloading with LOHC (unloaded) loading (imp),LOHC berth (imp),LOHC (loaded) (imp),LOHC (unloaded) (imp),,True,0,1
+LOHC (loaded) loading with LOHC (unloaded) unloading (exp),LOHC (loaded) (exp),berth (exp),LOHC (unloaded) (exp),,True,0,1
+LOHC (loaded) unloading with LOHC (unloaded) loading (imp),berth (imp),LOHC (loaded) (imp),LOHC (unloaded) (imp),,True,0,1

@@ -1,0 +1,3 @@
+name,bus,p_nom_extendable,type
+LOHC chemical (exp),LOHC (unloaded) (exp),True,Source of LOHC chemical.
+LOHC chemical (imp),LOHC (unloaded) (imp),True,Source of LOHC chemical.

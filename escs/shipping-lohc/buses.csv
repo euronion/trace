@@ -8,5 +8,5 @@ LOHC (loaded) (exp),t/h,H18-DBT,
 LOHC (loaded) (imp),t/h,H18-DBT,
 LOHC (unloaded) (exp),t/h,H0-DBT,
 LOHC (unloaded) (imp),t/h,H0-DBT,
-LOHC berth (exp),t/h,H18-DBT,Works as a buffer for unloading H0-DBT at the exporting habour and loading H18-DBT at the same time.
-LOHC berth (imp),t/h,H18-DBT,Works as a buffer for loading H0-DBT at the importing habour and unloading H18-DBT at the same time.
+berth (exp),t/h,H18-DBT,Works as a buffer for unloading H0-DBT at the exporting habour and loading H18-DBT at the same time.
+berth (imp),t/h,H18-DBT,Works as a buffer for loading H0-DBT at the importing habour and unloading H18-DBT at the same time.
