@@ -5,3 +5,5 @@ seawater desalination (exp),electricity (exp),water (exp),,True,0,1
 electrolysis (exp),electricity (exp),hydrogen (g) (exp),water (exp),True,0,1
 H2 liquefaction,hydrogen (g) (exp),hydrogen (l) (exp),electricity (exp),True,0,1
 H2 evaporation,hydrogen (l) (imp),hydrogen (g) (imp),,True,0,1
+ship loading,hydrogen (l) (exp),berth (exp),,True,0,1
+ship unloading,berth (imp),hydrogen (l) (imp),,True,0,1

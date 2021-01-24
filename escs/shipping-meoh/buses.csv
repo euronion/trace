@@ -7,3 +7,5 @@ methanol (exp),MW,methanol
 methanol (imp),MW,methanol
 heat (exp),MW_th,heat
 CO2 (g) (exp),t/h,CO2
+berth (exp),t/h,methanol
+berth (imp),t/h,methanol

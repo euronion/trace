@@ -6,3 +6,5 @@ electrolysis (exp),electricity (exp),hydrogen (g) (exp),water (exp),,True,0,1
 industrial heat pump medium temperature (exp),electricity (exp),heat (exp),,,True,0,1
 direct air capture (exp),electricity (exp),CO2 (g) (exp),heat (exp),,True,0,1
 methanolisation (exp),electricity (exp),methanol (exp),CO2 (g) (exp),hydrogen (g) (exp),True,0,1
+ship loading,methanol (exp),berth (exp),,,True,0,1
+ship unloading,berth (imp),methanol (imp),,,True,0,1

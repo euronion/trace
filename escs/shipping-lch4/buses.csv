@@ -9,3 +9,5 @@ methane (l) (imp),MW,methane
 methane (g) (imp),MW,methane
 heat (exp),MW_th,heat
 CO2 (g) (exp),t/h,CO2
+berth (exp),t/h,methane
+berth (imp),t/h,methane

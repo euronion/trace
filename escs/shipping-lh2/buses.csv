@@ -6,3 +6,5 @@ hydrogen (g) (exp),MW,hydrogen
 hydrogen (g) (imp),MW,hydrogen
 hydrogen (l) (exp),MW,hydrogen
 hydrogen (l) (imp),MW,hydrogen
+berth (exp),t/h,hydrogen
+berth (imp),t/h,hydrogen
