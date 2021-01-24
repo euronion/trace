@@ -10,11 +10,11 @@ HVDC inverter pair,electricity,1,p.u.,hvdc,1,p.u.,1,guess. TODO: update,Guess.
 HVDC inverter pair,hvdc,1,p.u.,electricity,1,p.u.,1,guess. TODO: update,Guess.
 HVDC overhead,hvdc,1,p.u.,hvdc,0.975,p.u.,0.975,Per 1000 km HVDC transmission line,Teichmann et al 2012: 10.1016/j.ijhydene.2012.08.066
 dummy hydrogen transport between exporter and importer,hydrogen (g),1,p.u.,hydrogen (g),1,p.u.,1,Dummy transport process to connect two buses directly.,None.
-H2 pipeline,hydrogen (g) compressed,1,p.u.,hydrogen (g) compressed,0.995,p.u.,0.995,"Assumed per 1000km here. Original source using CH4/NG pipelines, averages and industry consultancy as reference for H2.
+H2 (g) pipeline,hydrogen (g) compressed,1,p.u.,hydrogen (g) compressed,0.995,p.u.,0.995,"Assumed per 1000km here. Original source using CH4/NG pipelines, averages and industry consultancy as reference for H2.
 TODO: update if possible.","DoE report: Fuell Cell Technologies Office Multi-Year Research, Development, and Demonstration Plan (https://www.energy.gov/sites/prod/files/2015/08/f25/fcto_myrdd_delivery.pdf, Table 3.2.4)"
-H2 pipeline compressors,hydrogen (g),1,p.u.,hydrogen (g) compressed,1,p.u.,1,,
-H2 pipeline compressors,electricity,300,MW,hydrogen (g) compressed,13000,MW_LHV,43.3333333333333,330 MW_el per 13 GW_H2 (LHV) and 1000 km,Guidehouse 2020: European Hydrogen Backbone Report.
-H2 pipeline decompressor,hydrogen (g) compressed,1,p.u.,hydrogen (g),1,p.u.,1,Arbitrary componenet for degrading gas pipeline content to regular hydrogen (g) bus.,Guess.
+H2 (g) pipeline compressors,hydrogen (g),1,p.u.,hydrogen (g) compressed,1,p.u.,1,,
+H2 (g) pipeline compressors,electricity,300,MW,hydrogen (g) compressed,13000,MW_LHV,43.3333333333333,330 MW_el per 13 GW_H2 (LHV) and 1000 km,Guidehouse 2020: European Hydrogen Backbone Report.
+H2 (g) pipeline decompressor,hydrogen (g) compressed,1,p.u.,hydrogen (g),1,p.u.,1,Arbitrary componenet for degrading gas pipeline content to regular hydrogen (g) bus.,Guess.
 industrial heat pump medium temperature,electricity,1,MW,heat,3,MW_th,3,"based on DEA technology data catalogue for industrial process heat (302, pg. 48, 2020). Conservative for ~20°C → ~100°C .",DEA
 direct air capture,electricity,0.4,MWh,CO2 (g),1,t,2.5,"0.4 MWh based on Beuttler et al (2019) for Climeworks LT DAC, alternative value: 0.182 MWh based on Breyer et al (2019).","Beuttler et al (2019), alternative:  Breyer et al (2019)."
 direct air capture,heat,1.6,MWh_th,CO2 (g),1,t,0.625,"Thermal energy demand. Provided via air-sourced heat pumps. 1.6 MWh based on Beuttler et al (2019) for Climeworks LT DAC, alternative value: 1.102 MWh based on Breyer et al (2019).","Beuttler et al (2019), alternative:  Breyer et al (2019)."
