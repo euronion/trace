@@ -5,5 +5,6 @@ seawater desalination (exp),electricity (exp),water (exp),,,True,0,1
 electrolysis (exp),electricity (exp),hydrogen (g) (exp),water (exp),,True,0,1
 LOHC hydrogenation,hydrogen (g) (exp),LOHC (loaded) (exp),LOHC (unloaded) (exp),electricity (exp),True,0,1
 LOHC dehydrogenation,LOHC (loaded) (imp),hydrogen (g) (imp),LOHC (unloaded) (imp),,True,0,1
-LOHC (loaded) loading with LOHC (unloaded) unloading (exp),LOHC (loaded) (exp),berth (exp),LOHC (unloaded) (exp),,True,0,1
+LOHC (loaded) loading with LOHC (unloaded) unloading (exp),LOHC (loaded) (exp),berth (exp),LOHC (used) (exp),,True,0,1
 LOHC (loaded) unloading with LOHC (unloaded) loading (imp),berth (imp),LOHC (loaded) (imp),LOHC (unloaded) (imp),,True,0,1
+LOHC treatment,LOHC (used) (exp),LOHC (unloaded) (exp),,,True,0,1

@@ -6,6 +6,7 @@ hydrogen (g) (exp),MW,hydrogen,
 hydrogen (g) (imp),MW,hydrogen,
 LOHC (loaded) (exp),t/h,H18-DBT,
 LOHC (loaded) (imp),t/h,H18-DBT,
+LOHC (used) (exp),t/h,H0-DBT,Needs to be treated before it can be used again.
 LOHC (unloaded) (exp),t/h,H0-DBT,
 LOHC (unloaded) (imp),t/h,H0-DBT,
 berth (exp),t/h,H18-DBT,Works as a buffer for unloading H0-DBT at the exporting habour and loading H18-DBT at the same time.
