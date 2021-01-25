@@ -74,6 +74,8 @@ For each ESC, its specific subfolder is parsed and converted into a region-speci
         - For each shipping connection, multiple convoys are added such that all possible combinations are accounted for.
             In these combinations, the convoys can not load or unload while another convoy is loading/unloading.
         - The model is provided with the investment costs per amount of cargo deliverd and may freely choose the amount to transport during for each shippment in each shipping "lane"
+        - Travel time may be artificially increased to achieve a more constant supply by ship and avoid longer periods were not shipment arrives
+            at the end of the year. The increase should be negiglible and in the range of a few hours per trip.
 ### Conventions
 
 * Chemicals are specified with their lower heating value (LHV) and use of LHV at this point is indicated
