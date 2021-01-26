@@ -1,5 +1,12 @@
 configfile: "config.yaml"
 
+ESCS=["hvdc","pipeline-h2","pipeline-ch4","shipping-lh2","shipping-lch4","shipping-meoh","shipping-lnh3","shipping-lohc"]
+EXPORTERS=["AU","AR","ES","EG","MA","SA","DK","DE"]
+IMPORTERS=["DE"]
+
+rule all:
+    input: expand("results/{esc}/{exporter}-{importer}/network.nc", esc=ESCS, exporter=EXPORTERS, importer=IMPORTERS)
+
 rule create_additional_components:
     output:
         additional_components="resources/additional_components.pkl"
