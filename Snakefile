@@ -68,6 +68,17 @@ rule solve_network:
         notebook="logs/solve_network/{esc}/{from}-{to}.ipynb"
     notebook:
         "actions/solve_network.py.ipynb"
+        
+rule extract_result:
+    input:
+        network="results/{esc}/{from}-{to}/network.nc"
+    output:
+        results="results/{esc}/{from}-{to}/results.csv"
+    log:
+        python="logs/extract_result/{esc}/{from}-{to}.log",
+        notebook="logs/extract_result/{esc}/{from}-{to}.ipynb"
+    notebook:
+        "actions/extract_result.py.ipynb"
 
 ## - GEGIS rules: Require Julia to be setup seperately, see Readme.md - ##
 
