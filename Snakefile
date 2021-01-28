@@ -10,6 +10,7 @@ rule all:
 rule create_additional_components:
     output:
         additional_components="resources/additional_components.pkl"
+    threads: 1
     log:
         python="logs/create_additional_components.log",
     notebook:
@@ -26,6 +27,7 @@ rule create_network:
         additional_components="resources/additional_components.pkl"
     output:
         network="resources/networks/{esc}/{from}-{to}/network.nc"
+    threads: 1
     log:
         python="logs/create_network/{esc}/{from}-{to}.log",
         notebook="logs/create_network/{esc}/{from}-{to}.ipynb"
@@ -51,6 +53,7 @@ rule attach_supply:
     output:
         network="resources/networks_supplied/{esc}/{from}-{to}/network.nc",
         lcoes="resources/networks_supplied/{esc}/{from}-{to}/lcoes.csv",
+    threads: 1
     log:
         python="logs/attach_supply/{esc}/{from}-{to}.log",
         notebook="logs/attach_supply/{esc}/{from}-{to}.ipynb"
@@ -63,6 +66,7 @@ rule solve_network:
         additional_components="resources/additional_components.pkl"
     output:
         network="results/{esc}/{from}-{to}/network.nc"
+    threads: 4
     log:
         python="logs/solve_network/{esc}/{from}-{to}.log",
         notebook="logs/solve_network/{esc}/{from}-{to}.ipynb"
@@ -74,6 +78,7 @@ rule extract_result:
         network="results/{esc}/{from}-{to}/network.nc"
     output:
         results="results/{esc}/{from}-{to}/results.csv"
+    threads: 1
     log:
         python="logs/extract_result/{esc}/{from}-{to}.log",
         notebook="logs/extract_result/{esc}/{from}-{to}.ipynb"
