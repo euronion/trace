@@ -1,0 +1,34 @@
+configfile: "config.yaml"
+
+ESCS=["hvdc","pipeline-h2","pipeline-ch4","shipping-lh2","shipping-lch4","shipping-meoh","shipping-lnh3","shipping-lohc"]
+EXPORTERS=["AU","AR","ES","EG","MA","SA","DK","DE"]
+IMPORTERS=["DE"]
+
+SCENARIO_FOLDER = f"{config['scenario']['year']}_{config['scenario']['wacc']}"
+
+rule all:
+    input:
+        expand("results/"+SCENARIO_FOLDER+"/{esc}/{exporter}-{importer}/network.nc", esc=ESCS, exporter=EXPORTERS, importer=IMPORTERS),
+        config="results/"+SCENARIO_FOLDER+"/config.yaml"
+
+rule create_additional_components:
+    output:
+        additional_components="resources/additional_components.pkl"
+    threads: 1
+    log:
+        python="logs/create_additional_components.log",
+    script:
+        "actions/create_additional_components.py.py"
+        
+rule solve_network:
+    input:
+        network="resources/networks_supplied/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}/network.nc",
+        additional_components="resources/additional_components.pkl"
+    output:
+        network="results/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}/network.nc"
+    threads: 4
+    log:
+        python="logs/"+SCENARIO_FOLDER+"/solve_network/{esc}/{from}-{to}.log",
+        notebook="logs/"+SCENARIO_FOLDER+"/solve_network/{esc}/{from}-{to}.ipynb"
+    script:
+        "actions/solve_network.py.py"
