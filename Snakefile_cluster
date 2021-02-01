@@ -6,7 +6,7 @@ IMPORTERS=["DE"]
 
 SCENARIO_FOLDER = f"{config['scenario']['year']}_{config['scenario']['wacc']}"
 
-rule all:
+rule solve_all:
     input:
         expand("results/"+SCENARIO_FOLDER+"/{esc}/{exporter}-{importer}/network.nc", esc=ESCS, exporter=EXPORTERS, importer=IMPORTERS),
         config="results/"+SCENARIO_FOLDER+"/config.yaml"
