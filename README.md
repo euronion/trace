@@ -102,3 +102,12 @@ For each ESC, its specific subfolder is parsed and converted into a region-speci
     (no additional electricity demand or storage losses are assumed for satisfying the domestic electricity demand and no hourly profile,
     only the annual demand/supply).
     4. Residual RES are then attached to the network as PyPSA generators.
+    
+## Solving
+
+By default the commercial solver Gurobi is used.
+Free academic licenses are available.
+We use the 'barrier' solving algorithm and skip the crossover, 
+as the additional accuracy from crossover is negligible for our problem.
+We also make use of the "PreDual = 2" option from Gurobi,
+which showed to dramatically increase solver speed for all ESCs involving long distance shipping.
