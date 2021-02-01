@@ -3,9 +3,28 @@ configfile: "config.yaml"
 ESCS=["hvdc","pipeline-h2","pipeline-ch4","shipping-lh2","shipping-lch4","shipping-meoh","shipping-lnh3","shipping-lohc"]
 EXPORTERS=["AU","AR","ES","EG","MA","SA","DK","DE"]
 IMPORTERS=["DE"]
+YEARS=[2030,2040,2050]
+WACCS=["homogeneous"]
 
-rule all:
-    input: expand("results/{esc}/{exporter}-{importer}/network.nc", esc=ESCS, exporter=EXPORTERS, importer=IMPORTERS)
+SCENARIO_FOLDER = f"{config['scenario']['year']}_{config['scenario']['wacc']}"
+
+rule solve_all:
+    input:
+        expand("results/"+SCENARIO_FOLDER+"/{esc}/{exporter}-{importer}/network.nc", esc=ESCS, exporter=EXPORTERS, importer=IMPORTERS),
+        config="results/"+SCENARIO_FOLDER+"/config.yaml"
+
+rule combine_results:
+    input:
+        expand("results/{year}_{wacc}/{esc}/{exporter}-{importer}/results.csv", year=YEARS, wacc=WACCS, esc=ESCS, exporter=EXPORTERS, importer=IMPORTERS)
+    output:
+        results="results/"+SCENARIO_FOLDER+"/results.csv"
+    threads: 1
+    log:
+        python="logs/"+SCENARIO_FOLDER+"/combine_results.log",
+        notebook="logs/"+SCENARIO_FOLDER+"/combine_results.ipynb"
+    notebook:
+        "actions/combine_results.py.ipynb"
+        
 
 rule create_additional_components:
     output:
@@ -26,11 +45,11 @@ rule create_network:
         network="escs/{esc}",
         additional_components="resources/additional_components.pkl"
     output:
-        network="resources/networks/{esc}/{from}-{to}/network.nc"
+        network="resources/networks/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}/network.nc"
     threads: 1
     log:
-        python="logs/create_network/{esc}/{from}-{to}.log",
-        notebook="logs/create_network/{esc}/{from}-{to}.ipynb"
+        python="logs/"+SCENARIO_FOLDER+"/create_network/{esc}/{from}-{to}.log",
+        notebook="logs/"+SCENARIO_FOLDER+"/create_network/{esc}/{from}-{to}.ipynb"
     notebook:
         "actions/create_network.py.ipynb"
 
@@ -48,42 +67,55 @@ rule attach_supply:
         demand=demand_i,
         costs=f"../technology-data/outputs/costs_{config['scenario']['year']}.csv",
         wacc="data/wacc.csv",
-        network="resources/networks/{esc}/{from}-{to}/network.nc",
+        network="resources/networks/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}/network.nc",
         additional_components="resources/additional_components.pkl"
     output:
-        network="resources/networks_supplied/{esc}/{from}-{to}/network.nc",
-        lcoes="resources/networks_supplied/{esc}/{from}-{to}/lcoes.csv",
+        network="resources/networks_supplied/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}/network.nc",
+        lcoes="resources/networks_supplied/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}/lcoes.csv"
     threads: 1
     log:
-        python="logs/attach_supply/{esc}/{from}-{to}.log",
-        notebook="logs/attach_supply/{esc}/{from}-{to}.ipynb"
+        python="logs/attach_supply/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}.log",
+        notebook="logs/attach_supply/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}.ipynb"
     notebook:
         "actions/attach_supply.py.ipynb"
         
 rule solve_network:
     input:
-        network="resources/networks_supplied/{esc}/{from}-{to}/network.nc",
+        network="resources/networks_supplied/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}/network.nc",
         additional_components="resources/additional_components.pkl"
     output:
-        network="results/{esc}/{from}-{to}/network.nc"
+        network="results/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}/network.nc"
     threads: 4
     log:
-        python="logs/solve_network/{esc}/{from}-{to}.log",
-        notebook="logs/solve_network/{esc}/{from}-{to}.ipynb"
+        python="logs/"+SCENARIO_FOLDER+"/solve_network/{esc}/{from}-{to}.log",
+        notebook="logs/"+SCENARIO_FOLDER+"/solve_network/{esc}/{from}-{to}.ipynb"
     notebook:
         "actions/solve_network.py.ipynb"
         
 rule extract_result:
     input:
-        network="results/{esc}/{from}-{to}/network.nc"
+        network="results/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}/network.nc"
     output:
-        results="results/{esc}/{from}-{to}/results.csv"
+        results="results/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}/results.csv"
     threads: 1
     log:
-        python="logs/extract_result/{esc}/{from}-{to}.log",
-        notebook="logs/extract_result/{esc}/{from}-{to}.ipynb"
+        python="logs/"+SCENARIO_FOLDER+"/extract_result/{esc}/{from}-{to}.log",
+        notebook="logs/"+SCENARIO_FOLDER+"/extract_result/{esc}/{from}-{to}.ipynb"
     notebook:
         "actions/extract_result.py.ipynb"
+        
+rule backup_run:
+    input:
+        config="config.yaml",
+        data="data/",
+        costs=f"../technology-data/outputs/costs_{config['scenario']['year']}.csv"
+    output:
+        config="results/"+SCENARIO_FOLDER+"/config.yaml",
+        data="results/"+SCENARIO_FOLDER+"/data.tar",
+        costs=f"results/{SCENARIO_FOLDER}/costs_{config['scenario']['year']}.csv"
+    threads: 1
+    script:
+        "actions/backup_run.py"
 
 ## - GEGIS rules: Require Julia to be setup seperately, see Readme.md - ##
 
