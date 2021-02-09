@@ -16,7 +16,7 @@ H2 (g) pipeline compressor,hydrogen (g),1,p.u.,hydrogen (g) compressed,1,p.u.,1,
 H2 (g) pipeline compressor,electricity,300,MW,hydrogen (g) compressed,13000,MW_LHV,43.3333333333333,330 MW_el per 13 GW_H2 (LHV) and 1000 km,Guidehouse 2020: European Hydrogen Backbone Report.
 H2 (g) pipeline decompressor,hydrogen (g) compressed,1,p.u.,hydrogen (g),1,p.u.,1,Arbitrary componenet for degrading gas pipeline content to regular hydrogen (g) bus.,Guess.
 industrial heat pump medium temperature,electricity,1,MW,heat,3,MW_th,3,"based on DEA technology data catalogue for industrial process heat (302, pg. 48, 2020). Conservative for ~20°C → ~100°C .",DEA
-direct air capture,electricity,0.4,MWh,CO2 (g),1,t,2.5,"0.4 MWh based on Beuttler et al (2019) for Climeworks LT DAC, alternative value: 0.182 MWh based on Breyer et al (2019).","Beuttler et al (2019), alternative:  Breyer et al (2019)."
+direct air capture,electricity,0.4,MWh,CO2 (g),1,t,2.5,"0.4 MWh based on Beuttler et al (2019) for Climeworks LT DAC, alternative value: 0.182 MWh based on Breyer et al (2019). Should already include electricity for water scrubbing and compression (high quality CO2 output).","Beuttler et al (2019), alternative:  Breyer et al (2019)."
 direct air capture,heat,1.6,MWh_th,CO2 (g),1,t,0.625,"Thermal energy demand. Provided via air-sourced heat pumps. 1.6 MWh based on Beuttler et al (2019) for Climeworks LT DAC, alternative value: 1.102 MWh based on Breyer et al (2019).","Beuttler et al (2019), alternative:  Breyer et al (2019)."
 methane (g) pipeline compressor,methane (g),1,p.u.,methane (g) compressed,1,p.u.,1,,
 methane (g) pipeline compressor,electricity,300,MW,methane (g) compressed,19000,MW_LHV,63.3333333333333,330 MW_el per 19 GW_CH4 (LHV) and 1000 km from H2 pipeline publication.,Guidehouse 2020: European Hydrogen Backbone Report.
@@ -66,3 +66,6 @@ ship loading,hydrogen (l),33.3333,MWh_LHV,berth,1,t,0.03000003000003,Auxiliar pr
 ship unloading,berth,1,t,hydrogen (l),33.3333,MWh_LHV,33.3333,Auxiliar process: converting between MWh_LHV and weight for shipping purposes.,n/a
 ship loading,methane (l),13.8888,MWh_LHV,berth,1,t,0.072000460802949,Auxiliar process: converting between MWh_LHV and weight for shipping purposes.,n/a
 ship unloading,berth,1,t,methane (l),13.8888,MWh_LHV,13.8888,Auxiliar process: converting between MWh_LHV and weight for shipping purposes.,n/a
+CO2 liquefaction,CO2 (g),1,t,CO2 (l),1,t,1,"Assuming a pure, humid, low-pressure input stream. Neglecting possible gross-effects of CO2 which might be cycled for the cooling process.",Mitsubish Heavy Industries Ltd. and IEA (2004): https://ieaghg.org/docs/General_Docs/Reports/PH4-30%20Ship%20Transport.pdf .
+CO2 liquefaction,heat,0.006666666666667,MWh,CO2 (l),1,t,150,For drying purposes.,Mitsubish Heavy Industries Ltd. and IEA (2004): https://ieaghg.org/docs/General_Docs/Reports/PH4-30%20Ship%20Transport.pdf .
+CO2 liquefaction,electricity,0.123,MWh,CO2 (l),1,t,8.13008130081301,,Mitsubish Heavy Industries Ltd. and IEA (2004): https://ieaghg.org/docs/General_Docs/Reports/PH4-30%20Ship%20Transport.pdf .
