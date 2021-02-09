@@ -17,11 +17,11 @@ rule combine_results:
     input:
         expand("results/{year}_{wacc}/{esc}/{exporter}-{importer}/results.csv", year=YEARS, wacc=WACCS, esc=ESCS, exporter=EXPORTERS, importer=IMPORTERS)
     output:
-        results="results/"+SCENARIO_FOLDER+"/results.csv"
+        results="results/results.csv"
     threads: 1
     log:
-        python="logs/"+SCENARIO_FOLDER+"/combine_results.log",
-        notebook="logs/"+SCENARIO_FOLDER+"/combine_results.ipynb"
+        python="logs/combine_results.log",
+        notebook="logs/combine_results.ipynb"
     notebook:
         "actions/combine_results.py.ipynb"
         
@@ -94,13 +94,13 @@ rule solve_network:
         
 rule extract_result:
     input:
-        network="results/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}/network.nc"
+        network="results/{year}_{wacc}/{esc}/{from}-{to}/network.nc"
     output:
-        results="results/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}/results.csv"
+        results="results/{year}_{wacc}/{esc}/{from}-{to}/results.csv"
     threads: 1
     log:
-        python="logs/"+SCENARIO_FOLDER+"/extract_result/{esc}/{from}-{to}.log",
-        notebook="logs/"+SCENARIO_FOLDER+"/extract_result/{esc}/{from}-{to}.ipynb"
+        python="logs/{year}_{wacc}/extract_result/{esc}/{from}-{to}.log",
+        notebook="logs/{year}_{wacc}/extract_result/{esc}/{from}-{to}.ipynb"
     notebook:
         "actions/extract_result.py.ipynb"
         
