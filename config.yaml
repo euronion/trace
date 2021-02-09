@@ -120,10 +120,15 @@ GlobalEnergyGIS:
                    99. ]
                 
 solver:
-    name: gurobi
-    method: 2    # barrier
-    crossover: 0 # do not use crossover
-    crossover: 0
-    BarConvTol: 1.e-5
-    FeasibilityTol: 1.e-6
-    PreDual: 2
+    default:
+        name: gurobi
+        method: 2    # barrier
+        crossover: 0 # do not use crossover
+        BarConvTol: 1.e-10
+        FeasibilityTol: 1.e-6
+        PreDual: 2
+        threads: 8
+    fallback:
+        # Use gurobi defaults
+        name: gurobi
+    
