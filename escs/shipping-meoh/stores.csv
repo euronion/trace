@@ -1,7 +1,7 @@
 name,bus,e_nom_extendable,e_cyclic,capital_cost
 battery storage (exp),battery (exp),True,True,0.1
 clean water tank storage (exp),water (exp),True,True,0.1
-CO2 (g) tank (exp),CO2 (g) (exp),True,True,0.1
-hydrogen storage tank (exp),hydrogen (g) (exp),True,True,0.1
-methanol tank (exp),methanol (exp),True,True,0.1
+CO2 storage tank (exp),CO2 (l) (exp),True,True,0.1
+hydrogen storage tank (exp),hydrogen (g) storage (exp),True,True,0.1
+General liquid hydrocarbon storage (product) (exp),methanol storage (exp),True,True,0.1
 Methanol demand buffer (imp),methanol (imp),True,True,0.1

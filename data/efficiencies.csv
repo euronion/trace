@@ -72,7 +72,7 @@ CO2 liquefaction,electricity,0.123,MWh,CO2 (l),1,t,8.13008130081301,,Mitsubish H
 H2 storage compressor,hydrogen (g),1,MWh_LHV,hydrogen (g) storage,1,MWh_LHV,1,,
 H2 storage compressor,electricity,4,MWh,hydrogen (g) storage,33.3333,MWh_LHV,8.333325,,"DEA technology data for energy storage, pg. 82 ."
 H2 storage unstoring,hydrogen (g) storage,1,MWh_LHV,hydrogen (g),1,MWh_LHV,1,Reverse connection (auxiliary object) for H2 (g) compressed storage.,
-MeOH storing,methanol,4.3845912,MWh_LHV,methanol (stored),1,m^3,0.228071433432608,"Storage units are usually per m^3, component for unit conversion. Based on LHV and density of 792 kg/m^3 .",
+MeOH storing,methanol,4.3845912,MWh_LHV,methanol storage,1,m^3,0.228071433432608,"Storage units are usually per m^3, component for unit conversion. Based on LHV and density of 792 kg/m^3 .",
 CH4 storage compressor,methane (g),2.32997222222222,MWh_LHV,methane (g) storage,1,m^3,0.429189666066596,Assuming methane density of 167.758 kg/m^3 at 200 bar and LHV of 50 MJ/kg .,https://www.unitrove.com/engineering/tools/gas/natural-gas-density (2021-02-10).
 CH4 storage compressor,electricity,1.125,MWh,methane (g) storage,1,t,0.888888888888889,Assuming ca. 7.5% of HHV based on multi-stage adiabatic compression.,"e.g. Bossel and Eliasson, “Energy and the Hydrogen Economy”, pg. 10f. (https://afdc.energy.gov/files/pdfs/hyd_economy_bossel_eliasson.pdf , 10.02.2021)"
 CH4 unstoring,methane (g) storage,1,m^3,methane (g),2.32997222222222,MWh_LHV,2.32997222222222,Reverse connection (auxiliary object) for CH4 (g) compressed storage.,https://www.unitrove.com/engineering/tools/gas/natural-gas-density (2021-02-10).
