@@ -3,9 +3,12 @@ electricity (exp),MW,electricity
 battery (exp),MW,battery
 water (exp),m^3/h,water
 hydrogen (g) (exp),MW,hydrogen
+hydrogen (g) storage (exp),MW,hydrogen
 methane (g) (exp),MW,methane
+methane (g) storage (exp),m^3/h,methane
 methane (g) (imp),MW,methane
 methane (g) compressed (exp),MW,methane
 methane (g) compressed (imp),MW,methane
 heat (exp),MW_th,heat
 CO2 (g) (exp),t/h,CO2
+CO2 (l) (exp),t/h,CO2
