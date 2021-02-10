@@ -8,3 +8,5 @@ LOHC dehydrogenation,LOHC (loaded) (imp),hydrogen (g) (imp),LOHC (unloaded) (imp
 LOHC (loaded) loading with LOHC (unloaded) unloading (exp),LOHC (loaded) (exp),berth (exp),LOHC (used) (exp),,True,0,1
 LOHC (loaded) unloading with LOHC (unloaded) loading (imp),berth (imp),LOHC (loaded) (imp),LOHC (unloaded) (imp),,True,0,1
 LOHC treatment,LOHC (used) (exp),LOHC (unloaded) (exp),,,True,0,1
+H2 storage compressor (exp),hydorgen (g) (exp),hydrogen (g) storage (exp),electricity (exp),,True,0,1
+H2 storage unstoring (exp),hydrogen (g) storage (exp),hydorgen (g) (exp),,,True,0,1
