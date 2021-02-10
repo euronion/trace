@@ -6,3 +6,5 @@ electrolysis (exp),electricity (exp),hydrogen (g) (exp),water (exp),True,0,1
 H2 (g) pipeline,hydrogen (g) compressed (exp),hydrogen (g) compressed (imp),,True,0,1
 H2 (g) pipeline compressor (exp),hydrogen (g) (exp),hydrogen (g) compressed (exp),electricity (exp),True,0,1
 H2 (g) pipeline decompressor (imp),hydrogen (g) compressed (imp),hydrogen (g) (imp),,True,0,1
+H2 storage compressor (exp),hydorgen (g) (exp),hydrogen (g) storage (exp),electricity (exp),True,0,1
+H2 storage unstoring (exp),hydrogen (g) storage (exp),hydorgen (g) (exp),,True,0,1
