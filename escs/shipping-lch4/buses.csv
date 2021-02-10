@@ -5,8 +5,10 @@ water (exp),m^3/h,water
 hydrogen (g) (exp),MW,hydrogen
 methane (g) (exp),MW,methane
 methane (g) storage (exp),m^3/h,methane
-methane (l) (exp),MW,methane
-methane (l) (imp),MW,methane
+methane (l) (exp),t/h,methane
+methane (l) storage (exp),m^3/h,methane
+methane (l) (imp),t/h,methane
+methane (l) storage (imp),m^3/h,methane
 methane (g) (imp),MW,methane
 heat (exp),MW_th,heat
 CO2 (g) (exp),t/h,CO2
