@@ -7,3 +7,5 @@ H2 liquefaction,hydrogen (g) (exp),hydrogen (l) (exp),electricity (exp),True,0,1
 H2 evaporation,hydrogen (l) (imp),hydrogen (g) (imp),,True,0,1
 ship loading,hydrogen (l) (exp),berth (exp),,True,0,1
 ship unloading,berth (imp),hydrogen (l) (imp),,True,0,1
+H2 storage compressor (exp),hydorgen (g) (exp),hydrogen (g) storage (exp),electricity (exp),True,0,1
+H2 storage unstoring (exp),hydrogen (g) storage (exp),hydorgen (g) (exp),,True,0,1
