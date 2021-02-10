@@ -4,10 +4,13 @@ battery (exp),MW,battery
 water (exp),m^3/h,water
 hydrogen (g) (exp),MW,hydrogen
 methane (g) (exp),MW,methane
+methane (g) storage (exp),m^3/h,methane
 methane (l) (exp),MW,methane
 methane (l) (imp),MW,methane
 methane (g) (imp),MW,methane
 heat (exp),MW_th,heat
 CO2 (g) (exp),t/h,CO2
+CO2 (l) (exp),t/h,CO2
 berth (exp),t/h,methane
 berth (imp),t/h,methane
+hydrogen (g) storage (exp),MW,hydrogen
