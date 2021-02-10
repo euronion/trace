@@ -10,3 +10,4 @@ ammonia (g) (imp),MW,ammonia
 nitrogen (g) (exp),t/h,nitrogen
 berth (exp),t/h,ammonia
 berth (imp),t/h,ammonia
+hydrogen (g) storage (exp),MW,hydrogen
