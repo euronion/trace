@@ -3,7 +3,6 @@ battery storage (exp),battery (exp),True,True,0.1
 clean water tank storage (exp),water (exp),True,True,0.1
 nitrogen (g) tank (exp),nitrogen (g) (exp),True,True,0.1
 hydrogen storage tank (exp),hydrogen (g) storage (exp),True,True,0.1
-ammonia (g) tank (exp),ammonia (g) (exp),True,True,0.1
 NH3 (l) storage tank incl. liquefaction (exp),ammonia (l) (exp),True,True,0.1
 NH3 (l) storage tank incl. liquefaction (imp),ammonia (l) (imp),True,True,0.1
 ammonia (g) demand buffer (imp),ammonia (g) (imp),True,True,0.1
