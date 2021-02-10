@@ -1,18 +1,18 @@
 name,unit,carrier
 electricity (exp),MW,electricity
 battery (exp),MW,battery
-water (exp),m^3/h,water
+water (exp),m^3,water
 hydrogen (g) (exp),MW,hydrogen
 methane (g) (exp),MW,methane
-methane (g) storage (exp),m^3/h,methane
+methane (g) storage (exp),m^3,methane
 methane (l) (exp),t/h,methane
-methane (l) storage (exp),m^3/h,methane
-methane (l) (imp),t/h,methane
+methane (l) storage (exp),m^3,methane
+methane (l) (imp),t,methane
 methane (l) storage (imp),m^3/h,methane
 methane (g) (imp),MW,methane
 heat (exp),MW_th,heat
-CO2 (g) (exp),t/h,CO2
-CO2 (l) (exp),t/h,CO2
-berth (exp),t/h,methane
-berth (imp),t/h,methane
+CO2 (g) (exp),t,CO2
+CO2 (l) (exp),t,CO2
+berth (exp),t,methane
+berth (imp),t,methane
 hydrogen (g) storage (exp),MW,hydrogen

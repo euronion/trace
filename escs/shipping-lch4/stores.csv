@@ -4,6 +4,6 @@ clean water tank storage (exp),water (exp),True,True,0.1
 CO2 storage tank (exp),CO2 (l) (exp),True,True,0.1
 hydrogen storage tank (exp),hydrogen (g) storage (exp),True,True,0.1
 methane storage tank incl. compressor (exp),methane (g) storage (exp),True,True,0.1
-LNG storage tank (exp),methane (l) (exp),True,True,0.1
-LNG storage tank (imp),methane (l) (imp),True,True,0.1
+LNG storage tank (exp),methane (l) storage (exp),True,True,0.1
+LNG storage tank (imp),methane (l) storage (imp),True,True,0.1
 methane (g) demand buffer (imp),methane (g) (imp),True,True,0.1
