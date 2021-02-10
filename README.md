@@ -45,13 +45,36 @@ so that the resulting structure looks like this
 
 ESCs are defined in the `esc` subfolder as PyPSA networks.
 For each ESC, its specific subfolder is parsed and converted into a region-specific PyPSA network representing the ESC.
+Following files corresponding to PyPSA components are used for described purposes:
 
-* Implementation of demand
+* 'loads.csv' : for implementing demand
     + Demand is implemented with a constant load (hourly average = annual total / 8760)
-    + A store is connected with losless links and without capital costs of arbitrary capacity
+    + A store component (see later) is connected with losless links and without capital costs of arbitrary capacity
       to remove any influence by the time-dependency of the demand.
-      With this approach the annual delivered energy becomes relevant, rather than satisfying the
-      hourly demand in time.
+      With this approach the annual delivered energy becomes relevant, rather than satisfying the hourly demand in time.
+      By convention, this store located on the import side and is named "buffer", is assigned with capital_cost=0.1 (to avoid numeric shennanigans).
+* 'buses.csv' : basic building blocks to which all else attaches
+    + buses represent different states of energy carriers or chemicals, e.g. CH4 (g), CH4 (l), CH4 compressed or water.
+    + units of the buses are used for consitency checks and scaling costs/efficiencies in the model
+    + by convention were energy is relevant, the bus carriers a power unit (preferrably MW); otherwise the bus uses m^3 or t (NOT m^3/h or t/h)
+    + additional buses and links may be created to match the units in the costs input
+    (e.g. converting t to m^3 for methanol storage, rather than changing the unit in the cost database)
+* 'stores.csv' : Storing energy carriers or chemicals
+* 'links.csv' : Converting between energy carriers, chemicals
+    + Conversion defined via the 'data/efficiencies.csv' file
+    + names of the links and connected buses must match to the efficiencies, except for a trailing (exp) or (imp)
+    + names of the links and units of their bus0 or bus1 must match the names in the cost database, except for trailing (exp) or (imp) and different si prefixes for units
+    + most buses are unidirectional with bus0 as input and bus1 as output; bus2, bus3 can be additional inputs
+    + some buses are bidirectional with bus0 and bus 1 as input and output; bus2, bus3 not implemented for these types of links
+* 'ships.csv' : Own extension for shipping based on PyPSA components
+    + Contains properties of different types of ships
+    + Data there must match the ship types in the cost database
+    + for more details, see the 'Special case: Shipping' below
+
+* Naming conventions
+    + Trailing "(exp)" or "(imp)" are ignored during building of the network in bus/link/store names)
+    + Also ignored are leading descriptors in the same braket, e.g. "(charging, exp)" or "(What do you hear?, imp")
+    + Use "(exp)" and "(imp)" in names to indicate were a component is located - on the exporter or importer side of the model
 * Costs
     + data taken from customised `technology-data` repository (CAPEX, FOM, lifetime)
     + capital costs p.a. are calculated using EAC
@@ -60,9 +83,8 @@ For each ESC, its specific subfolder is parsed and converted into a region-speci
     + adjustments to cost data (where necessary) are made right after network creation (`actions/create_network.py.ipynb`). The following adjustments are made:
         - Battery inverter cost: halfed; cost is for bidirectional inverter, model deploys two inverters with same power rating (enforced by constrained), thus doubling the cost for inverters
         - transmission distances: between regions are considered based on `data/distances.csv` and link capital costs per distance are scaled with the distance.
-* Conversions
-    + Conversions (e.g. electricity to hydrogen, seawater desalination) are all defined by PyPSA links via the `links.csv` in each respective ESC
-* Special case of **shipping**
+
+### Special case: Shipping
         - Shipping is special as it is a non-continuous transportation method
         - Shipping connections are defined with the non-standard PyPSA `ships.csv` in the respecitve ESC
         - `ships.csv` is read by `create_network.py.ipynb` and then translated into comparable PyPSA compoenents
@@ -111,3 +133,6 @@ We use the 'barrier' solving algorithm and skip the crossover,
 as the additional accuracy from crossover is negligible for our problem.
 We also make use of the "PreDual = 2" option from Gurobi,
 which showed to dramatically increase solver speed for all ESCs involving long distance shipping.
+
+As a fallback method the model automatically switches back to the default gurobi solver methods and
+retries solving the scenario again.
