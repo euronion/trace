@@ -7,7 +7,7 @@ industrial heat pump medium temperature (exp),electricity (exp),heat (exp),,True
 direct air capture (exp),electricity (exp),CO2 (g) (exp),heat (exp),True,0,1,bus1
 methanation (exp),hydrogen (g) (exp),methane (g) (exp),CO2 (g) (exp),True,0,1,bus1
 CH4 liquefaction,electricity (exp),methane (l) (exp),methane (g) (exp),True,0,1,bus0
-CH4 evaporation,methane (l) (imp),methane (g) (imp),,True,0,1,bus0
+CH4 evaporation,methane (l) (imp),methane (g) (imp),,True,0,1,bus1
 ship loading,methane (l) (exp),berth (exp),,True,0,1,n/a
 ship unloading,berth (imp),methane (l) (imp),,True,0,1,n/a
 H2 storage compressor (exp),hydrogen (g) (exp),hydrogen (g) storage (exp),electricity (exp),True,0,1,n/a
