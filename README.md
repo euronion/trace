@@ -66,11 +66,13 @@ Following files corresponding to PyPSA components are used for described purpose
     + names of the links and units of their bus0 or bus1 must match the names in the cost database, except for trailing (exp) or (imp) and different si prefixes for units
     + most buses are unidirectional with bus0 as input and bus1 as output; bus2, bus3 can be additional inputs
     + some buses are bidirectional with bus0 and bus 1 as input and output; bus2, bus3 not implemented for these types of links
+    + special column 'scale_costs_based_on': This is an extension on the csv file. It specifies to which bus/energy carrier the 
+        costs for this link in the cost data refers to. Values of this column are either 'bus0','bus1' or 'n/a' if no cost entry for this
+        link exists because it is irrelevant.
 * 'ships.csv' : Own extension for shipping based on PyPSA components
     + Contains properties of different types of ships
     + Data there must match the ship types in the cost database
     + for more details, see the 'Special case: Shipping' below
-
 * Naming conventions
     + Trailing "(exp)" or "(imp)" are ignored during building of the network in bus/link/store names)
     + Also ignored are leading descriptors in the same braket, e.g. "(charging, exp)" or "(What do you hear?, imp")
