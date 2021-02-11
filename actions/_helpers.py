@@ -117,6 +117,11 @@ def extract_technology(b):
     
     return re.sub("\([\w\s,\.]*?(?:exp|imp)\)$", "", b.strip()).strip()
 
+def get_bus_unit(b, n):
+    """Get the 'unit' attribute of bus 'b' from PyPSA network 'n."""
+    
+    return n.buses.loc[b]['unit']
+
 def extract_unit(b, n):
     """Extract the unit of a bus 'b' in the PyPSA network 'n' based on its carrier.
     
