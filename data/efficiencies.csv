@@ -13,7 +13,7 @@ dummy hydrogen transport between exporter and importer,hydrogen (g),1,p.u.,hydro
 H2 (g) pipeline,hydrogen (g) compressed,1,p.u.,hydrogen (g) compressed,0.995,p.u.,0.995,"Assumed per 1000km here. Original source using CH4/NG pipelines, averages and industry consultancy as reference for H2.
 TODO: update if possible.","DoE report: Fuell Cell Technologies Office Multi-Year Research, Development, and Demonstration Plan (https://www.energy.gov/sites/prod/files/2015/08/f25/fcto_myrdd_delivery.pdf, Table 3.2.4)"
 H2 (g) pipeline compressor,hydrogen (g),1,p.u.,hydrogen (g) compressed,1,p.u.,1,,
-H2 (g) pipeline compressor,electricity,300,MW,hydrogen (g) compressed,13000,MW_LHV,43.3333333333333,330 MW_el per 13 GW_H2 (LHV) and 1000 km,Guidehouse 2020: European Hydrogen Backbone Report.
+H2 (g) pipeline compressor,electricity,300,MW,hydrogen (g) compressed,13000,MW_LHV,43.3333333333333,330 MW_el per 13 GW_H2 (LHV) and 1000 km operating at <=80bar .,"Guidehouse 2020: European Hydrogen Backbone Report, table 3."
 H2 (g) pipeline decompressor,hydrogen (g) compressed,1,p.u.,hydrogen (g),1,p.u.,1,Arbitrary componenet for degrading gas pipeline content to regular hydrogen (g) bus.,Guess.
 industrial heat pump medium temperature,electricity,1,MW,heat,3,MW_th,3,"based on DEA technology data catalogue for industrial process heat (302, pg. 48, 2020). Conservative for ~20°C → ~100°C .",DEA
 direct air capture,electricity,0.4,MWh,CO2 (g),1,t,2.5,"0.4 MWh based on Beuttler et al (2019) for Climeworks LT DAC, alternative value: 0.182 MWh based on Breyer et al (2019). Should already include electricity for water scrubbing and compression (high quality CO2 output).","Beuttler et al (2019), alternative:  Breyer et al (2019)."
@@ -23,8 +23,6 @@ methane (g) pipeline compressor,electricity,300,MW,methane (g) compressed,19000,
 methane (g) pipeline decompressor,methane (g) compressed,1,p.u.,methane (g),1,p.u.,1,Arbitrary componenet for degrading gas pipeline content to regular methane (g) bus.,Guess.
 methanation,CO2 (g),2.75,t,methane (g),13.8888,MWh_LHV,5.05047272727273,Based on ideal conversion process of stochiometric composition (1 t CH4 contains 750 kg of carbon).,
 methanation,hydrogen (g),17.8062,MWh_LHV,methane (g),13.8888,MWh_LHV,0.779997978232301,Additional H2 required for methanation process (2x H2 amount compared to stochiometric conversion).,"Götz et al. (2016), fig. 11 ."
-methane (g) tank charging,methane (g),1,p.u.,methane (g) tank,0.99,p.u.,0.99,guess. TODO: update,
-methane (g) tank discharging,methane (g) tank,1,p.u.,methane (g),0.99,p.u.,0.99,guess. TODO: update,
 methane (g) pipeline,methane (g) compressed,1,p.u.,methane (g) compressed,0.96726,p.u.,0.96726,"Finding reliablie and general applicable numbers is difficult. Using an upper estimate here:
 Assume losses in downstream processes have (worst case) from a climate perspective the same impact as using the methane for 
 energy by means of combustion.
