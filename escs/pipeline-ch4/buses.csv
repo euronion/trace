@@ -9,6 +9,6 @@ methane (g) storage (exp),m^3,methane
 methane (g) (imp),MW,methane
 methane (g) compressed (exp),MW,methane
 methane (g) compressed (imp),MW,methane
-heat (exp),MW_th,heat
+heat (exp),MW,heat
 CO2 (g) (exp),t,CO2
 CO2 (l) (exp),t,CO2
