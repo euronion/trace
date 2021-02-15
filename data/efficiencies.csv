@@ -1,6 +1,6 @@
 process,from,from_amount,from_unit,to,to_amount,to_unit,efficiency,comment,source
 seawater desalination,electricity,0.003,MWh,water,1,m^3,333.333333333333,SWRO,TODO
-electrolysis,water,9,t,hydrogen (g),33.3333,MWh_LHV,3.7037,Based on ideal conversion process of stochiometric composition.,Reuß et al 2017
+electrolysis,water,9,m^3,hydrogen (g),33.3333,MWh_LHV,3.7037,Based on ideal conversion process of stochiometric composition.,Reuß et al 2017
 electrolysis,electricity,47.6,MWh,hydrogen (g),33.3333,MWh_LHV,0.700279411764706,PEM,Reuß et al 2017
 battery inverter,electricity,1,MWh,battery,0.979795897113271,MWh,0.979795897113271,from DEA technology assumptions via technology-data repository,DEA
 battery inverter,battery,1,MWh,electricity,0.979795897113271,MWh,0.979795897113271,from DEA technology assumptions via technology-data repository,DEA
@@ -55,7 +55,7 @@ LOHC (loaded) loading with LOHC (unloaded) unloading,LOHC (loaded),1,t,berth,1,t
 LOHC (loaded) loading with LOHC (unloaded) unloading,LOHC (loaded),1,t,LOHC (used),0.944,t,0.944,"Auxiliary process: Unloading / loading of LOHC (loaded/unloaded) happen at the same time. This transfer is represented in the model with a 2:1 link (unloading) and 1:2 link (loading), feeding into or taking from the respective buses.",n/a
 LOHC (loaded) unloading with LOHC (unloaded) loading,berth,1,t,LOHC (loaded),1,t,1,"Auxiliary process: Unloading / loading of LOHC (loaded/unloaded) happen at the same time. This transfer is represented in the model with a 2:1 link (unloading) and 1:2 link (loading), feeding into or taking from the respective buses.",n/a
 LOHC (loaded) unloading with LOHC (unloaded) loading,LOHC (unloaded),0.944,t,LOHC (loaded),1,t,1.05932203389831,"Auxiliary process: Unloading / loading of LOHC (loaded/unloaded) happen at the same time. This transfer is represented in the model with a 2:1 link (unloading) and 1:2 link (loading), feeding into or taking from the respective buses.",n/a
-LOHC treatment,LOHC (used),1,t,LOHC (unloaded),0.9999,t,0.9999,"A 0.01% penalty, as ca. 0.01% of LOHC have to be exchanged after each loading/unloading cycle.","Runge et al 2020, pg. 7, https://papers.ssrn.com/abstract=3623514"
+LOHC treatment,LOHC (used),1,p.u.,LOHC (unloaded),0.9999,p.u.,0.9999,"A 0.01% penalty, as ca. 0.01% of LOHC have to be exchanged after each loading/unloading cycle.","Runge et al 2020, pg. 7, https://papers.ssrn.com/abstract=3623514"
 ship loading,methanol,5.5361,MWh_LHV,berth,1,t,0.180632575278626,Auxiliar process: converting between MWh_LHV and weight for shipping purposes.,n/a
 ship unloading,berth,1,t,methanol,5.5361,MWh_LHV,5.5361,Auxiliar process: converting between MWh_LHV and weight for shipping purposes.,n/a
 ship loading,ammonia (l),5.1666,MWh_LHV,berth,1,t,0.193550884527542,Auxiliar process: converting between MWh_LHV and weight for shipping purposes.,n/a
