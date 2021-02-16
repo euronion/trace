@@ -54,7 +54,6 @@ GlobalEnergyGIS:
         # SSP scenario and radiative forcing target to base prediction upon
         ssp_scenario: "ssp2-34"
         # Year to predict demand for
-        #ssp_year: 2030
         ssp_year: 2050
     solar:
         options:
@@ -124,7 +123,7 @@ solver:
         name: gurobi
         method: 2    # barrier
         crossover: 0 # do not use crossover
-        BarConvTol: 1.e-10
+        BarConvTol: 1.e-6
         FeasibilityTol: 1.e-6
         PreDual: 2
         threads: 8
