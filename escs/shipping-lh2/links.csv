@@ -3,9 +3,9 @@ name,bus0,bus1,bus2,p_nom_extendable,p_min_pu,p_max_pu,scale_costs_based_on
 "battery inverter (discharging, exp)",battery (exp),electricity (exp),,True,0,1,bus0
 seawater desalination (exp),electricity (exp),water (exp),,True,0,1,bus1
 electrolysis (exp),electricity (exp),hydrogen (g) (exp),water (exp),True,0,1,bus0
-H2 liquefaction,hydrogen (g) (exp),hydrogen (l) (exp),electricity (exp),True,0,1,bus0
-H2 evaporation,hydrogen (l) (imp),hydrogen (g) (imp),,True,0,1,bus0
-ship loading,hydrogen (l) (exp),berth (exp),,True,0,1,n/a
-ship unloading,berth (imp),hydrogen (l) (imp),,True,0,1,n/a
+H2 liquefaction (exp),hydrogen (g) (exp),hydrogen (l) (exp),electricity (exp),True,0,1,bus1
+H2 evaporation (imp),hydrogen (l) (imp),hydrogen (g) (imp),,True,0,1,bus0
+ship loading (exp),hydrogen (l) (exp),berth (exp),,True,0,1,n/a
+ship unloading (imp),berth (imp),hydrogen (l) (imp),,True,0,1,n/a
 H2 storage compressor (exp),hydrogen (g) (exp),hydrogen (g) storage (exp),electricity (exp),True,0,1,n/a
 H2 storage unstoring (exp),hydrogen (g) storage (exp),hydrogen (g) (exp),,True,0,1,n/a

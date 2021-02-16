@@ -4,8 +4,8 @@ battery (exp),MW,battery
 water (exp),m^3,water
 hydrogen (g) (exp),MW,hydrogen
 hydrogen (g) (imp),MW,hydrogen
-hydrogen (l) (exp),MW,hydrogen
-hydrogen (l) (imp),MW,hydrogen
+hydrogen (l) (exp),t,hydrogen
+hydrogen (l) (imp),t,hydrogen
 berth (exp),t,hydrogen
 berth (imp),t,hydrogen
 hydrogen (g) storage (exp),MW,hydrogen
