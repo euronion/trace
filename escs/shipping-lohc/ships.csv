@@ -1,2 +1,3 @@
 name,bus0,bus1
 LOHC transport ship,berth (exp),berth (imp)
+LOHC (used) transport ship,berth LOHC (used) (imp),berth LOHC (used) (exp)

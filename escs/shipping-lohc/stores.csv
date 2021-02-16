@@ -4,6 +4,6 @@ clean water tank storage (exp),water (exp),True,True,0.1
 hydrogen storage tank (exp),hydrogen (g) storage (exp),True,True,0.1
 hydrogen (g) demand buffer (imp),hydrogen (g) (imp),True,True,0.1
 LOHC unloaded DBT storage (exp),LOHC (unloaded) (exp),True,True,0.1
-LOHC unloaded DBT storage (imp),LOHC (unloaded) (imp),True,True,0.1
+LOHC unloaded DBT storage (imp),LOHC (used) (imp),True,True,0.1
 LOHC loaded DBT storage (exp),LOHC (loaded) (exp),True,True,0.1
 LOHC loaded DBT storage (imp),LOHC (loaded) (imp),True,True,0.1

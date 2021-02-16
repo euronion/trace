@@ -9,6 +9,8 @@ LOHC (loaded) (exp),t,H18-DBT,
 LOHC (loaded) (imp),t,H18-DBT,
 LOHC (used) (exp),t,H0-DBT,Needs to be treated before it can be used again.
 LOHC (unloaded) (exp),t,H0-DBT,
-LOHC (unloaded) (imp),t,H0-DBT,
-berth (exp),t,H18-DBT,Works as a buffer for unloading H0-DBT at the exporting habour and loading H18-DBT at the same time.
-berth (imp),t,H18-DBT,Works as a buffer for loading H0-DBT at the importing habour and unloading H18-DBT at the same time.
+LOHC (used) (imp),t,H0-DBT,
+berth (exp),t,H18-DBT,Works as a buffer for loading H18-DBT.
+berth (imp),t,H18-DBT,Works as a buffer for unloading H18-DBT.
+berth LOHC (used) (exp),t,H0-DBT,"Works as a buffer for unloading used LOHC, needs to be treated before it can be used again."
+berth LOHC (used) (imp),t,H0-DBT,"Works as a buffer for loading used LOHC, needs to be treated before it can be used again."

@@ -90,16 +90,38 @@ Following files corresponding to PyPSA components are used for described purpose
         - Shipping is special as it is a non-continuous transportation method
         - Shipping connections are defined with the non-standard PyPSA `ships.csv` in the respecitve ESC
         - `ships.csv` is read by `create_network.py.ipynb` and then translated into comparable PyPSA compoenents
-        - Internally a ship is represented by a generator with negative generation in the exporting country and a generator with the same generation capacity but reduced by the
-            shipping efficiency in its destination.
-            A delivery schedule is exogeneously provided, letting the generators work with a fixed delay in between for the amount of time the loading or unloading process take.
+        - Internally a ship is represented by a link for loading, a link for unloading and a link for representing energy loss during the journey and a store (cargo hold).
+            The energy loss during the journey is either the energy required for propulsion or boil-off, whatever is larger.
+            The idea is that boil-off may be used for propulsion as well and propulsion energy is always provided by the ship's cargo.
+        - A delivery schedule is exogeneously provided, letting the loading and unloading links work with fixed delay representing the loading/unloading process and
+            the travel time inbetween.
         - Instead of a ship with a fixed maximum capacity we think of it more as a group of ships = convoy which all travel together without an upper limit on capacity.
         - Additionally a constraint added in `solve_network.py.ipynb` for the solver ensures that for each convoy the annual loaded and unloaded amounts are equal.
         - For each shipping connection, multiple convoys are added such that all possible combinations are accounted for.
             In these combinations, the convoys can not load or unload while another convoy is loading/unloading.
-        - The model is provided with the investment costs per amount of cargo deliverd and may freely choose the amount to transport during for each shippment in each shipping "lane"
+        - The convoys are scheduled such that a as-constant-as-possible supply may be build by the model, i.e. a convoy arrives always shortly after the previous
+            convoy left.
         - Travel time may be artificially increased to achieve a more constant supply by ship and avoid longer periods were not shipment arrives
-            at the end of the year. The increase should be negiglible and in the range of a few hours per trip.
+            at the end of the year. The increase should be negiglible and in the range of a few hours per trip and is also logged for each scenario.
+        - Additionally convoys may arrive a few hours later to fill gaps in the scheduling (again to smoothen the supply)
+        - The model is provided with the investment costs per amount of cargo deliverd and may freely choose the amount to transport during for each shippment in each shipping "lane"
+        - Limitation of the exogeneous scheduling:
+          At the beginning of each scenario year there might be a larger supply gap of a few hours/days, where no ship arrives due to unfavourable combinations of
+            journey time and loading/unloading duration
+            
+### LOHC
+
+For LOHC transport the chemical costs also have to be taken into account.
+This is hard-coded into the model in `actions/create_network.py.ipynb` in the method `override_costs_for_special_cases(n)`.
+The following assumptions are made:
+* DBT is used as LOHC
+* Chemical costs are stored in cost database as 'LOHC chemical' in EUR/t
+* The LOHC / H2 ratio is taken from efficiencies.csv , "LOHC hydrogenation"
+
+The hard-coding modifies the following costs:
+* The generators for LOHC chemicals: capital_costs become marginal_costs (per t of LOHC additionally required in the model to compensate losses)
+* LOHC shipping lanes have an additional store for keeping track and transporting used, unloaded LOHC chemical
+
 ### Conventions
 
 * Chemicals are specified with their lower heating value (LHV) and use of LHV at this point is indicated
