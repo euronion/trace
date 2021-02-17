@@ -42,7 +42,7 @@ Haber-Bosch synthesis,hydrogen (g),5.9333274,MWh_LHV,ammonia (g),5.1666,MWh_LHV,
 air separation unit,electricity,0.4,MWh,nitrogen (g),1,t_N2,2.5,,"DECHEMA 2017: DECHEMA: Low carbon energy and feedstock for the European chemical industry , pg. 57."
 NH3 liquefaction,ammonia (g),1,p.u.,ammonia (l),1,p.u.,1,,
 NH3 liquefaction,electricity,0.001,p.u.,ammonia (l),1,p.u.,1000,0.1% of energy content of ammonia required for refrigeration.,Dias et al. 2020: https://www.frontiersin.org/articles/10.3389/fmech.2020.00021/full
-NH3 evaporation,ammonia (l),1,p.u.,ammonia (g),1,p.u.,1,guess. TODO: update,
+NH3 evaporation,ammonia (l),1,p.u.,ammonia (g),1,p.u.,1,guess. TODO: check.,
 LOHC hydrogenation,LOHC (unloaded),0.944,t,LOHC (loaded),1,t,1.05932203389831,LOHC (DBT) has loaded only 5.6%-wt H2 as rate of discharge is kept at ca. 90%.,
 LOHC hydrogenation,electricity,0.2,MWh,LOHC (loaded),51.6604,t,258.302,"Flow in figures shows 0.2 MW for 114 MW_HHV = 96.4326 MW_LHV = 2.89298 t hydrogen. At 5.6 wt-% effective H2 storage for loaded LOHC (H18-DBT), corresponds to 51.6604 t loaded LOHC .","Niermann et al 2019: https://pubs.rsc.org/en/content/articlelanding/2019/ee/c8ee02700e , fig. 6A ."
 LOHC hydrogenation,hydrogen (g),1.8666648,MWh_LHV,LOHC (loaded),1,t,0.535714821429107,Considering 5.6 wt-% H2 in loaded LOHC and LHV of H2.,"Runge et al 2020, pg. 7, https://papers.ssrn.com/abstract=3623514"
@@ -67,6 +67,7 @@ ship unloading,berth,1,t,methane (l),13.8888,MWh_LHV,13.8888,Auxiliar process: c
 CO2 liquefaction,CO2 (g),1,t,CO2 (l),1,t,1,"Assuming a pure, humid, low-pressure input stream. Neglecting possible gross-effects of CO2 which might be cycled for the cooling process.",Mitsubish Heavy Industries Ltd. and IEA (2004): https://ieaghg.org/docs/General_Docs/Reports/PH4-30%20Ship%20Transport.pdf .
 CO2 liquefaction,heat,0.006666666666667,MWh,CO2 (l),1,t,149.999999999993,For drying purposes.,Mitsubish Heavy Industries Ltd. and IEA (2004): https://ieaghg.org/docs/General_Docs/Reports/PH4-30%20Ship%20Transport.pdf .
 CO2 liquefaction,electricity,0.123,MWh,CO2 (l),1,t,8.13008130081301,,Mitsubish Heavy Industries Ltd. and IEA (2004): https://ieaghg.org/docs/General_Docs/Reports/PH4-30%20Ship%20Transport.pdf .
+CO2 evaporation,CO2 (l),1,t,CO2 (g),1,t,1,guess. TODO: check.,
 H2 storage compressor,hydrogen (g),1,MWh_LHV,hydrogen (g) storage,1,MWh_LHV,1,,
 H2 storage compressor,electricity,4,MWh,hydrogen (g) storage,33.3333,MWh_LHV,8.333325,,"DEA technology data for energy storage, pg. 82 ."
 H2 storage unstoring,hydrogen (g) storage,1,MWh_LHV,hydrogen (g),1,MWh_LHV,1,Reverse connection (auxiliary object) for H2 (g) compressed storage.,
