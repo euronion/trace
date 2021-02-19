@@ -121,13 +121,38 @@ GlobalEnergyGIS:
 solver:
     default:
         name: gurobi
+        Presolve: 2  # Aggressive presolving
+        PreDual: 2   # form primal and dual during presolve, heuristically choose
         method: 2    # barrier
         crossover: 0 # do not use crossover
-        BarConvTol: 1.e-6
-        FeasibilityTol: 1.e-6
-        PreDual: 2
+        BarConvTol: 1.e-4
+        FeasibilityTol: 1.e-4
+        OptimalityTol: 1.e-4
+        threads: 8
+    homogeneous_barrier_scaled:
+        name: gurobi
+        Presolve: 2  # Aggressive presolving
+        PreDual: 2   # form primal and dual during presolve, heuristically choose
+        method: 2    # barrier
+        crossover: 0 # do not use crossover
+        BarHomogeneous: 1 # Use homogeneous barrier; default fails to converge
+        ScaleFlag: 2
+        BarConvTol: 1.e-4
+        FeasibilityTol: 1.e-4
+        OptimalityTol: 1.e-4
+        threads: 8
+    pypsa-eur-settings:
+        name: gurobi
+        method: 2    # barrier
+        crossover: 0 # do not use crossover
+        AggFill: 0
+        PreDual: 0   # Do not form dual during presolve
+        BarConvTol: 1.e-4
+        FeasibilityTol: 1.e-4
+        OptimalityTol: 1.e-4
+        NumericFocus: 1
+        Presolve: 0
         threads: 8
     fallback:
         # Use gurobi defaults
         name: gurobi
-    
