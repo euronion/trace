@@ -46,7 +46,7 @@ rule create_network:
         additional_components="resources/additional_components.pkl"
     output:
         network="resources/networks/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}/network.nc"
-    threads: 1
+    threads: 2
     log:
         python="logs/"+SCENARIO_FOLDER+"/create_network/{esc}/{from}-{to}.log",
         notebook="logs/"+SCENARIO_FOLDER+"/create_network/{esc}/{from}-{to}.ipynb"
@@ -72,7 +72,7 @@ rule attach_supply:
     output:
         network="resources/networks_supplied/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}/network.nc",
         lcoes="resources/networks_supplied/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}/lcoes.csv"
-    threads: 1
+    threads: 2
     log:
         python="logs/attach_supply/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}.log",
         notebook="logs/attach_supply/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}.ipynb"
@@ -85,7 +85,9 @@ rule solve_network:
         additional_components="resources/additional_components.pkl"
     output:
         network="results/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}/network.nc"
-    threads: 4
+    threads: 8
+    resources:
+        mem_mb=lambda wildcards, attempt: attempt * 5000
     log:
         python="logs/"+SCENARIO_FOLDER+"/solve_network/{esc}/{from}-{to}.log",
         notebook="logs/"+SCENARIO_FOLDER+"/solve_network/{esc}/{from}-{to}.ipynb"
