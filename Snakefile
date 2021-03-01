@@ -74,8 +74,8 @@ rule attach_supply:
         lcoes="resources/networks_supplied/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}/lcoes.csv"
     threads: 1
     log:
-        python="logs/attach_supply/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}.log",
-        notebook="logs/attach_supply/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}.ipynb"
+        python="logs/"+SCENARIO_FOLDER+"/attach_supply/{esc}/{from}-{to}.log",
+        notebook="logs/"+SCENARIO_FOLDER+"/attach_supply/{esc}/{from}-{to}.ipynb"
     notebook:
         "actions/attach_supply.py.ipynb"
         
