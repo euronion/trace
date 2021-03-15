@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2020-2021 Johannes Hampp
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 configfile: "config.yaml"
 
 ESCS=["hvdc","pipeline-h2","pipeline-ch4","shipping-lh2","shipping-lch4","shipping-meoh","shipping-lnh3","shipping-lohc"]

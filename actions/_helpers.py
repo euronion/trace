@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2020-2021 Johannes Hampp
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 def calculate_annual_investment(name, r, fn):
     """Calculate the annual investment for an installation given a selected WACC.
     
