@@ -129,29 +129,28 @@ solver:
         FeasibilityTol: 1.e-5
         OptimalityTol: 1.e-5
         threads: 8
+    barrier:
+        name: gurobi
+        method: 2    # barrier
+        crossover: 0 # do not use crossover
+        Aggregate: 0
+        NumericFocus: 1
+        BarConvTol: 1.e-5
+        FeasibilityTol: 1.e-5
+        OptimalityTol: 1.e-5
+        threads: 8
     homogeneous_barrier_scaled:
         name: gurobi
-        Presolve: 2  # Aggressive presolving
+        Presolve: -1 # Default presolving
         PreDual: 2   # form primal and dual during presolve, heuristically choose
         method: 2    # barrier
         crossover: 0 # do not use crossover
         BarHomogeneous: 1 # Use homogeneous barrier; default fails to converge
         ScaleFlag: 2
+        Aggregate: 0
         BarConvTol: 1.e-5
         FeasibilityTol: 1.e-5
         OptimalityTol: 1.e-5
-        threads: 8
-    pypsa-eur-settings:
-        name: gurobi
-        method: 2    # barrier
-        crossover: 0 # do not use crossover
-        AggFill: 0
-        PreDual: 0   # Do not form dual during presolve
-        BarConvTol: 1.e-4
-        FeasibilityTol: 1.e-4
-        OptimalityTol: 1.e-4
-        NumericFocus: 1
-        Presolve: 0
         threads: 8
     fallback:
         # Use gurobi defaults
