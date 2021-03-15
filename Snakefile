@@ -4,7 +4,7 @@ ESCS=["hvdc","pipeline-h2","pipeline-ch4","shipping-lh2","shipping-lch4","shippi
 EXPORTERS=["AU","AR","ES","EG","MA","SA","DK","DE"]
 IMPORTERS=["DE"]
 YEARS=[2030,2040,2050]
-WACCS=["homogeneous"]
+WACCS=["homogeneous", "lowhomogeneous"]
 
 SCENARIO_FOLDER = f"{config['scenario']['year']}_{config['scenario']['wacc']}"
 
