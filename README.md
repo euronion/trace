@@ -1,6 +1,7 @@
-# SPDX-FileCopyrightText: 2020-2021 Johannes Hampp
-#
-# SPDX-License-Identifier: CC-BY-4.0
+<!--
+SPDX-FileCopyrightText: 2020-2021 Johannes Hampp
+SPDX-License-Identifier: CC-BY-4.0
+-->
 
 # TRACE - Transporting Renewables as Chemical Energy
 
