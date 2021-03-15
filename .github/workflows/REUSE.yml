@@ -1,0 +1,16 @@
+name: REUSE compliance check
+
+# Controls when the action will run. 
+on: [push, pull_request, workflow_dispatch]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  check-REUSE-compliance:
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: REUSE Compliance Check
+        # You may pin to the exact commit or the version.
+        # uses: fsfe/reuse-action@43bd643263f2a557a37e023e538ab9f83dce92a6
+        uses: fsfe/reuse-action@v1.1
