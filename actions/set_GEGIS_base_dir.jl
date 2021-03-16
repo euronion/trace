@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2020-2021 Johannes Hampp
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 #=
 The handling of output locations in GEGIS is quite messy.
 One defines the base directory for GEGIS into which
