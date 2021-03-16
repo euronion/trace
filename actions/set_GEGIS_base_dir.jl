@@ -19,6 +19,9 @@ Only reaching beyong the function call constitutes an error
 which we have to throw manually.
 =#
 
+# Activate our julia environment
+using Pkg
+Pkg.activate("./envs")
 
 
 d = string(pwd(),"/",snakemake.config["GlobalEnergyGIS"]["base_dir"])

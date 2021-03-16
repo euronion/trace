@@ -2,6 +2,10 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+# Activate our julia environment
+using Pkg
+Pkg.activate("./envs")
+
 using GlobalEnergyGIS
 
 
