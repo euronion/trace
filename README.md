@@ -7,44 +7,72 @@ SPDX-License-Identifier: CC-BY-4.0
 
 ## Setup and installation
 
-0. Download this repository to somewhere (into your current folder):
+1. Downloading `git` repositories:
+   
+    a. Download the main repository to somewhere (e.g. into a `projects` folder):
 
-```
-    git clone https://github.com/euronion/trace.git
-```
+    ```
+        (projects) > git clone https://github.com/euronion/trace.git
+    ```
 
-1. Use `conda` for setting up environments.
-2. Install `mamba` into a dedicated env.
+    This repository contains the main workflow, the energy supply chain definitions
+    and all the necessary scripts tying it together.
 
-```
-    conda install -c conda-forge mamba
-```
+    b. Download the `technology-data` repository into a parallel directory to the previous repository:
 
-3. Install `snakemake` into a dedicated env.
+    ```
+        (projects) > git clone -b new-techs/chemical-energy-carriers https://github.com/euronion/technology-data.git
+    ```
 
-```
-    mamba create -c conda-forge -c bioconda -n snakemake snakemake
-```
+    This repository contains the technology cost data.
+    > Note:
+    > That the repository branch is not `main` and the repository is currently **NOT** identical with https://github.com/PyPSA/technology-data/ .
 
-4. Setup `trace` environment from `environment.yaml` file
+    The resulting resulting structure should look like this
 
-```
-    conda env create -f environment.yaml
-```
-5. Download `technology-data` repository into a parallel folder to this repository.
+    ```
+        (projects): tree -d -L 1 ./
+        ./projects
+        ├── technology-data
+        ├── trace
+        └── ...
+    ```
 
-```
-    git clone https://github.com/PyPSA/technology-data.git
-```
-so that the resulting structure looks like this
 
-```
-    > tree -d -L 1
-    .
-    ├── technology-data
-    ├── trace
-    └── ...
-```
+2. Setup your `python` environment:
+
+    a. Install the `python` environment manager `conda`.
+    You need to either have [miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda](https://www.anaconda.com/) installed on your system.
+
+    b. Setup your `python` environment:
+
+    ```
+        conda env create -f environment.yaml
+    ```
+
+    This installs all the packages and `python` dependencies.
+
+3. Setup your `julia` environment (we used `julia-1.4`)
+
+    a. Download and install `julia` following the installation instruction on the [Julia website](https://julialang.org/downloads/).
+
+    b. Open a command shell and navigate into the `trace` folder
+    ```
+        cd trace
+    ```
+    c. Start `julia`
+    ```
+        (trace): julia
+    ```
+    d. Open the package manager of `julia`
+    ```
+        julia> ]
+    ```
+    e. Register and instantiate the environment
+    ```
+        (@v1.4) pkg> activate .
+        (trace) pkg> instantiate
+    ```
 
 ## Defining ESCs
 
