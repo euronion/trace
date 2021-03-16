@@ -19,3 +19,7 @@ License: CC-BY-4.0
 Files: .github/*
 Copyright: 2020-2021 Johannes Hampp
 License: CC0-1.0
+
+Files: envs/*
+Copyright: 2020-2021 Johannes Hampp
+License: CC0-1.0

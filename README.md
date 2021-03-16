@@ -47,7 +47,7 @@ SPDX-License-Identifier: CC-BY-4.0
     b. Setup your `python` environment:
 
     ```
-        conda env create -f environment.yaml
+        conda env create -f envs/environment.yaml
     ```
 
     This installs all the packages and `python` dependencies.
@@ -70,7 +70,7 @@ SPDX-License-Identifier: CC-BY-4.0
     ```
     e. Register and instantiate the environment
     ```
-        (@v1.4) pkg> activate .
+        (@v1.4) pkg> activate ./envs
         (trace) pkg> instantiate
     ```
 
