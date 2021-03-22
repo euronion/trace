@@ -6,9 +6,10 @@ battery inverter,electricity,1,MWh,battery,0.979795897113271,MWh,0.9797958971132
 battery inverter,battery,1,MWh,electricity,0.979795897113271,MWh,0.979795897113271,from DEA technology assumptions via technology-data repository,DEA
 hydrogen (g) tank charging,hydrogen (g),1,p.u.,hydrogen (g) tank,0.99,p.u.,0.99,guess. TODO: update,Guess.
 hydrogen (g) tank discharging,hydrogen (g) tank,1,p.u.,hydrogen (g),0.99,p.u.,0.99,guess. TODO: update,Guess.
-HVDC inverter pair,electricity,1,p.u.,hvdc,1,p.u.,1,guess. TODO: update,Guess.
-HVDC inverter pair,hvdc,1,p.u.,electricity,1,p.u.,1,guess. TODO: update,Guess.
+HVDC inverter pair,electricity,1,p.u.,hvdc,0.99,p.u.,0.99,Losses for voltage source converters (VSCs). Line commutated converters (LLC) would be lower ~0.7%.,d’Amore-Domenech et al (2021): 10.1016/j.apenergy.2021.116625 .
+HVDC inverter pair,hvdc,1,p.u.,electricity,0.99,p.u.,0.99,Losses for voltage source converters (VSCs). Line commutated converters (LLC) would be lower ~0.7%.,d’Amore-Domenech et al (2021): 10.1016/j.apenergy.2021.116625 .
 HVDC overhead,hvdc,1,p.u.,hvdc,0.975,p.u.,0.975,Per 1000 km HVDC transmission line,Teichmann et al 2012: 10.1016/j.ijhydene.2012.08.066
+HVDC submarine,hvdc,1,p.u.,hvdc,0.977,p.u.,0.977,Per 1000 km HVDC submarine line. Based on 7% losses for 3000 km.,Purvins et al. (2018): https://doi.org/10.1016/j.jclepro.2018.03.095 .
 dummy hydrogen transport between exporter and importer,hydrogen (g),1,p.u.,hydrogen (g),1,p.u.,1,Dummy transport process to connect two buses directly.,None.
 H2 (g) pipeline,hydrogen (g) compressed,1,p.u.,hydrogen (g) compressed,0.995,p.u.,0.995,"Assumed per 1000km here. Original source using CH4/NG pipelines, averages and industry consultancy as reference for H2.
 TODO: update if possible.","DoE report: Fuell Cell Technologies Office Multi-Year Research, Development, and Demonstration Plan (https://www.energy.gov/sites/prod/files/2015/08/f25/fcto_myrdd_delivery.pdf, Table 3.2.4)"
