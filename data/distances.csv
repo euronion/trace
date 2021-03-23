@@ -7,6 +7,8 @@ DE,DE,as-the-crow-flies,0,km,Measure using Google Maps / Geographical centers pe
 MA,DE,as-the-crow-flies,3330,km,Measure using Google Maps / Geographical centers per country used from here: https://developers.google.com/public-data/docs/canonical/countries_csv
 SA,DE,as-the-crow-flies,4240,km,Measure using Google Maps / Geographical centers per country used from here: https://developers.google.com/public-data/docs/canonical/countries_csv
 ES,DE,as-the-crow-flies,1600,km,Measure using Google Maps / Geographical centers per country used from here: https://developers.google.com/public-data/docs/canonical/countries_csv
+AR,DE,as-the-hake-swims,3000,km,Measured using Google Maps: Approximate distance between South America and Africa (Brazil-Guinea).
+AU,DE,as-the-hake-swims,3000,km,Measured using Google Maps: Approximate distance between Australia and Asia (Western Australia-Malaysia).
 AR,DE,sea route,13056,km,Via https://www.searates.com/de/services/distances-time/; sea route share without land route share between centers of countries.
 AU,DE,sea route,20284,km,Via https://www.searates.com/de/services/distances-time/; sea route share without land route share between centers of countries.
 DK,DE,sea route,812,km,Via https://www.searates.com/de/services/distances-time/; sea route share without land route share between centers of countries.
