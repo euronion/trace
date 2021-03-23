@@ -20,7 +20,7 @@ rule solve_network:
         python="logs/"+SCENARIO_FOLDER+"/solve_network/{esc}/{from}-{to}.log",
         notebook="logs/"+SCENARIO_FOLDER+"/solve_network/{esc}/{from}-{to}.ipynb"
     notebook:
-        "actions/solve_network.py.ipynb"
+        "../actions/solve_network.py.ipynb"
 
 rule backup_run:
     input:
@@ -33,4 +33,4 @@ rule backup_run:
         costs=f"results/{SCENARIO_FOLDER}/costs_{config['scenario']['year']}.csv"
     threads: 1
     script:
-        "actions/backup_run.py"
+        "../actions/backup_run.py"

@@ -12,7 +12,7 @@ rule combine_results:
         python="logs/combine_results.log",
         notebook="logs/combine_results.ipynb"
     notebook:
-        "actions/combine_results.py.ipynb"
+        "../actions/combine_results.py.ipynb"
         
 rule extract_result:
     input:
@@ -24,4 +24,4 @@ rule extract_result:
         python="logs/{year}_{wacc}/extract_result/{esc}/{from}-{to}.log",
         notebook="logs/{year}_{wacc}/extract_result/{esc}/{from}-{to}.ipynb"
     notebook:
-        "actions/extract_result.py.ipynb"
+        "../actions/extract_result.py.ipynb"

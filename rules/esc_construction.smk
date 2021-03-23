@@ -9,7 +9,7 @@ rule create_additional_components:
     log:
         python="logs/create_additional_components.log",
     notebook:
-        "actions/create_additional_components.py.ipynb"
+        "../actions/create_additional_components.py.ipynb"
 
 rule create_network:
     input:
@@ -27,7 +27,7 @@ rule create_network:
         python="logs/"+SCENARIO_FOLDER+"/create_network/{esc}/{from}-{to}.log",
         notebook="logs/"+SCENARIO_FOLDER+"/create_network/{esc}/{from}-{to}.ipynb"
     notebook:
-        "actions/create_network.py.ipynb"
+        "../actions/create_network.py.ipynb"
 
 
 # Allow for custom overwrite of annual electricity demand for exporters
@@ -53,4 +53,4 @@ rule attach_supply:
         python="logs/"+SCENARIO_FOLDER+"/attach_supply/{esc}/{from}-{to}.log",
         notebook="logs/"+SCENARIO_FOLDER+"/attach_supply/{esc}/{from}-{to}.ipynb"
     notebook:
-        "actions/attach_supply.py.ipynb"
+        "../actions/attach_supply.py.ipynb"
