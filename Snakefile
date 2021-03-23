@@ -12,7 +12,16 @@ WACCS=["homogeneous", "lowhomogeneous"]
 
 SCENARIO_FOLDER = f"{config['scenario']['year']}_{config['scenario']['wacc']}"
 
+subworkflow technology_data:
+    workdir:
+        "../technology-data"
+    snakefile:
+        "../technology-data/Snakefile"
+    configfile:
+        "../technology-data/config.yaml"
+
 include: "rules/gegis.smk"
 include: "rules/esc_construction.smk"
 include: "rules/solving.smk"
 include: "rules/results.smk"
+
