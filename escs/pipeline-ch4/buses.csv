@@ -8,6 +8,7 @@ methane (g) (exp),MW,methane
 methane (g) storage (exp),m^3,methane
 methane (g) (imp),MW,methane
 methane (g) compressed (exp),MW,methane
+methane (g) compressed submarine,MW,methane
 methane (g) compressed (imp),MW,methane
 heat (exp),MW,heat
 CO2 (g) (exp),t,CO2

@@ -5,5 +5,6 @@ water (exp),m^3,water
 hydrogen (g) (exp),MW,hydrogen
 hydrogen (g) storage (exp),MW,hydrogen
 hydrogen (g) compressed (exp),MW,hydrogen
+hydrogen (g) compressed submarine,MW,hydrogen
 hydrogen (g) compressed (imp),MW,hydrogen
 hydrogen (g) (imp),MW,hydrogen

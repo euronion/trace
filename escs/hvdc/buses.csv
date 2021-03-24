@@ -7,5 +7,5 @@ water (imp),m^3,water
 hydrogen (g) (imp),MW,hydrogen
 hvdc (imp),MW,electricity
 hvdc (exp),MW,electricity
-hvdc,MW,electricity
+hvdc submarine,MW,electricity
 hydrogen (g) storage (imp),MW,hydrogen
