@@ -8,10 +8,10 @@ hydrogen (g) tank charging,hydrogen (g),1,p.u.,hydrogen (g) tank,0.99,p.u.,0.99,
 hydrogen (g) tank discharging,hydrogen (g) tank,1,p.u.,hydrogen (g),0.99,p.u.,0.99,guess. TODO: update,Guess.
 HVDC inverter pair,electricity,1,p.u.,hvdc,0.99,p.u.,0.99,Losses for voltage source converters (VSCs). Line commutated converters (LLC) would be lower ~0.7%.,d’Amore-Domenech et al (2021): 10.1016/j.apenergy.2021.116625 .
 HVDC inverter pair,hvdc,1,p.u.,electricity,0.99,p.u.,0.99,Losses for voltage source converters (VSCs). Line commutated converters (LLC) would be lower ~0.7%.,d’Amore-Domenech et al (2021): 10.1016/j.apenergy.2021.116625 .
-HVDC overhead,hvdc,1,p.u.,hvdc,0.975,p.u.,0.975,Per 1000 km HVDC transmission line,Teichmann et al 2012: 10.1016/j.ijhydene.2012.08.066
-HVDC submarine,hvdc,1,p.u.,hvdc,0.977,p.u.,0.977,Per 1000 km HVDC submarine line. Based on 7% losses for 3000 km.,Purvins et al. (2018): https://doi.org/10.1016/j.jclepro.2018.03.095 .
+HVDC overhead,hvdc,1,p.u.,hvdc submarine,0.977,p.u.,0.977,Per 1000 km HVDC submarine line. Based on 7% losses for 3000 km.,Purvins et al. (2018): https://doi.org/10.1016/j.jclepro.2018.03.095 .
+HVDC submarine,hvdc submarine,1,p.u.,hvdc,0.977,p.u.,0.977,Per 1000 km HVDC submarine line. Based on 7% losses for 3000 km.,Purvins et al. (2018): https://doi.org/10.1016/j.jclepro.2018.03.095 .
 dummy hydrogen transport between exporter and importer,hydrogen (g),1,p.u.,hydrogen (g),1,p.u.,1,Dummy transport process to connect two buses directly.,None.
-H2 (g) pipeline,hydrogen (g) compressed,1,p.u.,hydrogen (g) compressed,0.995,p.u.,0.995,"Assumed per 1000km here. Original source using CH4/NG pipelines, averages and industry consultancy as reference for H2.
+H2 (g) pipeline,hydrogen (g) compressed,1,p.u.,hydrogen (g) compressed submarine,0.995,p.u.,0.995,"Assumed per 1000km here. Original source using CH4/NG pipelines, averages and industry consultancy as reference for H2.
 Consistent with numbers used by e.g. d’Amore-Domenech et al (2021): 10.1016/j.apenergy.2021.116625 stating 1.3-2.8x higher losses for H2 pipelines than for CH4 pipelines.","DoE report: Fuell Cell Technologies Office Multi-Year Research, Development, and Demonstration Plan (https://www.energy.gov/sites/prod/files/2015/08/f25/fcto_myrdd_delivery.pdf, Table 3.2.4)"
 H2 (g) pipeline compressor,hydrogen (g),1,p.u.,hydrogen (g) compressed,1,p.u.,1,,
 H2 (g) pipeline compressor,electricity,300,MW,hydrogen (g) compressed,13000,MW_LHV,43.3333333333333,330 MW_el per 13 GW_H2 (LHV) and 1000 km operating at <=80bar .,"Guidehouse 2020: European Hydrogen Backbone Report, table 3."
@@ -19,12 +19,12 @@ H2 (g) pipeline decompressor,hydrogen (g) compressed,1,p.u.,hydrogen (g),1,p.u.,
 industrial heat pump medium temperature,electricity,1,MW,heat,3,MW_th,3,"based on DEA technology data catalogue for industrial process heat (302, pg. 48, 2020). Conservative for ~20°C → ~100°C .",DEA
 direct air capture,electricity,0.4,MWh,CO2 (g),1,t,2.5,"0.4 MWh based on Beuttler et al (2019) for Climeworks LT DAC, alternative value: 0.182 MWh based on Breyer et al (2019). Should already include electricity for water scrubbing and compression (high quality CO2 output).","Beuttler et al (2019), alternative:  Breyer et al (2019)."
 direct air capture,heat,1.6,MWh_th,CO2 (g),1,t,0.625,"Thermal energy demand. Provided via air-sourced heat pumps. 1.6 MWh based on Beuttler et al (2019) for Climeworks LT DAC, alternative value: 1.102 MWh based on Breyer et al (2019).","Beuttler et al (2019), alternative:  Breyer et al (2019)."
-methane (g) pipeline compressor,methane (g),1,p.u.,methane (g) compressed,1,p.u.,1,,
-methane (g) pipeline compressor,electricity,300,MW,methane (g) compressed,19000,MW_LHV,63.3333333333333,330 MW_el per 19 GW_CH4 (LHV) and 1000 km from H2 pipeline publication.,Guidehouse 2020: European Hydrogen Backbone Report.
-methane (g) pipeline decompressor,methane (g) compressed,1,p.u.,methane (g),1,p.u.,1,Arbitrary componenet for degrading gas pipeline content to regular methane (g) bus.,Guess.
+CH4 (g) pipeline compressor,methane (g),1,p.u.,methane (g) compressed,1,p.u.,1,,
+CH4 (g) pipeline compressor,electricity,300,MW,methane (g) compressed,19000,MW_LHV,63.3333333333333,330 MW_el per 19 GW_CH4 (LHV) and 1000 km from H2 pipeline publication.,Guidehouse 2020: European Hydrogen Backbone Report.
+CH4 (g) pipeline decompressor,methane (g) compressed,1,p.u.,methane (g),1,p.u.,1,Arbitrary componenet for degrading gas pipeline content to regular methane (g) bus.,Guess.
 methanation,CO2 (g),2.75,t,methane (g),13.8888,MWh_LHV,5.05047272727273,Based on ideal conversion process of stochiometric composition (1 t CH4 contains 750 kg of carbon).,
 methanation,hydrogen (g),17.8062,MWh_LHV,methane (g),13.8888,MWh_LHV,0.779997978232301,Additional H2 required for methanation process (2x H2 amount compared to stochiometric conversion).,"Götz et al. (2016), fig. 11 ."
-methane (g) pipeline,methane (g) compressed,1,p.u.,methane (g) compressed,0.96726,p.u.,0.96726,"Finding reliablie and general applicable numbers is difficult. Using an upper estimate here:
+CH4 (g) pipeline,methane (g) compressed,1,p.u.,methane (g) compressed submarine,0.96726,p.u.,0.96726,"Finding reliablie and general applicable numbers is difficult. Using an upper estimate here:
 Assume losses in downstream processes have (worst case) from a climate perspective the same impact as using the methane for 
 energy by means of combustion.
 Approach: Calculate CO2-eq emissions for 1 MWh from burning CH4 (LHV) (=198 kg CO2) and determine amount of CH4 which has to leak to have the same CO2-eq effect (=2.357 kg CH4, assuming GWP-20 of 84 for CH4; = 32.74 kWh_LHV,CH4). The ratio between this amount of CH4 and the amount of CH4 required for 1 MWh from burning is then the maximum leakage rate.
@@ -77,9 +77,9 @@ CH4 storage compressor,methane (g),2.32997222222222,MWh_LHV,methane (g) storage,
 CH4 storage compressor,electricity,0.1939701875,MWh,methane (g) storage,1,m^3,5.15543142422338,Assuming ca. 7.5% of HHV (55.50 MJ/kg) based on multi-stage adiabatic compression and density of 167.758 kg/m^3 .,"e.g. Bossel and Eliasson, “Energy and the Hydrogen Economy”, pg. 10f. (https://afdc.energy.gov/files/pdfs/hyd_economy_bossel_eliasson.pdf , 10.02.2021)"
 CH4 unstoring,methane (g) storage,1,m^3,methane (g),2.32997222222222,MWh_LHV,2.32997222222222,Reverse connection (auxiliary object) for CH4 (g) compressed storage.,https://www.unitrove.com/engineering/tools/gas/natural-gas-density (2021-02-10).
 CH4 (l) storing and unstoring,methane (l),0.42236,t,methane (l) storage,1,m^3,2.36764845155791,"Auxiliary efficiency. Storage units are usually per m^3, component for unit conversion. Based on density of  422.36 kg/m^3.",https://encyclopedia.airliquide.com/methane (2021-02-10).
-H2 (g) submarine pipeline,hydrogen (g) compressed,1,p.u.,hydrogen (g) compressed,0.995,p.u.,0.995,"Assumed per 1000km here. Original source using CH4/NG pipelines, averages and industry consultancy as reference for H2.
+H2 (g) submarine pipeline,hydrogen (g) compressed submarine,1,p.u.,hydrogen (g) compressed,0.995,p.u.,0.995,"Assumed per 1000km here. Original source using CH4/NG pipelines, averages and industry consultancy as reference for H2.
 Consistent with numbers used by e.g. d’Amore-Domenech et al (2021): 10.1016/j.apenergy.2021.116625 stating 1.3-2.8x higher losses for H2 pipelines than for CH4 pipelines.","DoE report: Fuell Cell Technologies Office Multi-Year Research, Development, and Demonstration Plan (https://www.energy.gov/sites/prod/files/2015/08/f25/fcto_myrdd_delivery.pdf, Table 3.2.4)"
-methane (g) submarine pipeline,methane (g) compressed,1,p.u.,methane (g) compressed,0.96726,p.u.,0.96726,"Finding reliablie and general applicable numbers is difficult. Using an upper estimate here:
+CH4 (g) submarine pipeline,methane (g) compressed submarine,1,p.u.,methane (g) compressed,0.96726,p.u.,0.96726,"Finding reliablie and general applicable numbers is difficult. Using an upper estimate here:
 Assume losses in downstream processes have (worst case) from a climate perspective the same impact as using the methane for 
 energy by means of combustion.
 Approach: Calculate CO2-eq emissions for 1 MWh from burning CH4 (LHV) (=198 kg CO2) and determine amount of CH4 which has to leak to have the same CO2-eq effect (=2.357 kg CH4, assuming GWP-20 of 84 for CH4; = 32.74 kWh_LHV,CH4). The ratio between this amount of CH4 and the amount of CH4 required for 1 MWh from burning is then the maximum leakage rate.
