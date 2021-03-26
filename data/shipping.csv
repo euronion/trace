@@ -29,3 +29,9 @@ NH3 (l) transport ship,average speed,km/h,37,Assume same as for CH4 (l).,
 NH3 (l) transport ship,boil-off,%/h,0,"Guesstimate, possibly negligible losses due to relatively close to ambient transport temperature.",
 NH3 (l) transport ship,capacity,MWh_LHV,273830,Based on NH3 LHV of 5.1666 MWh/t_NH3 and 53000 t capacity.,Calculated.
 NH3 (l) transport ship,energy demand,MWh/km,0.5675,Assume same as for CH4 (l).,
+FT fuel transport ship,(un-) loading losses,%/transfer,0,"Guesstimate, transfer of simple non-cryogenic fluid.",
+FT fuel transport ship,(un-) loading time,h,48,Assume same as for LOHC.,
+FT fuel transport ship,average speed,km/h,27.8,Assume same as for LOHC.,
+FT fuel transport ship,boil-off,%/h,0,"Guesstimate, simple non-cryogenic fluid in closed tanks.",
+FT fuel transport ship,capacity,MWh_LHV,896250,Based on FT fuel LHV of 11.95 MWh/t_FTfuel and 75000t capacity.,Calculated.
+FT fuel transport ship,energy demand,MWh/km,0.2428,Assume same as for LOHC.,
