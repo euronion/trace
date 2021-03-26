@@ -5,7 +5,7 @@ seawater desalination (exp),electricity (exp),water (exp),,,True,0,1,bus1
 electrolysis (exp),electricity (exp),hydrogen (g) (exp),water (exp),,True,0,1,bus0
 industrial heat pump medium temperature (exp),electricity (exp),heat (exp),,,True,0,1,bus1
 direct air capture (exp),electricity (exp),CO2 (g) (exp),heat (exp),,True,0,1,bus1
-Fischer-Tropsch synthesis (exp),electricity (exp),FT fuel (exp),CO2 (g) (exp),hydrogen (g) (exp),True,0,1,bus1
+Fischer-Tropsch synthesis (exp),electricity (exp),FT fuel (exp),CO2 (g) (exp),hydrogen (g) (exp),True,0.9425,1,bus1
 ship loading,FT fuel (exp),berth (exp),,,True,0,1,n/a
 ship unloading,berth (imp),FT fuel (imp),,,True,0,1,n/a
 H2 storage compressor (exp),electricity (exp),hydrogen (g) storage (exp),hydrogen (g) (exp),,True,0,1,n/a
