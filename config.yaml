@@ -6,7 +6,7 @@ logging:
     level: INFO
 
 scenario:
-    # Year used to select cost assumptions and demand projection
+    # Year used to select cost assumptions
     year: 2030
 
     # WACC scenario assumptions, see "data/wacc.csv"
@@ -16,6 +16,14 @@ scenario:
     # Synthetic electricity demand (local for the exporter) can either be automatically
     # generated using GEGIS or custom values provided via "data/overwrite/demand.csv" .
     synthetic_demand: gegis # 'gegis' or 'custom'
+    
+    # Set default marginal_cost and capital_cost for any component - generator, link, store -
+    # if the cost is == 0.
+    # Should help to bring more stability into the model
+    capital_cost:
+        default: 0.1
+    marginal_cost:
+        default: 0.0001
 
 regions:
     TRACES:
