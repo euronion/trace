@@ -5,25 +5,37 @@
 logging:
     level: INFO
 
-scenario:
-    # Year used to select cost assumptions
-    year: 2030
+# Change scenario here or by using the --config scenario=... command line flag
+# scenario: "default"
+scenarios:
 
-    # WACC scenario assumptions, see "data/wacc.csv"
-    # Currently supported: homogeneous, irena
-    wacc: "homogeneous"
-    
-    # Synthetic electricity demand (local for the exporter) can either be automatically
-    # generated using GEGIS or custom values provided via "data/overwrite/demand.csv" .
-    synthetic_demand: gegis # 'gegis' or 'custom'
-    
-    # Set default marginal_cost and capital_cost for any component - generator, link, store -
-    # if the cost is == 0.
-    # Should help to bring more stability into the model
-    capital_cost:
-        default: 0.1
-    marginal_cost:
-        default: 0.0001
+    default:
+        #+++ used in Snakefile +++ #
+        # Year used to select cost assumptions
+        YEARS: [2030,2040,2050]
+        
+        IMPORTERS: ["DE"]
+        ESCS:      ["hvdc",
+                    "pipeline-h2","pipeline-ch4",
+                    "shipping-lh2","shipping-lch4","shipping-meoh","shipping-lnh3","shipping-lohc","shipping-ftfuel"]
+        EXPORTERS: ["AU","AR","ES","EG","MA","SA","DK","DE"]
+        #--- used in Snakefile ---
+
+        # WACC scenario assumptions, see "data/wacc.csv"
+        # Currently supported: homogeneous, irena
+        wacc: "homogeneous"
+        
+        # Synthetic electricity demand (local for the exporter) can either be automatically
+        # generated using GEGIS or custom values provided via "data/overwrite/demand.csv" .
+        synthetic_demand: gegis # 'gegis' or 'custom'
+        
+        # Set default marginal_cost and capital_cost for any component - generator, link, store -
+        # if the cost is == 0.
+        # Should help to bring more stability into the model
+        capital_cost:
+            default: 0.1
+        marginal_cost:
+            default: 0.0001
 
 regions:
     TRACES:

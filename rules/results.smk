@@ -2,26 +2,32 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-rule combine_results:
+rule combine_scenario_results:
     input:
-        expand("results/{year}_{wacc}/{esc}/{exporter}-{importer}/results.csv", year=YEARS, wacc=WACCS, esc=ESCS, exporter=EXPORTERS, importer=IMPORTERS)
+        expand("results/{scenario}/{year}/{esc}/{exporter}-{importer}/network.nc",
+                esc=ESCS,
+                exporter=EXPORTERS,
+                importer=IMPORTERS,
+                year=YEARS,
+                allow_missing=True
+                ),
     output:
-        results="results/results.csv"
+        results="results/{scenario}/results.csv"
     threads: 1
     log:
-        python="logs/combine_results.log",
-        notebook="logs/combine_results.ipynb"
+        python="logs/{scenario}/combine_results.log",
+        notebook="logs/{scenario}/combine_results.ipynb"
     notebook:
         "../actions/combine_results.py.ipynb"
         
 rule extract_result:
     input:
-        network="results/{year}_{wacc}/{esc}/{from}-{to}/network.nc"
+        network="results/{scenario}/{year}/{esc}/{exporter}-{importer}/network.nc"
     output:
-        results="results/{year}_{wacc}/{esc}/{from}-{to}/results.csv"
+        results="results/{scenario}/{year}/{esc}/{exporter}-{importer}/results.csv"
     threads: 1
     log:
-        python="logs/{year}_{wacc}/extract_result/{esc}/{from}-{to}.log",
-        notebook="logs/{year}_{wacc}/extract_result/{esc}/{from}-{to}.ipynb"
+        python="logs/{scenario}/{year}/{esc}/{exporter}-{importer}/extract_result.log",
+        notebook="logs/{scenario}/{year}/{esc}/{exporter}-{importer}/extract_result.ipynb",
     notebook:
         "../actions/extract_result.py.ipynb"

@@ -2,35 +2,39 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-rule solve_all:
+rule solve_scenario:
     input:
-        expand("results/"+SCENARIO_FOLDER+"/{esc}/{exporter}-{importer}/network.nc", esc=ESCS, exporter=EXPORTERS, importer=IMPORTERS),
-        config="results/"+SCENARIO_FOLDER+"/config.yaml"
+        expand("results/{scenario}/{year}/{esc}/{exporter}-{importer}/network.nc",
+                scenario=SCENARIO,
+                esc=ESCS,
+                exporter=EXPORTERS,
+                importer=IMPORTERS,
+                year=YEARS
+                ),
+        inputs=f"results/{SCENARIO}/inputs.tar"
         
 rule solve_network:
     input:
-        network="resources/networks_supplied/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}/network.nc",
+        network="resources/networks_supplied/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
         additional_components="resources/additional_components.pkl"
     output:
-        network="results/"+SCENARIO_FOLDER+"/{esc}/{from}-{to}/network.nc"
+        network="results/{scenario}/{year}/{esc}/{from}-{to}/network.nc"
     threads: 8
     resources:
         mem_mb=lambda wildcards, attempt: attempt * 5000
     log:
-        python="logs/"+SCENARIO_FOLDER+"/solve_network/{esc}/{from}-{to}.log",
-        notebook="logs/"+SCENARIO_FOLDER+"/solve_network/{esc}/{from}-{to}.ipynb"
+        python="logs/{scenario}/{year}/{esc}/{from}-{to}/solve_network.log",
+        notebook="logs/{scenario}/{year}/{esc}/{from}-{to}/solve_network.ipynb"
     notebook:
         "../actions/solve_network.py.ipynb"
 
-rule backup_run:
+rule backup_scenario:
     input:
-        config="config.yaml",
-        data="data/",
-        costs=f"../technology-data/outputs/costs_{config['scenario']['year']}.csv"
+        config="./config.yaml",
+        data="./data/",
+        costs="../technology-data/outputs/"
     output:
-        config="results/"+SCENARIO_FOLDER+"/config.yaml",
-        data="results/"+SCENARIO_FOLDER+"/data.tar",
-        costs=f"results/{SCENARIO_FOLDER}/costs_{config['scenario']['year']}.csv"
+        tarchive=f"results/{SCENARIO}/inputs.tar",
     threads: 1
     script:
         "../actions/backup_run.py"

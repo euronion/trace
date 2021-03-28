@@ -4,13 +4,16 @@
 
 configfile: "config.yaml"
 
-ESCS=["hvdc","pipeline-h2","pipeline-ch4","shipping-lh2","shipping-lch4","shipping-meoh","shipping-lnh3","shipping-lohc"]
-EXPORTERS=["AU","AR","ES","EG","MA","SA","DK","DE"]
-IMPORTERS=["DE"]
-YEARS=[2030,2040,2050]
-WACCS=["homogeneous", "lowhomogeneous"]
+wildcard_constraints:
+    year="\d+",
+    scenario="\w+"
 
-SCENARIO_FOLDER = f"{config['scenario']['year']}_{config['scenario']['wacc']}"
+SCENARIO=config.get("scenario","default")
+
+ESCS=config["scenarios"][SCENARIO]["ESCS"]
+EXPORTERS=config["scenarios"][SCENARIO]["EXPORTERS"]
+IMPORTERS=config["scenarios"][SCENARIO]["IMPORTERS"]
+YEARS=config["scenarios"][SCENARIO]["YEARS"]
 
 subworkflow technology_data:
     workdir:
@@ -24,4 +27,3 @@ include: "rules/gegis.smk"
 include: "rules/esc_construction.smk"
 include: "rules/solving.smk"
 include: "rules/results.smk"
-

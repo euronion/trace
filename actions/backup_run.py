@@ -12,12 +12,6 @@ import tarfile
 
 if __name__ == '__main__':
     
-    for k, src_path in snakemake.input.items():
-        src_path = Path(src_path)
-        tar_path = Path(snakemake.output[k])
-        
-        if src_path.is_dir():
-            with tarfile.open(tar_path, 'w') as archive:
-                archive.add(src_path, recursive=True)
-        else:
-            shutil.copy(src_path, snakemake.output[k])
+    with tarfile.open(snakemake.output['tarchive'], 'w') as tararchive:
+        for k, src_path in snakemake.input.items():
+            tararchive.add(src_path, recursive=True)
