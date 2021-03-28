@@ -6,7 +6,7 @@ configfile: "config.yaml"
 
 wildcard_constraints:
     year="\d+",
-    scenario="\w+"
+    scenario="[-\w]+"
 
 SCENARIO=config.get("scenario","default")
 

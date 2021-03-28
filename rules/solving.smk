@@ -30,8 +30,8 @@ rule solve_network:
 
 rule backup_scenario:
     input:
-        config="./config.yaml",
-        data="./data/",
+        config="config.yaml",
+        data="data/",
         costs="../technology-data/outputs/"
     output:
         tarchive=f"results/{SCENARIO}/inputs.tar",

@@ -35,7 +35,7 @@ demand_d = {
     "gegis": "resources/demand_TRACES_2013.nc",
     "custom": "data/overwrite/demand.csv"
 }
-demand_i = demand_d[config["scenarios"][SCENARIO]["synthetic_demand"].lower()]
+demand_i = demand_d[config["scenarios"][SCENARIO].get("synthetic_demand",config["scenarios"]["default"]["synthetic_demand"]).lower()]
 
 rule attach_supply:
     input:
