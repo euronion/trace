@@ -144,4 +144,7 @@ def extract_unit(b, n):
     return re.match('^.*?\s*\[?(\w*)\]?$', n.buses.loc[b]['carrier']).group(1)
 
 def get_scenario(snakemake):
-    return snakemake.config['scenarios'][snakemake.wildcards['scenario']]
+    
+    s = snakemake.config['scenarios'].get('default',{}).copy()
+    s.update(snakemake.config['scenarios'][snakemake.wildcards['scenario']])
+    return s
