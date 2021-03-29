@@ -73,6 +73,21 @@ SPDX-License-Identifier: CC-BY-4.0
         (@v1.4) pkg> activate ./envs
         (trace) pkg> instantiate
     ```
+    
+## Solving a scenario
+
+## Running a sensitivity analysis
+
+For parameter sweeps scenarios can be used to modify certain aspects of the models.
+All currently implemented modifiers are in contained in the 'default' scenario in 'config.yaml'.
+Defining a scenario in the 'config.yaml' and overwriting the desired modifiers allows for conducting a sensitivity analysis.
+Each scenario is solved separately, e.g. scenario 'sensitivity-1' with the following command:
+
+```
+    snakemake --config scenario=sensitivity-1 -jall results/sensitivity-1/results.csv
+```
+
+The results are then combined and compared against the 'default' scenario to obtain the sensitivities.
 
 ## Defining ESCs
 
