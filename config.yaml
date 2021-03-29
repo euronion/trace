@@ -8,8 +8,56 @@ logging:
 # Change scenario here or by using the --config scenario=... command line flag
 # scenario: "default"
 scenarios:
-
-    default:
+    sensitivity-1:
+        YEARS: [2030]
+        IMPORTERS: ["DE"]
+        ESCS:      ["pipeline-h2"]
+        EXPORTERS: ["ES"]
+        
+        modifiers:
+            wacc: 0.8
+    sensitivity-2:
+        YEARS: [2030]
+        IMPORTERS: ["DE"]
+        ESCS:      ["pipeline-h2"]
+        EXPORTERS: ["ES"]
+        
+        modifiers:
+            load: 0.8
+    sensitivity-3:
+        YEARS: [2030]
+        IMPORTERS: ["DE"]
+        ESCS:      ["pipeline-h2"]
+        EXPORTERS: ["ES"]
+        
+        modifiers:
+            synthetic_demand: 0.8
+    sensitivity-4:
+        YEARS: [2030]
+        IMPORTERS: ["DE"]
+        ESCS:      ["pipeline-h2"]
+        EXPORTERS: ["ES"]
+        
+        modifiers:
+            CAPEX_RES: 0.8
+    sensitivity-5:
+        YEARS: [2030]
+        IMPORTERS: ["DE"]
+        ESCS:      ["pipeline-h2"]
+        EXPORTERS: ["ES"]
+        
+        modifiers:
+            CAPEX_battery: 0.8
+    sensitivity-6:
+        YEARS: [2030]
+        IMPORTERS: ["DE"]
+        ESCS:      ["pipeline-h2"]
+        EXPORTERS: ["ES"]
+        
+        modifiers:
+            CAPEX_electrolysis: 0.8
+            
+    default: # All scenarios are based on this scenario and may overwrite the here specified parameters
         #+++ used in Snakefile +++ #
         # Year used to select cost assumptions
         YEARS: [2030,2040,2050]
@@ -22,7 +70,7 @@ scenarios:
         #--- used in Snakefile ---
 
         # WACC scenario assumptions, see "data/wacc.csv"
-        # Currently supported: homogeneous, irena
+        # Currently supported: homogeneous, irena, inhomogeneous
         wacc: "homogeneous"
         
         # Synthetic electricity demand (local for the exporter) can either be automatically
@@ -36,6 +84,17 @@ scenarios:
             default: 0.1
         marginal_cost:
             default: 0.0001
+        
+        # Modify certain aspects of the models, for sensitivity analysis
+        # Modification factor in pu
+        modifiers:
+            wacc: 1
+            load_demand: 1
+            synthetic_demand: 1
+            CAPEX_RES: 1
+            CAPEX_battery: 1
+            CAPEX_electrolysis: 1
+            
 
 regions:
     TRACES:
