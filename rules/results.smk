@@ -4,7 +4,7 @@
 
 rule combine_scenario_results:
     input:
-        expand("results/{scenario}/{year}/{esc}/{exporter}-{importer}/network.nc",
+        expand("results/{scenario}/{year}/{esc}/{exporter}-{importer}/results.csv",
                 esc=ESCS,
                 exporter=EXPORTERS,
                 importer=IMPORTERS,
