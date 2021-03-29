@@ -28,7 +28,7 @@ rule solve_network:
     notebook:
         "../actions/solve_network.py.ipynb"
 
-rule backup_scenario:
+rule backup_run:
     input:
         config="config.yaml",
         data="data/",
@@ -36,5 +36,7 @@ rule backup_scenario:
     output:
         tarchive=f"results/{SCENARIO}/inputs.tar",
     threads: 1
+    log:
+        python=f"logs/{SCENARIO}/backup_run.log"
     script:
         "../actions/backup_run.py"
