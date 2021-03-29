@@ -144,7 +144,18 @@ def extract_unit(b, n):
     return re.match('^.*?\s*\[?(\w*)\]?$', n.buses.loc[b]['carrier']).group(1)
 
 def get_scenario(snakemake):
+
+    import collections.abc
+
+    def _update(d, u):
+        """Kudos: https://stackoverflow.com/questions/3232943/update-value-of-a-nested-dictionary-of-varying-depth"""
+        for k, v in u.items():
+            if isinstance(v, collections.abc.Mapping):
+                d[k] = _update(d.get(k, {}), v)
+            else:
+                d[k] = v
+        return d
     
     s = snakemake.config['scenarios'].get('default',{}).copy()
-    s.update(snakemake.config['scenarios'][snakemake.wildcards['scenario']])
+    _update(s, snakemake.config['scenarios'][snakemake.wildcards['scenario']])
     return s
