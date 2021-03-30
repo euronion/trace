@@ -4,13 +4,14 @@
 
 rule combine_scenario_results:
     input:
-        expand("results/{scenario}/{year}/{esc}/{exporter}-{importer}/results.csv",
+        results= expand("results/{scenario}/{year}/{esc}/{exporter}-{importer}/results.csv",
+                year=YEARS,
                 esc=ESCS,
                 exporter=EXPORTERS,
                 importer=IMPORTERS,
-                year=YEARS,
                 allow_missing=True
                 ),
+        inputs="results/{scenario}/inputs.tar"
     output:
         results="results/{scenario}/results.csv"
     threads: 1

@@ -28,7 +28,7 @@ rule solve_network:
     notebook:
         "../actions/solve_network.py.ipynb"
 
-rule backup_run:
+rule backup_scenario:
     input:
         config="config.yaml",
         data="data/",
