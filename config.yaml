@@ -6,7 +6,7 @@ logging:
     level: INFO
 
 # Change scenario here or by using the --config scenario=... command line flag
-# scenario: "default"
+scenario: "lowhomogeneous"
 scenarios:
     sensitivity-1:
         YEARS: [2030]
@@ -16,6 +16,14 @@ scenarios:
         
         modifiers:
             wacc: 0.8
+    sensitivity-1p:
+        YEARS: [2030]
+        IMPORTERS: ["DE"]
+        ESCS:      ["pipeline-h2"]
+        EXPORTERS: ["ES"]
+        
+        modifiers:
+            wacc: 1.2
     sensitivity-2:
         YEARS: [2030]
         IMPORTERS: ["DE"]
@@ -24,6 +32,14 @@ scenarios:
         
         modifiers:
             load: 0.8
+    sensitivity-2p:
+        YEARS: [2030]
+        IMPORTERS: ["DE"]
+        ESCS:      ["pipeline-h2"]
+        EXPORTERS: ["ES"]
+        
+        modifiers:
+            load: 1.2
     sensitivity-3:
         YEARS: [2030]
         IMPORTERS: ["DE"]
@@ -32,6 +48,14 @@ scenarios:
         
         modifiers:
             synthetic_demand: 0.8
+    sensitivity-3p:
+        YEARS: [2030]
+        IMPORTERS: ["DE"]
+        ESCS:      ["pipeline-h2"]
+        EXPORTERS: ["ES"]
+        
+        modifiers:
+            synthetic_demand: 1.2
     sensitivity-4:
         YEARS: [2030]
         IMPORTERS: ["DE"]
@@ -40,6 +64,14 @@ scenarios:
         
         modifiers:
             CAPEX_RES: 0.8
+    sensitivity-4p:
+        YEARS: [2030]
+        IMPORTERS: ["DE"]
+        ESCS:      ["pipeline-h2"]
+        EXPORTERS: ["ES"]
+        
+        modifiers:
+            CAPEX_RES: 1.2
     sensitivity-5:
         YEARS: [2030]
         IMPORTERS: ["DE"]
@@ -48,6 +80,14 @@ scenarios:
         
         modifiers:
             CAPEX_battery: 0.8
+    sensitivity-5p:
+        YEARS: [2030]
+        IMPORTERS: ["DE"]
+        ESCS:      ["pipeline-h2"]
+        EXPORTERS: ["ES"]
+        
+        modifiers:
+            CAPEX_battery: 1.2
     sensitivity-6:
         YEARS: [2030]
         IMPORTERS: ["DE"]
@@ -56,6 +96,30 @@ scenarios:
         
         modifiers:
             CAPEX_electrolysis: 0.8
+    sensitivity-6p:
+        YEARS: [2030]
+        IMPORTERS: ["DE"]
+        ESCS:      ["pipeline-h2"]
+        EXPORTERS: ["ES"]
+        
+        modifiers:
+            CAPEX_electrolysis: 1.2
+            
+    lowhomogeneous:
+        #+++ used in Snakefile +++ #
+        # Year used to select cost assumptions
+        YEARS: [2030,2040,2050]
+        
+        IMPORTERS: ["DE"]
+        ESCS:      ["hvdc",
+                    "pipeline-h2","pipeline-ch4",
+                    "shipping-lh2","shipping-lch4","shipping-meoh","shipping-lnh3","shipping-lohc","shipping-ftfuel"]
+        EXPORTERS: ["AU","AR","ES","EG","MA","SA","DK","DE"]
+        #--- used in Snakefile ---
+
+        # WACC scenario assumptions, see "data/wacc.csv"
+        # Currently supported: homogeneous, irena, inhomogeneous
+        wacc: "lowhomogeneous"
             
     default: # All scenarios are based on this scenario and may overwrite the here specified parameters
         #+++ used in Snakefile +++ #
@@ -212,29 +276,19 @@ solver:
         FeasibilityTol: 1.e-5
         OptimalityTol: 1.e-5
         threads: 8
-    barrier:
-        name: gurobi
-        method: 2    # barrier
-        crossover: 0 # do not use crossover
-        Aggregate: 0
-        NumericFocus: 1
-        BarConvTol: 1.e-5
-        FeasibilityTol: 1.e-5
-        OptimalityTol: 1.e-5
-        threads: 8
     homogeneous_barrier_scaled:
         name: gurobi
         Presolve: -1 # Default presolving
         PreDual: 2   # form primal and dual during presolve, heuristically choose
         method: 2    # barrier
         crossover: 0 # do not use crossover
-        BarHomogeneous: 1 # Use homogeneous barrier; default fails to converge
+        BarHomogeneous: 1 # Use homogeneous barrier if standard does not converge
         ScaleFlag: 2
         Aggregate: 0
         BarConvTol: 1.e-5
         FeasibilityTol: 1.e-5
         OptimalityTol: 1.e-5
-        threads: 8
+        #threads: 8
     fallback:
         # Use gurobi defaults
         name: gurobi
