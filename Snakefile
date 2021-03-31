@@ -8,18 +8,15 @@ wildcard_constraints:
     year="\d+",
     scenario="[-\w]+"
     
-if 'scenario' not in globals():
-    try:
-        scenario=config['scenario']
-    except KeyError:
-        raise KeyError("Need to define 'scenario' either in 'config.yaml' or "
-                       "using the --config scenario=<...> flag for snakemake.")
+#if 'scenario' not in globals():
+#    raise KeyError("Need to define 'scenario' as parameter "
+#                   "using the --config scenario=<...> flag for snakemake.")
                        
-SCENARIO=scenario
-ESCS=config["scenarios"][SCENARIO]["ESCS"]
-EXPORTERS=config["scenarios"][SCENARIO]["EXPORTERS"]
-IMPORTERS=config["scenarios"][SCENARIO]["IMPORTERS"]
-YEARS=config["scenarios"][SCENARIO]["YEARS"]
+#SCENARIO=scenario
+#ESCS=config["scenarios"][SCENARIO]["ESCS"]
+#EXPORTERS=config["scenarios"][SCENARIO]["EXPORTERS"]
+#IMPORTERS=config["scenarios"][SCENARIO]["IMPORTERS"]
+#YEARS=config["scenarios"][SCENARIO]["YEARS"]
 
 subworkflow technology_data:
     workdir:

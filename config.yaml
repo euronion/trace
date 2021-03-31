@@ -6,7 +6,6 @@ logging:
     level: INFO
 
 # Change scenario here or by using the --config scenario=... command line flag
-scenario: "lowhomogeneous"
 scenarios:
     sensitivity-1:
         YEARS: [2030]

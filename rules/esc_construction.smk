@@ -30,17 +30,20 @@ rule create_network:
         "../actions/create_network.py.ipynb"
 
 
-# Allow for custom overwrite of annual electricity demand for exporters
-demand_d = {
-    "gegis": "resources/demand_TRACES_2013.nc",
-    "custom": "data/overwrite/demand.csv"
-}
-demand_i = demand_d[config["scenarios"][SCENARIO].get("synthetic_demand",config["scenarios"]["default"]["synthetic_demand"]).lower()]
+def demand_file(wildcards):
+    # Allow for custom overwrite of annual electricity demand for exporters
+    demand_d = {
+        "gegis": "resources/demand_TRACES_2013.nc",
+        "custom": "data/overwrite/demand.csv"
+    }
+    
+    choice = config["scenarios"][wildcards.scenario].get("synthetic_demand",config["scenarios"]["default"]["synthetic_demand"])
+    return demand_d[choice.lower()]
 
 rule attach_supply:
     input:
         supply="resources/supply_TRACES_2013.nc",
-        demand=demand_i,
+        demand=demand_file,
         costs=technology_data("../technology-data/outputs/costs_{year}.csv"),
         wacc="data/wacc.csv",
         network="resources/networks/{scenario}/{year}/{esc}/{from}-{to}/network.nc",

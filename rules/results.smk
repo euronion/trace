@@ -2,15 +2,19 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+def all_result_files(wildcards):
+
+    return expand("results/{scenario}/{year}/{esc}/{exporter}-{importer}/results.csv",
+                scenario=wildcards.scenario,
+                year=config['scenarios'][wildcards.scenario]['YEARS'],
+                esc=config['scenarios'][wildcards.scenario]['ESCS'],
+                exporter=config['scenarios'][wildcards.scenario]['EXPORTERS'],
+                importer=config['scenarios'][wildcards.scenario]['IMPORTERS'],
+                )
+
 rule combine_scenario_results:
     input:
-        results= expand("results/{scenario}/{year}/{esc}/{exporter}-{importer}/results.csv",
-                year=YEARS,
-                esc=ESCS,
-                exporter=EXPORTERS,
-                importer=IMPORTERS,
-                allow_missing=True
-                ),
+        results=all_result_files,
         inputs="results/{scenario}/inputs.tar"
     output:
         results="results/{scenario}/results.csv"
