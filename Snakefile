@@ -2,21 +2,14 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+
 configfile: "config.yaml"
+
 
 wildcard_constraints:
     year="\d+",
-    scenario="[-\w]+"
-    
-#if 'scenario' not in globals():
-#    raise KeyError("Need to define 'scenario' as parameter "
-#                   "using the --config scenario=<...> flag for snakemake.")
-                       
-#SCENARIO=scenario
-#ESCS=config["scenarios"][SCENARIO]["ESCS"]
-#EXPORTERS=config["scenarios"][SCENARIO]["EXPORTERS"]
-#IMPORTERS=config["scenarios"][SCENARIO]["IMPORTERS"]
-#YEARS=config["scenarios"][SCENARIO]["YEARS"]
+    scenario="[-\w]+",
+
 
 subworkflow technology_data:
     workdir:
@@ -25,6 +18,7 @@ subworkflow technology_data:
         "../technology-data/Snakefile"
     configfile:
         "../technology-data/config.yaml"
+
 
 include: "rules/gegis.smk"
 include: "rules/esc_construction.smk"

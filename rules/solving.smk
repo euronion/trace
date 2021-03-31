@@ -2,14 +2,17 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+
 def all_solved_networks(wildcards):
-    return expand("results/{scenario}/{year}/{esc}/{exporter}-{importer}/network.nc",
-                scenario=wildcards.scenario,
-                year=config['scenarios'][wildcards.scenario]['YEARS'],
-                esc=config['scenarios'][wildcards.scenario]['ESCS'],
-                exporter=config['scenarios'][wildcards.scenario]['EXPORTERS'],
-                importer=config['scenarios'][wildcards.scenario]['IMPORTERS'],
-                )
+    return expand(
+        "results/{scenario}/{year}/{esc}/{exporter}-{importer}/network.nc",
+        scenario=wildcards.scenario,
+        year=config["scenarios"][wildcards.scenario]["YEARS"],
+        esc=config["scenarios"][wildcards.scenario]["ESCS"],
+        exporter=config["scenarios"][wildcards.scenario]["EXPORTERS"],
+        importer=config["scenarios"][wildcards.scenario]["IMPORTERS"],
+    )
+
 
 rule solve_scenario:
     input:
@@ -19,28 +22,31 @@ rule solve_scenario:
 
 rule solve_network:
     input:
-        network="resources/networks_supplied/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
-        additional_components="resources/additional_components.pkl"
+        network=(
+            "resources/networks_supplied/{scenario}/{year}/{esc}/{from}-{to}/network.nc"
+        ),
+        additional_components="resources/additional_components.pkl",
     output:
-        network="results/{scenario}/{year}/{esc}/{from}-{to}/network.nc"
+        network="results/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
     threads: 8
     resources:
-        mem_mb=lambda wildcards, attempt: attempt * 10000
+        mem_mb=lambda wildcards, attempt: attempt * 10000,
     log:
         python="logs/{scenario}/{year}/{esc}/{from}-{to}/solve_network.log",
-        notebook="logs/{scenario}/{year}/{esc}/{from}-{to}/solve_network.ipynb"
+        notebook="logs/{scenario}/{year}/{esc}/{from}-{to}/solve_network.ipynb",
     notebook:
         "../actions/solve_network.py.ipynb"
+
 
 rule backup_scenario:
     input:
         config="config.yaml",
         data="data/",
-        costs="../technology-data/outputs/"
+        costs="../technology-data/outputs/",
     output:
         tarchive="results/{scenario}/inputs.tar",
     threads: 1
     log:
-        python="logs/{scenario}/backup_run.log"
+        python="logs/{scenario}/backup_run.log",
     script:
         "../actions/backup_run.py"
