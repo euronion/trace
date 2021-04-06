@@ -148,7 +148,8 @@ scenarios:
         IMPORTERS: ["DE"]
         ESCS:      ["hvdc",
                     "pipeline-h2","pipeline-ch4",
-                    "shipping-lh2","shipping-lch4","shipping-meoh","shipping-lnh3","shipping-lohc","shipping-ftfuel"]
+                    "shipping-lh2","shipping-lch4","shipping-meoh","shipping-lnh3","shipping-lohc","shipping-ftfuel",
+                    "shipping-lch4-to-h2","shipping-meoh-to-h2","shipping-lnh3-to-h2","pipeline-ch4-to-h2"]
         EXPORTERS: ["AU","AR","ES","EG","MA","SA","DK","DE"]
         #--- used in Snakefile ---
 
@@ -164,7 +165,8 @@ scenarios:
         IMPORTERS: ["DE"]
         ESCS:      ["hvdc",
                     "pipeline-h2","pipeline-ch4",
-                    "shipping-lh2","shipping-lch4","shipping-meoh","shipping-lnh3","shipping-lohc","shipping-ftfuel"]
+                    "shipping-lh2","shipping-lch4","shipping-meoh","shipping-lnh3","shipping-lohc","shipping-ftfuel",
+                    "shipping-lch4-to-h2","shipping-meoh-to-h2","shipping-lnh3-to-h2","pipeline-ch4-to-h2"]
         EXPORTERS: ["AU","AR","ES","EG","MA","SA","DK","DE"]
         #--- used in Snakefile ---
 
