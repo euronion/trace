@@ -1,0 +1,7 @@
+name,bus,e_nom_extendable,e_cyclic
+battery storage (exp),battery (exp),True,True
+clean water tank storage (exp),water (exp),True,True
+CO2 storage tank (exp),CO2 (l) (exp),True,True
+hydrogen storage tank (exp),hydrogen (g) storage (exp),True,True
+General liquid hydrocarbon storage (product) (exp),methanol storage (exp),True,True
+methanol demand buffer (imp),methanol (imp),True,True
