@@ -10,7 +10,7 @@ scenarios:
     sensitivity-1:
         YEARS: [2030]
         IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2"]
+        ESCS:      ["pipeline-h2","shipping-meoh"]
         EXPORTERS: ["ES"]
         
         modifiers:
@@ -18,7 +18,7 @@ scenarios:
     sensitivity-1p:
         YEARS: [2030]
         IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2"]
+        ESCS:      ["pipeline-h2","shipping-meoh"]
         EXPORTERS: ["ES"]
         
         modifiers:
@@ -26,7 +26,7 @@ scenarios:
     sensitivity-2:
         YEARS: [2030]
         IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2"]
+        ESCS:      ["pipeline-h2","shipping-meoh"]
         EXPORTERS: ["ES"]
         
         modifiers:
@@ -34,7 +34,7 @@ scenarios:
     sensitivity-2p:
         YEARS: [2030]
         IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2"]
+        ESCS:      ["pipeline-h2","shipping-meoh"]
         EXPORTERS: ["ES"]
         
         modifiers:
@@ -42,7 +42,7 @@ scenarios:
     sensitivity-3:
         YEARS: [2030]
         IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2"]
+        ESCS:      ["pipeline-h2","shipping-meoh"]
         EXPORTERS: ["ES"]
         
         modifiers:
@@ -50,7 +50,7 @@ scenarios:
     sensitivity-3p:
         YEARS: [2030]
         IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2"]
+        ESCS:      ["pipeline-h2","shipping-meoh"]
         EXPORTERS: ["ES"]
         
         modifiers:
@@ -58,7 +58,7 @@ scenarios:
     sensitivity-4:
         YEARS: [2030]
         IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2"]
+        ESCS:      ["pipeline-h2","shipping-meoh"]
         EXPORTERS: ["ES"]
         
         modifiers:
@@ -66,7 +66,7 @@ scenarios:
     sensitivity-4p:
         YEARS: [2030]
         IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2"]
+        ESCS:      ["pipeline-h2","shipping-meoh"]
         EXPORTERS: ["ES"]
         
         modifiers:
@@ -74,7 +74,7 @@ scenarios:
     sensitivity-5:
         YEARS: [2030]
         IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2"]
+        ESCS:      ["pipeline-h2","shipping-meoh"]
         EXPORTERS: ["ES"]
         
         modifiers:
@@ -82,7 +82,7 @@ scenarios:
     sensitivity-5p:
         YEARS: [2030]
         IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2"]
+        ESCS:      ["pipeline-h2","shipping-meoh"]
         EXPORTERS: ["ES"]
         
         modifiers:
@@ -90,7 +90,7 @@ scenarios:
     sensitivity-6:
         YEARS: [2030]
         IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2"]
+        ESCS:      ["pipeline-h2","shipping-meoh"]
         EXPORTERS: ["ES"]
         
         modifiers:
@@ -98,11 +98,47 @@ scenarios:
     sensitivity-6p:
         YEARS: [2030]
         IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2"]
+        ESCS:      ["pipeline-h2","shipping-meoh"]
         EXPORTERS: ["ES"]
         
         modifiers:
             CAPEX_electrolysis: 1.2
+            
+    sensitivity-7:
+        YEARS: [2030]
+        IMPORTERS: ["DE"]
+        ESCS:      ["shipping-meoh"]
+        EXPORTERS: ["ES"]
+        
+        modifiers:
+            CAPEX_MeOHSynthesis: 0.8
+            
+    sensitivity-7p:
+        YEARS: [2030]
+        IMPORTERS: ["DE"]
+        ESCS:      ["shipping-meoh"]
+        EXPORTERS: ["ES"]
+        
+        modifiers:
+            CAPEX_MeOHSynthesis: 1.2
+            
+    sensitivity-8:
+        YEARS: [2030]
+        IMPORTERS: ["DE"]
+        ESCS:      ["pipeline-h2"]
+        EXPORTERS: ["ES"]
+        
+        modifiers:
+            CAPEX_pipeline: 0.8
+            
+    sensitivity-8p:
+        YEARS: [2030]
+        IMPORTERS: ["DE"]
+        ESCS:      ["pipeline-h2"]
+        EXPORTERS: ["ES"]
+        
+        modifiers:
+            CAPEX_pipeline: 1.2
             
     lowhomogeneous:
         #+++ used in Snakefile +++ #
@@ -146,17 +182,19 @@ scenarios:
         capital_cost:
             default: 0.1
         marginal_cost:
-            default: 0.0001
+            default: 0.
         
         # Modify certain aspects of the models, for sensitivity analysis
         # Modification factor in pu
         modifiers:
             wacc: 1
-            load_demand: 1
-            synthetic_demand: 1
-            CAPEX_RES: 1
-            CAPEX_battery: 1
-            CAPEX_electrolysis: 1
+            load_demand: 1         # Related to load (import demand)
+            synthetic_demand: 1    # Amount of synthetic demand (domestic demand) used in supply curve reservation
+            CAPEX_RES: 1           # CAPEX of RES: PV, onshore and offshore wind
+            CAPEX_battery: 1       # CAPEX of batteries and battery inverters
+            CAPEX_electrolysis: 1  # CAPEX of electrolysis
+            CAPEX_MeOHSynthesis: 1 # CAPEX related to methanol synthesis
+            CAPEX_pipeline: 1      # CAPEX of pipeline and related technologies (H2 and CH4, submarine and onland, pipeline and pipeline compressors)
             
 
 regions:
@@ -267,7 +305,7 @@ GlobalEnergyGIS:
 solver:
     default:
         name: gurobi
-        Presolve: 2  # Aggressive presolving
+        Presolve: -1 # 2=Aggressive presolving
         PreDual: 2   # form primal and dual during presolve, heuristically choose
         method: 2    # barrier
         crossover: 0 # do not use crossover
