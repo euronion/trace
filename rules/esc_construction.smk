@@ -35,7 +35,7 @@ rule create_network:
 def demand_file(wildcards):
     # Allow for custom overwrite of annual electricity demand for exporters
     demand_d = {
-        "gegis": "resources/demand_TRACES_2013.nc",
+        "gegis": "resources/demand_annual_TRACES_2013.csv",
         "custom": "data/overwrite/demand.csv",
     }
 
