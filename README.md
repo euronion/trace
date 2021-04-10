@@ -76,18 +76,42 @@ SPDX-License-Identifier: CC-BY-4.0
     
 ## Solving a scenario
 
+Solving a scenario (i.e. set of assumptions like e.g. WACC, domestic demand, exporting/importing countries) use the snakemake
+command
+
+```
+    snakemake -jall results/<scenario>/results.csv
+```
+
+were `<scenario>` is the name of the scenario listed under `scenarios` in `config.yaml`, e.g. `default` or `lowhomogeneous`.
+The command executes the necessary steps, solves the network(s) for all combinations of ESCs, exporting and importing countries,
+extracts the results and merges the main results into a single `results/<scenario>/results.csv` file for manual or automatic
+result analysis.
+
+In some cases scripts in the snakemake workflow can fail if too many rules are started simultaneously (an issue with jupyter notebooks)
+or memory consumption during solving exceeds the memory snakemake allocated to the solving process.
+To avoid these cases it is recommended to use the `--restart-times <N>` flag for `snakemake`, which
+automatically tries to re-run single failed rules `<N>` times and increases the allocated memory for the solving rules
+each time it fails (a brute force approach, but simple and it has proven to be reliable).
+
+E.g. for obtaining results for the scenario `default` run:
+
+```
+    snakemake -jall --restart-times 3 results/default/results.csv
+```
+
 ## Running a sensitivity analysis
 
 For parameter sweeps scenarios can be used to modify certain aspects of the models.
-All currently implemented modifiers are in contained in the 'default' scenario in 'config.yaml'.
-Defining a scenario in the 'config.yaml' and overwriting the desired modifiers allows for conducting a sensitivity analysis.
-Each scenario is solved separately, e.g. scenario 'sensitivity-1' with the following command:
+All currently implemented modifiers are listed in the `default` scenario in `config.yaml`.
+Defining a new scenario in the `config.yaml` and overwriting the desired modifiers allows for conducting a sensitivity analysis.
+Each scenario is solved separately as a stand-alone scenario as described above, e.g. scenario `sensitivity-1`:
 
 ```
-    snakemake --config scenario=sensitivity-1 -jall results/sensitivity-1/results.csv
+    snakemake -jall --restart-times 3 results/sensitivity-1/results.csv
 ```
 
-The results are then combined and compared against the 'default' scenario to obtain the sensitivities.
+The results can then be combined and compared against the 'default' scenario to obtain the sensitivities.
 
 ## Defining ESCs
 
