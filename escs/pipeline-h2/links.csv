@@ -5,7 +5,7 @@ seawater desalination (exp),electricity (exp),water (exp),,True,0,1,bus1
 electrolysis (exp),electricity (exp),hydrogen (g) (exp),water (exp),True,0,1,bus0
 H2 storage compressor (exp),hydrogen (g) (exp),hydrogen (g) storage (exp),electricity (exp),True,0,1,n/a
 H2 storage unstoring (exp),hydrogen (g) storage (exp),hydrogen (g) (exp),,True,0,1,n/a
-H2 (g) pipeline compressor (exp),hydrogen (g) (exp),hydrogen (g) compressed (exp),electricity (exp),True,0,1,bus0
+H2 (g) fill compressor station (exp),hydrogen (g) (exp),hydrogen (g) compressed (exp),,True,0,1,bus0
 H2 (g) pipeline,hydrogen (g) compressed (exp),hydrogen (g) compressed submarine,,True,0,1,bus1
 H2 (g) submarine pipeline,hydrogen (g) compressed submarine,hydrogen (g) compressed (imp),,True,0,1,bus1
 H2 (g) pipeline decompressor (imp),hydrogen (g) compressed (imp),hydrogen (g) (imp),,True,0,1,n/a

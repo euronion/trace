@@ -8,7 +8,7 @@ direct air capture (exp),electricity (exp),CO2 (g) (exp),heat (exp),True,0,1,bus
 methanation (exp),hydrogen (g) (exp),methane (g) (exp),CO2 (g) (exp),True,0.3,1,bus1
 CH4 (g) pipeline,methane (g) compressed (exp),methane (g) compressed submarine,,True,0,1,bus1
 CH4 (g) submarine pipeline,methane (g) compressed submarine,methane (g) compressed (imp),,True,0,1,bus1
-CH4 (g) pipeline compressor (exp),methane (g) (exp),methane (g) compressed (exp),electricity (exp),True,0,1,bus1
+CH4 (g) fill compressor station (exp),methane (g) (exp),methane (g) compressed (exp),,True,0,1,bus1
 CH4 (g) pipeline decompressor (imp),methane (g) compressed (imp),methane (g) (imp),,True,0,1,n/a
 CO2 liquefaction (exp),CO2 (g) (exp),CO2 (l) (exp),electricity (exp),True,0,1,bus0
 CO2 evaporation (exp),CO2 (l) (exp),CO2 (g) (exp),,True,0,1,n/a
@@ -16,4 +16,4 @@ H2 storage compressor (exp),hydrogen (g) (exp),hydrogen (g) storage (exp),electr
 H2 storage unstoring (exp),hydrogen (g) storage (exp),hydrogen (g) (exp),,True,0,1,n/a
 CH4 storage compressor (exp),methane (g) (exp),methane (g) storage (exp),electricity (exp),True,0,1,n/a
 CH4 storage unstoring (exp),methane (g) storage (exp),methane (g) (exp),,True,0,1,n/a
-Methane steam reforming (imp),methane (g) (imp),hydrogen (g) (imp),,True,0,1,bus1
+Steam methane reforming (imp),methane (g) (imp),hydrogen (g) (imp),,True,0,1,bus1
