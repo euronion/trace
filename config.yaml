@@ -179,12 +179,12 @@ scenarios:
         synthetic_demand: gegis # 'gegis' or 'custom'
         
         # Set default marginal_cost and capital_cost for any component - generator, link, store -
-        # if the cost is == 0.
+        # if the cost is == 0
         # Should help to bring more stability into the model
         capital_cost:
             default: 0.1
         marginal_cost:
-            default: 0.
+            default: 0.0
         
         # Modify certain aspects of the models, for sensitivity analysis
         # Modification factor in pu
@@ -308,26 +308,30 @@ solver:
     default:
         name: gurobi
         Presolve: -1 # 2=Aggressive presolving
+        BarHomogeneous: 1 # Use homogeneous barrier if standard does not converge
         PreDual: 2   # form primal and dual during presolve, heuristically choose
         method: 2    # barrier
         crossover: 0 # do not use crossover
         BarConvTol: 1.e-5
+        ScaleFlag: 0
         FeasibilityTol: 1.e-5
         OptimalityTol: 1.e-5
         threads: 8
     homogeneous_barrier_scaled:
         name: gurobi
-        Presolve: -1 # Default presolving
+        Presolve: 2  # Conservative presolving; Aggressive consumes too much memory
         PreDual: 2   # form primal and dual during presolve, heuristically choose
         method: 2    # barrier
         crossover: 0 # do not use crossover
         BarHomogeneous: 1 # Use homogeneous barrier if standard does not converge
-        ScaleFlag: 2
+        ScaleFlag: 3
         Aggregate: 0
         BarConvTol: 1.e-5
         FeasibilityTol: 1.e-5
         OptimalityTol: 1.e-5
+        ObjScale: 100
         #threads: 8
     fallback:
         # Use gurobi defaults
         name: gurobi
+        BarHomogeneous: 1 # Use homogeneous barrier if standard does not converge
