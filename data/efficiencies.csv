@@ -1,5 +1,5 @@
 process,from,from_amount,from_unit,to,to_amount,to_unit,efficiency,comment,source
-seawater desalination,electricity,0.003,MWh,water,1,m^3,333.333333333333,SWRO,TODO
+seawater desalination,electricity,0.003,MWh,water,1,m^3,333.333333333333,Desalination using SWRO. Assume medium salinity of 35 Practical Salinity Units (PSUs) = 35 kg/m^3.,"Caldera et al 2016: Local cost of seawater RO desalination based on solar PV and windenergy: A global estimate. (https://doi.org/10.1016/j.desal.2016.02.004), Fig. 4."
 electrolysis,water,9,m^3,hydrogen (g),33.3333,MWh_LHV,3.7037,Based on ideal conversion process of stochiometric composition.,-
 electrolysis,electricity,50.1252631578947,MWh,hydrogen (g),33.3333,MWh_LHV,0.665,Alkaline electrolysis AEC. May potentially increase to 70-80% in the future.,"DEA (2021): Technology Data for Renewable Fuels, pg. 97."
 battery inverter,electricity,1,MWh,battery,0.979795897113271,MWh,0.979795897113271,from DEA technology assumptions via technology-data repository,DEA
