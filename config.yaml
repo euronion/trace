@@ -7,6 +7,18 @@ logging:
 
 # Change scenario here or by using the --config scenario=... command line flag
 scenarios:
+    low-elec-cost:
+        YEARS: [2030,2040,2050]
+        IMPORTERS: ["DE"]
+        ESCS:      ["hvdc",
+                    "pipeline-h2","pipeline-ch4",
+                    "shipping-lh2","shipping-lch4","shipping-meoh","shipping-lnh3","shipping-lohc","shipping-ftfuel",
+                    "shipping-lch4-to-h2","shipping-meoh-to-h2","shipping-lnh3-to-h2","pipeline-ch4-to-h2"]
+        EXPORTERS: ["AU","AR","ES","EG","MA","SA","DK","DE"]
+        
+        modifiers:
+            CAPEX_electrolysis: 0.3
+
     sensitivity-1:
         YEARS: [2030]
         IMPORTERS: ["DE"]
@@ -307,31 +319,35 @@ GlobalEnergyGIS:
 solver:
     default:
         name: gurobi
-        Presolve: -1 # 2=Aggressive presolving
+        Presolve: 1       # Conservative presolving; Aggressive consumes too much memory
         BarHomogeneous: 1 # Use homogeneous barrier if standard does not converge
-        PreDual: 2   # form primal and dual during presolve, heuristically choose
-        method: 2    # barrier
-        crossover: 0 # do not use crossover
+        PreDual: 2        # form primal and dual during presolve, heuristically choose
+        method: 2         # barrier
+        crossover: 0      # do not use crossover
         BarConvTol: 1.e-5
-        ScaleFlag: 0
         FeasibilityTol: 1.e-5
         OptimalityTol: 1.e-5
         threads: 8
-    homogeneous_barrier_scaled:
+    numeric-focus:
         name: gurobi
-        Presolve: 2  # Conservative presolving; Aggressive consumes too much memory
-        PreDual: 2   # form primal and dual during presolve, heuristically choose
-        method: 2    # barrier
-        crossover: 0 # do not use crossover
+        Presolve: 2       # 2=Aggressive presolving
+        PreDual: 2        # form primal and dual during presolve, heuristically choose
+        NumericFocus: 2   # Favour numeric stability over speed
+        method: 2         # barrier
+        crossover: 0      # do not use crossover
         BarHomogeneous: 1 # Use homogeneous barrier if standard does not converge
         ScaleFlag: 3
-        Aggregate: 0
         BarConvTol: 1.e-5
         FeasibilityTol: 1.e-5
         OptimalityTol: 1.e-5
         ObjScale: 100
-        #threads: 8
+        threads: 8
     fallback:
         # Use gurobi defaults
         name: gurobi
+        crossover: 0
+        method: 2    # barrier
         BarHomogeneous: 1 # Use homogeneous barrier if standard does not converge
+        BarConvTol: 1.e-5
+        FeasibilityTol: 1.e-5
+        OptimalityTol: 1.e-5
