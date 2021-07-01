@@ -26,7 +26,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
     This repository contains the technology cost data.
     > Note:
-    > That the repository branch is not `main` and the repository is currently **NOT** identical with https://github.com/PyPSA/technology-data/ .
+    > That the repository branch is not `main` and the repository is **currently NOT** identical with https://github.com/PyPSA/technology-data/ .
 
     The resulting resulting structure should look like this
 
@@ -100,10 +100,18 @@ E.g. for obtaining results for the scenario `default` run:
     snakemake -jall --restart-times 3 results/default/results.csv
 ```
 
-## Running a sensitivity analysis
+Similarly a single country-year-ESC combination may be solved for a single scenario, e.g.:
+```
+    snakemake -jall --restart-times 3 results/default/2030/hvdc/ES-DE/results.csv
+```
+will produce two files in the directory, one is the `results.csv` file with extracted results
+from the solved network, which is stored as a PyPSA network as `network.nc` side-by-side to the
+`results.csv` file.
 
-For parameter sweeps scenarios can be used to modify certain aspects of the models.
-All currently implemented modifiers are listed in the `default` scenario in `config.yaml`.
+## Running a sensitivity analysis / parameter sweep
+
+For sensitivity analysis and parameter sweeps, scenarios with modified input parameters are used.
+All currently implemented modifiers are listed in the `default` scenario in `config.yaml` with their default values.
 Defining a new scenario in the `config.yaml` and overwriting the desired modifiers allows for conducting a sensitivity analysis.
 Each scenario is solved separately as a stand-alone scenario as described above, e.g. scenario `sensitivity-1`:
 
@@ -198,7 +206,8 @@ The hard-coding modifies the following costs:
 
 * Chemicals are specified with their lower heating value (LHV) and use of LHV at this point is indicated
 * Other input chemicals like water or CO2 are specified by their weight (t)
-* The demand of the importing region is specified in `<esc>/loads.csv` in MWh/h
+* bus units always represent a rate, i.e. "t/h" or "MW"
+* The demand of the importing region is specified in `<esc>/loads.csv` in MWh/h, conversion table for hydrogen:
 
 | energy carrier | hourly amount [t] | annual amount [t] | hourly amount [MWh] |annual amount [TWh] | HV assumed |
 |----------------|-------------------|-------------------|---------------------|--------------------|------------|
@@ -211,7 +220,7 @@ The hard-coding modifies the following costs:
 
 ## Supply
 
-* Supply is generated (hourly curves, one year) using Global Energy GIS
+* Supply time-series are synthetically generated (hourly curves, one representative year) using Global Energy GIS
 * Config for creating supply via `config.yaml`
 * Supply is attached to networks via `actions/attach_supply.py.ipynb`
     1. LCoE for all different supply quality classes is determined
