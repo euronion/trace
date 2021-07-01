@@ -328,11 +328,13 @@ solver:
         FeasibilityTol: 1.e-5
         OptimalityTol: 1.e-5
         threads: 8
+        seed: 10          # Consistent seed for all plattforms
     numeric-focus:
         name: gurobi
-        Presolve: 2       # 2=Aggressive presolving
-        PreDual: 2        # form primal and dual during presolve, heuristically choose
-        NumericFocus: 2   # Favour numeric stability over speed
+        Presolve: 1       # 2=Aggressive presolving
+        PreDual: 0        # form primal and dual during presolve, heuristically choose
+        AggFill: 0
+        NumericFocus: 3   # Favour numeric stability over speed
         method: 2         # barrier
         crossover: 0      # do not use crossover
         BarHomogeneous: 1 # Use homogeneous barrier if standard does not converge
@@ -341,13 +343,14 @@ solver:
         FeasibilityTol: 1.e-5
         OptimalityTol: 1.e-5
         ObjScale: 100
-        threads: 8
+        seed: 10          # Consistent seed for all plattforms
     fallback:
         # Use gurobi defaults
         name: gurobi
         crossover: 0
-        method: 2    # barrier
+        method: 2         # barrier
         BarHomogeneous: 1 # Use homogeneous barrier if standard does not converge
         BarConvTol: 1.e-5
         FeasibilityTol: 1.e-5
         OptimalityTol: 1.e-5
+        seed: 10          # Consistent seed for all plattforms
