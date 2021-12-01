@@ -135,3 +135,5 @@ logs/
 .snakemake/
 results/
 figures/
+workbench/
+analysis/
