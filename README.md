@@ -241,3 +241,8 @@ which showed to dramatically increase solver speed for all ESCs involving long d
 
 As a fallback method the model automatically switches back to the default gurobi solver methods and
 retries solving the scenario again.
+
+## Citing
+
+This software is archived in Zenodo.
+A permanent record of the most recent release version can be found here: [![DOI](https://zenodo.org/badge/317544698.svg)](https://zenodo.org/badge/latestdoi/317544698) .
