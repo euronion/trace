@@ -10,7 +10,7 @@ scenarios:
     low-elec-cost:
         YEARS: [2030,2040,2050]
         IMPORTERS: ["DE"]
-        ESCS:      ["hvdc",
+        ESCS:      ["hvdc-to-h2",
                     "pipeline-h2","pipeline-ch4",
                     "shipping-lh2","shipping-lch4","shipping-meoh","shipping-lnh3","shipping-lohc","shipping-ftfuel",
                     "shipping-lch4-to-h2","shipping-meoh-to-h2","shipping-lnh3-to-h2","pipeline-ch4-to-h2"]
@@ -158,7 +158,7 @@ scenarios:
         YEARS: [2030,2040,2050]
         
         IMPORTERS: ["DE"]
-        ESCS:      ["hvdc",
+        ESCS:      ["hvdc-to-h2",
                     "pipeline-h2","pipeline-ch4",
                     "shipping-lh2","shipping-lch4","shipping-meoh","shipping-lnh3","shipping-lohc","shipping-ftfuel",
                     "shipping-lch4-to-h2","shipping-meoh-to-h2","shipping-lnh3-to-h2","pipeline-ch4-to-h2"]
@@ -175,7 +175,7 @@ scenarios:
         YEARS: [2030]
         
         IMPORTERS: ["ES","IT","GR","BG","DE"]
-        ESCS:      ["hvdc","pipeline-h2","shipping-lh2","shipping-lch4","shipping-ftfuel"]
+        ESCS:      ["hvdc-to-h2","pipeline-h2","shipping-lh2","shipping-lch4","shipping-ftfuel"]
         EXPORTERS: ["MA","SA","EG","AR","AU","RU","UA","KZ"]
         #--- used in Snakefile ---
 
@@ -189,7 +189,7 @@ scenarios:
         YEARS: [2030,2040,2050]
         
         IMPORTERS: ["DE"]
-        ESCS:      ["hvdc",
+        ESCS:      ["hvdc-to-h2",
                     "pipeline-h2","pipeline-ch4",
                     "shipping-lh2","shipping-lch4","shipping-meoh","shipping-lnh3","shipping-lohc","shipping-ftfuel",
                     "shipping-lch4-to-h2","shipping-meoh-to-h2","shipping-lnh3-to-h2","pipeline-ch4-to-h2"]
