@@ -2,13 +2,14 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+
 def calculate_annual_investment(name, r, fn):
     """Calculate the annual investment for an installation given a selected WACC.
-    
+
     Annual investment for the selected installation 'name' is calculated
     using the given WACC as 'discountrate' and properties for the investment
     read from file (CAPEX, FOM in %, lifetime n in years).
-    
+
     Parameters:
     -----------
     name : str
@@ -20,43 +21,50 @@ def calculate_annual_investment(name, r, fn):
     fn : str or pathlib.Path
         Filename or path to a pandas-readable csv containing the cost and investment
         specific information (investment, FOM, lifetime) for the installation.
-    
+
     """
-    
+
     import logging
     import pandas as pd
     from pathlib import Path
-    
+
     fn = Path(fn)
     assert fn.exists()
-    
-    costs = pd.read_csv(fn, comment='#')
 
-    costs = costs[costs['technology'] == name]
-    
+    costs = pd.read_csv(fn, comment="#")
+
+    costs = costs[costs["technology"] == name]
+
     if costs.empty is True:
         logging.info(f"No cost assumptions found for {name}.")
         return 0
-    
-    costs = costs.set_index('parameter')
 
-    return calculate_annuity(costs.loc['investment', 'value'], costs.loc['FOM', 'value'], costs.loc['lifetime', 'value'], r)
+    costs = costs.set_index("parameter")
+
+    return calculate_annuity(
+        costs.loc["investment", "value"],
+        costs.loc["FOM", "value"],
+        costs.loc["lifetime", "value"],
+        r,
+    )
+
 
 def calculate_annuity(invest, fom, lifetime, r):
     """
     Calculate annuity based on EAC.
-    
+
     invest - investment
     fom    - annual FOM in percentage of investment
     lifetime - lifetime of investment in years
     r      - discount rate in percent
     """
-    
-    r = r/100.
 
-    annuity_factor = r/(1. - 1./(r+1.)**(lifetime))
+    r = r / 100.0
 
-    return (annuity_factor + fom/100.)*invest
+    annuity_factor = r / (1.0 - 1.0 / (r + 1.0) ** (lifetime))
+
+    return (annuity_factor + fom / 100.0) * invest
+
 
 def configure_logging(snakemake, skip_handlers=False):
     """
@@ -80,28 +88,34 @@ def configure_logging(snakemake, skip_handlers=False):
     import logging
     from pathlib import Path
 
-    kwargs = snakemake.config.get('logging', dict())
+    kwargs = snakemake.config.get("logging", dict())
     kwargs.setdefault("level", "INFO")
 
     if skip_handlers is False:
-        fallback_path = Path(__file__).parent.joinpath('..', 'logs', f"{snakemake.rule}.log")
-        logfile = snakemake.log.get('python', snakemake.log[0] if snakemake.log
-                                    else fallback_path)
+        fallback_path = Path(__file__).parent.joinpath(
+            "..", "logs", f"{snakemake.rule}.log"
+        )
+        logfile = snakemake.log.get(
+            "python", snakemake.log[0] if snakemake.log else fallback_path
+        )
         kwargs.update(
-            {'handlers': [
-                # Prefer the 'python' log, otherwise take the first log for each
-                # Snakemake rule
-                logging.FileHandler(logfile),
-                logging.StreamHandler()
+            {
+                "handlers": [
+                    # Prefer the 'python' log, otherwise take the first log for each
+                    # Snakemake rule
+                    logging.FileHandler(logfile),
+                    logging.StreamHandler(),
                 ],
-             'datefmt':'%Y-%m-%d %H:%M:%S',
-             'format':'%(asctime)s %(name)-14s %(levelname)-8s %(message)s'
-            })
+                "datefmt": "%Y-%m-%d %H:%M:%S",
+                "format": "%(asctime)s %(name)-14s %(levelname)-8s %(message)s",
+            }
+        )
     logging.basicConfig(**kwargs)
+
 
 def extract_technology(b):
     """Extract the technology from a bus name 'b' by removing trailing '(exp)' or '(imp)' and other content in same braket.
-    
+
     Examples
     --------
     > extract_technology("hydrogen (g) storage (exp)")
@@ -109,28 +123,30 @@ def extract_technology(b):
 
     > extract_technology("hydrogen (g) storage")
     'hydrogen (g) storage'
-    
+
     > extract_technology("battery inverter (charging, exp)")
     'battery inverter'
-    
+
     > extract_technology("battery inverter (charging) (exp)")
     'battery inverter (charging)'
-    
+
     """
     import re
-    
+
     return re.sub("\([\w\s,\.]*?(?:exp|imp)\)$", "", b.strip()).strip()
+
 
 def get_bus_unit(b, n):
     """Get the 'unit' attribute of bus 'b' from PyPSA network 'n."""
-    
-    return n.buses.loc[b]['unit']
+
+    return n.buses.loc[b]["unit"]
+
 
 def extract_unit(b, n):
     """Extract the unit of a bus 'b' in the PyPSA network 'n' based on its carrier.
-    
+
     Carrier name must be '<something> [unit]'.
-    
+
     Examples
     --------
     > extract_unit('hydrogen (g) (exp)', network)
@@ -139,30 +155,33 @@ def extract_unit(b, n):
     > extract_unit('electricity (exp)', network)
     'MWh'
     """
-    
+
     import re
-    return re.match('^.*?\s*\[?(\w*)\]?$', n.buses.loc[b]['carrier']).group(1)
+
+    return re.match("^.*?\s*\[?(\w*)\]?$", n.buses.loc[b]["carrier"]).group(1)
+
 
 def get_scenario(snakemake):
-    
+
     import logging
+
     logger = logging.getLogger(__name__)
-    
+
     # Deep update of member dictionaries.
     def _update(d, u):
         """Kudos: https://stackoverflow.com/questions/3232943/update-value-of-a-nested-dictionary-of-varying-depth"""
         import collections.abc
+
         for k, v in u.items():
             if isinstance(v, collections.abc.Mapping):
                 d[k] = _update(d.get(k, {}), v)
             else:
                 d[k] = v
         return d
-    
-    s_name = snakemake.wildcards['scenario']
-    s = snakemake.config['scenarios'].get('default',{}).copy()
-    _update(s, snakemake.config['scenarios'][s_name])
-    
-    logger.info(f'Using scenario {s_name}. '
-                f'Scenario values: {s}')
+
+    s_name = snakemake.wildcards["scenario"]
+    s = snakemake.config["scenarios"].get("default", {}).copy()
+    _update(s, snakemake.config["scenarios"][s_name])
+
+    logger.info(f"Using scenario {s_name}. " f"Scenario values: {s}")
     return s
