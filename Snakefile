@@ -7,14 +7,15 @@ from snakemake.utils import update_config
 from snakemake.io import load_configfile
 
 # Specify config file
-configfile: "config/config.initial_paper.yaml"
+configfile: "config/config.cern_link.yaml"
 
 # Default configs - do not change
-default_configfile: "config/config.default.yaml"
+default_configfile="config/config.default.yaml"
 
 # Load default config and overwrite with specific config
-config = load_configfile(default_configfile)
-update_config(config, load_configfile(configfile))
+specific_config = config.copy()
+config = load_configfile(Path(default_configfile))
+update_config(config, specific_config)
 
 wildcard_constraints:
     year="\d+",

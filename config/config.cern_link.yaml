@@ -1,0 +1,19 @@
+# SPDX-FileCopyrightText: 2020-2021 Johannes Hampp
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+# Change scenario here or by using the --config scenario=... command line flag
+scenarios:
+    cern_link:
+        #+++ used in Snakefile +++ #
+        # Year used to select cost assumptions
+        YEARS: [2030]
+        
+        IMPORTERS: ["CERN"]
+        ESCS:      ["hvdc-to-elec","pipeline-h2-to-elec","shipping-lh2-to-elec"]
+        EXPORTERS: ["MA","SA","EG","DZ","TN"]
+        #--- used in Snakefile ---
+
+        # WACC scenario assumptions, see "data/wacc.csv"
+        # Currently supported: homogeneous, irena, inhomogeneous
+        wacc: "homogeneous-7.5"
