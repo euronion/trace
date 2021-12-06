@@ -1,0 +1,8 @@
+name,unit,carrier
+electricity (exp),MW,electricity
+electricity (imp),MW,electricity
+battery (exp),MW,battery
+battery (imp),MW,battery
+hvdc (imp),MW,electricity
+hvdc (exp),MW,electricity
+hvdc submarine,MW,electricity
