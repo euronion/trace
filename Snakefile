@@ -6,16 +6,19 @@ from pathlib import Path
 from snakemake.utils import update_config
 from snakemake.io import load_configfile
 
+
 # Specify config file
 configfile: "config/config.cern_link.yaml"
 
+
 # Default configs - do not change
-default_configfile="config/config.default.yaml"
+default_configfile = "config/config.default.yaml"
 
 # Load default config and overwrite with specific config
 specific_config = config.copy()
 config = load_configfile(Path(default_configfile))
 update_config(config, specific_config)
+
 
 wildcard_constraints:
     year="\d+",
@@ -29,6 +32,12 @@ subworkflow technology_data:
         "../technology-data/Snakefile"
     configfile:
         "../technology-data/config.yaml"
+
+
+def get_scenario(scenario_name):
+    s = config["scenarios"]["default"].copy()
+    update_config(s, config["scenarios"][scenario_name])
+    return s
 
 
 include: "rules/gegis.smk"
