@@ -35,6 +35,32 @@ rule create_network:
         "../actions/create_network.py.ipynb"
 
 
+def get_import_profile_path(wildcards):
+    """Return the import_profile filepath for the wildcards scenario or the default profile."""
+    ip = config["scenarios"][wildcards.scenario].get(
+        "import_profile", config["scenarios"]["default"]["import_profile"]
+    )
+
+    return f"data/import_profiles/{ip}.csv"
+
+rule attach_import_profile:
+    message:
+        "Attaching import profile ('ip') to network."
+    input:
+        network="resources/networks/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
+        additional_components="resources/additional_components.pkl",
+        import_profile=get_import_profile_path,
+    output:
+        network="resources/networks_ip/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
+    threads: 1
+    params:
+        scenario=lambda w: get_scenario(w["scenario"])
+    log:
+        python="logs/{scenario}/{year}/{esc}/{from}-{to}/attach_import_profile.log",
+        notebook="logs/{scenario}/{year}/{esc}/{from}-{to}/attach_import_profile.ipynb",
+    notebook:
+        "../actions/attach_import_profile.py.ipynb"
+
 def demand_file(wildcards):
     # Allow for custom overwrite of annual electricity demand for exporters
     demand_d = {
@@ -50,7 +76,7 @@ def demand_file(wildcards):
 
 rule attach_supply:
     message:
-        "Attaching RES supply to network."
+        "Attaching RES supply ('as') to network."
     input:
         supply="resources/supply_TRACES_{era_year}.nc".format(
             era_year=config["GlobalEnergyGIS"]["era_year"]
@@ -58,11 +84,11 @@ rule attach_supply:
         demand=demand_file,
         costs=technology_data("../technology-data/outputs/costs_{year}.csv"),
         wacc="data/wacc.csv",
-        network="resources/networks/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
+        network="resources/networks_ip/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
         additional_components="resources/additional_components.pkl",
     output:
-        network="resources/networks_as/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
-        lcoes="resources/networks_as/{scenario}/{year}/{esc}/{from}-{to}/lcoes.csv",
+        network="resources/networks_ip_as/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
+        lcoes="resources/networks_ip_as/{scenario}/{year}/{esc}/{from}-{to}/lcoes.csv",
     threads: 1
     params:
         scenario=lambda w: get_scenario(w["scenario"]),

@@ -23,6 +23,10 @@ scenarios:
         # Currently supported: homogeneous, irena, inhomogeneous
         wacc: "homogeneous"
         
+        # Import profile (time-series) for import demand.
+        # Maybe any of the files in data/import_profiles/<import_profile>.csv
+        import_profile: "constant"
+        
         # Synthetic electricity demand (local for the exporter) can either be automatically
         # generated using GEGIS or custom values provided via "data/overwrite/demand.csv" .
         synthetic_demand: gegis # 'gegis' or 'custom'

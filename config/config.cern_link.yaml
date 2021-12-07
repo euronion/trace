@@ -17,3 +17,7 @@ scenarios:
         # WACC scenario assumptions, see "data/wacc.csv"
         # Currently supported: homogeneous, irena, inhomogeneous
         wacc: "homogeneous-7.5"
+        
+        # Import profile (time-series) for import demand.
+        # Maybe any of the files in data/import_profiles/<import_profile>.csv
+        import_profile: "night-60_day-100"
