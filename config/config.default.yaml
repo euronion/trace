@@ -39,7 +39,7 @@ scenarios:
         # Modification factor in pu
         modifiers:
             wacc: 1
-            load_demand: 1         # Related to load (import demand)
+            import_demand: 1       # Related to network loads (= import demand)
             synthetic_demand: 1    # Amount of synthetic demand (domestic demand) used in supply curve reservation
             CAPEX_RES: 1           # CAPEX of RES: PV, onshore and offshore wind
             CAPEX_battery: 1       # CAPEX of batteries and battery inverters
