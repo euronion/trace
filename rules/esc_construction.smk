@@ -25,6 +25,9 @@ rule create_network:
     output:
         network="resources/networks/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
     threads: 1
+    params:
+        scenario=lambda w: get_scenario(w["scenario"]),
+        era_year=config["GlobalEnergyGIS"]["era_year"],
     log:
         python="logs/{scenario}/{year}/{esc}/{from}-{to}/create_network.log",
         notebook="logs/{scenario}/{year}/{esc}/{from}-{to}/create_network.ipynb",
@@ -46,21 +49,23 @@ def demand_file(wildcards):
 
 
 rule attach_supply:
+    message:
+        "Attaching RES supply to network."
     input:
-        supply="resources/supply_TRACES_2013.nc",
+        supply="resources/supply_TRACES_{era_year}.nc".format(
+            era_year=config["GlobalEnergyGIS"]["era_year"]
+        ),
         demand=demand_file,
         costs=technology_data("../technology-data/outputs/costs_{year}.csv"),
         wacc="data/wacc.csv",
         network="resources/networks/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
         additional_components="resources/additional_components.pkl",
     output:
-        network=(
-            "resources/networks_supplied/{scenario}/{year}/{esc}/{from}-{to}/network.nc"
-        ),
-        lcoes=(
-            "resources/networks_supplied/{scenario}/{year}/{esc}/{from}-{to}/lcoes.csv"
-        ),
+        network="resources/networks_as/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
+        lcoes="resources/networks_as/{scenario}/{year}/{esc}/{from}-{to}/lcoes.csv",
     threads: 1
+    params:
+        scenario=lambda w: get_scenario(w["scenario"]),
     log:
         python="logs/{scenario}/{year}/{esc}/{from}-{to}/attach_supply.log",
         notebook="logs/{scenario}/{year}/{esc}/{from}-{to}/attach_supply.ipynb",

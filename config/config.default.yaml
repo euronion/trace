@@ -99,6 +99,7 @@ GlobalEnergyGIS:
     # Download GEGIS data files and set home dir for workflow
     init_gegis: False
     base_dir: "resources/GEGIS/"
+    era_year: 2013
     
     synthetic_demand:
         # SSP scenario and radiative forcing target to base prediction upon
