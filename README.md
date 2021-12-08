@@ -3,6 +3,8 @@ SPDX-FileCopyrightText: 2020-2021 Johannes Hampp
 SPDX-License-Identifier: CC-BY-4.0
 -->
 
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/euronion/trace/main.svg)](https://results.pre-commit.ci/latest/github/euronion/trace/main)
+
 # TRACE - Transporting Renewables as Chemical Energy
 
 ## Setup and installation
