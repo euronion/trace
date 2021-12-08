@@ -15,3 +15,7 @@ repos:
     rev: v0.13.0
     hooks:
     -   id: reuse
+-   repo: https://github.com/snakemake/snakefmt
+    rev: 0.2.4
+    hooks:
+      - id: snakefmt
