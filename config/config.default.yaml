@@ -24,8 +24,19 @@ scenarios:
         wacc: "homogeneous"
         
         # Import profile (time-series) for import demand.
-        # Maybe any of the files in data/import_profiles/<import_profile>.csv
+        # Maybe any of the files in data/import_profiles/<import_profile>.csv or "buffered":
+        # - constant: Constant import_profile (baseload) with hourly demand as specified in <ESC>/loads.csv
+        # - night-60_day-100: Import profile with demand as specified in <ESC>/loads.csv, weighted with 60% during night time.
         import_profile: "constant"
+
+        # Imports are by default not buffered, i.e. the import_profile must unconditionally be met
+        # Alternatively an buffer may be added to the import location, such that the import demand
+        # must only be met on a different time-scale. The buffer does not add additional costs.
+        # Currently supported values:
+        #  - False  : No buffering (default)
+        #  - annually : Demand is buffered on an annual basis; import demand has to be met on an annual basis
+        import_buffer: "annually"
+
         
         # Synthetic electricity demand (local for the exporter) can either be automatically
         # generated using GEGIS or custom values provided via "data/overwrite/demand.csv" .

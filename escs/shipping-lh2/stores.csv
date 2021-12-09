@@ -2,6 +2,5 @@ name,bus,e_nom_extendable,e_cyclic
 battery storage (exp),battery (exp),True,True
 clean water tank storage (exp),water (exp),True,True
 hydrogen storage tank incl. compressor (exp),hydrogen (g) storage (exp),True,True
-hydrogen demand buffer (imp),hydrogen (g) (imp),True,True
 H2 (l) storage tank (exp),hydrogen (l) (exp),True,True
 H2 (l) storage tank (imp),hydrogen (l) (imp),True,True

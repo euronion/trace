@@ -7,6 +7,15 @@ SPDX-License-Identifier: CC-BY-4.0
 
 ## Upcoming release (TBD)
 
+* New configuration option `import_profile`: The import profile for each ESC can now be set based on an
+    external spreadsheet to distinguish between baseload or other types of import demand.
+* New configuration option `import_buffer`: The import profile can now be buffered such that the import
+    demand would need to be met e.g. as baseload (`import_buffer: False`) or on an annual basis 
+    (`import_buffer: annually`).
+    Buffering is disabled by default.
+* Changed ESCs:
+    + All explicit import buffering components have been removed from the ESCs (`stores.csv`) in favour 
+      of the new configuration entry `import_buffer
 * New ESCs, which end in electricity delivered rather than hydrogen (using an CCGT turbine at the ESC end):
     + HVDC-to-elec
     + pipeline-h2-to-elec

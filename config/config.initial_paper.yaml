@@ -196,6 +196,9 @@ scenarios:
         # WACC scenario assumptions, see "data/wacc.csv"
         # Currently supported: homogeneous, irena, inhomogeneous
         wacc: "homogeneous"
+
+        import_profile: "constant"
+        import_buffer: "annually"
         
         # Synthetic electricity demand (local for the exporter) can either be automatically
         # generated using GEGIS or custom values provided via "data/overwrite/demand.csv" .
