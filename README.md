@@ -74,6 +74,60 @@ SPDX-License-Identifier: CC-BY-4.0
         (trace) pkg> instantiate
     ```
     
+## Files and folders
+
+
+```
+(trace): tree -L 2
+.
+├── actions     # Scripts for building and solving the model
+│   ├── attach_supply.py.ipynb
+│   ├── backup_run.py
+│   ├── combine_GEGIS_demand.py
+│   └── ...
+├── config      # Input configuration for model and scenarios
+│   ├── config.cern_link.yaml
+│   ├── config.default.yaml
+│   └── config.initial_paper.yaml
+├── data        # Input data for the model
+│   ├── distances.csv
+│   ├── efficiencies.csv
+│   ├── import_profiles
+│   ├── overwrite
+│   ├── shipping.csv
+│   └── wacc.csv
+├── envs        # Programming environment definitions for installing/reproducing the model
+│   ├── environment.yaml
+│   ├── environment.yaml.used
+│   ├── JuliaManifest.toml
+│   └── JuliaProject.toml
+├── escs        # ESC definitions which serve as input; will be modified to create ESC-exp-imp specific models
+│   ├── hvdc-to-elec
+│   ├── hvdc-to-h2
+│   ├── pipeline-ch4
+│   └── ...
+├── LICENSES    # License files for all licenses used in this repository
+│   ├── CC0-1.0.txt
+│   ├── CC-BY-4.0.txt
+│   └── GPL-3.0-or-later.txt
+├── logs        # (created automatically) log files for each model step, scenario and ESC
+│   └── ...
+├── README.md   # You are reading this
+├── resources   # (created automatically) intermediary files created during model creation
+│   └── ...
+├── results     # (created automatically) Result files for each scenario/year/ESC/exporter-importer;
+                # Contains the optimised PyPSA networks and a CSV file with prominent results
+│   ├── default
+│   ├── lowhomogeneous
+│   └── ...
+├── rules       # Snakemake rule directory containing the workflow definitino for the model
+│   ├── esc_construction.smk
+│   ├── gegis.smk
+│   ├── results.smk
+│   └── solving.smk
+└── Snakefile   # Snakemake file to combine all workflow files into the complete workflow
+```
+    
 ## Solving a scenario
 
 Solving a scenario (i.e. set of assumptions like e.g. WACC, domestic demand, exporting/importing countries) use the snakemake
