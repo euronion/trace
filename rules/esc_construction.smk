@@ -43,6 +43,7 @@ def get_import_profile_path(wildcards):
 
     return f"data/import_profiles/{ip}.csv"
 
+
 rule attach_import_profile:
     message:
         "Attaching import profile ('ip') to network."
@@ -54,12 +55,15 @@ rule attach_import_profile:
         network="resources/networks_ip/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
     threads: 1
     params:
-        scenario=lambda w: get_scenario(w["scenario"])
+        scenario=lambda w: get_scenario(w["scenario"]),
     log:
         python="logs/{scenario}/{year}/{esc}/{from}-{to}/attach_import_profile.log",
-        notebook="logs/{scenario}/{year}/{esc}/{from}-{to}/attach_import_profile.ipynb",
+        notebook=(
+            "logs/{scenario}/{year}/{esc}/{from}-{to}/attach_import_profile.ipynb"
+        ),
     notebook:
         "../actions/attach_import_profile.py.ipynb"
+
 
 def demand_file(wildcards):
     # Allow for custom overwrite of annual electricity demand for exporters
@@ -87,7 +91,9 @@ rule attach_supply:
         network="resources/networks_ip/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
         additional_components="resources/additional_components.pkl",
     output:
-        network="resources/networks_ip_as/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
+        network=(
+            "resources/networks_ip_as/{scenario}/{year}/{esc}/{from}-{to}/network.nc"
+        ),
         lcoes="resources/networks_ip_as/{scenario}/{year}/{esc}/{from}-{to}/lcoes.csv",
     threads: 1
     params:

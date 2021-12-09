@@ -26,12 +26,9 @@ wildcard_constraints:
 
 
 subworkflow technology_data:
-    workdir:
-        "../technology-data"
-    snakefile:
-        "../technology-data/Snakefile"
-    configfile:
-        "../technology-data/config.yaml"
+    workdir: "../technology-data"
+    snakefile: "../technology-data/Snakefile"
+    configfile: "../technology-data/config.yaml"
 
 
 def get_scenario(scenario_name):

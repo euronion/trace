@@ -17,8 +17,7 @@ if config["GlobalEnergyGIS"].get("init_gegis", False) is True:
 # Download auxiliary datasets for GEGIS
     rule download_GEGIS_dataset:
         output:
-            # not full list, only dependencies for rules below (proxy all others)
-            Path(config["GlobalEnergyGIS"]["base_dir"]) / "protected.jld",
+            Path(config["GlobalEnergyGIS"]["base_dir"]) / "protected.jld", # not full list, only dependencies for rules below (proxy all others)
             Path(config["GlobalEnergyGIS"]["base_dir"]) / "gadm.tif",
         script:
             "../actions/download_GEGIS_datasets.jl"
