@@ -17,10 +17,10 @@ if __name__ == "__main__":
 
     # Write the complete config into a temporary config file
     temp_dir = tempfile.TemporaryDirectory()
-    config_path = Path(temp_dir.name)/"config.yaml"
-    
+    config_path = Path(temp_dir.name) / "config.yaml"
+
     # Recursively convert OrderedDicts to Dicts (OrderedDicts are not supported by yaml.safe_dump)
-    config= json.loads(json.dumps(snakemake.config))
+    config = json.loads(json.dumps(snakemake.config))
     with open(config_path, "w") as config_file:
         yaml.safe_dump(config, config_file, default_flow_style=False, sort_keys=False)
 
