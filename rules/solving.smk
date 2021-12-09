@@ -22,13 +22,13 @@ rule solve_scenario:
 
 rule solve_network:
     input:
-        network=(
-            "resources/networks_supplied/{scenario}/{year}/{esc}/{from}-{to}/network.nc"
-        ),
+        network="resources/networks_ip_as/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
         additional_components="resources/additional_components.pkl",
     output:
         network="results/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
     threads: 8
+    params:
+        scenario=lambda w: get_scenario(w["scenario"]),
     resources:
         mem_mb=lambda wildcards, attempt: attempt * 10000,
     log:
@@ -40,7 +40,6 @@ rule solve_network:
 
 rule backup_scenario:
     input:
-        config="config.yaml",
         data="data/",
         costs="../technology-data/outputs/",
     output:

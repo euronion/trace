@@ -22,6 +22,8 @@ rule combine_scenario_results:
     output:
         results="results/{scenario}/results.csv",
     threads: 1
+    params:
+        scenario=lambda w: get_scenario(w["scenario"]),
     log:
         python="logs/{scenario}/combine_results.log",
         notebook="logs/{scenario}/combine_results.ipynb",
@@ -35,6 +37,8 @@ rule extract_result:
     output:
         results="results/{scenario}/{year}/{esc}/{exporter}-{importer}/results.csv",
     threads: 1
+    params:
+        scenario=lambda w: get_scenario(w["scenario"]),
     log:
         python="logs/{scenario}/{year}/{esc}/{exporter}-{importer}/extract_result.log",
         notebook=(

@@ -5,16 +5,65 @@
 logging:
     level: INFO
 
+scenarios:
+    default: # All scenarios are based on this scenario and may overwrite the here specified parameters
+        #+++ used in Snakefile +++ #
+        # Year used to select cost assumptions
+        YEARS: [2030,2040,2050]
+        
+        IMPORTERS: ["DE"]
+        ESCS:      ["hvdc-to-h2",
+                    "pipeline-h2","pipeline-ch4",
+                    "shipping-lh2","shipping-lch4","shipping-meoh","shipping-lnh3","shipping-lohc","shipping-ftfuel",
+                    "shipping-lch4-to-h2","shipping-meoh-to-h2","shipping-lnh3-to-h2","pipeline-ch4-to-h2"]
+        EXPORTERS: ["AU","AR","ES","EG","MA","SA","DK","DE"]
+        #--- used in Snakefile ---
+
+        # WACC scenario assumptions, see "data/wacc.csv"
+        # Currently supported: homogeneous, irena, inhomogeneous
+        wacc: "homogeneous"
+        
+        # Import profile (time-series) for import demand.
+        # Maybe any of the files in data/import_profiles/<import_profile>.csv
+        import_profile: "constant"
+        
+        # Synthetic electricity demand (local for the exporter) can either be automatically
+        # generated using GEGIS or custom values provided via "data/overwrite/demand.csv" .
+        synthetic_demand: gegis # 'gegis' or 'custom'
+        
+        # Set default marginal_cost and capital_cost for any component - generator, link, store -
+        # if the cost is == 0
+        # Should help to bring more stability into the model
+        capital_cost:
+            default: 0.1
+        marginal_cost:
+            default: 0.0
+        
+        # Modify certain aspects of the models, for sensitivity analysis
+        # Modification factor in pu
+        modifiers:
+            wacc: 1
+            import_demand: 1       # Related to network loads (= import demand)
+            synthetic_demand: 1    # Amount of synthetic demand (domestic demand) used in supply curve reservation
+            CAPEX_RES: 1           # CAPEX of RES: PV, onshore and offshore wind
+            CAPEX_battery: 1       # CAPEX of batteries and battery inverters
+            CAPEX_electrolysis: 1  # CAPEX of electrolysis
+            CAPEX_MeOHSynthesis: 1 # CAPEX related to methanol synthesis
+            CAPEX_pipeline: 1      # CAPEX of pipeline and related technologies (H2 and CH4, submarine and onland, pipeline and pipeline compressors)
+
+
 regions:
     TRACES:
         "AU": "Australia"
         "AR": "Argentina"
         "DE": "Germany"
         "DK": "Denmark"
+        "DZ": "Algeria"
         "EG": "Egypt"
         "ES": "Spain"
         "MA": "Morocco"
         "SA": "Saudi Arabia"
+        "TN": "Tunisia"
         "RU": "Russia"
         "UA": "Ukraine"
         "KZ": "Kazakhstan"
@@ -40,6 +89,10 @@ regions:
         "UA": "Ukraine"
     Kazakhstan:
         "KZ": "Kazakhstan"
+    Algeria:
+        "DZ": "Algeria"
+    Tunisia:
+        "TN": "Tunisia"
 
 detour_factors:
     transmission_line: 1.2
@@ -50,6 +103,7 @@ GlobalEnergyGIS:
     # Download GEGIS data files and set home dir for workflow
     init_gegis: False
     base_dir: "resources/GEGIS/"
+    era_year: 2013
     
     synthetic_demand:
         # SSP scenario and radiative forcing target to base prediction upon
