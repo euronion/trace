@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2021 Johannes Hampp
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # Release Notes
 
 ## Upcoming release (TBD)
