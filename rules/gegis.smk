@@ -17,7 +17,7 @@ if config["GlobalEnergyGIS"].get("init_gegis", False) is True:
 # Download auxiliary datasets for GEGIS
     rule download_GEGIS_dataset:
         output:
-            Path(config["GlobalEnergyGIS"]["base_dir"]) / "protected.jld", # not full list, only dependencies for rules below (proxy all others)
+            Path(config["GlobalEnergyGIS"]["base_dir"]) / "protected.jld",  # not full list, only dependencies for rules below (proxy all others)
             Path(config["GlobalEnergyGIS"]["base_dir"]) / "gadm.tif",
         script:
             "../actions/download_GEGIS_datasets.jl"
@@ -50,15 +50,12 @@ rule create_synthetic_demand:
         config["GlobalEnergyGIS"]["base_dir"] + "regions_{region}.jld",
         config["GlobalEnergyGIS"]["base_dir"] + "era5temp{era_year}.h5",
     output:
-        config["GlobalEnergyGIS"][
-            "base_dir"
-        ] + "output/SyntheticDemand_{region}_" + config["GlobalEnergyGIS"][
-            "synthetic_demand"
-        ][
-            "ssp_scenario"
-        ] + "-" + str(
-            config["GlobalEnergyGIS"]["synthetic_demand"]["ssp_year"]
-        ) + "_{era_year}.jld",
+        config["GlobalEnergyGIS"]["base_dir"]
+        + "output/SyntheticDemand_{region}_"
+        + config["GlobalEnergyGIS"]["synthetic_demand"]["ssp_scenario"]
+        + "-"
+        + str(config["GlobalEnergyGIS"]["synthetic_demand"]["ssp_year"])
+        + "_{era_year}.jld",
     script:
         "../actions/create_synthetic_demand.jl"
 
@@ -106,15 +103,12 @@ rule combine_GEGIS_supply:
 # (synthetic demand)
 rule combine_GEGIS_demand:
     input:
-        config["GlobalEnergyGIS"][
-            "base_dir"
-        ] + "output/SyntheticDemand_{region}_" + config["GlobalEnergyGIS"][
-            "synthetic_demand"
-        ][
-            "ssp_scenario"
-        ] + "-" + str(
-            config["GlobalEnergyGIS"]["synthetic_demand"]["ssp_year"]
-        ) + "_{era_year}.jld",
+        config["GlobalEnergyGIS"]["base_dir"]
+        + "output/SyntheticDemand_{region}_"
+        + config["GlobalEnergyGIS"]["synthetic_demand"]["ssp_scenario"]
+        + "-"
+        + str(config["GlobalEnergyGIS"]["synthetic_demand"]["ssp_year"])
+        + "_{era_year}.jld",
     output:
         netcdf="resources/demand_{region}_{era_year}.nc",
         csv="resources/demand_annual_{region}_{era_year}.csv",
