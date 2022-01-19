@@ -3,31 +3,27 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 logging:
-    level: INFO
+  level: INFO
 
 scenarios:
-    default: # All scenarios are based on this scenario and may overwrite the here specified parameters
+  default:   # All scenarios are based on this scenario and may overwrite the here specified parameters
         #+++ used in Snakefile +++ #
         # Year used to select cost assumptions
-        YEARS: [2030,2040,2050]
-        
-        IMPORTERS: ["DE"]
-        ESCS:      ["hvdc-to-h2",
-                    "pipeline-h2","pipeline-ch4",
-                    "shipping-lh2","shipping-lch4","shipping-meoh","shipping-lnh3","shipping-lohc","shipping-ftfuel",
-                    "shipping-lch4-to-h2","shipping-meoh-to-h2","shipping-lnh3-to-h2","pipeline-ch4-to-h2"]
-        EXPORTERS: ["AU","AR","ES","EG","MA","SA","DK","DE"]
+    YEARS: [2030, 2040, 2050]
+    IMPORTERS: ["DE"]
+    ESCS: ["hvdc-to-h2", "pipeline-h2", "pipeline-ch4", "shipping-lh2", "shipping-lch4", "shipping-meoh", "shipping-lnh3", "shipping-lohc", "shipping-ftfuel", "shipping-lch4-to-h2", "shipping-meoh-to-h2", "shipping-lnh3-to-h2", "pipeline-ch4-to-h2"]
+    EXPORTERS: ["AU", "AR", "ES", "EG", "MA", "SA", "DK", "DE"]
         #--- used in Snakefile ---
 
         # WACC scenario assumptions, see "data/wacc.csv"
         # Currently supported: homogeneous, irena, inhomogeneous
-        wacc: "homogeneous"
-        
+    wacc: "homogeneous"
+
         # Import profile (time-series) for import demand.
         # Maybe any of the files in data/import_profiles/<import_profile>.csv or "buffered":
         # - constant: Constant import_profile (baseload) with hourly demand as specified in <ESC>/loads.csv
         # - night-60_day-100: Import profile with demand as specified in <ESC>/loads.csv, weighted with 60% during night time.
-        import_profile: "constant"
+    import_profile: "constant"
 
         # Imports are by default not buffered, i.e. the import_profile must unconditionally be met
         # Alternatively an buffer may be added to the import location, such that the import demand
@@ -35,191 +31,149 @@ scenarios:
         # Currently supported values:
         #  - False  : No buffering (default)
         #  - annually : Demand is buffered on an annual basis; import demand has to be met on an annual basis
-        import_buffer: "annually"
+    import_buffer: "annually"
 
-        
+
         # Synthetic electricity demand (local for the exporter) can either be automatically
         # generated using GEGIS or custom values provided via "data/overwrite/demand.csv" .
-        synthetic_demand: gegis # 'gegis' or 'custom'
-        
+    synthetic_demand: gegis     # 'gegis' or 'custom'
         # Set default marginal_cost and capital_cost for any component - generator, link, store -
         # if the cost is == 0
         # Should help to bring more stability into the model
-        capital_cost:
-            default: 0.1
-        marginal_cost:
-            default: 0.0
-        
+    capital_cost:
+      default: 0.1
+    marginal_cost:
+      default: 0.0
+
         # Modify certain aspects of the models, for sensitivity analysis
         # Modification factor in pu
-        modifiers:
-            wacc: 1
-            import_demand: 1       # Related to network loads (= import demand)
-            synthetic_demand: 1    # Amount of synthetic demand (domestic demand) used in supply curve reservation
-            CAPEX_RES: 1           # CAPEX of RES: PV, onshore and offshore wind
-            CAPEX_battery: 1       # CAPEX of batteries and battery inverters
-            CAPEX_electrolysis: 1  # CAPEX of electrolysis
-            CAPEX_MeOHSynthesis: 1 # CAPEX related to methanol synthesis
-            CAPEX_pipeline: 1      # CAPEX of pipeline and related technologies (H2 and CH4, submarine and onland, pipeline and pipeline compressors)
+    modifiers:
+      wacc: 1
+      import_demand: 1             # Related to network loads (= import demand)
+      synthetic_demand: 1          # Amount of synthetic demand (domestic demand) used in supply curve reservation
+      CAPEX_RES: 1                 # CAPEX of RES: PV, onshore and offshore wind
+      CAPEX_battery: 1             # CAPEX of batteries and battery inverters
+      CAPEX_electrolysis: 1        # CAPEX of electrolysis
+      CAPEX_MeOHSynthesis: 1       # CAPEX related to methanol synthesis
+      CAPEX_pipeline: 1            # CAPEX of pipeline and related technologies (H2 and CH4, submarine and onland, pipeline and pipeline compressors)
 
 
 regions:
-    TRACES:
-        "AU": "Australia"
-        "AR": "Argentina"
-        "DE": "Germany"
-        "DK": "Denmark"
-        "DZ": "Algeria"
-        "EG": "Egypt"
-        "ES": "Spain"
-        "MA": "Morocco"
-        "SA": "Saudi Arabia"
-        "TN": "Tunisia"
-        "RU": "Russia"
-        "UA": "Ukraine"
-        "KZ": "Kazakhstan"
-    Australia:
-        "AU": "Australia"
-    Argentina:
-        "AR": "Argentina"
-    Germany:
-        "DE": "Germany"
-    Denmark:
-        "DK": "Denmark"
-    Egypt:
-        "EG": "Egypt"
-    Spain:
-        "ES": "Spain"
-    Morocco:
-        "MA": "Morocco"
-    SaudiArabia:
-        "SA": "Saudi Arabia"
-    Russia:
-        "RU": "Russia"
-    Ukraine:
-        "UA": "Ukraine"
-    Kazakhstan:
-        "KZ": "Kazakhstan"
-    Algeria:
-        "DZ": "Algeria"
-    Tunisia:
-        "TN": "Tunisia"
+  TRACES:
+    "AU": "Australia"
+    "AR": "Argentina"
+    "DE": "Germany"
+    "DK": "Denmark"
+    "DZ": "Algeria"
+    "EG": "Egypt"
+    "ES": "Spain"
+    "MA": "Morocco"
+    "SA": "Saudi Arabia"
+    "TN": "Tunisia"
+    "RU": "Russia"
+    "UA": "Ukraine"
+    "KZ": "Kazakhstan"
+  Australia:
+    "AU": "Australia"
+  Argentina:
+    "AR": "Argentina"
+  Germany:
+    "DE": "Germany"
+  Denmark:
+    "DK": "Denmark"
+  Egypt:
+    "EG": "Egypt"
+  Spain:
+    "ES": "Spain"
+  Morocco:
+    "MA": "Morocco"
+  SaudiArabia:
+    "SA": "Saudi Arabia"
+  Russia:
+    "RU": "Russia"
+  Ukraine:
+    "UA": "Ukraine"
+  Kazakhstan:
+    "KZ": "Kazakhstan"
+  Algeria:
+    "DZ": "Algeria"
+  Tunisia:
+    "TN": "Tunisia"
 
 detour_factors:
-    transmission_line: 1.2
-    pipeline: 1.4
-    shipping: 1.
+  transmission_line: 1.2
+  pipeline: 1.4
+  shipping: 1.
 
 GlobalEnergyGIS:
     # Download GEGIS data files and set home dir for workflow
-    init_gegis: False
-    base_dir: "resources/GEGIS/"
-    era_year: 2013
-    
-    synthetic_demand:
+  init_gegis: false
+  base_dir: "resources/GEGIS/"
+  era_year: 2013
+
+  synthetic_demand:
         # SSP scenario and radiative forcing target to base prediction upon
-        ssp_scenario: "ssp2-34"
+    ssp_scenario: "ssp2-34"
         # Year to predict demand for
-        ssp_year: 2050
-    solar:
-        options:
-            "plant_area": 1.2
-            "pvroof_area": 0. # no rooftop PV
-            "pv_density": 1.4523729 # Correspondes to 1.7 MW/km^2 *.854337 (correction factor from PyPSA-EUR)
-            "csp_density": 0. # no CSP
-            "distance_elec_access": 400
-            "classB_threshold": 0.001
-            "downsample_masks": 2
-        classes:
-            min: [ 0.   , 0.005, 0.01 , 0.015, 0.02 , 0.025, 0.03 , 0.035, 0.04 ,
-                   0.045, 0.05 , 0.055, 0.06 , 0.065, 0.07 , 0.075, 0.08 , 0.085,
-                   0.09 , 0.095, 0.1  , 0.105, 0.11 , 0.115, 0.12 , 0.125, 0.13 ,
-                   0.135, 0.14 , 0.145, 0.15 , 0.155, 0.16 , 0.165, 0.17 , 0.175,
-                   0.18 , 0.185, 0.19 , 0.195, 0.2  , 0.205, 0.21 , 0.215, 0.22 ,
-                   0.225, 0.23 , 0.235, 0.24 , 0.245, 0.25 , 0.255, 0.26 , 0.265,
-                   0.27 , 0.275, 0.28 , 0.285, 0.29 , 0.295, 0.3  , 0.305, 0.31 ,
-                   0.315, 0.32 , 0.325, 0.33 , 0.335, 0.34 , 0.345, 0.35 , 0.355,
-                   0.36 , 0.365, 0.37 , 0.375, 0.38 , 0.385, 0.39 , 0.395, 0.4  ,
-                   0.405, 0.41 , 0.415, 0.42 , 0.425, 0.43 , 0.435, 0.44 , 0.445,
-                   0.45 , 0.455, 0.46 , 0.465, 0.47 , 0.475, 0.48 , 0.485, 0.49 ,
-                   0.495]
-            max: [ 0.005, 0.01 , 0.015, 0.02 , 0.025, 0.03 , 0.035, 0.04 , 0.045,
-                   0.05 , 0.055, 0.06 , 0.065, 0.07 , 0.075, 0.08 , 0.085, 0.09 ,
-                   0.095, 0.1  , 0.105, 0.11 , 0.115, 0.12 , 0.125, 0.13 , 0.135,
-                   0.14 , 0.145, 0.15 , 0.155, 0.16 , 0.165, 0.17 , 0.175, 0.18 ,
-                   0.185, 0.19 , 0.195, 0.2  , 0.205, 0.21 , 0.215, 0.22 , 0.225,
-                   0.23 , 0.235, 0.24 , 0.245, 0.25 , 0.255, 0.26 , 0.265, 0.27 ,
-                   0.275, 0.28 , 0.285, 0.29 , 0.295, 0.3  , 0.305, 0.31 , 0.315,
-                   0.32 , 0.325, 0.33 , 0.335, 0.34 , 0.345, 0.35 , 0.355, 0.36 ,
-                   0.365, 0.37 , 0.375, 0.38 , 0.385, 0.39 , 0.395, 0.4  , 0.405,
-                   0.41 , 0.415, 0.42 , 0.425, 0.43 , 0.435, 0.44 , 0.445, 0.45 ,
-                   0.455, 0.46 , 0.465, 0.47 , 0.475, 0.48 , 0.485, 0.49 , 0.495,
-                   1.   ]
-    wind:
-        options:
-            "area_onshore": 1.2
-            "area_offshore": 1.2
-            "onshore_density": 3.
-            "offshore_density": 3.
-            "distance_elec_access": 400
-            "classB_threshold": 0.001
-        classes:
-            min: [  0. ,  0.3,  0.6,  0.9,  1.2,  1.5,  1.8,  2.1,  2.4,  2.7,  3. ,
-                    3.3,  3.6,  3.9,  4.2,  4.5,  4.8,  5.1,  5.4,  5.7,  6. ,  6.3,
-                    6.6,  6.9,  7.2,  7.5,  7.8,  8.1,  8.4,  8.7,  9. ,  9.3,  9.6,
-                    9.9, 10.2, 10.5, 10.8, 11.1, 11.4, 11.7, 12. , 12.3, 12.6, 12.9,
-                   13.2, 13.5, 13.8, 14.1, 14.4, 14.7, 15. , 15.3, 15.6, 15.9, 16.2,
-                   16.5, 16.8, 17.1, 17.4, 17.7, 18. , 18.3, 18.6, 18.9, 19.2, 19.5,
-                   19.8, 20.1, 20.4, 20.7, 21. , 21.3, 21.6, 21.9, 22.2, 22.5, 22.8,
-                   23.1, 23.4, 23.7, 24. , 24.3, 24.6, 24.9, 25.2, 25.5, 25.8, 26.1,
-                   26.4, 26.7, 27. , 27.3, 27.6, 27.9, 28.2, 28.5, 28.8, 29.1, 29.4,
-                   29.7]
-            max: [  0.3,  0.6,  0.9,  1.2,  1.5,  1.8,  2.1,  2.4,  2.7,  3. ,  3.3,
-                    3.6,  3.9,  4.2,  4.5,  4.8,  5.1,  5.4,  5.7,  6. ,  6.3,  6.6,
-                    6.9,  7.2,  7.5,  7.8,  8.1,  8.4,  8.7,  9. ,  9.3,  9.6,  9.9,
-                   10.2, 10.5, 10.8, 11.1, 11.4, 11.7, 12. , 12.3, 12.6, 12.9, 13.2,
-                   13.5, 13.8, 14.1, 14.4, 14.7, 15. , 15.3, 15.6, 15.9, 16.2, 16.5,
-                   16.8, 17.1, 17.4, 17.7, 18. , 18.3, 18.6, 18.9, 19.2, 19.5, 19.8,
-                   20.1, 20.4, 20.7, 21. , 21.3, 21.6, 21.9, 22.2, 22.5, 22.8, 23.1,
-                   23.4, 23.7, 24. , 24.3, 24.6, 24.9, 25.2, 25.5, 25.8, 26.1, 26.4,
-                   26.7, 27. , 27.3, 27.6, 27.9, 28.2, 28.5, 28.8, 29.1, 29.4, 29.7,
-                   99. ]
-                
+    ssp_year: 2050
+  solar:
+    options:
+      "plant_area": 1.2
+      "pvroof_area": 0.       # no rooftop PV
+      "pv_density": 1.4523729       # Correspondes to 1.7 MW/km^2 *.854337 (correction factor from PyPSA-EUR)
+      "csp_density": 0.       # no CSP
+      "distance_elec_access": 400
+      "classB_threshold": 0.001
+      "downsample_masks": 2
+    classes:
+      min: [0., 0.005, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05, 0.055, 0.06, 0.065, 0.07, 0.075, 0.08, 0.085, 0.09, 0.095, 0.1, 0.105, 0.11, 0.115, 0.12, 0.125, 0.13, 0.135, 0.14, 0.145, 0.15, 0.155, 0.16, 0.165, 0.17, 0.175, 0.18, 0.185, 0.19, 0.195, 0.2, 0.205, 0.21, 0.215, 0.22, 0.225, 0.23, 0.235, 0.24, 0.245, 0.25, 0.255, 0.26, 0.265, 0.27, 0.275, 0.28, 0.285, 0.29, 0.295, 0.3, 0.305, 0.31, 0.315, 0.32, 0.325, 0.33, 0.335, 0.34, 0.345, 0.35, 0.355, 0.36, 0.365, 0.37, 0.375, 0.38, 0.385, 0.39, 0.395, 0.4, 0.405, 0.41, 0.415, 0.42, 0.425, 0.43, 0.435, 0.44, 0.445, 0.45, 0.455, 0.46, 0.465, 0.47, 0.475, 0.48, 0.485, 0.49, 0.495]
+      max: [0.005, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04, 0.045, 0.05, 0.055, 0.06, 0.065, 0.07, 0.075, 0.08, 0.085, 0.09, 0.095, 0.1, 0.105, 0.11, 0.115, 0.12, 0.125, 0.13, 0.135, 0.14, 0.145, 0.15, 0.155, 0.16, 0.165, 0.17, 0.175, 0.18, 0.185, 0.19, 0.195, 0.2, 0.205, 0.21, 0.215, 0.22, 0.225, 0.23, 0.235, 0.24, 0.245, 0.25, 0.255, 0.26, 0.265, 0.27, 0.275, 0.28, 0.285, 0.29, 0.295, 0.3, 0.305, 0.31, 0.315, 0.32, 0.325, 0.33, 0.335, 0.34, 0.345, 0.35, 0.355, 0.36, 0.365, 0.37, 0.375, 0.38, 0.385, 0.39, 0.395, 0.4, 0.405, 0.41, 0.415, 0.42, 0.425, 0.43, 0.435, 0.44, 0.445, 0.45, 0.455, 0.46, 0.465, 0.47, 0.475, 0.48, 0.485, 0.49, 0.495, 1.]
+  wind:
+    options:
+      "area_onshore": 1.2
+      "area_offshore": 1.2
+      "onshore_density": 3.
+      "offshore_density": 3.
+      "distance_elec_access": 400
+      "classB_threshold": 0.001
+    classes:
+      min: [0., 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3., 3.3, 3.6, 3.9, 4.2, 4.5, 4.8, 5.1, 5.4, 5.7, 6., 6.3, 6.6, 6.9, 7.2, 7.5, 7.8, 8.1, 8.4, 8.7, 9., 9.3, 9.6, 9.9, 10.2, 10.5, 10.8, 11.1, 11.4, 11.7, 12., 12.3, 12.6, 12.9, 13.2, 13.5, 13.8, 14.1, 14.4, 14.7, 15., 15.3, 15.6, 15.9, 16.2, 16.5, 16.8, 17.1, 17.4, 17.7, 18., 18.3, 18.6, 18.9, 19.2, 19.5, 19.8, 20.1, 20.4, 20.7, 21., 21.3, 21.6, 21.9, 22.2, 22.5, 22.8, 23.1, 23.4, 23.7, 24., 24.3, 24.6, 24.9, 25.2, 25.5, 25.8, 26.1, 26.4, 26.7, 27., 27.3, 27.6, 27.9, 28.2, 28.5, 28.8, 29.1, 29.4, 29.7]
+      max: [0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3., 3.3, 3.6, 3.9, 4.2, 4.5, 4.8, 5.1, 5.4, 5.7, 6., 6.3, 6.6, 6.9, 7.2, 7.5, 7.8, 8.1, 8.4, 8.7, 9., 9.3, 9.6, 9.9, 10.2, 10.5, 10.8, 11.1, 11.4, 11.7, 12., 12.3, 12.6, 12.9, 13.2, 13.5, 13.8, 14.1, 14.4, 14.7, 15., 15.3, 15.6, 15.9, 16.2, 16.5, 16.8, 17.1, 17.4, 17.7, 18., 18.3, 18.6, 18.9, 19.2, 19.5, 19.8, 20.1, 20.4, 20.7, 21., 21.3, 21.6, 21.9, 22.2, 22.5, 22.8, 23.1, 23.4, 23.7, 24., 24.3, 24.6, 24.9, 25.2, 25.5, 25.8, 26.1, 26.4, 26.7, 27., 27.3, 27.6, 27.9, 28.2, 28.5, 28.8, 29.1, 29.4, 29.7, 99.]
 solver:
-    default:
-        name: gurobi
-        Presolve: 1       # Conservative presolving; Aggressive consumes too much memory
-        BarHomogeneous: 1 # Use homogeneous barrier if standard does not converge
-        PreDual: 2        # form primal and dual during presolve, heuristically choose
-        method: 2         # barrier
-        crossover: 0      # do not use crossover
-        BarConvTol: 1.e-5
-        FeasibilityTol: 1.e-5
-        OptimalityTol: 1.e-5
-        threads: 8
-        seed: 10          # Consistent seed for all plattforms
-    numeric-focus:
-        name: gurobi
-        Presolve: 1       # 2=Aggressive presolving
-        PreDual: 0        # form primal and dual during presolve, heuristically choose
-        AggFill: 0
-        NumericFocus: 3   # Favour numeric stability over speed
-        method: 2         # barrier
-        crossover: 0      # do not use crossover
-        BarHomogeneous: 1 # Use homogeneous barrier if standard does not converge
-        ScaleFlag: 3
-        BarConvTol: 1.e-5
-        FeasibilityTol: 1.e-5
-        OptimalityTol: 1.e-5
-        ObjScale: 100
-        seed: 10          # Consistent seed for all plattforms
-    fallback:
+  default:
+    name: gurobi
+    Presolve: 1           # Conservative presolving; Aggressive consumes too much memory
+    BarHomogeneous: 1     # Use homogeneous barrier if standard does not converge
+    PreDual: 2            # form primal and dual during presolve, heuristically choose
+    method: 2             # barrier
+    crossover: 0          # do not use crossover
+    BarConvTol: 1.e-5
+    FeasibilityTol: 1.e-5
+    OptimalityTol: 1.e-5
+    threads: 8
+    seed: 10              # Consistent seed for all plattforms
+  numeric-focus:
+    name: gurobi
+    Presolve: 1           # 2=Aggressive presolving
+    PreDual: 0            # form primal and dual during presolve, heuristically choose
+    AggFill: 0
+    NumericFocus: 3       # Favour numeric stability over speed
+    method: 2             # barrier
+    crossover: 0          # do not use crossover
+    BarHomogeneous: 1     # Use homogeneous barrier if standard does not converge
+    ScaleFlag: 3
+    BarConvTol: 1.e-5
+    FeasibilityTol: 1.e-5
+    OptimalityTol: 1.e-5
+    ObjScale: 100
+    seed: 10              # Consistent seed for all plattforms
+  fallback:
         # Use gurobi defaults
-        name: gurobi
-        crossover: 0
-        method: 2         # barrier
-        BarHomogeneous: 1 # Use homogeneous barrier if standard does not converge
-        BarConvTol: 1.e-5
-        FeasibilityTol: 1.e-5
-        OptimalityTol: 1.e-5
-        seed: 10          # Consistent seed for all plattforms
+    name: gurobi
+    crossover: 0
+    method: 2             # barrier
+    BarHomogeneous: 1     # Use homogeneous barrier if standard does not converge
+    BarConvTol: 1.e-5
+    FeasibilityTol: 1.e-5
+    OptimalityTol: 1.e-5
+    seed: 10              # Consistent seed for all plattforms

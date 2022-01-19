@@ -4,222 +4,190 @@
 
 # Change scenario here or by using the --config scenario=... command line flag
 scenarios:
-    low-elec-cost:
-        YEARS: [2030,2040,2050]
-        IMPORTERS: ["DE"]
-        ESCS:      ["hvdc-to-h2",
-                    "pipeline-h2","pipeline-ch4",
-                    "shipping-lh2","shipping-lch4","shipping-meoh","shipping-lnh3","shipping-lohc","shipping-ftfuel",
-                    "shipping-lch4-to-h2","shipping-meoh-to-h2","shipping-lnh3-to-h2","pipeline-ch4-to-h2"]
-        EXPORTERS: ["AU","AR","ES","EG","MA","SA","DK","DE"]
-        
-        modifiers:
-            CAPEX_electrolysis: 0.3
+  low-elec-cost:
+    YEARS: [2030, 2040, 2050]
+    IMPORTERS: ["DE"]
+    ESCS: ["hvdc-to-h2", "pipeline-h2", "pipeline-ch4", "shipping-lh2", "shipping-lch4", "shipping-meoh", "shipping-lnh3", "shipping-lohc", "shipping-ftfuel", "shipping-lch4-to-h2", "shipping-meoh-to-h2", "shipping-lnh3-to-h2", "pipeline-ch4-to-h2"]
+    EXPORTERS: ["AU", "AR", "ES", "EG", "MA", "SA", "DK", "DE"]
+    modifiers:
+      CAPEX_electrolysis: 0.3
 
-    sensitivity-1:
-        YEARS: [2030]
-        IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2","shipping-meoh"]
-        EXPORTERS: ["ES"]
-        
-        modifiers:
-            wacc: 0.8
-    sensitivity-1p:
-        YEARS: [2030]
-        IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2","shipping-meoh"]
-        EXPORTERS: ["ES"]
-        
-        modifiers:
-            wacc: 1.2
-    sensitivity-2:
-        YEARS: [2030]
-        IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2","shipping-meoh"]
-        EXPORTERS: ["ES"]
-        
-        modifiers:
-            load: 0.8
-    sensitivity-2p:
-        YEARS: [2030]
-        IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2","shipping-meoh"]
-        EXPORTERS: ["ES"]
-        
-        modifiers:
-            load: 1.2
-    sensitivity-3:
-        YEARS: [2030]
-        IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2","shipping-meoh"]
-        EXPORTERS: ["ES"]
-        
-        modifiers:
-            synthetic_demand: 0.8
-    sensitivity-3p:
-        YEARS: [2030]
-        IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2","shipping-meoh"]
-        EXPORTERS: ["ES"]
-        
-        modifiers:
-            synthetic_demand: 1.2
-    sensitivity-4:
-        YEARS: [2030]
-        IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2","shipping-meoh"]
-        EXPORTERS: ["ES"]
-        
-        modifiers:
-            CAPEX_RES: 0.8
-    sensitivity-4p:
-        YEARS: [2030]
-        IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2","shipping-meoh"]
-        EXPORTERS: ["ES"]
-        
-        modifiers:
-            CAPEX_RES: 1.2
-    sensitivity-5:
-        YEARS: [2030]
-        IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2","shipping-meoh"]
-        EXPORTERS: ["ES"]
-        
-        modifiers:
-            CAPEX_battery: 0.8
-    sensitivity-5p:
-        YEARS: [2030]
-        IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2","shipping-meoh"]
-        EXPORTERS: ["ES"]
-        
-        modifiers:
-            CAPEX_battery: 1.2
-    sensitivity-6:
-        YEARS: [2030]
-        IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2","shipping-meoh"]
-        EXPORTERS: ["ES"]
-        
-        modifiers:
-            CAPEX_electrolysis: 0.8
-    sensitivity-6p:
-        YEARS: [2030]
-        IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2","shipping-meoh"]
-        EXPORTERS: ["ES"]
-        
-        modifiers:
-            CAPEX_electrolysis: 1.2
-            
-    sensitivity-7:
-        YEARS: [2030]
-        IMPORTERS: ["DE"]
-        ESCS:      ["shipping-meoh"]
-        EXPORTERS: ["ES"]
-        
-        modifiers:
-            CAPEX_MeOHSynthesis: 0.8
-            
-    sensitivity-7p:
-        YEARS: [2030]
-        IMPORTERS: ["DE"]
-        ESCS:      ["shipping-meoh"]
-        EXPORTERS: ["ES"]
-        
-        modifiers:
-            CAPEX_MeOHSynthesis: 1.2
-            
-    sensitivity-8:
-        YEARS: [2030]
-        IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2"]
-        EXPORTERS: ["ES"]
-        
-        modifiers:
-            CAPEX_pipeline: 0.8
-            
-    sensitivity-8p:
-        YEARS: [2030]
-        IMPORTERS: ["DE"]
-        ESCS:      ["pipeline-h2"]
-        EXPORTERS: ["ES"]
-        
-        modifiers:
-            CAPEX_pipeline: 1.2
-            
-    lowhomogeneous:
+  sensitivity-1:
+    YEARS: [2030]
+    IMPORTERS: ["DE"]
+    ESCS: ["pipeline-h2", "shipping-meoh"]
+    EXPORTERS: ["ES"]
+    modifiers:
+      wacc: 0.8
+  sensitivity-1p:
+    YEARS: [2030]
+    IMPORTERS: ["DE"]
+    ESCS: ["pipeline-h2", "shipping-meoh"]
+    EXPORTERS: ["ES"]
+    modifiers:
+      wacc: 1.2
+  sensitivity-2:
+    YEARS: [2030]
+    IMPORTERS: ["DE"]
+    ESCS: ["pipeline-h2", "shipping-meoh"]
+    EXPORTERS: ["ES"]
+    modifiers:
+      load: 0.8
+  sensitivity-2p:
+    YEARS: [2030]
+    IMPORTERS: ["DE"]
+    ESCS: ["pipeline-h2", "shipping-meoh"]
+    EXPORTERS: ["ES"]
+    modifiers:
+      load: 1.2
+  sensitivity-3:
+    YEARS: [2030]
+    IMPORTERS: ["DE"]
+    ESCS: ["pipeline-h2", "shipping-meoh"]
+    EXPORTERS: ["ES"]
+    modifiers:
+      synthetic_demand: 0.8
+  sensitivity-3p:
+    YEARS: [2030]
+    IMPORTERS: ["DE"]
+    ESCS: ["pipeline-h2", "shipping-meoh"]
+    EXPORTERS: ["ES"]
+    modifiers:
+      synthetic_demand: 1.2
+  sensitivity-4:
+    YEARS: [2030]
+    IMPORTERS: ["DE"]
+    ESCS: ["pipeline-h2", "shipping-meoh"]
+    EXPORTERS: ["ES"]
+    modifiers:
+      CAPEX_RES: 0.8
+  sensitivity-4p:
+    YEARS: [2030]
+    IMPORTERS: ["DE"]
+    ESCS: ["pipeline-h2", "shipping-meoh"]
+    EXPORTERS: ["ES"]
+    modifiers:
+      CAPEX_RES: 1.2
+  sensitivity-5:
+    YEARS: [2030]
+    IMPORTERS: ["DE"]
+    ESCS: ["pipeline-h2", "shipping-meoh"]
+    EXPORTERS: ["ES"]
+    modifiers:
+      CAPEX_battery: 0.8
+  sensitivity-5p:
+    YEARS: [2030]
+    IMPORTERS: ["DE"]
+    ESCS: ["pipeline-h2", "shipping-meoh"]
+    EXPORTERS: ["ES"]
+    modifiers:
+      CAPEX_battery: 1.2
+  sensitivity-6:
+    YEARS: [2030]
+    IMPORTERS: ["DE"]
+    ESCS: ["pipeline-h2", "shipping-meoh"]
+    EXPORTERS: ["ES"]
+    modifiers:
+      CAPEX_electrolysis: 0.8
+  sensitivity-6p:
+    YEARS: [2030]
+    IMPORTERS: ["DE"]
+    ESCS: ["pipeline-h2", "shipping-meoh"]
+    EXPORTERS: ["ES"]
+    modifiers:
+      CAPEX_electrolysis: 1.2
+
+  sensitivity-7:
+    YEARS: [2030]
+    IMPORTERS: ["DE"]
+    ESCS: ["shipping-meoh"]
+    EXPORTERS: ["ES"]
+    modifiers:
+      CAPEX_MeOHSynthesis: 0.8
+
+  sensitivity-7p:
+    YEARS: [2030]
+    IMPORTERS: ["DE"]
+    ESCS: ["shipping-meoh"]
+    EXPORTERS: ["ES"]
+    modifiers:
+      CAPEX_MeOHSynthesis: 1.2
+
+  sensitivity-8:
+    YEARS: [2030]
+    IMPORTERS: ["DE"]
+    ESCS: ["pipeline-h2"]
+    EXPORTERS: ["ES"]
+    modifiers:
+      CAPEX_pipeline: 0.8
+
+  sensitivity-8p:
+    YEARS: [2030]
+    IMPORTERS: ["DE"]
+    ESCS: ["pipeline-h2"]
+    EXPORTERS: ["ES"]
+    modifiers:
+      CAPEX_pipeline: 1.2
+
+  lowhomogeneous:
         #+++ used in Snakefile +++ #
         # Year used to select cost assumptions
-        YEARS: [2030,2040,2050]
-        
-        IMPORTERS: ["DE"]
-        ESCS:      ["hvdc-to-h2",
-                    "pipeline-h2","pipeline-ch4",
-                    "shipping-lh2","shipping-lch4","shipping-meoh","shipping-lnh3","shipping-lohc","shipping-ftfuel",
-                    "shipping-lch4-to-h2","shipping-meoh-to-h2","shipping-lnh3-to-h2","pipeline-ch4-to-h2"]
-        EXPORTERS: ["AU","AR","ES","EG","MA","SA","DK","DE"]
+    YEARS: [2030, 2040, 2050]
+    IMPORTERS: ["DE"]
+    ESCS: ["hvdc-to-h2", "pipeline-h2", "pipeline-ch4", "shipping-lh2", "shipping-lch4", "shipping-meoh", "shipping-lnh3", "shipping-lohc", "shipping-ftfuel", "shipping-lch4-to-h2", "shipping-meoh-to-h2", "shipping-lnh3-to-h2", "pipeline-ch4-to-h2"]
+    EXPORTERS: ["AU", "AR", "ES", "EG", "MA", "SA", "DK", "DE"]
         #--- used in Snakefile ---
 
         # WACC scenario assumptions, see "data/wacc.csv"
         # Currently supported: homogeneous, irena, inhomogeneous
-        wacc: "lowhomogeneous"
-        
-    pypsa-eur-sec-imports:
+    wacc: "lowhomogeneous"
+  pypsa-eur-sec-imports:
         #+++ used in Snakefile +++ #
         # Year used to select cost assumptions
-        YEARS: [2030]
-        
-        IMPORTERS: ["ES","IT","GR","BG","DE"]
-        ESCS:      ["hvdc-to-h2","pipeline-h2","shipping-lh2","shipping-lch4","shipping-ftfuel"]
-        EXPORTERS: ["MA","SA","EG","AR","AU","RU","UA","KZ"]
+    YEARS: [2030]
+    IMPORTERS: ["ES", "IT", "GR", "BG", "DE"]
+    ESCS: ["hvdc-to-h2", "pipeline-h2", "shipping-lh2", "shipping-lch4", "shipping-ftfuel"]
+    EXPORTERS: ["MA", "SA", "EG", "AR", "AU", "RU", "UA", "KZ"]
         #--- used in Snakefile ---
 
         # WACC scenario assumptions, see "data/wacc.csv"
         # Currently supported: homogeneous, irena, inhomogeneous
-        wacc: "homogeneous-7.5"
-            
-    default: # All scenarios are based on this scenario and may overwrite the here specified parameters
+    wacc: "homogeneous-7.5"
+  default:   # All scenarios are based on this scenario and may overwrite the here specified parameters
         #+++ used in Snakefile +++ #
         # Year used to select cost assumptions
-        YEARS: [2030,2040,2050]
-        
-        IMPORTERS: ["DE"]
-        ESCS:      ["hvdc-to-h2",
-                    "pipeline-h2","pipeline-ch4",
-                    "shipping-lh2","shipping-lch4","shipping-meoh","shipping-lnh3","shipping-lohc","shipping-ftfuel",
-                    "shipping-lch4-to-h2","shipping-meoh-to-h2","shipping-lnh3-to-h2","pipeline-ch4-to-h2"]
-        EXPORTERS: ["AU","AR","ES","EG","MA","SA","DK","DE"]
+    YEARS: [2030, 2040, 2050]
+    IMPORTERS: ["DE"]
+    ESCS: ["hvdc-to-h2", "pipeline-h2", "pipeline-ch4", "shipping-lh2", "shipping-lch4", "shipping-meoh", "shipping-lnh3", "shipping-lohc", "shipping-ftfuel", "shipping-lch4-to-h2", "shipping-meoh-to-h2", "shipping-lnh3-to-h2", "pipeline-ch4-to-h2"]
+    EXPORTERS: ["AU", "AR", "ES", "EG", "MA", "SA", "DK", "DE"]
         #--- used in Snakefile ---
 
         # WACC scenario assumptions, see "data/wacc.csv"
         # Currently supported: homogeneous, irena, inhomogeneous
-        wacc: "homogeneous"
+    wacc: "homogeneous"
 
-        import_profile: "constant"
-        import_buffer: "annually"
-        
+    import_profile: "constant"
+    import_buffer: "annually"
+
         # Synthetic electricity demand (local for the exporter) can either be automatically
         # generated using GEGIS or custom values provided via "data/overwrite/demand.csv" .
-        synthetic_demand: gegis # 'gegis' or 'custom'
-        
+    synthetic_demand: gegis     # 'gegis' or 'custom'
         # Set default marginal_cost and capital_cost for any component - generator, link, store -
         # if the cost is == 0
         # Should help to bring more stability into the model
-        capital_cost:
-            default: 0.1
-        marginal_cost:
-            default: 0.0
-        
+    capital_cost:
+      default: 0.1
+    marginal_cost:
+      default: 0.0
+
         # Modify certain aspects of the models, for sensitivity analysis
         # Modification factor in pu
-        modifiers:
-            wacc: 1
-            load_demand: 1         # Related to load (import demand)
-            synthetic_demand: 1    # Amount of synthetic demand (domestic demand) used in supply curve reservation
-            CAPEX_RES: 1           # CAPEX of RES: PV, onshore and offshore wind
-            CAPEX_battery: 1       # CAPEX of batteries and battery inverters
-            CAPEX_electrolysis: 1  # CAPEX of electrolysis
-            CAPEX_MeOHSynthesis: 1 # CAPEX related to methanol synthesis
-            CAPEX_pipeline: 1      # CAPEX of pipeline and related technologies (H2 and CH4, submarine and onland, pipeline and pipeline compressors)
+    modifiers:
+      wacc: 1
+      load_demand: 1               # Related to load (import demand)
+      synthetic_demand: 1          # Amount of synthetic demand (domestic demand) used in supply curve reservation
+      CAPEX_RES: 1                 # CAPEX of RES: PV, onshore and offshore wind
+      CAPEX_battery: 1             # CAPEX of batteries and battery inverters
+      CAPEX_electrolysis: 1        # CAPEX of electrolysis
+      CAPEX_MeOHSynthesis: 1       # CAPEX related to methanol synthesis
+      CAPEX_pipeline: 1            # CAPEX of pipeline and related technologies (H2 and CH4, submarine and onland, pipeline and pipeline compressors)

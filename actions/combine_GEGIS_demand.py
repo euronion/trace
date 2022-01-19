@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 # SPDX-FileCopyrightText: 2020-2021 Johannes Hampp
 #
@@ -6,17 +7,15 @@
 
 # coding: utf-8
 
-from _helpers import configure_logging
+import logging
+from pathlib import Path
 
 import h5py
-import tables  # Required for some mysterious reason for h5py to work properly
 import numpy as np
-from pathlib import Path
 import pandas as pd
+import tables  # Required for some mysterious reason for h5py to work properly
 import xarray as xr
-
 from _helpers import configure_logging
-import logging
 
 logger = logging.getLogger(__name__)
 
