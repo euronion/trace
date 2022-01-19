@@ -1,28 +1,46 @@
 name: trace
 channels:
-  - bioconda
-  - https://conda.anaconda.org/gurobi
   - conda-forge
-  - defaults
+  - gurobi
+  - bioconda
 dependencies:
   - python
-  - pypsa
-  - coincbc
+  - ipython
+  - ipykernel
+
+  # Managing data
+  - xarray
+  - dask
+  - pandas
+  - geopandas
+  - numpy
+
+  # Visualisation
   - matplotlib
   - seaborn
-  - xarray
-  - plotly_express
-  - snakemake
-  - notebook
-  - h5py
-  - gurobi
-  - snakefmt
-  - ca-certificates
-  - certifi
-  - openssl
-  - pre-commit
   - hvplot
-  - selenium
-  - firefox
-  - geckodriver
-  - pycountry
+
+  # Modelling framework
+  - pypsa
+  - atlite
+
+  # Data retrieval
+  - cdsapi
+
+  # Auxiliary packages for atlite (explicitly required from conda-forge while it is installed via pip)
+  - rasterio
+  - fiona
+  - bottleneck
+
+  # Workflow management
+  - snakemake
+  - snakefmt
+
+  # Read Julia files
+  - h5py
+
+  # Solver
+  - gurobi
+
+  # Code style and quality checks 
+  - pre-commit
