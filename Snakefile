@@ -41,6 +41,7 @@ def get_scenario(scenario_name):
 
 
 include: "rules/gegis.smk"
+include: "rules/renewables.smk"
 include: "rules/esc_construction.smk"
 include: "rules/solving.smk"
 include: "rules/results.smk"
