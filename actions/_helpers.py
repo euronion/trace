@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # SPDX-FileCopyrightText: 2020-2021 Johannes Hampp
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
@@ -25,8 +26,9 @@ def calculate_annual_investment(name, r, fn):
     """
 
     import logging
-    import pandas as pd
     from pathlib import Path
+
+    import pandas as pd
 
     fn = Path(fn)
     assert fn.exists()

@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 # SPDX-FileCopyrightText: 2020-2021 Johannes Hampp
 #
@@ -6,12 +7,13 @@
 
 # coding: utf-8
 
-from pathlib import Path
+import json
 import shutil
 import tarfile
 import tempfile
+from pathlib import Path
+
 import yaml
-import json
 
 if __name__ == "__main__":
 

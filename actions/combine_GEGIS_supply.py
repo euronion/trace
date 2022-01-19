@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 # SPDX-FileCopyrightText: 2020-2021 Johannes Hampp
 #
@@ -6,16 +7,16 @@
 
 # coding: utf-8
 
-import h5py
-import numpy as np
+import logging
 
 # import tables # Need this, otherwise errors from h5py show up (no idea why; SO be praised)
 from pathlib import Path
+
+import h5py
+import numpy as np
 import pandas as pd
 import xarray as xr
-
 from _helpers import configure_logging
-import logging
 
 logger = logging.getLogger(__name__)
 
@@ -58,7 +59,7 @@ if __name__ == "__main__":
         "solar_overlap_areaB": ["class_1", "class_2", "region"],
     }
 
-    # List as cotainer for single DataArrays
+    # List as container for single DataArrays
     das = []
 
     # Open single files consecutively
@@ -83,7 +84,7 @@ if __name__ == "__main__":
 
         with h5py.File(fn, "r") as f:
 
-            # Read each variable seperatley, convert to DataArray
+            # Read each variable separatley, convert to DataArray
 
             for k, v in f.items():
                 das.append(
