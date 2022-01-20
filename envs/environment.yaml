@@ -1,7 +1,7 @@
 name: trace
 channels:
-  - bioconda
   - conda-forge
+  - bioconda
   - https://conda.anaconda.org/gurobi
 dependencies:
   - python
@@ -14,6 +14,7 @@ dependencies:
   - pandas
   - geopandas
   - numpy
+  - gdal
 
   # Visualisation
   - matplotlib
