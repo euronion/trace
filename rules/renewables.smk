@@ -52,6 +52,36 @@ rule download_gebco:
         output_folder = Path(output["gebco"]).parent
         shell("unzip {output.zip} -d {output_folder}")
 
+# Downloading Marine protected area database from WDPA
+# Website: https://www.protectedplanet.net/en/thematic-areas/marine-protected-areas
+rule download_wdpa_marine:
+    input:
+        HTTP.remote(
+            "d1gam3xoknrgr2.cloudfront.net/current/WDPA_WDOECM_Jan2022_Public_marine_shp.zip",
+            static=True,
+        ),
+    output:
+        zip="resources/WDPA_WDOECM_Jan2022_marine_shp.zip",
+        folder=directory("resources/wdpa_marine/"),
+    run:
+        shell("mv {input} {output.zip}")
+        shell("unzip {output.zip} -d {output.folder}")
+
+# Downloading Marine protected area database from WDPA
+# Website: https://www.protectedplanet.net/en/thematic-areas/wdpa
+rule download_wdpa:
+    input:
+        HTTP.remote(
+            "d1gam3xoknrgr2.cloudfront.net/current/WDPA_Jan2022_Public_shp.zip",
+            static=True,
+        ),
+    output:
+        zip="resources/WDPA_Jan2022_shp.zip",
+        folder=directory("resources/wdpa/"),
+    run:
+        shell("mv {input} {output.zip}")
+        shell("unzip {output.zip} -d {output.folder}")
+
 rule build_region_shape:
     message:
         "Creating region definition (off and onshore) for: {wildcards.region}."
