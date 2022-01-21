@@ -22,16 +22,47 @@ rule download_eez:
         output_folder = Path(output["zip"]).parent
         shell("unzip {output.zip} -d {output_folder}")
 
+# Downloading Copernicus Global Land Cover for land cover and land use:
+# Website: https://land.copernicus.eu/global/products/lc
+rule download_land_cover:
+    input:
+        HTTP.remote(
+            "zenodo.org/record/3939050/files/PROBAV_LC100_global_v3.0.1_2019-nrt_Discrete-Classification-map_EPSG-4326.tif?download=1",
+            static=True,
+        ),
+    output:
+        "resources/Copernicus_LC100_global_v3.0.1_2019-nrt_Discrete-Classification-map_EPSG-4326.tif",
+    shell:
+        "mv {input} {output}"
+
+# Downloading bathymetry data (GEBCO)
+# Website: https://www.gebco.net/data_and_products/gridded_bathymetry_data/#global
+rule download_gebco:
+    input:
+        HTTP.remote(
+            "www.bodc.ac.uk/data/open_download/gebco/gebco_2021_tid/zip",
+            additional_request_string="/",
+            static=True,
+        ),
+    output:
+        zip="resources/gebco_2021_tid.zip",
+        gebco="resources/gebco/GEBCO_2021_TID.nc",
+    run:
+        shell("mv {input} {output.zip}")
+        output_folder = Path(output["gebco"]).parent
+        shell("unzip {output.zip} -d {output_folder}")
+
 rule build_region_shape:
     message:
-        "Creating region definition for: {wildcards.region}."
+        "Creating region definition (off and onshore) for: {wildcards.region}."
     input:
         gadm="resources/gadm/gadm36_levels.gpkg",
         eez="resources/World_EEZ_v11_20191118_gpkg/eez_v11.gpkg",
     output:
-        gpkg="resources/regions/{region}.gpkg"
+        gpkg="resources/regions/{region}.gpkg",
     params:
-        region_members=lambda w: config["regions"][w["region"]]
+        region_members=lambda w: config["regions"][w["region"]],
+        offshore_proximity=lambda w: config["regions"]["offshore_proximity"],
     notebook:
         "../actions/build_region_shape.py.ipynb"
 
