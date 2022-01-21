@@ -96,13 +96,15 @@ rule build_region_shape:
     notebook:
         "../actions/build_region_shape.py.ipynb"
 
-rule build_cutout:
+rule build_region_cutout:
     message:
-        "Creating cutout: {output}."
+        "Downloading cutout for: {wildcards.region}."
     input:
-        gadm="resources/gadm/gadm36.gpkg"
+        gpkg="resources/regions/{region}.gpkg",
     output:
         cutout="resources/cutouts/{region}.nc"
+    params:
+        era5_year=config["renewables"]["era5_year"]
     notebook:
         "../actions/build_cutout.py.ipynb"
 
