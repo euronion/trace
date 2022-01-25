@@ -46,9 +46,7 @@ repos:
   rev: 1.2.3
   hooks:
     # Apply isort to Jupyter Python notebooks
-    - id: nbqa-isort
-    # Format markdown cells in Jupyter notebooks
-    - id: nbqa-md
+  - id: nbqa-isort
 
 # Do YAML formatting (before the linter checks it for misses)
 - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
