@@ -23,6 +23,7 @@ dependencies:
 
   # Modelling framework
   - pypsa
+  - pycountry
 
   # Data retrieval
   - cdsapi
