@@ -93,10 +93,13 @@ rule build_region_shape:
     params:
         region_members=lambda w: config["regions"][w["region"]],
         offshore_proximity=lambda w: config["regions"]["offshore_proximity"],
+    log:
+        python="logs/build_region_shape/{region}.log",
+        notebook="logs/build_region_shape/{region}.py.ipynb",
     notebook:
         "../actions/build_region_shape.py.ipynb"
 
-rule build_region_cutout:
+rule build_cutout:
     message:
         "Downloading cutout for: {wildcards.region}."
     input:
@@ -105,6 +108,9 @@ rule build_region_cutout:
         cutout="resources/cutouts/{region}.nc"
     params:
         era5_year=config["renewables"]["era5_year"]
+    log:
+        python="logs/build_cutout/{region}.log",
+        notebook="logs/build_cutout/{region}.py.ipynb",
     notebook:
         "../actions/build_cutout.py.ipynb"
 
