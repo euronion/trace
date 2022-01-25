@@ -57,48 +57,35 @@ scenarios:
       CAPEX_MeOHSynthesis: 1       # CAPEX related to methanol synthesis
       CAPEX_pipeline: 1            # CAPEX of pipeline and related technologies (H2 and CH4, submarine and onland, pipeline and pipeline compressors)
 
+# Weather year for which ERA5 data is used
+renewables:
+  era5_year: 2013
 
 regions:
-  TRACES:
-    "AU": "Australia"
-    "AR": "Argentina"
-    "DE": "Germany"
-    "DK": "Denmark"
-    "DZ": "Algeria"
-    "EG": "Egypt"
-    "ES": "Spain"
-    "MA": "Morocco"
-    "SA": "Saudi Arabia"
-    "TN": "Tunisia"
-    "RU": "Russia"
-    "UA": "Ukraine"
-    "KZ": "Kazakhstan"
-  Australia:
-    "AU": "Australia"
-  Argentina:
-    "AR": "Argentina"
-  Germany:
-    "DE": "Germany"
-  Denmark:
-    "DK": "Denmark"
-  Egypt:
-    "EG": "Egypt"
-  Spain:
-    "ES": "Spain"
-  Morocco:
-    "MA": "Morocco"
-  SaudiArabia:
-    "SA": "Saudi Arabia"
-  Russia:
-    "RU": "Russia"
-  Ukraine:
-    "UA": "Ukraine"
-  Kazakhstan:
-    "KZ": "Kazakhstan"
-  Algeria:
-    "DZ": "Algeria"
-  Tunisia:
-    "TN": "Tunisia"
+  # Offshore regions are automatically added for the whole country
+  # from which the regions are, as long as the offshore regions are
+  # adjacent to any of the onland regions and within a radius off
+  # <offshore_proximity> m.
+  offshore_proximity: 200000
+
+  # Region definitions rely on the GADM database (https://gadm.org)
+  # Regions are identified by their full-name in the database
+  # and may be of level 0 (country) or GADM levels 1 and 2.
+  # "Morocco": ["Laâyoune - Boujdour - Sakia El Hamra", "Tan-Tan"]
+  "Morocco": ["Morocco"]
+  "Germany": ["Germany"]
+  "Denmark": ["Denmark"]
+  "Spain": ["Spain"]
+  "Australia": ["Australia"]
+  "Argentina": ["Argentina"]
+  "Egypt": ["Egypt"]
+  "TRACES": ["Australia", "Argentina", "Germany", "Denmark", "Algeria", "Egypt", "Spain", "Morocco", "Saudi Arabia", "Tunisia", "Russia", "Ukraine", "Kazakhstan", "Australia", "Spain"]
+  "SaudiArabia": ["Saudi Arabia"]
+  "Russia": ["Russia"]
+  "Ukraine": ["Ukraine"]
+  "Kazakhstan": ["Kazakhstan"]
+  "Algeria": ["Algeria"]
+  "Tunisia": ["Tunisia"]
 
 detour_factors:
   transmission_line: 1.2
