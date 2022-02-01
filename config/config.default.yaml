@@ -61,12 +61,171 @@ scenarios:
 renewables:
   era5_year: 2013
 
+  wind_onshore:
+
+    # Part of the region to build in. Allowed values: ["onshore", "offshore"]
+    # * "onshore" = region specified by GADM boundaries
+    # * "offshore" = region specified as EEZ
+    build_in: ["onshore"]
+
+    # Offshore regions are automatically added for all countries of the region
+    # based on the countries' EEZs, as long as the offshore regions are
+    # adjacent to any of the onland regions and within a radius off
+    # <max_shore_distance> m.
+    #max_shore_distance: 1000
+
+    # Copernicus Land Cover
+    copernicus:
+      # Areas with these landcover codes are considered eligible for the RES technology
+      include_codes: [20, 30, 40, 60, 100, 111, 112, 113, 114, 115, 116, 121, 122, 123, 124, 125, 126 # Open forest, unknown
+      # 200,  # Open sea
+]
+
+      # A buffer zone with <distance_to_codes> m around the <distancing_codes> land cover
+      # codes (types) is considered not eligible for the RES technology
+      distancing_codes: [50]
+      distance_to_codes: 1000
+
+    # Maximum depth of a cell in the GEBCO map (relevant for offshore technologies)
+    #gebco: 1000
+
+    # World Database of Protected Areas
+    wdpa:
+      # PAs with one following statuses are included in the land availability analysis
+      # (excluded from the eligible areas for building RES)
+      include_status: ["Adopted", "Designated", "Established", "Inscribed", "Proposed"]
+
+      # Layers of the WDPA to consider.
+      # Polygons represent the shape and location of a PA (accurate).
+      # Points only represent an estimate location of the PA and the reported area of the PA
+      # is then used in conjungtion with the estimate location to exclude an approximate area
+      # of the PA (less accurate).
+      # Some PAs are only reported as "points". If only "polygons" are selected, then those PAs
+      # are not considered.
+      layers: ["polygons", "points"]
+
+    # World Database of Protected Marine Areas
+    wdpa_marine:
+      # MPAs with one following statuses are included in the land availability analysis
+      # (excluded from the eligible areas for building RES)
+      include_status: ["Adopted", "Designated", "Established", "Inscribed", "Proposed"]
+
+      # Same as the "layers" description for "wdpa"
+      layers: ["polygons", "points"]
+
+    # in MW/km^2
+    technical_potential: 3
+
+    # Number of quality classes into which RES layout is created based on annual capacity factor
+    number_quality_classes: 50
+
+    # Configuration used by atlite for modelling technology
+    atlite:
+      method: "wind"
+      turbine: "Vestas_V112_3MW"
+
+  wind_offshore:
+
+    # Part of the region to build in. Allowed values: ["onshore", "offshore"]
+    # * "onshore" = region specified by GADM boundaries
+    # * "offshore" = region specified as EEZ
+    build_in: ["offshore"]
+
+    # Offshore regions are automatically added for all countries of the region
+    # based on the countries' EEZs, as long as the offshore regions are
+    # adjacent to any of the onland regions and within a radius off
+    # <max_shore_distance> m.
+    max_shore_distance: 50000
+
+    # Copernicus Land Cover
+    copernicus:
+      # Areas with these landcover codes are considered eligible for the RES technology
+      include_codes: [80, 200]
+
+      # A buffer zone with <distance_to_codes> m around the <distancing_codes> land cover
+      # codes (types) is considered not eligible for the RES technology
+      distancing_codes: []
+      distance_to_codes: 1000
+
+    # Maximum depth of a cell in the GEBCO map (relevant for offshore technologies)
+    gebco:
+      max_depth: 50
+
+    # World Database of Protected Areas
+    wdpa:
+      # PAs with one following statuses are included in the land availability analysis
+      # (excluded from the eligible areas for building RES)
+      include_status: ["Adopted", "Designated", "Established", "Inscribed", "Proposed"]
+
+      # Layers of the WDPA to consider.
+      # Polygons represent the shape and location of a PA (accurate).
+      # Points only represent an estimate location of the PA and the reported area of the PA
+      # is then used in conjungtion with the estimate location to exclude an approximate area
+      # of the PA (less accurate).
+      # Some PAs are only reported as "points". If only "polygons" are selected, then those PAs
+      # are not considered.
+      layers: ["polygons", "points"]
+
+    # World Database of Protected Marine Areas
+    wdpa_marine:
+      # MPAs with one following statuses are included in the land availability analysis
+      # (excluded from the eligible areas for building RES)
+      include_status: ["Adopted", "Designated", "Established", "Inscribed", "Proposed"]
+
+      # Same as the "layers" description for "wdpa"
+      layers: ["polygons", "points"]
+
+    # in MW/km^2
+    technical_potential: 3
+
+    # Number of quality classes into which RES layout is created based on annual capacity factor
+    number_quality_classes: 50
+
+    # Configuration used by atlite for modelling technology
+    atlite:
+      method: "wind"
+      turbine: "NREL_ReferenceTurbine_5MW_offshore"
+
+  pvplant:
+    build_in: ["onshore"]
+    copernicus:
+      include_codes: [20, 30, 40, 50, 60, 90, 100]
+      distancing_codes: []
+      distance_to_codes: 0
+    wdpa:
+      include_status: ["Adopted", "Designated", "Established", "Inscribed", "Proposed"]
+      layers: ["polygons", "points"]
+    wdpa_marine:
+      include_status: ["Adopted", "Designated", "Established", "Inscribed", "Proposed"]
+      layers: ["polygons", "points"]
+    technical_potential: 1.45 # PyPSA-EUR: 1.7 * correctionfactor = 1.7*0.85 = ~1.45
+    number_quality_classes: 50
+    atlite:
+      method: "pv"
+      panel: "CSi"
+      orientation: "latitude_optimal"
+
+  csp_tower:
+    build_in: ["onshore"]
+    copernicus:
+      include_codes: [20, 30, 40, 60, 90]
+      distancing_codes: [50]
+      # Guess
+      distance_to_codes: 500
+    wdpa:
+      include_status: ["Adopted", "Designated", "Established", "Inscribed", "Proposed"]
+      layers: ["polygons", "points"]
+    wdpa_marine:
+      include_status: ["Adopted", "Designated", "Established", "Inscribed", "Proposed"]
+      layers: ["polygons", "points"]
+    # 1% of 176 190 kW/km^2 reported by Scholz (2012) in Table 4.2.1 (1% = identical factor as used for solar PV)
+    technical_potential: 1.76
+    number_quality_classes: 50
+    atlite:
+      method: "csp"
+      installation: "SAM_solar_tower"
+
 regions:
-  # Offshore regions are automatically added for the whole country
-  # from which the regions are, as long as the offshore regions are
-  # adjacent to any of the onland regions and within a radius off
-  # <offshore_proximity> m.
-  offshore_proximity: 200000
 
   # Region definitions rely on the GADM database (https://gadm.org)
   # Regions are identified by their full-name in the database

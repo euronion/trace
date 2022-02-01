@@ -45,13 +45,13 @@ rule download_land_cover:
 rule download_gebco:
     input:
         HTTP.remote(
-            "www.bodc.ac.uk/data/open_download/gebco/gebco_2021_tid/zip",
+            "www.bodc.ac.uk/data/open_download/gebco/gebco_2021/zip",
             additional_request_string="/",
             static=True,
         ),
     output:
-        zip="resources/gebco_2021_tid.zip",
-        gebco="resources/gebco/GEBCO_2021_TID.nc",
+        zip="resources/gebco_2021.zip",
+        gebco="resources/gebco/GEBCO_2021.nc",
     run:
         shell("mv {input} {output.zip}")
         output_folder = Path(output["gebco"]).parent
@@ -71,11 +71,19 @@ rule download_wdpa_marine:
         zip="resources/WDPA_WDOECM_Jan2022_marine.zip",
         folder=directory("resources/WDPA_WDOECM_Jan2022_marine"),
         gpkg="resources/WDPA_WDOECM_Jan2022_marine.gpkg",
-    notebook:
-        "../actions/download_wdpa.py.ipynb"
+    run:
+        shell("mv {input} {output.zip}")
+        shell("unzip {output.zip} -d {output.folder}")
+        for i in range(3):
+            # vsizip is special driver for directly working with zipped shapefiles in ogr2ogr
+            layer_path = (
+                f"/vsizip/{output.folder}/WDPA_WDOECM_Jan2022_Public_marine_shp_{i}.zip"
+            )
+            print(f"Adding layer {i+1} of 3 to combined output file.")
+            shell("ogr2ogr -f gpkg -update -append {output.gpkg} {layer_path}")
 
 
-# Downloading Marine protected area database from WDPA
+# Downloading protected area database from WDPA
 # extract the main zip and then merge the contained 3 zipped shapefiles
 # Website: https://www.protectedplanet.net/en/thematic-areas/wdpa
 rule download_wdpa:
@@ -88,8 +96,14 @@ rule download_wdpa:
         zip="resources/WDPA_Jan2022_shp.zip",
         folder=directory("resources/WDPA_Jan2022"),
         gpkg="resources/WDPA_Jan2022.gpkg",
-    notebook:
-        "../actions/download_wdpa.py.ipynb"
+    run:
+        shell("mv {input} {output.zip}")
+        shell("unzip {output.zip} -d {output.folder}")
+        for i in range(3):
+            # vsizip is special driver for directly working with zipped shapefiles in ogr2ogr
+            layer_path = f"/vsizip/{output.folder}/WDPA_Jan2022_Public_shp_{i}.zip"
+            print(f"Adding layer {i+1} of 3 to combined output file.")
+            shell("ogr2ogr -f gpkg -update -append {output.gpkg} {layer_path}")
 
 
 rule build_region_shape:
@@ -130,17 +144,22 @@ rule build_potentials_and_profiles:
     message:
         "Determining {wildcards.technology} potentials and generation profiles for {wildcards.region}."
     input:
-        #wdpa_land=
-        #wdpa_marine=
         copernicus="resources/Copernicus_LC100_global_v3.0.1_2019-nrt_Discrete-Classification-map_EPSG-4326.tif",
-        gebco="resources/gebco/GEBCO_2021_TID.nc",
-        region="resources/regions/{region}.gpkg",
+        gebco="resources/gebco/GEBCO_2021.nc",
+        wdpa="resources/WDPA_Jan2022.gpkg",
+        wdpa_marine="resources/WDPA_WDOECM_Jan2022_marine.gpkg",
         cutout="resources/cutouts/{region}.nc",
+        region="resources/regions/{region}.gpkg",
     output:
-        potentials="resources/potentials/{region}_{technology}.nc",
         profiles="resources/profiles/{region}_{technology}.nc",
+        area_mask="figures/{region}/{technology}/area_mask.png",
+        capacity_factor_map="figures/{region}/{technology}/capacity_factors.html",
+        potential_map="figures/{region}/{technology}/potential_map.html",
     params:
         technology_details=lambda w: config["renewables"][w.technology],
+    wildcard_constraints:
+        technology="(pvplant|wind_onshore|wind_offshore|csp_tower)",
+    threads: 4
     log:
         python="logs/build_potentials_and_profiles/{region}_{technology}.log",
         notebook="logs/build_potentials_and_profiles/{region}_{technology}.py.ipynb",
