@@ -116,7 +116,6 @@ rule build_region_shape:
         gpkg="resources/regions/{region}.gpkg",
     params:
         region_members=lambda w: config["regions"][w["region"]],
-        offshore_proximity=lambda w: config["regions"]["offshore_proximity"],
     log:
         python="logs/build_region_shape/{region}.log",
         notebook="logs/build_region_shape/{region}.py.ipynb",
@@ -166,6 +165,22 @@ rule build_potentials_and_profiles:
     notebook:
         "../actions/build_potentials_and_profiles.py.ipynb"
 
+# Convert atlite RES supply files into a single file identical to the 
+# GEGIS workflow in the original version
+rule combine_atlite_supply:
+    input:
+        wind_onshore="resources/profiles/{region}_wind_onshore.nc",
+        wind_offshore="resources/profiles/{region}_wind_offshore.nc",
+        pvplant="resources/profiles/{region}_pvplant.nc",
+        csp_tower="resources/profiles/{region}_csp_tower.nc",
+    output:
+        "resources/supply_{region}.nc",
+    log:
+        python="logs/combine_atlite_supply/{region}.log",
+        notebook="logs/combine_atlite_supply/{region}.py.ipynb",
+    notebook:
+        "../actions/combine_atlite_supply.py.ipynb" #TODO implement based on GEGIS combine script to achieve same structure
+
 
 # Downloading GADM database for country/region shapes which are used to define
 # export region extents.
@@ -181,8 +196,3 @@ rule download_gadm:
     run:
         output_folder = Path(output[0]).parent
         shell("unzip {input} -d {output_folder}")
-
-
-# rule download_landcover:
-# rule download_protected_areas:
-# rule download_population_map:
