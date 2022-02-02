@@ -158,28 +158,30 @@ rule build_potentials_and_profiles:
         technology_details=lambda w: config["renewables"][w.technology],
     wildcard_constraints:
         technology="(pvplant|wind_onshore|wind_offshore|csp_tower)",
-    threads: 4
+    threads: 8
     log:
         python="logs/build_potentials_and_profiles/{region}_{technology}.log",
         notebook="logs/build_potentials_and_profiles/{region}_{technology}.py.ipynb",
     notebook:
         "../actions/build_potentials_and_profiles.py.ipynb"
 
-# Convert atlite RES supply files into a single file identical to the 
+
+# Convert atlite RES supply files into a single file identical to the
 # GEGIS workflow in the original version
 rule combine_atlite_supply:
     input:
-        wind_onshore="resources/profiles/{region}_wind_onshore.nc",
-        wind_offshore="resources/profiles/{region}_wind_offshore.nc",
-        pvplant="resources/profiles/{region}_pvplant.nc",
-        csp_tower="resources/profiles/{region}_csp_tower.nc",
+        profiles=expand(
+            "resources/profiles/{region}_{technology}.nc",
+            technology=["wind_offshore", "wind_onshore", "pvplant", "csp_tower"],
+            allow_missing=True,
+        ),
     output:
-        "resources/supply_{region}.nc",
+        supply="resources/supply_{region}.nc",
     log:
         python="logs/combine_atlite_supply/{region}.log",
         notebook="logs/combine_atlite_supply/{region}.py.ipynb",
     notebook:
-        "../actions/combine_atlite_supply.py.ipynb" #TODO implement based on GEGIS combine script to achieve same structure
+        "../actions/combine_atlite_supply.py.ipynb"
 
 
 # Downloading GADM database for country/region shapes which are used to define
