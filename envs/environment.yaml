@@ -1,52 +1,56 @@
 name: trace
 channels:
-  - conda-forge
-  - bioconda
-  - https://conda.anaconda.org/gurobi
+- conda-forge
+- bioconda
+- https://conda.anaconda.org/gurobi
 dependencies:
-  - python
-  - ipython
-  - ipykernel
+- python
+- ipython
+- ipykernel
 
   # Managing data
-  - xarray
-  - dask
-  - pandas
-  - geopandas
-  - numpy
-  - gdal
+- xarray
+- rioxarray
+- richdem
+- dask
+- pandas
+- geopandas
+- numpy
+- gdal
+- zipfile
 
   # Visualisation
-  - matplotlib
-  - seaborn
-  - hvplot
+- matplotlib
+- seaborn
+- hvplot
 
   # Modelling framework
-  - pypsa
-  - pycountry
+- pypsa<=0.17.0 # Until https://github.com/PyPSA/PyPSA/pull/313 is released
+- pycountry
 
   # Data retrieval
-  - cdsapi
+- cdsapi
 
   # Auxiliary packages for atlite (explicitly required from conda-forge while it is installed via pip)
-  - rasterio
-  - fiona
-  - bottleneck
+- rasterio
+- fiona
+- bottleneck
 
   # Workflow management
-  - snakemake
-  - snakefmt
+- snakemake
+- snakefmt
 
   # Read Julia files
-  - h5py
+- h5py
 
   # Solver
-  - gurobi
+- gurobi
 
-  # Code style and quality checks 
-  - pre-commit
+  # Code style and quality checks
+- pre-commit
+#- nbformat<5.1 # Until https://github.com/snakemake/snakemake/issues/1032 is resolved
 
-  - pip:
+- pip:
     # Modelling Renewables, via pip
     # while atlite https://github.com/PyPSA/atlite/commit/e409dddd632bf9711188de068a2824ee31ace81f is not on conda-forge
-    - git+https://github.com/PyPSA/atlite
+  - git+https://github.com/PyPSA/atlite
