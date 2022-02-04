@@ -24,7 +24,6 @@ rule create_network:
         additional_components="resources/additional_components.pkl",
     output:
         network="resources/networks/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
-    threads: 1
     params:
         scenario=lambda w: get_scenario(w["scenario"]),
         era_year=config["GlobalEnergyGIS"]["era_year"],
@@ -82,9 +81,7 @@ rule attach_supply:
     message:
         "Attaching RES supply ('as') to network."
     input:
-        supply="resources/supply_TRACES_{era_year}.nc".format(
-            era_year=config["GlobalEnergyGIS"]["era_year"]
-        ),
+        supply="resources/supply_{from}.nc",
         demand=demand_file,
         costs=technology_data("../technology-data/outputs/costs_{year}.csv"),
         wacc="data/wacc.csv",
