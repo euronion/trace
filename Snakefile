@@ -40,7 +40,8 @@ def get_scenario(scenario_name):
     return s
 
 
-include: "rules/gegis.smk"
+# Deprecated GEGIS workflow; uncomment to renable, but not compatible with changes since deprecation
+# include: "rules/gegis.smk"
 include: "rules/renewables.smk"
 include: "rules/esc_construction.smk"
 include: "rules/solving.smk"
