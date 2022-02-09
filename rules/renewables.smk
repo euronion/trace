@@ -31,7 +31,7 @@ rule download_eez:
 rule download_land_cover:
     input:
         HTTP.remote(
-            "zenodo.org/record/3939050/files/PROBAV_LC100_global_v3.0.1_2019-nrt_Discrete-Classification-map_EPSG-4326.tif?download=1",
+            "zenodo.org/record/3939050/files/PROBAV_LC100_global_v3.0.1_2019-nrt_Discrete-Classification-map_EPSG-4326.tif",
             static=True,
         ),
     output:
@@ -64,20 +64,20 @@ rule download_gebco:
 rule download_wdpa_marine:
     input:
         HTTP.remote(
-            "d1gam3xoknrgr2.cloudfront.net/current/WDPA_WDOECM_Jan2022_Public_marine_shp.zip",
+            "d1gam3xoknrgr2.cloudfront.net/current/WDPA_WDOECM_Feb2022_Public_marine_shp.zip",
             static=True,
         ),
     output:
-        zip="resources/WDPA_WDOECM_Jan2022_marine.zip",
-        folder=directory("resources/WDPA_WDOECM_Jan2022_marine"),
-        gpkg="resources/WDPA_WDOECM_Jan2022_marine.gpkg",
+        zip="resources/WDPA_WDOECM_Feb2022_marine.zip",
+        folder=directory("resources/WDPA_WDOECM_Feb2022_marine"),
+        gpkg="resources/WDPA_WDOECM_Feb2022_marine.gpkg",
     run:
         shell("mv {input} {output.zip}")
         shell("unzip {output.zip} -d {output.folder}")
         for i in range(3):
             # vsizip is special driver for directly working with zipped shapefiles in ogr2ogr
             layer_path = (
-                f"/vsizip/{output.folder}/WDPA_WDOECM_Jan2022_Public_marine_shp_{i}.zip"
+                f"/vsizip/{output.folder}/WDPA_WDOECM_Feb2022_Public_marine_shp_{i}.zip"
             )
             print(f"Adding layer {i+1} of 3 to combined output file.")
             shell("ogr2ogr -f gpkg -update -append {output.gpkg} {layer_path}")
@@ -89,19 +89,19 @@ rule download_wdpa_marine:
 rule download_wdpa:
     input:
         HTTP.remote(
-            "d1gam3xoknrgr2.cloudfront.net/current/WDPA_Jan2022_Public_shp.zip",
+            "d1gam3xoknrgr2.cloudfront.net/current/WDPA_Feb2022_Public_shp.zip",
             static=True,
         ),
     output:
-        zip="resources/WDPA_Jan2022_shp.zip",
-        folder=directory("resources/WDPA_Jan2022"),
-        gpkg="resources/WDPA_Jan2022.gpkg",
+        zip="resources/WDPA_Feb2022_shp.zip",
+        folder=directory("resources/WDPA_Feb2022"),
+        gpkg="resources/WDPA_Feb2022.gpkg",
     run:
         shell("mv {input} {output.zip}")
         shell("unzip {output.zip} -d {output.folder}")
         for i in range(3):
             # vsizip is special driver for directly working with zipped shapefiles in ogr2ogr
-            layer_path = f"/vsizip/{output.folder}/WDPA_Jan2022_Public_shp_{i}.zip"
+            layer_path = f"/vsizip/{output.folder}/WDPA_Feb2022_Public_shp_{i}.zip"
             print(f"Adding layer {i+1} of 3 to combined output file.")
             shell("ogr2ogr -f gpkg -update -append {output.gpkg} {layer_path}")
 
@@ -145,8 +145,8 @@ rule build_potentials_and_profiles:
     input:
         copernicus="resources/Copernicus_LC100_global_v3.0.1_2019-nrt_Discrete-Classification-map_EPSG-4326.tif",
         gebco="resources/gebco/GEBCO_2021.nc",
-        wdpa="resources/WDPA_Jan2022.gpkg",
-        wdpa_marine="resources/WDPA_WDOECM_Jan2022_marine.gpkg",
+        wdpa="resources/WDPA_Feb2022.gpkg",
+        wdpa_marine="resources/WDPA_WDOECM_Feb2022_marine.gpkg",
         cutout="resources/cutouts/{region}.nc",
         region="resources/regions/{region}.gpkg",
     output:
@@ -158,7 +158,7 @@ rule build_potentials_and_profiles:
         technology_details=lambda w: config["renewables"][w.technology],
     wildcard_constraints:
         technology="(pvplant|wind_onshore|wind_offshore|csp_tower)",
-    threads: 8
+    threads: 4
     log:
         python="logs/build_potentials_and_profiles/{region}_{technology}.log",
         notebook="logs/build_potentials_and_profiles/{region}_{technology}.py.ipynb",
