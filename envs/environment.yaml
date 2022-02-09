@@ -15,9 +15,10 @@ dependencies:
 - dask
 - pandas
 - geopandas
+- geoviews
 - numpy
 - gdal
-- zipfile
+- zip
 
   # Visualisation
 - matplotlib
@@ -25,8 +26,8 @@ dependencies:
 - hvplot
 
   # Modelling framework
-- pypsa<=0.17.0 # Until https://github.com/PyPSA/PyPSA/pull/313 is released
 - pycountry
+#- pypsa # until PyPSA v0.18 is released, install via pip
 
   # Data retrieval
 - cdsapi
@@ -39,6 +40,7 @@ dependencies:
   # Workflow management
 - snakemake
 - snakefmt
+- notebook
 
   # Read Julia files
 - h5py
@@ -54,3 +56,5 @@ dependencies:
     # Modelling Renewables, via pip
     # while atlite https://github.com/PyPSA/atlite/commit/e409dddd632bf9711188de068a2824ee31ace81f is not on conda-forge
   - git+https://github.com/PyPSA/atlite
+    # Until PyPSA 0.18 is released
+  - git+https://github.com/PyPSA/pypsa
