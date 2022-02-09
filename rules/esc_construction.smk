@@ -85,6 +85,7 @@ rule attach_supply:
         demand=demand_file,
         costs=technology_data("../technology-data/outputs/costs_{year}.csv"),
         wacc="data/wacc.csv",
+        efficiencies="data/efficiencies.csv",
         network="resources/networks_ip/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
         additional_components="resources/additional_components.pkl",
     output:
