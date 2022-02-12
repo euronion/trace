@@ -22,9 +22,9 @@ CH4 (g) fill compressor station,methane (g),1,p.u.,methane (g) compressed,0.975,
 CH4 (g) pipeline decompressor,methane (g) compressed,1,p.u.,methane (g),1,p.u.,1,Arbitrary componenet for degrading gas pipeline content to regular methane (g) bus.,Guesstimate.
 methanation,CO2 (g),2.75,t,methane (g),13.8888,MWh_LHV,5.05047272727273,Based on ideal conversion process of stochiometric composition (1 t CH4 contains 750 kg of carbon).,
 methanation,hydrogen (g),17.8062,MWh_LHV,methane (g),13.8888,MWh_LHV,0.779997978232301,Additional H2 required for methanation process (2x H2 amount compared to stochiometric conversion).,"Götz et al. (2016), fig. 11 ."
-H2 liquefaction,hydrogen (g),33.3333,MWh_LHV,hydrogen (l),0.9835,t,0.02950502950503,'= 1.65% losses.,"Heuser et al. 2019: https://doi.org/10.1016/j.ijhydene.2018.12.156, table 1."
-H2 liquefaction,electricity,6.78,MWh,hydrogen (l),1,t,0.147492625368732,6.78 kWh/kg_H2,"Heuser et al. 2019: https://doi.org/10.1016/j.ijhydene.2018.12.156, table 1."
-H2 evaporation,hydrogen (l),1,t,hydrogen (g),33.3333,MWh_LHV,33.3333,,"Heuser et al. 2019: https://doi.org/10.1016/j.ijhydene.2018.12.156, table 1."
+H2 liquefaction,hydrogen (g),33.3333,MWh_LHV,hydrogen (l),32.78330055,MWh_LHV,0.9835,'= 1.65% losses.,"Heuser et al. 2019: https://doi.org/10.1016/j.ijhydene.2018.12.156, table 1."
+H2 liquefaction,electricity,6.78,MWh,hydrogen (l),33.3333,MWh_LHV,4.91641592920354,"6.78 kWh/kg_H2, considering H2 with LHV of 33.3333 MWh/t","Heuser et al. 2019: https://doi.org/10.1016/j.ijhydene.2018.12.156, table 1."
+H2 evaporation,hydrogen (l),1,MWh_LHV,hydrogen (g),1,MWh_LHV,1,,"Heuser et al. 2019: https://doi.org/10.1016/j.ijhydene.2018.12.156, table 1."
 H2 evaporation,electricity,0.6,MWh,hydrogen (g),33.3333,MWh_LHV,55.5555,.6 kWh/kg_H2,"Heuser et al. 2019: https://doi.org/10.1016/j.ijhydene.2018.12.156, table 1."
 CH4 liquefaction,methane (g),13.8888,MWh_LHV,methane (l),1,t,0.072000460802949,"For refrigeration cycle, cleaning of gas presumed unnecessary as it should be nearly pure CH4 (=SNG). Assuming energy required is only electricity which is for Table 3 in the source provided with efficiencies of ~50% of LHV, making the numbers consistent with the numbers in Table 2.","Pospíšil et al. 2019: https://doi.org/10.1016/j.rser.2018.09.027 , Table 2 and Table 3."
 CH4 liquefaction,electricity,0.5,MWh,methane (l),1,t,2,"Assuming 0.5 MWh/t_CH4 for refigeration cycle based on Table 2 of source; cleaning of gas presumed unnecessary as it should be nearly pure CH4 (=SNG). Assuming energy required is only electricity which is for Table 3 in the source provided with efficiencies of ~50% of LHV, making the numbers consistent with the numbers in Table 2.","Pospíšil et al. 2019: https://doi.org/10.1016/j.rser.2018.09.027 , Table 2 and Table 3. Source 2: https://encyclopedia.airliquide.com/methane (2021-02-10)."
@@ -53,8 +53,8 @@ ship loading,methanol,5.5361,MWh_LHV,berth,1,t,0.180632575278626,Auxiliar proces
 ship unloading,berth,1,t,methanol,5.5361,MWh_LHV,5.5361,Auxiliar process: converting between MWh_LHV and weight for shipping purposes.,n/a
 ship loading,ammonia (l),5.1666,MWh_LHV,berth,1,t,0.193550884527542,Auxiliar process: converting between MWh_LHV and weight for shipping purposes.,n/a
 ship unloading,berth,1,t,ammonia (l),5.1666,MWh_LHV,5.1666,Auxiliar process: converting between MWh_LHV and weight for shipping purposes.,n/a
-ship loading,hydrogen (l),1,t,berth,1,t,1,Auxiliar process for shipping purposes.,n/a
-ship unloading,berth,1,t,hydrogen (l),1,t,1,Auxiliar process for shipping purposes.,n/a
+ship loading,hydrogen (l),33.3333,MWh_LHV,berth,1,t,0.03000003000003,"Liquid hydrogen is accounted for with LHV, for shipping it is accounted for in t. Auxiliar process for shipping purposes.",n/a
+ship unloading,berth,1,t,hydrogen (l),33.3333,MWh_LHV,33.3333,"Liquid hydrogen is accounted for with LHV, for shipping it is accounted for in t. Auxiliar process for shipping purposes.",n/a
 ship loading,methane (l),1,t,berth,1,t,1,Auxiliar process: converting between MWh_LHV and weight for shipping purposes.,n/a
 ship unloading,berth,1,t,methane (l),1,t,1,Auxiliar process: converting between MWh_LHV and weight for shipping purposes.,n/a
 CO2 liquefaction,CO2 (g),1,t,CO2 (l),1,t,1,"Assuming a pure, humid, low-pressure input stream. Neglecting possible gross-effects of CO2 which might be cycled for the cooling process.",Mitsubish Heavy Industries Ltd. and IEA (2004): https://ieaghg.org/docs/General_Docs/Reports/PH4-30%20Ship%20Transport.pdf .
