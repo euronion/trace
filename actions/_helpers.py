@@ -5,6 +5,7 @@
 
 from functools import lru_cache
 
+
 @lru_cache
 def calculate_annual_investment(name, r, fn):
     """Calculate the annual investment for an installation given a selected WACC.
@@ -52,6 +53,7 @@ def calculate_annual_investment(name, r, fn):
         r,
     )
 
+
 @lru_cache
 def calculate_annuity(invest, fom, lifetime, r):
     """
@@ -72,7 +74,7 @@ def calculate_annuity(invest, fom, lifetime, r):
 
 @lru_cache
 def get_efficiency(process, fn, from_bus=None, to_bus=None):
-    """Helper function to read the efficiency of 'process' 
+    """Helper function to read the efficiency of 'process'
     between 'from_bus' (optional) and 'to_bus' (optional'
     from 'fn'. To be used for file "data/efficiencies.csv ."""
 
@@ -136,6 +138,7 @@ def configure_logging(snakemake, skip_handlers=False):
         )
     logging.basicConfig(**kwargs)
 
+
 @lru_cache
 def extract_technology(b):
     """Extract the technology from a bus name 'b' by removing trailing '(exp)' or '(imp)' and other content in same braket.
@@ -159,11 +162,13 @@ def extract_technology(b):
 
     return re.sub("\([\w\s,\.]*?(?:exp|imp)\)$", "", b.strip()).strip()
 
+
 @lru_cache
 def get_bus_unit(b, n):
     """Get the 'unit' attribute of bus 'b' from PyPSA network 'n."""
 
     return n.buses.loc[b]["unit"]
+
 
 @lru_cache
 def extract_unit(b, n):
