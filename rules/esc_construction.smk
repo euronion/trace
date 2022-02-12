@@ -96,6 +96,7 @@ rule attach_supply:
     threads: 1
     params:
         scenario=lambda w: get_scenario(w["scenario"]),
+        renewable_details=config["renewables"],
     log:
         python="logs/{scenario}/{year}/{esc}/{from}-{to}/attach_supply.log",
         notebook="logs/{scenario}/{year}/{esc}/{from}-{to}/attach_supply.ipynb",

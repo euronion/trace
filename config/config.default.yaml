@@ -250,6 +250,10 @@ renewables:
       method: "csp"
       installation: "SAM_solar_tower"
 
+    # Composition to CSP power plant to use for field, storage and power block
+    # Used to estimate LCoE of CSP installation for determining supply curves
+    solar_multiple_estimate: 3
+
 regions:
 
   # Region definitions rely on the GADM database (https://gadm.org)
