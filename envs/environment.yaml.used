@@ -289,7 +289,7 @@ dependencies:
   - poppler-data=0.4.11
   - postgresql=14.2
   - pre-commit=2.17.0
-  - prettytable=3.0.0
+  - prettytable=3.1.0
   - proj=8.2.1
   - prometheus_client=0.13.1
   - prompt-toolkit=3.0.27
@@ -423,4 +423,4 @@ dependencies:
     - atlite==0.2.6.dev81+g6c69d51
     - progressbar2==4.0.0
     - python-utils==3.1.0
-prefix: /home/cyber/micromamba/envs/trace-2
+prefix: /home/cyber/micromamba/envs/trace
