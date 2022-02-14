@@ -37,16 +37,16 @@ scenarios:
         # Synthetic electricity demand (local for the exporter) can either be automatically
         # generated using GEGIS or custom values provided via "data/overwrite/demand.csv" .
     synthetic_demand: gegis     # 'gegis' or 'custom'
-        # Set default marginal_cost and capital_cost for any component - generator, link, store -
-        # if the cost is == 0
-        # Should help to bring more stability into the model
+    # Set default marginal_cost and capital_cost for any component - generator, link, store -
+    # if the cost is == 0
+    # Should help to bring more stability into the model
     capital_cost:
       default: 0.1
     marginal_cost:
       default: 0.0
 
-        # Modify certain aspects of the models, for sensitivity analysis
-        # Modification factor in pu
+    # Modify certain aspects of the models, for sensitivity analysis
+    # Modification factor in pu
     modifiers:
       wacc: 1
       import_demand: 1             # Related to network loads (= import demand)
@@ -60,6 +60,10 @@ scenarios:
 # Weather year for which ERA5 data is used
 renewables:
   era5_year: 2013
+
+  # Ignore renewable classes below this capacity [MW]
+  # when create the supply curves and attaching RES to each network
+  ignore_capacities_below: 5
 
   wind_onshore:
 
@@ -232,8 +236,8 @@ renewables:
     copernicus:
       include_codes: [20, 30, 40, 60, 90]
       distancing_codes: [50]
-      # Guess
-      distance_to_codes: 500
+      # Murphy et al (2019), table 12 / pg. 89 .
+      distance_to_codes: 3000
     wdpa:
       include_status: ["Adopted", "Designated", "Established", "Inscribed", "Proposed"]
       layers: ["polygons", "points"]
@@ -243,7 +247,9 @@ renewables:
     gebco:
       max_depth: false
       max_altitude: false
-      max_slope: 30 # Slopy regions as not very suitable for CSP
+      # Slopy regions as not very suitable for CSP, see:
+      # Murphy et al (2019), table 12 / pg. 89 .
+      max_slope: 3
     technical_potential: 5.1 # Based on ENPRESO 85 W/m^2 and 3% land availability
     number_quality_classes: 50
     atlite:
@@ -251,8 +257,11 @@ renewables:
       installation: "SAM_solar_tower"
 
     # Composition to CSP power plant to use for field, storage and power block
-    # Used to estimate LCoE of CSP installation for determining supply curves
-    solar_multiple_estimate: 3
+    # Used to estimate LCoE of CSP installation for determining supply curves.
+    # Based on Baseline Tower Plant from NREL, Table 9 / pg. 79 in:
+    # Murphy et al (2019): "The Potential Role of CSP within the Context of DOE's 2030 Solar Cost Targets"
+    # URL: https://www.osti.gov/biblio/1491726/
+    solar_multiple_estimate: 2.7
 
 regions:
 
