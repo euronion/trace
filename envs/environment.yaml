@@ -27,7 +27,7 @@ dependencies:
 
   # Modelling framework
 - pycountry
-#- pypsa # until PyPSA v0.18 is released, install via pip
+- pypsa
 
   # Data retrieval
 - cdsapi
@@ -52,9 +52,9 @@ dependencies:
 - pre-commit
 #- nbformat<5.1 # Until https://github.com/snakemake/snakemake/issues/1032 is resolved
 
+- pip
+
 - pip:
     # Modelling Renewables, via pip
     # while atlite https://github.com/PyPSA/atlite/commit/e409dddd632bf9711188de068a2824ee31ace81f is not on conda-forge
   - git+https://github.com/PyPSA/atlite
-    # Until PyPSA 0.18 is released
-  - git+https://github.com/PyPSA/pypsa
