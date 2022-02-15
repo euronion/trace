@@ -282,6 +282,7 @@ regions:
   "KZ": ["Kazakhstan"]
   "DZ": ["Algeria"]
   "TN": ["Tunisia"]
+  "NA": ["Namibia"]
   "TRACES": ["Australia", "Argentina", "Germany", "Denmark", "Algeria", "Egypt", "Spain", "Morocco", "Saudi Arabia", "Tunisia", "Russia", "Ukraine", "Kazakhstan", "Australia", "Spain"]
 
 detour_factors:
