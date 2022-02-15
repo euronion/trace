@@ -92,7 +92,7 @@ rule attach_supply:
         network=(
             "resources/networks_ip_as/{scenario}/{year}/{esc}/{from}-{to}/network.nc"
         ),
-        lcoes="resources/networks_ip_as/{scenario}/{year}/{esc}/{from}-{to}/lcoes.csv",
+        lcoes="results/{scenario}/{year}/{esc}/{from}-{to}/lcoes.csv",
     threads: 1
     params:
         scenario=lambda w: get_scenario(w["scenario"]),
