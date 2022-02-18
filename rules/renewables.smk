@@ -63,9 +63,9 @@ rule download_gebco:
 # Projection of the output dataset is Global Mollweide (ESRI:54009)
 rule calcualte_gebco_slope:
     input:
-        gebco="resources/gebco/GEBCO_2021.nc"
+        gebco="resources/gebco/GEBCO_2021.nc",
     output:
-        mollweide=temp("resources/gebco/GEBCO_2021_mollweide.nc")
+        mollweide=temp("resources/gebco/GEBCO_2021_mollweide.nc"),
         slope="resources/gebco/GEBCO_2021_slope.nc"
     run:
         shell("gdalwarp -multi -wo NUM_THREADS={threads} -of netCDF -co FORMAT=NC4 -s_srs 'EPSG:4326' -t_srs 'ESRI:54009' {input.gebco} {output.mollweide}")
