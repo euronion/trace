@@ -7,6 +7,11 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # TRACE - Transporting Renewables as Chemical Energy
 
+> NOTE: 
+> This repository currently undergoing significant changes.
+> If you're encountering problems feel free to reach out using GitHub issues.
+> A new release with easier handling should become available in the next weeks.
+
 ## Setup and installation
 
 1. Downloading `git` repositories:
