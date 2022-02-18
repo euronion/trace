@@ -58,6 +58,20 @@ rule download_gebco:
         shell("unzip {output.zip} -d {output_folder}")
 
 
+# Transform the GEBCO dataset into a second dataset
+# with georeferenced slope values (in percent) for all locations
+# Projection of the output dataset is Global Mollweide (ESRI:54009)
+rule calcualte_gebco_slope:
+    input:
+        gebco="resources/gebco/GEBCO_2021.nc"
+    output:
+        mollweide=temp("resources/gebco/GEBCO_2021_mollweide.nc")
+        slope="resources/gebco/GEBCO_2021_slope.nc"
+    run:
+        shell("gdalwarp -multi -wo NUM_THREADS={threads} -of netCDF -co FORMAT=NC4 -s_srs 'EPSG:4326' -t_srs 'ESRI:54009' {input.gebco} {output.mollweide}")
+        shell("gdaldem slope -p -of netCDF -co FORMAT=NC4 {output.mollweide} {output.slope}")
+
+
 # Downloading Marine protected area database from WDPA
 # extract the main zip and then merge the contained 3 zipped shapefiles
 # Website: https://www.protectedplanet.net/en/thematic-areas/marine-protected-areas
