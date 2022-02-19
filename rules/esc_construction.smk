@@ -64,25 +64,12 @@ rule attach_import_profile:
         "../actions/attach_import_profile.py.ipynb"
 
 
-def demand_file(wildcards):
-    # Allow for custom overwrite of annual electricity demand for exporters
-    demand_d = {
-        "gegis": "resources/demand_annual_TRACES_2013.csv",
-        "custom": "data/overwrite/demand.csv",
-    }
-
-    choice = config["scenarios"][wildcards.scenario].get(
-        "synthetic_demand", config["scenarios"]["default"]["synthetic_demand"]
-    )
-    return demand_d[choice.lower()]
-
-
 rule attach_supply:
     message:
         "Attaching RES supply ('as') to network."
     input:
         supply="resources/supply_{from}.nc",
-        demand=demand_file,
+        demand="data/overwrite/demand.csv",
         costs=technology_data("../technology-data/outputs/costs_{year}.csv"),
         wacc="data/wacc.csv",
         efficiencies="data/efficiencies.csv",
