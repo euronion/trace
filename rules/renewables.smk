@@ -181,8 +181,7 @@ rule build_potentials_and_profiles:
         "../actions/build_potentials_and_profiles.py.ipynb"
 
 
-# Convert atlite RES supply files into a single file identical to the
-# GEGIS workflow in the original version
+# Convert atlite RES supply files into a single file
 rule combine_atlite_supply:
     input:
         profiles=expand(
