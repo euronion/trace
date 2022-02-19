@@ -11,19 +11,19 @@ SPDX-License-Identifier: CC-BY-4.0
 
 1. Downloading `git` repositories:
    
-    a. Download the main repository to somewhere (e.g. into a `projects` folder):
+    a. Clone the repository
 
     ```
-        (projects) > git clone https://github.com/euronion/trace.git
+        $ git clone https://github.com/euronion/trace.git
     ```
 
     This repository contains the main workflow, the energy supply chain definitions
     and all the necessary scripts tying it together.
 
-    b. Download the `technology-data` repository into a parallel directory to the previous repository:
+    b. Clone the `technology-data` repository into a directory parallel to the main/`trace` repository:
 
     ```
-        (projects) > git clone -b new-techs/chemical-energy-carriers https://github.com/euronion/technology-data.git
+        $ git clone -b csp-tower https://github.com/euronion/technology-data.git
     ```
 
     This repository contains the technology cost data.
@@ -33,8 +33,8 @@ SPDX-License-Identifier: CC-BY-4.0
     The resulting resulting structure should look like this
 
     ```
-        (projects): tree -d -L 1 ./
-        ./projects
+        $ tree -d -L 1 ./
+        ./
         ├── technology-data
         ├── trace
         └── ...
@@ -46,63 +46,46 @@ SPDX-License-Identifier: CC-BY-4.0
     a. Install the `python` environment manager `conda`.
     You need to either have [miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda](https://www.anaconda.com/) installed on your system.
 
-    b. Setup your `python` environment:
+    b. (Optional by highly recommended) Install `mamba`
+    ```
+        conda install -c conda-forge mamba
+    ```
+
+    c. Setup your `python` environment:
 
     ```
-        conda env create -f envs/environment.yaml
+        mamba env create -f envs/environment.yaml
     ```
 
     This installs all the packages and `python` dependencies.
 
-3. Setup your `julia` environment (we used `julia-1.4`)
-
-    a. Download and install `julia` following the installation instruction on the [Julia website](https://julialang.org/downloads/).
-
-    b. Open a command shell and navigate into the `trace` folder
-    ```
-        cd trace
-    ```
-    c. Start `julia`
-    ```
-        (trace): julia
-    ```
-    d. Open the package manager of `julia`
-    ```
-        julia> ]
-    ```
-    e. Register and instantiate the environment
-    ```
-        (@v1.4) pkg> activate ./envs
-        (trace) pkg> instantiate
-    ```
-    
 ## Files and folders
 
+The following files and folders are contained or later created in your `trace` directory:
 
 ```
-(trace): tree -L 2
+$ tree -L 3
 .
 ├── actions     # Scripts for building and solving the model
+│   ├── attach_import_profiles.py.ipynb
 │   ├── attach_supply.py.ipynb
 │   ├── backup_run.py
-│   ├── combine_GEGIS_demand.py
 │   └── ...
 ├── config      # Input configuration for model and scenarios
 │   ├── config.cern_link.yaml
 │   ├── config.default.yaml
-│   └── config.initial_paper.yaml
+│   └── ...
 ├── data        # Input data for the model
 │   ├── distances.csv
 │   ├── efficiencies.csv
 │   ├── import_profiles
 │   ├── overwrite
+│   │   └── demand.csv # Annual electricity demand per region
 │   ├── shipping.csv
 │   └── wacc.csv
 ├── envs        # Programming environment definitions for installing/reproducing the model
 │   ├── environment.yaml
 │   ├── environment.yaml.used
-│   ├── JuliaManifest.toml
-│   └── JuliaProject.toml
 ├── escs        # ESC definitions which serve as input; will be modified to create ESC-exp-imp specific models
 │   ├── hvdc-to-elec
 │   ├── hvdc-to-h2
@@ -118,13 +101,13 @@ SPDX-License-Identifier: CC-BY-4.0
 ├── resources   # (created automatically) intermediary files created during model creation
 │   └── ...
 ├── results     # (created automatically) Result files for each scenario/year/ESC/exporter-importer;
-                # Contains the optimised PyPSA networks and a CSV file with prominent results
+│               # Contains the optimised PyPSA networks and a CSV file with prominent results
 │   ├── default
 │   ├── lowhomogeneous
 │   └── ...
 ├── rules       # Snakemake rule directory containing the workflow definitino for the model
 │   ├── esc_construction.smk
-│   ├── gegis.smk
+│   ├── renewables.smk
 │   ├── results.smk
 │   └── solving.smk
 └── Snakefile   # Snakemake file to combine all workflow files into the complete workflow
@@ -298,7 +281,22 @@ which showed to dramatically increase solver speed for all ESCs involving long d
 As a fallback method the model automatically switches back to the default gurobi solver methods and
 retries solving the scenario again.
 
-## Citing
+## Paper and citing
+
+This model is currently under peer-review.
+A preprint for this model is available on arXiv:
+
+```
+    @misc{hampp2021import,
+      title={Import options for chemical energy carriers from renewable sources to Germany}, 
+      author={Johannes Hampp and Michael Düren and Tom Brown},
+      year={2021},
+      eprint={2107.01092},
+      archivePrefix={arXiv},
+      primaryClass={physics.soc-ph},
+      url={https://arxiv.org/abs/2107.01092}
+}
+```
 
 This software is archived in Zenodo.
 A permanent record of the most recent release version can be found here: [![DOI](https://zenodo.org/badge/317544698.svg)](https://zenodo.org/badge/latestdoi/317544698) .

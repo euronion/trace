@@ -13,6 +13,9 @@ SPDX-License-Identifier: CC-BY-4.0
     demand would need to be met e.g. as baseload (`import_buffer: False`) or on an annual basis 
     (`import_buffer: annually`).
     Buffering is disabled by default.
+* GlobalEnergyGIS:
+    + Has been substituted by `atlite` for RES potentials and time-series generation
+    + synthetic demand creation no longer supported, use `data/overwrite/demand.csv` to specify the annual demand per region
 * Changed ESCs:
     + All explicit import buffering components have been removed from the ESCs (`stores.csv`) in favour 
       of the new configuration entry `import_buffer
@@ -21,8 +24,7 @@ SPDX-License-Identifier: CC-BY-4.0
     + pipeline-h2-to-elec
     + shipping-h2-to-elec
 * Renames ESCs:
-    + hvdc-to-h2 (formerly: "hvdc"): to reflect the delivered energy carrier
-    (no change to the ESC itself)
+    + hvdc-to-h2 (formerly: "hvdc"): to reflect the delivered energy carrier (no change to the ESC itself)
 * New WACC scenarios: 7.5% for all countries ("7.5% homogeneous")
 * New configuration system:
     + config files are located in `config/` directory
