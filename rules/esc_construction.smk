@@ -26,7 +26,7 @@ rule create_network:
         network="resources/networks/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
     params:
         scenario=lambda w: get_scenario(w["scenario"]),
-        era_year=config["GlobalEnergyGIS"]["era_year"],
+        era_year=config["renewables"]["era5_year"],
     log:
         python="logs/{scenario}/{year}/{esc}/{from}-{to}/create_network.log",
         notebook="logs/{scenario}/{year}/{esc}/{from}-{to}/create_network.ipynb",
