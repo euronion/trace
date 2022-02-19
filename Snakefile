@@ -8,7 +8,7 @@ from snakemake.io import load_configfile
 
 
 # Specify config file
-configfile: "config/config.initial_paper.yaml"
+configfile: "config/config.default.yaml"
 
 
 # Default configs - do not change
