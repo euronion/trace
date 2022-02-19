@@ -32,6 +32,10 @@ scenarios:
         #  - False  : No buffering (default)
         #  - annually : Demand is buffered on an annual basis; import demand has to be met on an annual basis
     import_buffer: "annually"
+    
+    # Which demand data to use to determine available supplies
+    # "custom" -> use "data/overwrite/demand.csv"
+    synthetic_demand: "custom"
 
 
     # Set default marginal_cost and capital_cost for any component - generator, link, store -
@@ -280,7 +284,6 @@ regions:
   "DZ": ["Algeria"]
   "TN": ["Tunisia"]
   "NA": ["Namibia"]
-  "TRACES": ["Australia", "Argentina", "Germany", "Denmark", "Algeria", "Egypt", "Spain", "Morocco", "Saudi Arabia", "Tunisia", "Russia", "Ukraine", "Kazakhstan", "Australia", "Spain"]
 
 detour_factors:
   transmission_line: 1.2
