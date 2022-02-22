@@ -25,6 +25,11 @@ dependencies:
 - seaborn
 - hvplot
 
+# AUX for bokeh plot export
+- selenium
+- firefox
+- geckodriver 
+
   # Modelling framework
 - pycountry
 - pypsa
