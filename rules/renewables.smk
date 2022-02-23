@@ -67,11 +67,17 @@ rule calcualte_gebco_slope:
     output:
         mollweide=temp("resources/gebco/GEBCO_2021_mollweide.nc"),
         slope_inflated=temp("resources/gebco/GEBCO_2021_mollweide_inflated.nc"),
-        slope="resources/gebco/GEBCO_2021_slope.nc"
+        slope="resources/gebco/GEBCO_2021_slope.nc",
     run:
-        shell("gdalwarp -multi -wo NUM_THREADS={threads} -of netCDF -co FORMAT=NC4 -s_srs 'EPSG:4326' -t_srs 'ESRI:54009' {input.gebco} {output.mollweide}")
-        shell("gdaldem slope -p -of netCDF -co FORMAT=NC4 {output.mollweide} {output.slope_inflated}")
-        shell("gdal_translate -of netCDF -co FORMAT=NC4 -co COMPRESS=DEFLATE -co ZLEVEL=1 {output.slope_inflated} {output.slope}")
+        shell(
+            "gdalwarp -multi -wo NUM_THREADS={threads} -of netCDF -co FORMAT=NC4 -s_srs 'EPSG:4326' -t_srs 'ESRI:54009' {input.gebco} {output.mollweide}"
+        )
+        shell(
+            "gdaldem slope -p -of netCDF -co FORMAT=NC4 {output.mollweide} {output.slope_inflated}"
+        )
+        shell(
+            "gdal_translate -of netCDF -co FORMAT=NC4 -co COMPRESS=DEFLATE -co ZLEVEL=1 {output.slope_inflated} {output.slope}"
+        )
 
 
 # Downloading Marine protected area database from WDPA

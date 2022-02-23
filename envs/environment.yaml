@@ -28,7 +28,7 @@ dependencies:
 # AUX for bokeh plot export
 - selenium
 - firefox
-- geckodriver 
+- geckodriver
 
   # Modelling framework
 - pycountry
