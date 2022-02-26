@@ -89,3 +89,22 @@ rule plot_components:
         ),
     notebook:
         "../actions/plot_components.py.ipynb"
+
+
+rule plot_scenario_lcoes:
+    message:
+        "Plotting LCoEs for all ESC/exporter/year combinations calculated for the scenario."
+    input:
+        scenario_dir=directory("results/{scenario}"),
+    output:
+        fig=multiext(
+            "results/{scenario}/lcoes",
+            ".png",
+            ".html",
+        ),
+    threads: 1
+    log:
+        python="logs/{scenario}/plot_scenario_lcoes.log",
+        notebook=("logs/{scenario}/plot_scenario_lcoes.ipynb"),
+    notebook:
+        "../actions/plot_scenario_lcoes.py.ipynb"
