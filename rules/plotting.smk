@@ -68,3 +68,24 @@ rule plot_stores:
         ),
     notebook:
         "../actions/plot_stores.py.ipynb"
+
+
+rule plot_components:
+    message:
+        "Plotting cost components and component capacities."
+    input:
+        results="results/{scenario}/{year}/{esc}/{exporter}-{importer}/results.csv",
+    output:
+        fig=multiext(
+            "results/{scenario}/{year}/{esc}/{exporter}-{importer}/components",
+            ".png",
+            ".html",
+        ),
+    threads: 1
+    log:
+        python="logs/{scenario}/{year}/{esc}/{exporter}-{importer}/plot_components.log",
+        notebook=(
+            "logs/{scenario}/{year}/{esc}/{exporter}-{importer}/plot_components.ipynb"
+        ),
+    notebook:
+        "../actions/plot_components.py.ipynb"
