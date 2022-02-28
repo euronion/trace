@@ -32,7 +32,7 @@ scenarios:
         #  - False  : No buffering (default)
         #  - annually : Demand is buffered on an annual basis; import demand has to be met on an annual basis
     import_buffer: "annually"
-    
+
     # Which demand data to use to determine available supplies
     # "custom" -> use "data/overwrite/demand.csv"
     synthetic_demand: "custom"
