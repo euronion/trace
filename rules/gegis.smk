@@ -30,9 +30,9 @@ if config["GlobalEnergyGIS"].get("init_gegis", False) is True:
             Path(config["GlobalEnergyGIS"]["base_dir"]) / "era5temp{year}.h5",
         script:
             "../actions/download_GEGIS_era5.jl"
-
-
 # Create region for GlobalEnergyGIS containing
+
+
 # one or more areas defined by GADM (Database of Global Administrative Areas)
 rule create_region:
     input:
