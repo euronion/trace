@@ -33,6 +33,7 @@ if config["GlobalEnergyGIS"].get("init_gegis", False) is True:
 # Create region for GlobalEnergyGIS containing
 
 
+
 # one or more areas defined by GADM (Database of Global Administrative Areas)
 rule create_region:
     input:
