@@ -60,6 +60,11 @@ rule create_synthetic_demand:
     script:
         "../actions/create_synthetic_demand.jl"
 
+wildcard_constraints:
+    year="\d{4}",
+    era_year="\d{4}",
+    region="\S+",
+    
 
 # Generate renewables potentials and time-series with GlobalEnergyGIS
 rule create_renewables:
