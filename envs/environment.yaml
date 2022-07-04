@@ -1,28 +1,28 @@
 name: trace
 channels:
-  - bioconda
-  - https://conda.anaconda.org/gurobi
-  - conda-forge
-  - defaults
+- bioconda
+- https://conda.anaconda.org/gurobi
+- conda-forge
+- defaults
 dependencies:
-  - python
-  - pypsa
-  - coincbc
-  - matplotlib
-  - seaborn
-  - xarray
-  - plotly_express
-  - snakemake
-  - notebook
-  - h5py
-  - gurobi
-  - snakefmt
-  - ca-certificates
-  - certifi
-  - openssl
-  - pre-commit
-  - hvplot
-  - selenium
-  - firefox
-  - geckodriver
-  - pycountry
+- python
+- pypsa
+- coincbc
+- matplotlib
+- seaborn
+- xarray
+- plotly_express
+- snakemake
+- notebook
+- h5py
+- gurobi
+- snakefmt
+- ca-certificates
+- certifi
+- openssl
+- pre-commit
+- hvplot
+- selenium
+- firefox
+- geckodriver
+- pycountry
