@@ -42,6 +42,12 @@ repos:
   # Format Jupyter Python notebooks
   - id: black-jupyter
 
+- repo: https://github.com/nbQA-dev/nbQA
+  rev: 1.2.3
+  hooks:
+    # Apply isort to Jupyter Python notebooks
+  - id: nbqa-isort
+
 # Do YAML formatting (before the linter checks it for misses)
 - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
   rev: v2.3.0
