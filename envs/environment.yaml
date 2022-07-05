@@ -1,46 +1,46 @@
 name: trace
 channels:
-  - conda-forge
-  - gurobi
-  - bioconda
+- conda-forge
+- gurobi
+- bioconda
 dependencies:
-  - python
-  - ipython
-  - ipykernel
+- python
+- ipython
+- ipykernel
 
   # Managing data
-  - xarray
-  - dask
-  - pandas
-  - geopandas
-  - numpy
+- xarray
+- dask
+- pandas
+- geopandas
+- numpy
 
   # Visualisation
-  - matplotlib
-  - seaborn
-  - hvplot
+- matplotlib
+- seaborn
+- hvplot
 
   # Modelling framework
-  - pypsa
-  - atlite
+- pypsa
+- atlite
 
   # Data retrieval
-  - cdsapi
+- cdsapi
 
   # Auxiliary packages for atlite (explicitly required from conda-forge while it is installed via pip)
-  - rasterio
-  - fiona
-  - bottleneck
+- rasterio
+- fiona
+- bottleneck
 
   # Workflow management
-  - snakemake
-  - snakefmt
+- snakemake
+- snakefmt
 
   # Read Julia files
-  - h5py
+- h5py
 
   # Solver
-  - gurobi
+- gurobi
 
   # Code style and quality checks 
-  - pre-commit
+- pre-commit
