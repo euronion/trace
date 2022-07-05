@@ -1,32 +1,33 @@
-# SPDX-FileCopyrightText: 2020-2021 Johannes Hampp
+# SPDX-FileCopyrightText: 2020-2022 Johannes Hampp
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+# Use paramspace to evaluate which scenarios to run
+scenarios = Paramspace(
+    pd.read_csv("scenarios/default.csv", dtype=str)
+)
 
-def all_result_files(wildcards):
-
-    return expand(
-        "results/{scenario}/{year}/{esc}/{exporter}-{importer}/results.csv",
-        scenario=wildcards.scenario,
-        year=config["scenarios"][wildcards.scenario]["YEARS"],
-        esc=config["scenarios"][wildcards.scenario]["ESCS"],
-        exporter=config["scenarios"][wildcards.scenario]["EXPORTERS"],
-        importer=config["scenarios"][wildcards.scenario]["IMPORTERS"],
-    )
+# Custom pattern for formatting Paramspace, as snakemake
+# does currently not allow for patterns without the wildcard_name included
+# see: https://stackoverflow.com/questions/71293563/custom-patterns-with-snakemakes-paramspace/71296522#71296522
+def custom_instance_pattern(ps):
+    pattern = "{scenario}/{year}/{esc}/{exporter}-{importer}"
+    instance_patterns = [
+        pattern.format(**dict(i for i in row.items())) 
+        for _, row in ps.iterrows()
+    ]
+    return instance_patterns
 
 
 rule combine_scenario_results:
     input:
-        results=all_result_files,
-        inputs="results/{scenario}/inputs.tar",
+        results=expand("results/{instances}/results.csv", instances=custom_instance_pattern(scenarios)),
     output:
-        results="results/{scenario}/results.csv",
+        results="results/results.csv",
     threads: 1
-    params:
-        scenario=lambda w: get_scenario(w["scenario"]),
     log:
-        python="logs/{scenario}/combine_results.log",
-        notebook="logs/{scenario}/combine_results.ipynb",
+        python="logs/combine_results.log",
+        notebook="logs/combine_results.ipynb",
     notebook:
         "../actions/combine_results.py.ipynb"
 
