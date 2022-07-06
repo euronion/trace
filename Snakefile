@@ -1,8 +1,10 @@
-# SPDX-FileCopyrightText: 2020-2021 Johannes Hampp
+# SPDX-FileCopyrightText: 2020-2022 Johannes Hampp
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from pathlib import Path
+import pandas as pd
+from snakemake.utils import Paramspace
 from snakemake.utils import update_config
 from snakemake.io import load_configfile
 
