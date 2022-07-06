@@ -38,6 +38,7 @@ SPDX-License-Identifier: CC-BY-4.0
 * `pre-commit` continous integration used
 * black coding style enforced
 * Snakemake related files are formatted using `snakefmt`
+* Fix: compatability of jupyter notebooks with new `nbconvert` versions
 
 ## Initial release (2021-08-03)
 
