@@ -19,7 +19,7 @@ def custom_instance_pattern(ps):
     return instance_patterns
 
 
-rule combine_scenario_results:
+rule all_scenario_results:
     input:
         results=expand("results/{instances}/results.csv", instances=custom_instance_pattern(scenarios)),
     output:
