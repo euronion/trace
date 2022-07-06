@@ -3,9 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 # Use paramspace to evaluate which scenarios to run
-scenarios = Paramspace(
-    pd.read_csv("scenarios/default.csv", dtype=str)
-)
+scenarios = Paramspace(pd.read_csv("scenarios/default.csv", dtype=str))
 
 # Custom pattern for formatting Paramspace, as snakemake
 # does currently not allow for patterns without the wildcard_name included
@@ -13,15 +11,17 @@ scenarios = Paramspace(
 def custom_instance_pattern(ps):
     pattern = "{scenario}/{year}/{esc}/{exporter}-{importer}"
     instance_patterns = [
-        pattern.format(**dict(i for i in row.items())) 
-        for _, row in ps.iterrows()
+        pattern.format(**dict(i for i in row.items())) for _, row in ps.iterrows()
     ]
     return instance_patterns
 
 
 rule all_scenario_results:
     input:
-        results=expand("results/{instances}/results.csv", instances=custom_instance_pattern(scenarios)),
+        results=expand(
+            "results/{instances}/results.csv",
+            instances=custom_instance_pattern(scenarios),
+        ),
     output:
         results="results/results.csv",
     threads: 1
