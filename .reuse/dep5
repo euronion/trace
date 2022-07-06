@@ -5,21 +5,25 @@ Source: https://github.com/euronion/trace/
 
 # ipynb files are JSON format and can currently not be parsed by REUSE
 Files: *.ipynb
-Copyright: 2020-2021 Johannes Hampp
+Copyright: 2020-2022 Johannes Hampp
 License: GPL-3.0-or-later
 
 Files: escs/*
-Copyright: 2020-2021 Johannes Hampp
+Copyright: 2020-2022 Johannes Hampp
 License: CC-BY-4.0
 
 Files: data/*
-Copyright: 2020-2021 Johannes Hampp
+Copyright: 2020-2022 Johannes Hampp
 License: CC-BY-4.0
 
 Files: .github/*
-Copyright: 2020-2021 Johannes Hampp
+Copyright: 2020-2022 Johannes Hampp
 License: CC0-1.0
 
 Files: envs/*
-Copyright: 2020-2021 Johannes Hampp
+Copyright: 2020-2022 Johannes Hampp
 License: CC0-1.0
+
+Files: scenarios/*.csv
+Copyright: 2022 Johannes Hampp
+License: CC-BY-4.0
