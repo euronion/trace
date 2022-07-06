@@ -32,6 +32,7 @@ SPDX-License-Identifier: CC-BY-4.0
 * Include new import-exporter relationships:
     + Imports to CERN/Geneva (for CERN link idea)
     + Imports to various points in Europe from outside Europe (for PyPSA-EUR-Sec import exploration)
+* Add scenario management via `scenarios/default.csv` instead of specifying combinations of scenario/ESC/year/exporter/importer via `config.yaml`s
 
 ### Other:
 
