@@ -35,6 +35,8 @@ dependencies:
   # Workflow management
 - snakemake
 - snakefmt
+- notebook
+- nbconvert
 
   # Read Julia files
 - h5py
