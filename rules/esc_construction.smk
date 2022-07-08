@@ -1,7 +1,19 @@
-# SPDX-FileCopyrightText: 2020-2021 Johannes Hampp
+# SPDX-FileCopyrightText: 2020-2022 Johannes Hampp
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+rule download_technology_data:
+    input:
+        HTTP.remote(
+            expand("raw.githubusercontent.com/PyPSA/technology-data/{version}/outputs/costs_{year}.csv",
+                    version=config["technology_data"],
+                    allow_missing=True),
+            keep_local=True,
+        ),
+    output:
+        "data/technology-data/outputs/costs_{year}.csv",
+    run:
+        move(input[0], output[0])
 
 rule create_additional_components:
     output:
@@ -16,7 +28,7 @@ rule create_additional_components:
 rule create_network:
     input:
         efficiencies="data/efficiencies.csv",
-        costs=technology_data("../technology-data/outputs/costs_{year}.csv"),
+        costs="data/technology-data/outputs/costs_{year}.csv",
         wacc="data/wacc.csv",
         distances="data/distances.csv",
         shipping_properties="data/shipping.csv",
@@ -86,7 +98,7 @@ rule attach_supply:
             era_year=config["GlobalEnergyGIS"]["era_year"]
         ),
         demand=demand_file,
-        costs=technology_data("../technology-data/outputs/costs_{year}.csv"),
+        costs="data/technology-data/outputs/costs_{year}.csv",
         wacc="data/wacc.csv",
         network="resources/networks_ip/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
         additional_components="resources/additional_components.pkl",

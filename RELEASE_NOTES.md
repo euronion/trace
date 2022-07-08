@@ -40,6 +40,9 @@ SPDX-License-Identifier: CC-BY-4.0
 * black coding style enforced
 * Snakemake related files are formatted using `snakefmt`
 * Fix: compatability of jupyter notebooks with new `nbconvert` versions
+* `technology-data` (https://github.com/PyPSA/technology-data) is now automatically downloaded and included
+  as `data/technology-data/<...>` files. The version being used by default is always the most up-to-date version
+  and can be configured via `config/config.default.yaml` (new entry: `config["technology_data"]).
 
 ## Initial release (2021-08-03)
 

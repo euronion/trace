@@ -6,8 +6,11 @@ from pathlib import Path
 import pandas as pd
 from snakemake.utils import Paramspace
 from snakemake.utils import update_config
+from shutil import move
+from snakemake.remote.HTTP import RemoteProvider as HTTPRemoteProvider
 from snakemake.io import load_configfile
 
+HTTP = HTTPRemoteProvider()
 
 # Specify config file
 configfile: "config/config.initial_paper.yaml"
@@ -25,16 +28,6 @@ update_config(config, specific_config)
 wildcard_constraints:
     year="\d+",
     scenario="[-\w]+",
-
-
-subworkflow technology_data:
-    workdir:
-        "../technology-data"
-    snakefile:
-        "../technology-data/Snakefile"
-    configfile:
-        "../technology-data/config.yaml"
-
 
 def get_scenario(scenario_name):
     s = config["scenarios"]["default"].copy()

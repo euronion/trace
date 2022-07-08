@@ -14,9 +14,9 @@ SPDX-License-Identifier: CC-BY-4.0
 
 ## Setup and installation
 
-1. Downloading `git` repositories:
+1. Downloading the `git` repository:
    
-    a. Download the main repository to somewhere (e.g. into a `projects` folder):
+    Download the main repository to somewhere (e.g. into a `projects` folder):
 
     ```
         (projects) > git clone https://github.com/euronion/trace.git
@@ -24,27 +24,6 @@ SPDX-License-Identifier: CC-BY-4.0
 
     This repository contains the main workflow, the energy supply chain definitions
     and all the necessary scripts tying it together.
-
-    b. Download the `technology-data` repository into a parallel directory to the previous repository:
-
-    ```
-        (projects) > git clone -b new-techs/chemical-energy-carriers https://github.com/euronion/technology-data.git
-    ```
-
-    This repository contains the technology cost data.
-    > Note:
-    > That the repository branch is not `main` and the repository is **currently NOT** identical with https://github.com/PyPSA/technology-data/ .
-
-    The resulting resulting structure should look like this
-
-    ```
-        (projects): tree -d -L 1 ./
-        ./projects
-        ├── technology-data
-        ├── trace
-        └── ...
-    ```
-
 
 2. Setup your `python` environment:
 
@@ -97,6 +76,7 @@ SPDX-License-Identifier: CC-BY-4.0
 │   ├── config.default.yaml
 │   └── config.initial_paper.yaml
 ├── data        # Input data for the model
+│   ├── technology-data
 │   ├── distances.csv
 │   ├── efficiencies.csv
 │   ├── import_profiles
