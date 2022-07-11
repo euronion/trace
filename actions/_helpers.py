@@ -168,3 +168,40 @@ def extract_unit(b, n):
     import re
 
     return re.match("^.*?\s*\[?(\w*)\]?$", n.buses.loc[b]["carrier"]).group(1)
+
+def read_efficiencies(fp, year):
+    """Read all entries from data/efficiencies.csv for the given year.
+    
+    Returns all entries where entries for this specific year exist.
+    For all other entries returns the default value where the column "year" == "all".
+    
+    Parameters
+    ----------
+    fp : str or Path
+        Filepath to the location of the efficiencies.csv file.
+    year : int or str
+        Scenario year to compare against
+        
+    Returns
+    -------
+    efficiencies : pd.DataFrame
+    """
+    import pandas as pd
+
+    # Return efficiency dataframe with year-specific values where
+    # values are given for the specific year and returns for all 
+    # other entries the default (year=="all") value from the file
+    # (= update + insert)
+    df = pd.read_csv(fp).set_index(["process","from","to"])
+
+    # all specific entries for the given scenario year
+    specific = df.loc[df["year"] == str(year)].drop(columns="year")
+
+    # Select all entries from defaults where no specific entry exists
+    default = df.loc[df["year"] == "all"].drop(columns="year")
+    default = default[~default.index.isin(specific.index)]
+
+    # Combine into single dataframe
+    efficiencies = pd.concat([specific, default]).reset_index()
+
+    return efficiencies

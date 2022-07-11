@@ -33,6 +33,9 @@ SPDX-License-Identifier: CC-BY-4.0
     + Imports to CERN/Geneva (for CERN link idea)
     + Imports to various points in Europe from outside Europe (for PyPSA-EUR-Sec import exploration)
 * Add scenario management via `scenarios/default.csv` instead of specifying combinations of scenario/ESC/year/exporter/importer via `config.yaml`s
+* Add option for year-specific efficiencies: Efficiencies can now be specified in `data/efficiencies.csv` for either "all" years or year-specific values be given
+  * Year-specific efficiencies for water electrolysis given, which affects most ESCs and thus was determined to be very important.
+    All other efficiencies are constant over the years.
 
 ### Other:
 
