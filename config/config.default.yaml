@@ -141,6 +141,17 @@ GlobalEnergyGIS:
 technology_data: "master"
 
 solver:
+  pypsa-eur: # taken from : https://github.com/PyPSA/pypsa-eur/blob/master/config.default.yaml (works well)
+    name: gurobi
+    method: 2 # barrier
+    crossover: 0
+    BarConvTol: 1.e-5
+    FeasibilityTol: 1.e-6
+    AggFill: 0
+    PreDual: 0
+    GURO_PAR_BARDENSETHRESH: 200
+    threads: 8
+    seed: 10              # Consistent seed for all plattforms
   default:
     name: gurobi
     Presolve: 1           # Conservative presolving; Aggressive consumes too much memory
@@ -167,6 +178,7 @@ solver:
     FeasibilityTol: 1.e-5
     OptimalityTol: 1.e-5
     ObjScale: 100
+    threads: 8
     seed: 10              # Consistent seed for all plattforms
   fallback:
         # Use gurobi defaults
@@ -178,3 +190,4 @@ solver:
     FeasibilityTol: 1.e-5
     OptimalityTol: 1.e-5
     seed: 10              # Consistent seed for all plattforms
+    threads: 8
