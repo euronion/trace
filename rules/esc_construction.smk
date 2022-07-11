@@ -2,18 +2,22 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+
 rule download_technology_data:
     input:
         HTTP.remote(
-            expand("raw.githubusercontent.com/PyPSA/technology-data/{version}/outputs/costs_{year}.csv",
-                    version=config["technology_data"],
-                    allow_missing=True),
+            expand(
+                "raw.githubusercontent.com/PyPSA/technology-data/{version}/outputs/costs_{year}.csv",
+                version=config["technology_data"],
+                allow_missing=True,
+            ),
             keep_local=True,
         ),
     output:
         "data/technology-data/outputs/costs_{year}.csv",
     run:
         move(input[0], output[0])
+
 
 rule create_additional_components:
     output:
