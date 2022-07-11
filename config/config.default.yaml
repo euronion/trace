@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2020-2021 Johannes Hampp
+# SPDX-FileCopyrightText: 2020-2022 Johannes Hampp
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -7,14 +7,6 @@ logging:
 
 scenarios:
   default:   # All scenarios are based on this scenario and may overwrite the here specified parameters
-        #+++ used in Snakefile +++ #
-        # Year used to select cost assumptions
-    YEARS: [2030, 2040, 2050]
-    IMPORTERS: ["DE"]
-    ESCS: ["hvdc-to-h2", "pipeline-h2", "pipeline-ch4", "shipping-lh2", "shipping-lch4", "shipping-meoh", "shipping-lnh3", "shipping-lohc", "shipping-ftfuel", "shipping-lch4-to-h2", "shipping-meoh-to-h2", "shipping-lnh3-to-h2", "pipeline-ch4-to-h2"]
-    EXPORTERS: ["AU", "AR", "ES", "EG", "MA", "SA", "DK", "DE"]
-        #--- used in Snakefile ---
-
         # WACC scenario assumptions, see "data/wacc.csv"
         # Currently supported: homogeneous, irena, inhomogeneous
     wacc: "homogeneous"
