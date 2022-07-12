@@ -73,3 +73,11 @@ repos:
   rev: v1.0.0
   hooks:
   - id: reuse
+
+- repo: local
+  hooks:
+  - id: update-conda-env-file
+    name: update-conda-env-file
+    entry: bash -c "conda env export --no-build > envs/environment.used.yaml"
+    language: system
+    pass_filenames: false
