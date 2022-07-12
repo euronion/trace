@@ -3,7 +3,10 @@ SPDX-FileCopyrightText: 2020-2021 Johannes Hampp
 SPDX-License-Identifier: CC-BY-4.0
 -->
 
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/euronion/trace/main.svg)](https://results.pre-commit.ci/latest/github/euronion/trace/main)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/euronion/trace/main.svg)](https://results.pre-commit.ci/latest/github/euronion/trace/main) 
+[![REUSE status](https://api.reuse.software/badge/github.com/euronion/trace/)](https://api.reuse.software/info/github.com/euronion/trace/)
+[![Snakemake](https://img.shields.io/badge/snakemake-≥6.2.0-brightgreen.svg?style=flat)](https://snakemake.readthedocs.io)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 # TRACE - Transporting Renewables as Chemical Energy
 
