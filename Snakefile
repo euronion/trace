@@ -12,6 +12,7 @@ from snakemake.io import load_configfile
 
 HTTP = HTTPRemoteProvider()
 
+
 # Specify config file
 configfile: "config/config.initial_paper.yaml"
 
@@ -28,6 +29,7 @@ update_config(config, specific_config)
 wildcard_constraints:
     year="\d+",
     scenario="[-\w]+",
+
 
 def get_scenario(scenario_name):
     s = config["scenarios"]["default"].copy()
