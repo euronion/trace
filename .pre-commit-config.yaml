@@ -55,13 +55,6 @@ repos:
   - id: pretty-format-yaml
     args: [--autofix, --indent, '2', --preserve-quotes]
 
-# Use yamllint to check for valid YAML files and list syntax errors
-- repo: https://github.com/adrienverge/yamllint.git
-  rev: v1.27.1
-  hooks:
-  - id: yamllint
-    args: [--format, parsable, -c=.yamllint]
-
 # Format Snakemake rule / workflow files
 - repo: https://github.com/snakemake/snakefmt
   rev: v0.6.1
