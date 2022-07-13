@@ -8,7 +8,6 @@ default,2030,hvdc-to-h2,ES,DE
 default,2030,hvdc-to-h2,MA,DE
 default,2030,hvdc-to-h2,SA,DE
 default,2030,pipeline-h2,AU,DE
-default,2030,pipeline-h2,AU,DE
 default,2030,pipeline-h2,AR,DE
 default,2030,pipeline-h2,DE,DE
 default,2030,pipeline-h2,DK,DE
@@ -112,7 +111,6 @@ default,2040,hvdc-to-h2,EG,DE
 default,2040,hvdc-to-h2,ES,DE
 default,2040,hvdc-to-h2,MA,DE
 default,2040,hvdc-to-h2,SA,DE
-default,2040,pipeline-h2,AU,DE
 default,2040,pipeline-h2,AU,DE
 default,2040,pipeline-h2,AR,DE
 default,2040,pipeline-h2,DE,DE
@@ -218,7 +216,6 @@ default,2050,hvdc-to-h2,ES,DE
 default,2050,hvdc-to-h2,MA,DE
 default,2050,hvdc-to-h2,SA,DE
 default,2050,pipeline-h2,AU,DE
-default,2050,pipeline-h2,AU,DE
 default,2050,pipeline-h2,AR,DE
 default,2050,pipeline-h2,DE,DE
 default,2050,pipeline-h2,DK,DE
@@ -322,7 +319,6 @@ lowhomogeneous,2030,hvdc-to-h2,EG,DE
 lowhomogeneous,2030,hvdc-to-h2,ES,DE
 lowhomogeneous,2030,hvdc-to-h2,MA,DE
 lowhomogeneous,2030,hvdc-to-h2,SA,DE
-lowhomogeneous,2030,pipeline-h2,AU,DE
 lowhomogeneous,2030,pipeline-h2,AU,DE
 lowhomogeneous,2030,pipeline-h2,AR,DE
 lowhomogeneous,2030,pipeline-h2,DE,DE
@@ -428,7 +424,6 @@ lowhomogeneous,2040,hvdc-to-h2,ES,DE
 lowhomogeneous,2040,hvdc-to-h2,MA,DE
 lowhomogeneous,2040,hvdc-to-h2,SA,DE
 lowhomogeneous,2040,pipeline-h2,AU,DE
-lowhomogeneous,2040,pipeline-h2,AU,DE
 lowhomogeneous,2040,pipeline-h2,AR,DE
 lowhomogeneous,2040,pipeline-h2,DE,DE
 lowhomogeneous,2040,pipeline-h2,DK,DE
@@ -532,7 +527,6 @@ lowhomogeneous,2050,hvdc-to-h2,EG,DE
 lowhomogeneous,2050,hvdc-to-h2,ES,DE
 lowhomogeneous,2050,hvdc-to-h2,MA,DE
 lowhomogeneous,2050,hvdc-to-h2,SA,DE
-lowhomogeneous,2050,pipeline-h2,AU,DE
 lowhomogeneous,2050,pipeline-h2,AU,DE
 lowhomogeneous,2050,pipeline-h2,AR,DE
 lowhomogeneous,2050,pipeline-h2,DE,DE
