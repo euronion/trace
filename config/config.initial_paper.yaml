@@ -102,3 +102,40 @@ scenarios:
       CAPEX_electrolysis: 1        # CAPEX of electrolysis
       CAPEX_MeOHSynthesis: 1       # CAPEX related to methanol synthesis
       CAPEX_pipeline: 1            # CAPEX of pipeline and related technologies (H2 and CH4, submarine and onland, pipeline and pipeline compressors)
+
+plotting:
+  # DPI setting for exporting PNG figures
+  dpi: 300
+  # Prettier ESC names to use in plots
+  esc_pretty_names:
+    "hvdc-to-h2": "HVDC to H2 (g)"
+    "pipeline-h2": "H2 pipeline"
+    "shipping-lh2": "H2 (l) ship"
+    "shipping-lohc": "LOHC ship"
+    "pipeline-ch4": "CH4 pipeline"
+    "shipping-lch4": "CH4 (l) ship"
+    "shipping-meoh": "MeOH ship"
+    "shipping-lnh3": "NH3 (l) ship"
+    "shipping-lnh3-to-h2": "NH3 (l) ship to H2 (g)"
+    "shipping-ftfuel": "FTF ship"
+  # matplotlib markers to use for ESCs in plots
+  esc_markers:
+    "hvdc-to-h2": "X"
+    "pipeline-h2": "+"
+    "shipping-lh2": "^"
+    "shipping-lohc": "d"
+    "pipeline-ch4": "*"
+    "shipping-lch4": "v"
+    "shipping-meoh": ">"
+    "shipping-lnh3": "<"
+    "shipping-ftfuel": "p"
+  # matplotlib colors to use for different exporters in plots
+  exporter_colors:
+    "AR": "orange"
+    "AU": "deepskyblue"
+    "DE": "black"
+    "DK": "deeppink"
+    "EG": "red"
+    "ES": "green"
+    "MA": "blueviolet"
+    "SA": "slategray"
