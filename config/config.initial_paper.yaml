@@ -108,7 +108,7 @@ plotting:
   dpi: 300
   # Prettier ESC names to use in plots
   esc_pretty_names:
-    "hvdc-to-h2": "HVDC to H2 (g)"
+    "hvdc-to-h2": "HVDC to H2"
     "pipeline-h2": "H2 pipeline"
     "shipping-lh2": "H2 (l) ship"
     "shipping-lohc": "LOHC ship"
