@@ -33,7 +33,7 @@ rule plot_2030_to_2050_LCoHs:
             "figures/paper-01/LCoH_all-ESC-EXP_2030-2050_{scenario}", ".pdf", ".png"
         ),
     notebook:
-        "../actions/plotting/LCoH_all-ESC-EXP_2030-2050.py.ipynb"  #TODO
+        "../actions/plotting/LCoH_all-ESC-EXP_2030-2050.py.ipynb"
 
 
 rule plot_selected_ESCs_cost_compositions:
