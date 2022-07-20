@@ -54,10 +54,10 @@ rule plot_sensitivities:
         results=rules.all_scenario_results.output,
     output:
         figures=multiext(
-            "figures/paper-01/sensitivities_{year}_{esc}_ES-DE", ".pdf", ".png"
+            "figures/paper-01/sensitivities_{year}_{esc}_{exporter}-{importer}", ".pdf", ".png"
         ),
     notebook:
-        "../actions/plotting/plot_sensitivities.py.ipynb"  #TODO
+        "../actions/plotting/sensitivities_selected_esc.py.ipynb"
 
 
 rule plot_all_paper_figures:
@@ -66,4 +66,6 @@ rule plot_all_paper_figures:
         rules.plot_2030_to_2050_LCoEs.output,
         rules.plot_2030_to_2050_LCoHs.output,
         rules.plot_selected_ESCs_cost_compositions.output,
-        rules.plot_sensitivities.output,
+        # Sensivity cases as included in scenarios.csv
+        "figures/paper-01/sensitivities_2030_pipeline-h2_ES-DE.pdf",
+        "figures/paper-01/sensitivities_2030_shipping-meoh_ES-DE.pdf",
