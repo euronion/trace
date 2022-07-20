@@ -41,12 +41,12 @@ rule plot_selected_ESCs_cost_compositions:
         results=rules.all_scenario_results.output,
     output:
         figures=multiext(
-            "figures/paper-01/cost-compositions_selected_ESCs_{scenario}",
+            "figures/paper-01/cost-compositions_selected_ESCs_{scenario}_{year}",
             ".pdf",
             ".png",
         ),
     notebook:
-        "../actions/plotting/cost-compositions_selected_ESCs.py.ipynb"  #TODO
+        "../actions/plotting/cost-compositions_selected_ESCs.py.ipynb"
 
 
 rule plot_sensitivities:
@@ -67,5 +67,13 @@ rule plot_all_paper_figures:
         rules.plot_2030_to_2050_LCoHs.output,
         rules.plot_selected_ESCs_cost_compositions.output,
         # Sensivity cases as included in scenarios.csv
-        "figures/paper-01/sensitivities_2030_pipeline-h2_ES-DE.pdf",
-        "figures/paper-01/sensitivities_2030_shipping-meoh_ES-DE.pdf",
+        expand(
+            "figures/paper-01/sensitivities_2030_{esc}_ES-DE.pdf",
+            esc=["pipeline-h2","shipping-meoh"]
+        ),
+        # Cost compositions
+        expand(
+            "figures/paper-01/cost-compositions_selected_ESCs_{scenario}_{year}",
+            scenario=["default","lowhomogeneous"],
+            year=[2030,2040,2050]
+        ),
