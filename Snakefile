@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from pathlib import Path
+from copy import deepcopy
 import pandas as pd
 from snakemake.utils import Paramspace
 from snakemake.utils import update_config
@@ -32,7 +33,7 @@ wildcard_constraints:
 
 
 def get_scenario(scenario_name):
-    s = config["scenarios"]["default"].copy()
+    s = deepcopy(config["scenarios"]["default"])
     update_config(s, config["scenarios"][scenario_name])
     return s
 
