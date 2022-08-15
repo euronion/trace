@@ -80,6 +80,19 @@ rule plot_electricity_supply_curves:
         "../actions/plotting/electricity_supply-curves.py.ipynb"
 
 
+rule plot_electricity_generation_shares:
+    input:
+        results=rules.all_scenario_results.output,
+    output:
+        figures=multiext(
+            "figures/paper-01/res_generation_shares_all-ESC-EXP_{year}_{scenario}",
+            ".pdf",
+            ".png",
+        ),
+    notebook:
+        "../actions/plotting/res_generation_shares_all-ESC-EXP.py.ipynb"
+
+
 rule plot_all_paper_figures:
     input:
         expand(
@@ -108,6 +121,11 @@ rule plot_all_paper_figures:
         ),
         expand(
             "figures/paper-01/electricity_supply-curves_{year}_{scenario}.pdf",
+            year=[2030, 2040, 2050],
+            scenario=["default", "lowhomogeneous"],
+        ),
+        expand(
+            "figures/paper-01/res_generation_shares_all-ESC-EXP_{year}_{scenario}.pdf",
             year=[2030, 2040, 2050],
             scenario=["default", "lowhomogeneous"],
         ),
