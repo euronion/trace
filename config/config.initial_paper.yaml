@@ -113,13 +113,13 @@ plotting:
     "shipping-lh2": "H2 (l) ship"
     "shipping-lohc": "LOHC ship"
     "pipeline-ch4": "CH4 pipeline"
-    "pipeline-ch4-to-h2": "CH4 pipeline"
+    "pipeline-ch4-to-h2": "CH4 pipeline to H2"
     "shipping-lch4": "CH4 (l) ship"
-    "shipping-lch4-to-h2": "CH4 (l) ship"
+    "shipping-lch4-to-h2": "CH4 (l) ship to H2"
     "shipping-meoh": "MeOH ship"
-    "shipping-meoh-to-h2": "MeOH ship"
+    "shipping-meoh-to-h2": "MeOH ship to H2"
     "shipping-lnh3": "NH3 (l) ship"
-    "shipping-lnh3-to-h2": "NH3 (l) ship"
+    "shipping-lnh3-to-h2": "NH3 (l) ship to H2"
     "shipping-ftfuel": "FTF ship"
   # matplotlib markers to use for ESCs in plots
   esc_markers:
