@@ -1,10 +1,17 @@
-# SPDX-FileCopyrightText: 2020-2021 Johannes Hampp
+# SPDX-FileCopyrightText: 2020-2022 Johannes Hampp
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from pathlib import Path
+from copy import deepcopy
+import pandas as pd
+from snakemake.utils import Paramspace
 from snakemake.utils import update_config
+from shutil import move
+from snakemake.remote.HTTP import RemoteProvider as HTTPRemoteProvider
 from snakemake.io import load_configfile
+
+HTTP = HTTPRemoteProvider()
 
 
 # Specify config file
@@ -25,17 +32,8 @@ wildcard_constraints:
     scenario="[-\w]+",
 
 
-subworkflow technology_data:
-    workdir:
-        "../technology-data"
-    snakefile:
-        "../technology-data/Snakefile"
-    configfile:
-        "../technology-data/config.yaml"
-
-
 def get_scenario(scenario_name):
-    s = config["scenarios"]["default"].copy()
+    s = deepcopy(config["scenarios"]["default"])
     update_config(s, config["scenarios"][scenario_name])
     return s
 

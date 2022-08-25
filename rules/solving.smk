@@ -28,7 +28,7 @@ rule solve_network:
         additional_components="resources/additional_components.pkl",
     output:
         network="results/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
-    threads: 8
+    threads: config["solver"]["default"]["threads"]
     params:
         scenario=lambda w: get_scenario(w["scenario"]),
     resources:

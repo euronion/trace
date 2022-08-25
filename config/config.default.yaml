@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2020-2021 Johannes Hampp
+# SPDX-FileCopyrightText: 2020-2022 Johannes Hampp
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -7,14 +7,6 @@ logging:
 
 scenarios:
   default:   # All scenarios are based on this scenario and may overwrite the here specified parameters
-        #+++ used in Snakefile +++ #
-        # Year used to select cost assumptions
-    YEARS: [2030, 2040, 2050]
-    IMPORTERS: ["DE"]
-    ESCS: ["hvdc-to-h2", "pipeline-h2", "pipeline-ch4", "shipping-lh2", "shipping-lch4", "shipping-meoh", "shipping-lnh3", "shipping-lohc", "shipping-ftfuel", "shipping-lch4-to-h2", "shipping-meoh-to-h2", "shipping-lnh3-to-h2", "pipeline-ch4-to-h2"]
-    EXPORTERS: ["AU", "AR", "ES", "EG", "MA", "SA", "DK", "DE"]
-        #--- used in Snakefile ---
-
         # WACC scenario assumptions, see "data/wacc.csv"
         # Currently supported: homogeneous, irena, inhomogeneous
     wacc: "homogeneous"
@@ -265,7 +257,6 @@ renewables:
     solar_multiple_estimate: 2.7
 
 regions:
-
   # Region definitions rely on the GADM database (https://gadm.org)
   # Regions are identified by their full-name in the database
   # and may be of level 0 (country) or GADM levels 1 and 2.
@@ -290,7 +281,23 @@ detour_factors:
   pipeline: 1.4
   shipping: 1.
 
+# Which technology-data version to use for cost assumptions
+# May be either a branch (like e.g. "master") or a full-commit hash
+# see: https://github.com/PyPSA/technology-data
+technology_data: "master"
+
 solver:
+  pypsa-eur: # taken from : https://github.com/PyPSA/pypsa-eur/blob/master/config.default.yaml (works well)
+    name: gurobi
+    method: 2 # barrier
+    crossover: 0
+    BarConvTol: 1.e-5
+    FeasibilityTol: 1.e-6
+    AggFill: 0
+    PreDual: 0
+    GURO_PAR_BARDENSETHRESH: 200
+    threads: 8
+    seed: 10              # Consistent seed for all plattforms
   default:
     name: gurobi
     Presolve: 1           # Conservative presolving; Aggressive consumes too much memory
@@ -305,18 +312,28 @@ solver:
     seed: 10              # Consistent seed for all plattforms
   numeric-focus:
     name: gurobi
-    Presolve: 1           # 2=Aggressive presolving
-    PreDual: 0            # form primal and dual during presolve, heuristically choose
-    AggFill: 0
+    NumericFocus: 3       # Favour numeric stability over speed
+    method: 2             # barrier
+    crossover: 0          # do not use crossover
+    BarHomogeneous: 1     # Use homogeneous barrier if standard does not converge
+    BarConvTol: 1.e-5
+    FeasibilityTol: 1.e-4
+    OptimalityTol: 1.e-4
+    ObjScale: -0.5
+    threads: 8
+    seed: 10              # Consistent seed for all plattforms
+  numeric-focus-scaled:
+    name: gurobi
     NumericFocus: 3       # Favour numeric stability over speed
     method: 2             # barrier
     crossover: 0          # do not use crossover
     BarHomogeneous: 1     # Use homogeneous barrier if standard does not converge
     ScaleFlag: 3
     BarConvTol: 1.e-5
-    FeasibilityTol: 1.e-5
-    OptimalityTol: 1.e-5
+    FeasibilityTol: 1.e-4
+    OptimalityTol: 1.e-4
     ObjScale: 100
+    threads: 8
     seed: 10              # Consistent seed for all plattforms
   fallback:
         # Use gurobi defaults
@@ -328,3 +345,4 @@ solver:
     FeasibilityTol: 1.e-5
     OptimalityTol: 1.e-5
     seed: 10              # Consistent seed for all plattforms
+    threads: 8

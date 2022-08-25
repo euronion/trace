@@ -34,12 +34,20 @@ SPDX-License-Identifier: CC-BY-4.0
 * Include new import-exporter relationships:
     + Imports to CERN/Geneva (for CERN link idea)
     + Imports to various points in Europe from outside Europe (for PyPSA-EUR-Sec import exploration)
+* Add scenario management via `scenarios/default.csv` instead of specifying combinations of scenario/ESC/year/exporter/importer via `config.yaml`s
+* Add option for year-specific efficiencies: Efficiencies can now be specified in `data/efficiencies.csv` for either "all" years or year-specific values be given
+  * Year-specific efficiencies for water electrolysis given, which affects most ESCs and thus was determined to be very important.
+    All other efficiencies are constant over the years.
 
 ### Other:
 
 * `pre-commit` continous integration used
 * black coding style enforced
 * Snakemake related files are formatted using `snakefmt`
+* Fix: compatability of jupyter notebooks with new `nbconvert` versions
+* `technology-data` (https://github.com/PyPSA/technology-data) is now automatically downloaded and included
+  as `data/technology-data/<...>` files. The version being used by default is always the most up-to-date version
+  and can be configured via `config/config.default.yaml` (new entry: `config["technology_data"]).
 
 ## Initial release (2021-08-03)
 

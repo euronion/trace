@@ -3,15 +3,23 @@ SPDX-FileCopyrightText: 2020-2021 Johannes Hampp
 SPDX-License-Identifier: CC-BY-4.0
 -->
 
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/euronion/trace/main.svg)](https://results.pre-commit.ci/latest/github/euronion/trace/main)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/euronion/trace/main.svg)](https://results.pre-commit.ci/latest/github/euronion/trace/main) 
+[![REUSE status](https://api.reuse.software/badge/github.com/euronion/trace/)](https://api.reuse.software/info/github.com/euronion/trace/)
+[![Snakemake](https://img.shields.io/badge/snakemake-≥6.2.0-brightgreen.svg?style=flat)](https://snakemake.readthedocs.io)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 # TRACE - Transporting Renewables as Chemical Energy
 
+> NOTE: 
+> This repository currently undergoing significant changes.
+> If you're encountering problems feel free to reach out using GitHub issues.
+> A new release with easier handling should become available in the next weeks.
+
 ## Setup and installation
 
-1. Downloading `git` repositories:
+1. Downloading the `git` repository:
    
-    a. Clone the repository
+    Download the main repository to somewhere (e.g. into a `projects` folder):
 
     ```
         $ git clone https://github.com/euronion/trace.git
@@ -19,27 +27,6 @@ SPDX-License-Identifier: CC-BY-4.0
 
     This repository contains the main workflow, the energy supply chain definitions
     and all the necessary scripts tying it together.
-
-    b. Clone the `technology-data` repository into a directory parallel to the main/`trace` repository:
-
-    ```
-        $ git clone -b csp-tower https://github.com/euronion/technology-data.git
-    ```
-
-    This repository contains the technology cost data.
-    > Note:
-    > That the repository branch is not `main` and the repository is **currently NOT** identical with https://github.com/PyPSA/technology-data/ .
-
-    The resulting resulting structure should look like this
-
-    ```
-        $ tree -d -L 1 ./
-        ./
-        ├── technology-data
-        ├── trace
-        └── ...
-    ```
-
 
 2. Setup your `python` environment:
 
@@ -76,6 +63,7 @@ $ tree -L 3
 │   ├── config.default.yaml
 │   └── ...
 ├── data        # Input data for the model
+│   ├── technology-data
 │   ├── distances.csv
 │   ├── efficiencies.csv
 │   ├── import_profiles

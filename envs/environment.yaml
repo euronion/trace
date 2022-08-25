@@ -1,8 +1,8 @@
 name: trace
 channels:
 - conda-forge
+- gurobi
 - bioconda
-- https://conda.anaconda.org/gurobi
 dependencies:
 - python
 - ipython
@@ -33,6 +33,7 @@ dependencies:
   # Modelling framework
 - pycountry
 - pypsa
+- atlite
 
   # Data retrieval
 - cdsapi
@@ -46,6 +47,7 @@ dependencies:
 - snakemake
 - snakefmt
 - notebook
+- nbconvert
 
   # Read Julia files
 - h5py
@@ -55,11 +57,5 @@ dependencies:
 
   # Code style and quality checks
 - pre-commit
-#- nbformat<5.1 # Until https://github.com/snakemake/snakemake/issues/1032 is resolved
 
 - pip
-
-- pip:
-    # Modelling Renewables, via pip
-    # while atlite https://github.com/PyPSA/atlite/commit/e409dddd632bf9711188de068a2824ee31ace81f is not on conda-forge
-  - git+https://github.com/PyPSA/atlite
