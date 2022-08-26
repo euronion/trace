@@ -267,20 +267,26 @@ regions:
   # Regions are identified by their full-name in the database
   # and may be of level 0 (country) or GADM levels 1 and 2.
   # "MA": ["Laâyoune - Boujdour - Sakia El Hamra", "Tan-Tan"] # Morocco
-  "MA": ["Morocco"]
+  "AR": ["Argentina"]
+  "AU": ["Australia"]
   "DE": ["Germany"]
   "DK": ["Denmark"]
-  "ES": ["Spain"]
-  "AU": ["Australia"]
-  "AR": ["Argentina"]
   "EG": ["Egypt"]
-  "SA": ["Saudi Arabia"]
-  "RU": ["Russia"]
-  "UA": ["Ukraine"]
-  "KZ": ["Kazakhstan"]
+  "ES": ["Spain"]
+  "CA": ["Canada"]
   "DZ": ["Algeria"]
-  "TN": ["Tunisia"]
+  "KZ": ["Kazakhstan"]
+  "MA": ["Morocco"]
   "NA": ["Namibia"]
+  "RU": ["Russia"]
+  "SA": ["Saudi Arabia"]
+  "TN": ["Tunisia"]
+  "UA": ["Ukraine"]
+  "LY": ["Libya"]
+  "IS": ["Iceland"]
+  "US": ["United States"]
+  "TR": ["Turkey"]
+  "CN": ["China"]
 
 detour_factors:
   transmission_line: 1.2
