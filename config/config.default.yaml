@@ -296,7 +296,7 @@ detour_factors:
 # Which technology-data version to use for cost assumptions
 # May be either a branch (like e.g. "master") or a full-commit hash
 # see: https://github.com/PyPSA/technology-data
-technology_data: "master"
+technology_data: "v0.4.0"
 
 solver:
   pypsa-eur: # taken from : https://github.com/PyPSA/pypsa-eur/blob/master/config.default.yaml (works well)
