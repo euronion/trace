@@ -190,6 +190,12 @@ renewables:
       # Same as the "layers" description for "wdpa"
       layers: ["polygons", "points"]
 
+    # Global Shipping Travel Densities to consider
+    shipping_routes:
+      # Only consider areas with number of AIS contacts per hour below this threshold
+      # (i.e. max. 400 AIS contacts per raster cell per hours; number of AIS contacts indicates ship activity)
+      max_density_threshold: 400
+
     # in MW/km^2
     technical_potential: 3
 

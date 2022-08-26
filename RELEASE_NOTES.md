@@ -38,6 +38,8 @@ SPDX-License-Identifier: CC-BY-4.0
 * Add option for year-specific efficiencies: Efficiencies can now be specified in `data/efficiencies.csv` for either "all" years or year-specific values be given
   * Year-specific efficiencies for water electrolysis given, which affects most ESCs and thus was determined to be very important.
     All other efficiencies are constant over the years.
+* Add option to exclude offshore areas based on ship activitiy (AIS contacts per hour) for determining eligible offshore areas
+  for offshore wind. Based on this [Pull Request in PyPSA-EUR by p-glaum](https://github.com/PyPSA/pypsa-eur/pull/401).
 
 ### Other:
 

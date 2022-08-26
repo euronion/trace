@@ -128,6 +128,22 @@ rule download_wdpa:
             shell("ogr2ogr -f gpkg -update -append {output.gpkg} {layer_path}")
 
 
+# Downloading global shipping traffic density map
+# with ship movement between 2015-2020
+# Specific dataset: "Global Ship Density"
+# Website: https://datacatalog.worldbank.org/search/dataset/0037580/Global-Shipping-Traffic-Density
+rule download_shipping_density:
+    output:
+        zip="resources/shipdensity_global.zip",
+        shipdensity="resources/shipdensity/shipdensity_global.tif",
+    run:
+        shell(
+            "curl 'https://datacatalogapi.worldbank.org/ddhxext/ResourceDownload?resource_unique_id=DR0045406&version_id=2022-06-28T08:26:08.9439370Z' --output {output.zip} --silent"
+        )
+        output_folder = Path(output["shipdensity"]).parent
+        shell("unzip {output.zip} -d {output_folder}")
+
+
 rule build_region_shape:
     message:
         "Creating region definition (off and onshore) for: {wildcards.region}."
@@ -170,6 +186,7 @@ rule build_potentials_and_profiles:
         gebco_slope="resources/gebco/GEBCO_2021_slope.nc",
         wdpa="resources/WDPA_Feb2022.gpkg",
         wdpa_marine="resources/WDPA_WDOECM_Feb2022_marine.gpkg",
+        shipping_routes="resources/shipdensity/shipdensity_global.tif",
         cutout="resources/cutouts/{region}.nc",
         region="resources/regions/{region}.gpkg",
     output:
