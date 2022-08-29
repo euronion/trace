@@ -202,6 +202,8 @@ rule build_potentials_and_profiles:
     log:
         python="logs/build_potentials_and_profiles/{region}_{technology}.log",
         notebook="logs/build_potentials_and_profiles/{region}_{technology}.py.ipynb",
+    benchmark:
+        "benchmarks/build_potentials_and_profiles/{region}_{technology}.tsv"
     notebook:
         "../actions/build_potentials_and_profiles.py.ipynb"
 
