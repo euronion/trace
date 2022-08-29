@@ -64,12 +64,7 @@ renewables:
     # * "onshore" = region specified by GADM boundaries
     # * "offshore" = region specified as EEZ
     build_in: ["onshore"]
-
-    # Offshore regions are automatically added for all countries of the region
-    # based on the countries' EEZs, as long as the offshore regions are
-    # adjacent to any of the onland regions and within a radius off
-    # <max_shore_distance> m.
-    #max_shore_distance: 1000
+    max_shore_distance: false
 
     # Copernicus Land Cover
     copernicus:
@@ -108,14 +103,8 @@ renewables:
       # are not considered.
       layers: ["polygons", "points"]
 
-    # World Database of Protected Marine Areas
-    wdpa_marine:
-      # MPAs with one following statuses are included in the land availability analysis
-      # (excluded from the eligible areas for building RES)
-      include_status: ["Adopted", "Designated", "Established", "Inscribed", "Proposed"]
-
-      # Same as the "layers" description for "wdpa"
-      layers: ["polygons", "points"]
+    wdpa_marine: false
+    shipping_routes: false
 
     # in MW/km^2
     # Based on ENPRESO non-floating offshore wind
@@ -209,6 +198,7 @@ renewables:
 
   pvplant:
     build_in: ["onshore"]
+    max_shore_distance: false
     copernicus:
       include_codes: [20, 30, 40, 50, 60, 90, 100]
       distancing_codes: []
@@ -216,9 +206,8 @@ renewables:
     wdpa:
       include_status: ["Adopted", "Designated", "Established", "Inscribed", "Proposed"]
       layers: ["polygons", "points"]
-    wdpa_marine:
-      include_status: ["Adopted", "Designated", "Established", "Inscribed", "Proposed"]
-      layers: ["polygons", "points"]
+    wdpa_marine: false
+    shipping_routes: false
     gebco:
       max_depth: false
       max_altitude: false
@@ -232,6 +221,7 @@ renewables:
 
   csp_tower:
     build_in: ["onshore"]
+    max_shore_distance: false
     copernicus:
       include_codes: [20, 30, 40, 60, 90]
       distancing_codes: [50]
@@ -240,9 +230,8 @@ renewables:
     wdpa:
       include_status: ["Adopted", "Designated", "Established", "Inscribed", "Proposed"]
       layers: ["polygons", "points"]
-    wdpa_marine:
-      include_status: ["Adopted", "Designated", "Established", "Inscribed", "Proposed"]
-      layers: ["polygons", "points"]
+    wdpa_marine: false
+    shipping_routes: false
     gebco:
       max_depth: false
       max_altitude: false
