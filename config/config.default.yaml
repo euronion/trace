@@ -9,7 +9,7 @@ scenarios:
   default:   # All scenarios are based on this scenario and may overwrite the here specified parameters
         # WACC scenario assumptions, see "data/wacc.csv"
         # Currently supported: homogeneous, irena, inhomogeneous
-    wacc: "homogeneous"
+    wacc: "pypsa-eur-sec"
 
         # Import profile (time-series) for import demand.
         # Maybe any of the files in data/import_profiles/<import_profile>.csv or "buffered":
