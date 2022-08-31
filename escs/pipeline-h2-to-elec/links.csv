@@ -3,13 +3,13 @@ name,bus0,bus1,bus2,p_nom_extendable,p_min_pu,p_max_pu,scale_costs_based_on
 "battery inverter (discharging, exp)",battery (exp),electricity (exp),,True,0,1,bus0
 seawater desalination (exp),electricity (exp),water (exp),,True,0,1,bus1
 electrolysis (exp),electricity (exp),hydrogen (g) (exp),water (exp),True,0,1,bus0
-H2 storage compressor (exp),hydrogen (g) (exp),hydrogen (g) storage (exp),electricity (exp),True,0,1,n/a
+H2 storage compressor (exp),hydrogen (g) (exp),hydrogen (g) storage (exp),,True,0,1,n/a
 H2 storage unstoring (exp),hydrogen (g) storage (exp),hydrogen (g) (exp),,True,0,1,n/a
 H2 (g) fill compressor station (exp),hydrogen (g) (exp),hydrogen (g) compressed (exp),,True,0,1,bus0
 H2 (g) pipeline,hydrogen (g) compressed (exp),hydrogen (g) compressed submarine,,True,0,1,bus1
 H2 (g) submarine pipeline,hydrogen (g) compressed submarine,hydrogen (g) compressed (imp),,True,0,1,bus1
 H2 (g) pipeline decompressor (imp),hydrogen (g) compressed (imp),hydrogen (g) (imp),,True,0,1,n/a
-H2 storage compressor (imp),hydrogen (g) (imp),hydrogen (g) storage (imp),electricity (imp),True,0,1,n/a
+H2 storage compressor (imp),hydrogen (g) (imp),hydrogen (g) storage (imp),,True,0,1,n/a
 H2 storage unstoring (imp),hydrogen (g) storage (imp),hydrogen (g) (imp),,True,0,1,n/a
 "battery inverter (charging, imp)",electricity (imp),battery (imp),,True,0,1,bus0
 "battery inverter (discharging, imp)",battery (imp),electricity (imp),,True,0,1,bus0

@@ -7,9 +7,9 @@ H2 liquefaction (exp),hydrogen (g) (exp),hydrogen (l) (exp),electricity (exp),Tr
 H2 evaporation (imp),hydrogen (l) (imp),hydrogen (g) (imp),,True,0,1,bus1
 ship loading (exp),hydrogen (l) (exp),berth (exp),,True,0,1,n/a
 ship unloading (imp),berth (imp),hydrogen (l) (imp),,True,0,1,n/a
-H2 storage compressor (exp),hydrogen (g) (exp),hydrogen (g) storage (exp),electricity (exp),True,0,1,n/a
+H2 storage compressor (exp),hydrogen (g) (exp),hydrogen (g) storage (exp),,True,0,1,n/a
 H2 storage unstoring (exp),hydrogen (g) storage (exp),hydrogen (g) (exp),,True,0,1,n/a
-H2 storage compressor (imp),hydrogen (g) (imp),hydrogen (g) storage (imp),electricity (imp),True,0,1,n/a
+H2 storage compressor (imp),hydrogen (g) (imp),hydrogen (g) storage (imp),,True,0,1,n/a
 H2 storage unstoring (imp),hydrogen (g) storage (imp),hydrogen (g) (imp),,True,0,1,n/a
 "battery inverter (charging, imp)",electricity (imp),battery (imp),,True,0,1,bus0
 "battery inverter (discharging, imp)",battery (imp),electricity (imp),,True,0,1,bus0

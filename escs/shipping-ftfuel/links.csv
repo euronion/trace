@@ -8,7 +8,7 @@ direct air capture (exp),electricity (exp),CO2 (g) (exp),heat (exp),True,0,1,bus
 Fischer-Tropsch (exp),hydrogen (g) (exp),FT fuel (exp),CO2 (g) (exp),True,0.9425,1,bus1
 ship loading,FT fuel (exp),berth (exp),,True,0,1,n/a
 ship unloading,berth (imp),FT fuel (imp),,True,0,1,n/a
-H2 storage compressor (exp),electricity (exp),hydrogen (g) storage (exp),hydrogen (g) (exp),True,0,1,n/a
+H2 storage compressor (exp),hydrogen (g) (exp),hydrogen (g) storage (exp),,True,0,1,n/a
 H2 storage unstoring (exp),hydrogen (g) storage (exp),hydrogen (g) (exp),,True,0,1,n/a
 CO2 liquefaction (exp),electricity (exp),CO2 (l) (exp),CO2 (g) (exp),True,0,1,bus1
 CO2 evaporation (exp),CO2 (l) (exp),CO2 (g) (exp),,True,0,1,n/a

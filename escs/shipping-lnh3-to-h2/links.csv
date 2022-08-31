@@ -9,6 +9,6 @@ NH3 liquefaction (exp),ammonia (g) (exp),ammonia (l) (exp),electricity (exp),,Tr
 NH3 evaporation (imp),ammonia (l) (imp),ammonia (g) (imp),,,True,0,1,n/a
 ship loading,ammonia (l) (exp),berth (exp),,,True,0,1,n/a
 ship unloading,berth (imp),ammonia (l) (imp),,,True,0,1,n/a
-H2 storage compressor (exp),hydrogen (g) (exp),hydrogen (g) storage (exp),electricity (exp),,True,0,1,n/a
+H2 storage compressor (exp),hydrogen (g) (exp),hydrogen (g) storage (exp),,,True,0,1,n/a
 H2 storage unstoring (exp),hydrogen (g) storage (exp),hydrogen (g) (exp),,,True,0,1,n/a
 Ammonia cracker (imp),ammonia (g) (imp),hydrogen (g) (imp),,,True,0,1,bus1

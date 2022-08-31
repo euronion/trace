@@ -10,5 +10,5 @@ LOHC (loaded) unloading (imp),berth (imp),LOHC (loaded) (imp),,,True,0,1,n/a
 LOHC (used) loading (imp),LOHC (used) (imp),berth LOHC (used) (imp),,,True,0,1,n/a
 LOHC (used) unloading (exp),berth LOHC (used) (exp),LOHC (used) (exp),,,True,0,1,n/a
 LOHC treatment (exp),LOHC (used) (exp),LOHC (unloaded) (exp),,,True,0,1,n/a
-H2 storage compressor (exp),hydrogen (g) (exp),hydrogen (g) storage (exp),electricity (exp),,True,0,1,n/a
+H2 storage compressor (exp),hydrogen (g) (exp),hydrogen (g) storage (exp),,,True,0,1,n/a
 H2 storage unstoring (exp),hydrogen (g) storage (exp),hydrogen (g) (exp),,,True,0,1,n/a

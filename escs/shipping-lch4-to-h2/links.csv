@@ -10,7 +10,7 @@ CH4 liquefaction,electricity (exp),methane (l) (exp),methane (g) (exp),True,0,1,
 CH4 evaporation,methane (l) (imp),methane (g) (imp),,True,0,1,bus1
 ship loading,methane (l) (exp),berth (exp),,True,0,1,n/a
 ship unloading,berth (imp),methane (l) (imp),,True,0,1,n/a
-H2 storage compressor (exp),hydrogen (g) (exp),hydrogen (g) storage (exp),electricity (exp),True,0,1,n/a
+H2 storage compressor (exp),hydrogen (g) (exp),hydrogen (g) storage (exp),,True,0,1,n/a
 H2 storage unstoring (exp),hydrogen (g) storage (exp),hydrogen (g) (exp),,True,0,1,n/a
 CO2 liquefaction (exp),CO2 (g) (exp),CO2 (l) (exp),electricity (exp),True,0,1,bus0
 CO2 evaporation (exp),CO2 (l) (exp),CO2 (g) (exp),,True,0,1,n/a

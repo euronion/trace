@@ -65,7 +65,6 @@ CO2 liquefaction,all,heat,0.006666666666667,MWh,CO2 (l),1,t,149.999999999993,For
 CO2 liquefaction,all,electricity,0.123,MWh,CO2 (l),1,t,8.13008130081301,,Mitsubish Heavy Industries Ltd. and IEA (2004): https://ieaghg.org/docs/General_Docs/Reports/PH4-30%20Ship%20Transport.pdf .
 CO2 evaporation,all,CO2 (l),1,t,CO2 (g),1,t,1,,
 H2 storage compressor,all,hydrogen (g),1,MWh_LHV,hydrogen (g) storage,1,MWh_LHV,1,,
-H2 storage compressor,all,electricity,4,MWh,hydrogen (g) storage,33.3333,MWh_LHV,8.333325,Storing into low pressure (<200 bar) type I tanks.,"DEA technology data for energy storage, pg. 82 ."
 H2 storage unstoring,all,hydrogen (g) storage,1,MWh_LHV,hydrogen (g),1,MWh_LHV,1,Reverse connection (auxiliary object) for H2 (g) compressed storage.,
 MeOH storing and unstoring,all,methanol,4.3845912,MWh_LHV,methanol storage,1,m^3,0.228071433432608,"Storage units are usually per m^3, component for unit conversion. Based on LHV and density of 792 kg/m^3 .",
 CH4 storage compressor,all,methane (g),2.32997222222222,MWh_LHV,methane (g) storage,1,m^3,0.429189666066596,Assuming methane density of 167.758 kg/m^3 at 200 bar and LHV of 50 MJ/kg .,https://www.unitrove.com/engineering/tools/gas/natural-gas-density (2021-02-10).
