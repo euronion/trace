@@ -1,7 +1,6 @@
 name,unit,carrier
 electricity (exp),MW,electricity
 battery (exp),MW,battery
-water (exp),m^3,water
 hydrogen (g) (exp),MW,hydrogen
 methane (g) (exp),MW,methane
 methane (g) storage (exp),m^3,methane

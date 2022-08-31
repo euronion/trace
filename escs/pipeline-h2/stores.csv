@@ -1,4 +1,3 @@
 name,bus,e_nom_extendable,e_cyclic
 battery storage (exp),battery (exp),True,True
-clean water tank storage (exp),water (exp),True,True
 hydrogen storage tank incl. compressor (exp),hydrogen (g) storage (exp),True,True
