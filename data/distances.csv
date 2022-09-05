@@ -1,140 +1,257 @@
 region_a,region_b,type,value,unit,source
-AR,DE,as-the-crow-flies,12280,km,Measure using Google Maps / Geographical centers per country used from here: https://developers.google.com/public-data/docs/canonical/countries_csv
-AU,DE,as-the-crow-flies,14450,km,Measure using Google Maps / Geographical centers per country used from here: https://developers.google.com/public-data/docs/canonical/countries_csv
-DK,DE,as-the-crow-flies,580,km,Measure using Google Maps / Geographical centers per country used from here: https://developers.google.com/public-data/docs/canonical/countries_csv
-EG,DE,as-the-crow-flies,3220,km,Measure using Google Maps / Geographical centers per country used from here: https://developers.google.com/public-data/docs/canonical/countries_csv
-DE,DE,as-the-crow-flies,0,km,Measure using Google Maps / Geographical centers per country used from here: https://developers.google.com/public-data/docs/canonical/countries_csv
-MA,DE,as-the-crow-flies,3330,km,Measure using Google Maps / Geographical centers per country used from here: https://developers.google.com/public-data/docs/canonical/countries_csv
-SA,DE,as-the-crow-flies,4240,km,Measure using Google Maps / Geographical centers per country used from here: https://developers.google.com/public-data/docs/canonical/countries_csv
-ES,DE,as-the-crow-flies,1600,km,Measure using Google Maps / Geographical centers per country used from here: https://developers.google.com/public-data/docs/canonical/countries_csv
-AR,DE,as-the-hake-swims,3000,km,Measured using Google Maps: Approximate distance between South America and Africa (Brazil-Guinea).
-AU,DE,as-the-hake-swims,3000,km,Measured using Google Maps: Approximate distance between Australia and Asia (Western Australia-Malaysia).
-DK,DE,as-the-hake-swims,0,km,-
-EG,DE,as-the-hake-swims,0,km,-
-DE,DE,as-the-hake-swims,0,km,-
-MA,DE,as-the-hake-swims,0,km,-
-SA,DE,as-the-hake-swims,0,km,-
-ES,DE,as-the-hake-swims,0,km,-
-AR,DE,sea route,13056,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-AU,DE,sea route,20284,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-DK,DE,sea route,812,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-EG,DE,sea route,6605,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-DE,DE,sea route,0,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-MA,DE,sea route,2938,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-SA,DE,sea route,12174,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-ES,DE,sea route,3587,km,Via https://www.searates.com/de/services/distances-time/
-SA,GR,as-the-crow-flies,2093,km,"Based on geographical centers of SA to border hand-over point for existing pipeline capacities, https://www.distance.to/23.885942,%2045.079162/41.11246878918088,26.36591605398587 ."
-SA,BG,as-the-crow-flies,2616,km,"Based on geographical centers of SA to border hand-over point for existing pipeline capacities, https://www.distance.to/23.885942,%2045.079162/41.96765920367816,26.93712485909623 ."
-MA,ES,as-the-crow-flies,497,km,"Based on geographical centers of SA to border hand-over point for existing pipeline capacities, https://www.distance.to/31.8,-7.1/36.08516422745089,-5.55908203125 ."
-MA,IT,as-the-crow-flies,1683,km,"Based on geographical centers of SA to border hand-over point for existing pipeline capacities, https://www.distance.to/31.8,-7.1/37.108793953627405,10.12939453125 ."
-EG,IT,as-the-crow-flies,1925,km,"Based on geographical centers of SA to border hand-over point for existing pipeline capacities, https://www.distance.to/26.820553,%2030.802498/32.936218780169625,12.083587646484375 ."
-SA,GR,as-the-hake-swims,0,km,-
-SA,BG,as-the-hake-swims,0,km,-
-MA,ES,as-the-hake-swims,30,km,"Based on geographical centers of SA to border hand-over point for existing pipeline capacities, https://www.distance.to/36.01031641078996,-5.601654052734375/35.784501163190875,-5.802154541015625 ."
-MA,IT,as-the-hake-swims,142,km,"Based on geographical centers of SA to border hand-over point for existing pipeline capacities, https://www.distance.to/37.108793953627405,10.12939453125/37.75421834004901,12.59033203125 ,"
-EG,IT,as-the-hake-swims,499,km,"Based on geographical centers of SA to border hand-over point for existing pipeline capacities, https://www.distance.to/37.06170278185059,14.26025390625/32.936218780169625,12.083587646484375 ."
-MA,ES,sea route,1916,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-MA,IT,sea route,2078,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-EG,ES,sea route,5750,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-EG,IT,sea route,2591,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-SA,ES,sea route,11494,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-SA,IT,sea route,8336,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-MA,GR,sea route,3343,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-EG,GR,sea route,868,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-SA,GR,sea route,3970,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-AR,ES,sea route,11589,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-AR,IT,sea route,13301,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-AR,GR,sea route,13220,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-AU,ES,sea route,18853,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-AU,IT,sea route,15694,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-AU,GR,sea route,14711,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-RU,FI,as-the-crow-flies,1589,km,"Based on some center-ish position in western parts of Russia (because Russia is big, and grid-proxy data from GEGIS does not place any grids into the Asian parts of Russia) toto border hand-over point for existing pipeline capacities, https://www.distance.to/Imatra,FIN/60.58696734225869,58.346022278710734 ."
-RU,EE,as-the-crow-flies,1669,km,"Based on some center-ish position in western parts of Russia (because Russia is big, and grid-proxy data from GEGIS does not place any grids into the Asian parts of Russia) toto border hand-over point for existing pipeline capacities, https://www.distance.to/60.58696734225869,58.346022278710734/59.37239142233719,28.16838804298368."
-RU,LT,as-the-crow-flies,2046,km,"Based on some center-ish position in western parts of Russia (because Russia is big, and grid-proxy data from GEGIS does not place any grids into the Asian parts of Russia) toto border hand-over point for existing pipeline capacities, https://www.distance.to/60.58696734225869,58.346022278710734/54.4116379407289,25.620801411943603."
-RU,LV,as-the-crow-flies,1793,km,"Based on some center-ish position in western parts of Russia (because Russia is big, and grid-proxy data from GEGIS does not place any grids into the Asian parts of Russia) toto border hand-over point for existing pipeline capacities, https://www.distance.to/60.58696734225869,58.346022278710734/57.55120803456645,27.201898345814584."
-RU,PL,as-the-crow-flies,2227,km,"Based on some center-ish position in western parts of Russia (because Russia is big, and grid-proxy data from GEGIS does not place any grids into the Asian parts of Russia) toto border hand-over point for existing pipeline capacities, https://www.distance.to/60.58696734225869,58.346022278710734/Kondratki,Micha%C5%82owo,Powiat-Bia%C5%82ostocki,Woj.-Podlaskie,POL."
-RU,SK,as-the-crow-flies,2627,km,"Based on some center-ish position in western parts of Russia (because Russia is big, and grid-proxy data from GEGIS does not place any grids into the Asian parts of Russia) toto border hand-over point for existing pipeline capacities, https://www.distance.to/60.58696734225869,58.346022278710734/Uzhgorod."
-RU,HU,as-the-crow-flies,2644,km,"Based on some center-ish position in western parts of Russia (because Russia is big, and grid-proxy data from GEGIS does not place any grids into the Asian parts of Russia) toto border hand-over point for existing pipeline capacities, https://www.distance.to/60.58696734225869,58.346022278710734/Beregovo,Beregovskiy-rayon,Zakarpatskaya-oblast',UKR."
-RU,RO,as-the-crow-flies,2484,km,"Based on some center-ish position in western parts of Russia (because Russia is big, and grid-proxy data from GEGIS does not place any grids into the Asian parts of Russia) toto border hand-over point for existing pipeline capacities, https://www.distance.to/60.58696734225869,58.346022278710734/Siret,Suceava,ROU."
-KZ,FI,as-the-crow-flies,2860,km,"Based on geographical centers of KZ to border hand-over point for existing pipeline capacities, https://www.distance.to/Imatra,FIN/Kazakhstan ."
-KZ,EE,as-the-crow-flies,2855,km,"Based on geographical centers of KZ to border hand-over point for existing pipeline capacities, https://www.distance.to/Kazakhstan/59.37239142233719,28.16838804298368 ."
-KZ,LT,as-the-crow-flies,2988,km,"Based on geographical centers of KZ to border hand-over point for existing pipeline capacities, https://www.distance.to/Kazakhstan/54.4116379407289,25.620801411943603 ."
-KZ,LV,as-the-crow-flies,2889,km,"Based on geographical centers of KZ to border hand-over point for existing pipeline capacities, https://www.distance.to/Kazakhstan/57.55120803456645,27.201898345814584 ."
-KZ,PL,as-the-crow-flies,3115,km,"Based on geographical centers of KZ to border hand-over point for existing pipeline capacities, https://www.distance.to/Kazakhstan/Kondratki,Micha%C5%82owo,Powiat-Bia%C5%82ostocki,Woj.-Podlaskie,POL ."
-KZ,SK,as-the-crow-flies,3328,km,"Based on geographical centers of KZ to border hand-over point for existing pipeline capacities, https://www.distance.to/Kazakhstan/Uzhgorod ."
-KZ,HU,as-the-crow-flies,3317,km,"Based on geographical centers of KZ to border hand-over point for existing pipeline capacities, https://www.distance.to/Kazakhstan/Beregovo,Beregovskiy-rayon,Zakarpatskaya-oblast',UKR ."
-KZ,RO,as-the-crow-flies,2904,km,"Based on geographical centers of KZ to border hand-over point for existing pipeline capacities, https://www.distance.to/Respublika-Kazakhstan/Siret,Suceava,ROU ."
-UA,FI,as-the-crow-flies,1368,km,"Based on geographical centers of UA to border hand-over point for existing pipeline capacities, https://www.distance.to/Imatra,FIN/Ukraine ."
-UA,EE,as-the-crow-flies,1179,km,"Based on geographical centers of UA to border hand-over point for existing pipeline capacities, https://www.distance.to/Ukraine/59.37239142233719,28.16838804298368 ."
-UA,LT,as-the-crow-flies,744,km,"Based on geographical centers of UA to border hand-over point for existing pipeline capacities, https://www.distance.to/Ukraine/54.4116379407289,25.620801411943603 ."
-UA,LV,as-the-crow-flies,1002,km,"Based on geographical centers of UA to border hand-over point for existing pipeline capacities, https://www.distance.to/Ukraine/57.55120803456645,27.201898345814584 ."
-UA,PL,as-the-crow-flies,720,km,"Based on geographical centers of UA to border hand-over point for existing pipeline capacities, https://www.distance.to/Ukraine/Kondratki,Micha%C5%82owo,Powiat-Bia%C5%82ostocki,Woj.-Podlaskie,POL ."
-UA,SK,as-the-crow-flies,710,km,"Based on geographical centers of UA to border hand-over point for existing pipeline capacities, https://www.distance.to/Ukraine/Uzhgorod ."
-UA,HU,as-the-crow-flies,692,km,"Based on geographical centers of UA to border hand-over point for existing pipeline capacities, https://www.distance.to/Ukraine/Beregovo,Beregovskiy-rayon,Zakarpatskaya-oblast',UKR ."
-UA,RO,as-the-crow-flies,452,km,"Based on geographical centers of UA to border hand-over point for existing pipeline capacities, https://www.distance.to/Ukraine/Siret,Suceava,ROU ."
-RU,FI,as-the-hake-swims,0,km,-
-RU,EE,as-the-hake-swims,0,km,-
-RU,LT,as-the-hake-swims,0,km,-
-RU,LV,as-the-hake-swims,0,km,-
-RU,PL,as-the-hake-swims,0,km,-
-RU,SK,as-the-hake-swims,0,km,-
-RU,HU,as-the-hake-swims,0,km,-
-RU,RO,as-the-hake-swims,0,km,-
-KZ,FI,as-the-hake-swims,0,km,-
-KZ,EE,as-the-hake-swims,0,km,-
-KZ,LT,as-the-hake-swims,0,km,-
-KZ,LV,as-the-hake-swims,0,km,-
-KZ,PL,as-the-hake-swims,0,km,-
-KZ,SK,as-the-hake-swims,0,km,-
-KZ,HU,as-the-hake-swims,0,km,-
-KZ,RO,as-the-hake-swims,0,km,-
-UA,FI,as-the-hake-swims,0,km,-
-UA,EE,as-the-hake-swims,0,km,-
-UA,LT,as-the-hake-swims,0,km,-
-UA,LV,as-the-hake-swims,0,km,-
-UA,PL,as-the-hake-swims,0,km,-
-UA,SK,as-the-hake-swims,0,km,-
-UA,HU,as-the-hake-swims,0,km,-
-UA,RO,as-the-hake-swims,0,km,-
-AR,GB,sea route,12745,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-AR,IE,sea route,11773,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-AR,NL,sea route,12384,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-AR,SE,sea route,13973,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-AR,LT,sea route,14346,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-AR,EE,sea route,14051,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-AR,FI,sea route,14525,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-AR,LV,sea route,14049,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-AR,PL,sea route,13988,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-AR,BE,sea route,12249,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-MA,GB,sea route,3073,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-MA,IE,sea route,2267,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-MA,NL,sea route,2712,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-MA,SE,sea route,4301,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-MA,LT,sea route,4673,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-MA,EE,sea route,4301,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-MA,FI,sea route,4853,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-MA,LV,sea route,4377,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-MA,PL,sea route,4315,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-MA,BE,sea route,2576,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centers of countries. ."
-DZ,CERN,as-the-crow-flies,2042,km,"https://www.distance.to/Geneva,CHE/Algeria"
-DZ,CERN,as-the-hake-swims,777,km,"https://www.distance.to/Fos-sur-Mer,Bouches-du-Rh%C3%B4ne,Provence-Alpes-C%C3%B4te-d'Azur,FRA/Skikda,DZA"
-DZ,CERN,sea route,744,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between Skikda and fos-sur-mer."
-EG,CERN,as-the-crow-flies,2992,km,"https://www.distance.to/Geneva,CHE/Egypt"
-EG,CERN,as-the-hake-swims,876,km,"https://www.distance.to/Fos-sur-Mer,Bouches-du-Rh%C3%B4ne,Provence-Alpes-C%C3%B4te-d'Azur,FRA/El-Haouaria,TUN"
-EG,CERN,sea route,2604,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between Alexandria and Fos-sur-mer."
-MA,CERN,as-the-crow-flies,1890,km,"https://www.distance.to/Geneva,CHE/Morocco"
-MA,CERN,as-the-hake-swims,0,km,-
-MA,CERN,sea route,1683,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between centre of El Jadida and Fos-sur-mer."
-SA,CERN,as-the-crow-flies,4168,km,"https://www.distance.to/Geneva,CHE/Saudi-Arabia"
-SA,CERN,as-the-hake-swims,876,km,"https://www.distance.to/Fos-sur-Mer,Bouches-du-Rh%C3%B4ne,Provence-Alpes-C%C3%B4te-d'Azur,FRA/El-Haouaria,TUN"
-SA,CERN,sea route,3401,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between Dhuba Bulk Plant Terminal and Fos-sur-mer."
-TN,CERN,as-the-crow-flies,1378,km,"https://www.distance.to/Geneva,CHE/Tunisia"
-TN,CERN,as-the-hake-swims,876,km,"https://www.distance.to/Fos-sur-Mer,Bouches-du-Rh%C3%B4ne,Provence-Alpes-C%C3%B4te-d'Azur,FRA/El-Haouaria,TUN"
-TN,CERN,sea route,863,km,"Via https://www.searates.com/de/services/distances-time/ , sea route share without land route share between Tunis and Fos-sur-mer."
-CA-East,GBMLF,sea route,5009.66,km,"Via https://sea-distances.org/ , Port Saguenay (potential location for LNG and LH2 exports, https://energiesaguenay.com/en/project/project-site/) to LNG terminal South Hook in Milford Haven, Wales (https://www.gem.wiki/South_Hook_LNG_Terminal)."
-CA-East,BEZEE,sea route,5620.82,km,"Via https://sea-distances.org/ , Port Saguenay (potential location for LNG and LH2 exports, https://energiesaguenay.com/en/project/project-site/) to LNG terminal in Zeebrugge, Belgium (https://www.gem.wiki/Zeebrugge_LNG_Terminal)."
-CA-East,PLSWI,sea route,6304.208,km,"Via https://sea-distances.org/ , Port Saguenay (potential location for LNG and LH2 exports, https://energiesaguenay.com/en/project/project-site/) to LNG terminal in Świnoujście Polskie LNG Terminal, Poland (https://www.gem.wiki/%C5%9Awinouj%C5%9Bcie_Polskie_LNG_Terminal)."
-CA-East,GREEV,sea route,8282.144,km,"Via https://sea-distances.org/ , Port Saguenay (potential location for LNG and LH2 exports, https://energiesaguenay.com/en/project/project-site/) to LNG terminal in Revithoussa LNG Terminal, Greece (https://www.gem.wiki/Revithoussa_LNG_Terminal) with “Piraeus” as a proxy target as Revithoussa is not available on sea-distances.org"
-CA-East,ITVCE,sea route,8621.06,km,"Via https://sea-distances.org/ , Port Saguenay (potential location for LNG and LH2 exports, https://energiesaguenay.com/en/project/project-site/) to LNG terminal in Adriatic LNG Terminal, Italy (https://www.gem.wiki/Adriatic_LNG_Terminal) with “Venice” as a proxy target as Adriatic LNG terminal is not available on sea-distances.org"
-CA-East,ESVLC,sea route,6256.056,km,"Via https://sea-distances.org/ , Port Saguenay (potential location for LNG and LH2 exports, https://energiesaguenay.com/en/project/project-site/) to LNG terminal in Sagunto, Valencia, Spain (https://www.gem.wiki/Sagunto_LNG_Terminal)."
-CA-East,ESLCG,sea route,4952.248,km,"Via https://sea-distances.org/ , Port Saguenay (potential location for LNG and LH2 exports, https://energiesaguenay.com/en/project/project-site/) to Mugardos LNG terminal in La Coruna, Galacia, Spain (https://www.gem.wiki/Mugardos_LNG_Terminal)."
+AR,GBMLF,sea route,12491,km,"Distance between Comodoro Rivadavia, Argentina and Milford Haven, United Kingdom. Measured using https://sea-distances.org."
+AR,BEZEE,sea route,12851,km,"Distance between Comodoro Rivadavia, Argentina and Zeebrugge, Belgium. Measured using https://sea-distances.org."
+AR,PLSWI,sea route,14227,km,"Distance between Comodoro Rivadavia, Argentina and Swinoujscie, Poland. Measured using https://sea-distances.org."
+AR,GREEV,sea route,13765,km,"Distance between Comodoro Rivadavia, Argentina and Piraeus, Greece. Measured using https://sea-distances.org."
+AR,ITVCE,sea route,14104,km,"Distance between Comodoro Rivadavia, Argentina and Venice, Italy. Measured using https://sea-distances.org."
+AR,ESVLC,sea route,11739,km,"Distance between Comodoro Rivadavia, Argentina and Valencia, Spain. Measured using https://sea-distances.org."
+AR,ESLCG,sea route,11599,km,"Distance between Comodoro Rivadavia, Argentina and La Coruna, Spain. Measured using https://sea-distances.org."
+AU,GBMLF,sea route,17055,km,"Distance between Port Hedland, Australia and Milford Haven, United Kingdom. Measured using https://sea-distances.org."
+AU,BEZEE,sea route,17399,km,"Distance between Port Hedland, Australia and Zeebrugge, Belgium. Measured using https://sea-distances.org."
+AU,PLSWI,sea route,18775,km,"Distance between Port Hedland, Australia and Swinoujscie, Poland. Measured using https://sea-distances.org."
+AU,GREEV,sea route,12556,km,"Distance between Port Hedland, Australia and Piraeus, Greece. Measured using https://sea-distances.org."
+AU,ITVCE,sea route,13886,km,"Distance between Port Hedland, Australia and Venice, Italy. Measured using https://sea-distances.org."
+AU,ESVLC,sea route,14549,km,"Distance between Port Hedland, Australia and Valencia, Spain. Measured using https://sea-distances.org."
+AU,ESLCG,sea route,16136,km,"Distance between Port Hedland, Australia and La Coruna, Spain. Measured using https://sea-distances.org."
+CA-East,GBMLF,sea route,5009,km,"Distance between Port Saguenay, Canada and Milford Haven, United Kingdom. Measured using https://sea-distances.org."
+CA-East,BEZEE,sea route,5620,km,"Distance between Port Saguenay, Canada and Zeebrugge, Belgium. Measured using https://sea-distances.org."
+CA-East,PLSWI,sea route,6304,km,"Distance between Port Saguenay, Canada and Swinoujscie, Poland. Measured using https://sea-distances.org."
+CA-East,GREEV,sea route,8282,km,"Distance between Port Saguenay, Canada and Piraeus, Greece. Measured using https://sea-distances.org."
+CA-East,ITVCE,sea route,8621,km,"Distance between Port Saguenay, Canada and Venice, Italy. Measured using https://sea-distances.org."
+CA-East,ESVLC,sea route,6256,km,"Distance between Port Saguenay, Canada and Valencia, Spain. Measured using https://sea-distances.org."
+CA-East,ESLCG,sea route,4952,km,"Distance between Port Saguenay, Canada and La Coruna, Spain. Measured using https://sea-distances.org."
+CL,GBMLF,sea route,12210,km,"Distance between Antofagasta, Chile and Milford Haven, United Kingdom. Measured using https://sea-distances.org."
+CL,BEZEE,sea route,12776,km,"Distance between Antofagasta, Chile and Zeebrugge, Belgium. Measured using https://sea-distances.org."
+CL,PLSWI,sea route,13767,km,"Distance between Antofagasta, Chile and Swinoujscie, Poland. Measured using https://sea-distances.org."
+CL,GREEV,sea route,14760,km,"Distance between Antofagasta, Chile and Piraeus, Greece. Measured using https://sea-distances.org."
+CL,ITVCE,sea route,15099,km,"Distance between Antofagasta, Chile and Venice, Italy. Measured using https://sea-distances.org."
+CL,ESVLC,sea route,12734,km,"Distance between Antofagasta, Chile and Valencia, Spain. Measured using https://sea-distances.org."
+CL,ESLCG,sea route,11823,km,"Distance between Antofagasta, Chile and La Coruna, Spain. Measured using https://sea-distances.org."
+CN-East,GBMLF,sea route,17325,km,"Distance between Zhanjiang, China and Milford Haven, United Kingdom. Measured using https://sea-distances.org."
+CN-East,BEZEE,sea route,17669,km,"Distance between Zhanjiang, China and Zeebrugge, Belgium. Measured using https://sea-distances.org."
+CN-East,PLSWI,sea route,19045,km,"Distance between Zhanjiang, China and Swinoujscie, Poland. Measured using https://sea-distances.org."
+CN-East,GREEV,sea route,12826,km,"Distance between Zhanjiang, China and Piraeus, Greece. Measured using https://sea-distances.org."
+CN-East,ITVCE,sea route,14156,km,"Distance between Zhanjiang, China and Venice, Italy. Measured using https://sea-distances.org."
+CN-East,ESVLC,sea route,14819,km,"Distance between Zhanjiang, China and Valencia, Spain. Measured using https://sea-distances.org."
+CN-East,ESLCG,sea route,16406,km,"Distance between Zhanjiang, China and La Coruna, Spain. Measured using https://sea-distances.org."
+DZ,GBMLF,sea route,2816,km,"Distance between Algiers, Algeria and Milford Haven, United Kingdom. Measured using https://sea-distances.org."
+DZ,BEZEE,sea route,3161,km,"Distance between Algiers, Algeria and Zeebrugge, Belgium. Measured using https://sea-distances.org."
+DZ,PLSWI,sea route,4537,km,"Distance between Algiers, Algeria and Swinoujscie, Poland. Measured using https://sea-distances.org."
+DZ,GREEV,sea route,1983,km,"Distance between Algiers, Algeria and Piraeus, Greece. Measured using https://sea-distances.org."
+DZ,ITVCE,sea route,2326,km,"Distance between Algiers, Algeria and Venice, Italy. Measured using https://sea-distances.org."
+DZ,ESVLC,sea route,418,km,"Distance between Algiers, Algeria and Valencia, Spain. Measured using https://sea-distances.org."
+DZ,ESLCG,sea route,1898,km,"Distance between Algiers, Algeria and La Coruna, Spain. Measured using https://sea-distances.org."
+EG,GBMLF,sea route,5307,km,"Distance between Mersa el Hamra, Egypt and Milford Haven, United Kingdom. Measured using https://sea-distances.org."
+EG,BEZEE,sea route,5652,km,"Distance between Mersa el Hamra, Egypt and Zeebrugge, Belgium. Measured using https://sea-distances.org."
+EG,PLSWI,sea route,7028,km,"Distance between Mersa el Hamra, Egypt and Swinoujscie, Poland. Measured using https://sea-distances.org."
+EG,GREEV,sea route,929,km,"Distance between Mersa el Hamra, Egypt and Piraeus, Greece. Measured using https://sea-distances.org."
+EG,ITVCE,sea route,2176,km,"Distance between Mersa el Hamra, Egypt and Venice, Italy. Measured using https://sea-distances.org."
+EG,ESVLC,sea route,2802,km,"Distance between Mersa el Hamra, Egypt and Valencia, Spain. Measured using https://sea-distances.org."
+EG,ESLCG,sea route,4389,km,"Distance between Mersa el Hamra, Egypt and La Coruna, Spain. Measured using https://sea-distances.org."
+IS,GBMLF,sea route,1874,km,"Distance between Reykjavik, Iceland and Milford Haven, United Kingdom. Measured using https://sea-distances.org."
+IS,BEZEE,sea route,2229,km,"Distance between Reykjavik, Iceland and Zeebrugge, Belgium. Measured using https://sea-distances.org."
+IS,PLSWI,sea route,2565,km,"Distance between Reykjavik, Iceland and Swinoujscie, Poland. Measured using https://sea-distances.org."
+IS,GREEV,sea route,6311,km,"Distance between Reykjavik, Iceland and Piraeus, Greece. Measured using https://sea-distances.org."
+IS,ITVCE,sea route,6650,km,"Distance between Reykjavik, Iceland and Venice, Italy. Measured using https://sea-distances.org."
+IS,ESVLC,sea route,4285,km,"Distance between Reykjavik, Iceland and Valencia, Spain. Measured using https://sea-distances.org."
+IS,ESLCG,sea route,2535,km,"Distance between Reykjavik, Iceland and La Coruna, Spain. Measured using https://sea-distances.org."
+LY,GBMLF,sea route,4535,km,"Distance between Sirtica Terminal, Libya and Milford Haven, United Kingdom. Measured using https://sea-distances.org."
+LY,BEZEE,sea route,4880,km,"Distance between Sirtica Terminal, Libya and Zeebrugge, Belgium. Measured using https://sea-distances.org."
+LY,PLSWI,sea route,6256,km,"Distance between Sirtica Terminal, Libya and Swinoujscie, Poland. Measured using https://sea-distances.org."
+LY,GREEV,sea route,964,km,"Distance between Sirtica Terminal, Libya and Piraeus, Greece. Measured using https://sea-distances.org."
+LY,ITVCE,sea route,1863,km,"Distance between Sirtica Terminal, Libya and Venice, Italy. Measured using https://sea-distances.org."
+LY,ESVLC,sea route,2029,km,"Distance between Sirtica Terminal, Libya and Valencia, Spain. Measured using https://sea-distances.org."
+LY,ESLCG,sea route,3616,km,"Distance between Sirtica Terminal, Libya and La Coruna, Spain. Measured using https://sea-distances.org."
+MA,GBMLF,sea route,2307,km,"Distance between Port Nador, Morocco and Milford Haven, United Kingdom. Measured using https://sea-distances.org."
+MA,BEZEE,sea route,2652,km,"Distance between Port Nador, Morocco and Zeebrugge, Belgium. Measured using https://sea-distances.org."
+MA,PLSWI,sea route,4028,km,"Distance between Port Nador, Morocco and Swinoujscie, Poland. Measured using https://sea-distances.org."
+MA,GREEV,sea route,2540,km,"Distance between Port Nador, Morocco and Piraeus, Greece. Measured using https://sea-distances.org."
+MA,ITVCE,sea route,2885,km,"Distance between Port Nador, Morocco and Venice, Italy. Measured using https://sea-distances.org."
+MA,ESVLC,sea route,585,km,"Distance between Port Nador, Morocco and Valencia, Spain. Measured using https://sea-distances.org."
+MA,ESLCG,sea route,1389,km,"Distance between Port Nador, Morocco and La Coruna, Spain. Measured using https://sea-distances.org."
+NA,GBMLF,sea route,9802,km,"Distance between Walvis Bay, Namibia and Milford Haven, United Kingdom. Measured using https://sea-distances.org."
+NA,BEZEE,sea route,10147,km,"Distance between Walvis Bay, Namibia and Zeebrugge, Belgium. Measured using https://sea-distances.org."
+NA,PLSWI,sea route,11523,km,"Distance between Walvis Bay, Namibia and Swinoujscie, Poland. Measured using https://sea-distances.org."
+NA,GREEV,sea route,11011,km,"Distance between Walvis Bay, Namibia and Piraeus, Greece. Measured using https://sea-distances.org."
+NA,ITVCE,sea route,11350,km,"Distance between Walvis Bay, Namibia and Venice, Italy. Measured using https://sea-distances.org."
+NA,ESVLC,sea route,8985,km,"Distance between Walvis Bay, Namibia and Valencia, Spain. Measured using https://sea-distances.org."
+NA,ESLCG,sea route,8884,km,"Distance between Walvis Bay, Namibia and La Coruna, Spain. Measured using https://sea-distances.org."
+OM,GBMLF,sea route,10397,km,"Distance between Muscat, Oman and Milford Haven, United Kingdom. Measured using https://sea-distances.org."
+OM,BEZEE,sea route,10741,km,"Distance between Muscat, Oman and Zeebrugge, Belgium. Measured using https://sea-distances.org."
+OM,PLSWI,sea route,12117,km,"Distance between Muscat, Oman and Swinoujscie, Poland. Measured using https://sea-distances.org."
+OM,GREEV,sea route,5898,km,"Distance between Muscat, Oman and Piraeus, Greece. Measured using https://sea-distances.org."
+OM,ITVCE,sea route,7228,km,"Distance between Muscat, Oman and Venice, Italy. Measured using https://sea-distances.org."
+OM,ESVLC,sea route,7891,km,"Distance between Muscat, Oman and Valencia, Spain. Measured using https://sea-distances.org."
+OM,ESLCG,sea route,9478,km,"Distance between Muscat, Oman and La Coruna, Spain. Measured using https://sea-distances.org."
+RU-West,GBMLF,sea route,4092,km,"Distance between Archangel, Russia and Milford Haven, United Kingdom. Measured using https://sea-distances.org."
+RU-West,BEZEE,sea route,3757,km,"Distance between Archangel, Russia and Zeebrugge, Belgium. Measured using https://sea-distances.org."
+RU-West,PLSWI,sea route,3785,km,"Distance between Archangel, Russia and Swinoujscie, Poland. Measured using https://sea-distances.org."
+RU-West,GREEV,sea route,8787,km,"Distance between Archangel, Russia and Piraeus, Greece. Measured using https://sea-distances.org."
+RU-West,ITVCE,sea route,9126,km,"Distance between Archangel, Russia and Venice, Italy. Measured using https://sea-distances.org."
+RU-West,ESVLC,sea route,6761,km,"Distance between Archangel, Russia and Valencia, Spain. Measured using https://sea-distances.org."
+RU-West,ESLCG,sea route,4946,km,"Distance between Archangel, Russia and La Coruna, Spain. Measured using https://sea-distances.org."
+SA,GBMLF,sea route,6935,km,"Distance between Jeddah, Saudi Arabia and Milford Haven, United Kingdom. Measured using https://sea-distances.org."
+SA,BEZEE,sea route,7280,km,"Distance between Jeddah, Saudi Arabia and Zeebrugge, Belgium. Measured using https://sea-distances.org."
+SA,PLSWI,sea route,8656,km,"Distance between Jeddah, Saudi Arabia and Swinoujscie, Poland. Measured using https://sea-distances.org."
+SA,GREEV,sea route,2437,km,"Distance between Jeddah, Saudi Arabia and Piraeus, Greece. Measured using https://sea-distances.org."
+SA,ITVCE,sea route,3766,km,"Distance between Jeddah, Saudi Arabia and Venice, Italy. Measured using https://sea-distances.org."
+SA,ESVLC,sea route,4429,km,"Distance between Jeddah, Saudi Arabia and Valencia, Spain. Measured using https://sea-distances.org."
+SA,ESLCG,sea route,6017,km,"Distance between Jeddah, Saudi Arabia and La Coruna, Spain. Measured using https://sea-distances.org."
+TN,GBMLF,sea route,3970,km,"Distance between Gabes, Tunisia and Milford Haven, United Kingdom. Measured using https://sea-distances.org."
+TN,BEZEE,sea route,4315,km,"Distance between Gabes, Tunisia and Zeebrugge, Belgium. Measured using https://sea-distances.org."
+TN,PLSWI,sea route,5691,km,"Distance between Gabes, Tunisia and Swinoujscie, Poland. Measured using https://sea-distances.org."
+TN,GREEV,sea route,1409,km,"Distance between Gabes, Tunisia and Piraeus, Greece. Measured using https://sea-distances.org."
+TN,ITVCE,sea route,1824,km,"Distance between Gabes, Tunisia and Venice, Italy. Measured using https://sea-distances.org."
+TN,ESVLC,sea route,1466,km,"Distance between Gabes, Tunisia and Valencia, Spain. Measured using https://sea-distances.org."
+TN,ESLCG,sea route,3052,km,"Distance between Gabes, Tunisia and La Coruna, Spain. Measured using https://sea-distances.org."
+TR,GBMLF,sea route,5093,km,"Distance between Izmir, Turkey and Milford Haven, United Kingdom. Measured using https://sea-distances.org."
+TR,BEZEE,sea route,5437,km,"Distance between Izmir, Turkey and Zeebrugge, Belgium. Measured using https://sea-distances.org."
+TR,PLSWI,sea route,6813,km,"Distance between Izmir, Turkey and Swinoujscie, Poland. Measured using https://sea-distances.org."
+TR,GREEV,sea route,377,km,"Distance between Izmir, Turkey and Piraeus, Greece. Measured using https://sea-distances.org."
+TR,ITVCE,sea route,1879,km,"Distance between Izmir, Turkey and Venice, Italy. Measured using https://sea-distances.org."
+TR,ESVLC,sea route,2587,km,"Distance between Izmir, Turkey and Valencia, Spain. Measured using https://sea-distances.org."
+TR,ESLCG,sea route,4174,km,"Distance between Izmir, Turkey and La Coruna, Spain. Measured using https://sea-distances.org."
+UA,GBMLF,sea route,6020,km,"Distance between Odessa, Ukraine and Milford Haven, United Kingdom. Measured using https://sea-distances.org."
+UA,BEZEE,sea route,6365,km,"Distance between Odessa, Ukraine and Zeebrugge, Belgium. Measured using https://sea-distances.org."
+UA,PLSWI,sea route,7741,km,"Distance between Odessa, Ukraine and Swinoujscie, Poland. Measured using https://sea-distances.org."
+UA,GREEV,sea route,1285,km,"Distance between Odessa, Ukraine and Piraeus, Greece. Measured using https://sea-distances.org."
+UA,ITVCE,sea route,2798,km,"Distance between Odessa, Ukraine and Venice, Italy. Measured using https://sea-distances.org."
+UA,ESVLC,sea route,3503,km,"Distance between Odessa, Ukraine and Valencia, Spain. Measured using https://sea-distances.org."
+UA,ESLCG,sea route,5102,km,"Distance between Odessa, Ukraine and La Coruna, Spain. Measured using https://sea-distances.org."
+US-East,GBMLF,sea route,8641,km,"Distance between Houston, United States and Milford Haven, United Kingdom. Measured using https://sea-distances.org."
+US-East,BEZEE,sea route,9234,km,"Distance between Houston, United States and Zeebrugge, Belgium. Measured using https://sea-distances.org."
+US-East,PLSWI,sea route,10080,km,"Distance between Houston, United States and Swinoujscie, Poland. Measured using https://sea-distances.org."
+US-East,GREEV,sea route,11573,km,"Distance between Houston, United States and Piraeus, Greece. Measured using https://sea-distances.org."
+US-East,ITVCE,sea route,11912,km,"Distance between Houston, United States and Venice, Italy. Measured using https://sea-distances.org."
+US-East,ESVLC,sea route,9547,km,"Distance between Houston, United States and Valencia, Spain. Measured using https://sea-distances.org."
+US-East,ESLCG,sea route,8424,km,"Distance between Houston, United States and La Coruna, Spain. Measured using https://sea-distances.org."
+CN-West,EUSW,as-the-crow-flies,8478,km,"Haversine between CN-West (lat:37.44, lon:95.45) to entry point to European gas backbone South-West Spain at 36.39,-5.64 at border to Morocco in proximity to existing pipelines."
+CN-West,EUSW,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+CN-West,EUS,as-the-crow-flies,6910,km,"Haversine between CN-West (lat:37.44, lon:95.45) to entry point to European gas backbone South Italy at 37.18,14.53 on Malta in proximity to existing pipelines."
+CN-West,EUS,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+CN-West,EUSE,as-the-crow-flies,5873,km,"Haversine between CN-West (lat:37.44, lon:95.45) to entry point to European gas backbone South-East Greece at 41.09,25.46 close to North Macedonia/Bulgaria border in proximity to existing pipelines."
+CN-West,EUSE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+CN-West,EUE,as-the-crow-flies,5761,km,"Haversine between CN-West (lat:37.44, lon:95.45) to entry point to European gas backbone East Poland at 49.91,22.87 close to Ukraine/Slovakian border in proximity to existing pipelines."
+CN-West,EUE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+CN-West,EUNE,as-the-crow-flies,5314,km,"Haversine between CN-West (lat:37.44, lon:95.45) to entry point to European gas backbone North-East Estonia/Latvia/Russia at 57.53,27.34 at country border in proximity to existing pipelines."
+CN-West,EUNE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+CN-East,EUSW,as-the-crow-flies,9185,km,"Haversine between CN-East (lat:37.4, lon:105.6) to entry point to European gas backbone South-West Spain at 36.39,-5.64 at border to Morocco in proximity to existing pipelines."
+CN-East,EUSW,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+CN-East,EUS,as-the-crow-flies,7693,km,"Haversine between CN-East (lat:37.4, lon:105.6) to entry point to European gas backbone South Italy at 37.18,14.53 on Malta in proximity to existing pipelines."
+CN-East,EUS,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+CN-East,EUSE,as-the-crow-flies,6659,km,"Haversine between CN-East (lat:37.4, lon:105.6) to entry point to European gas backbone South-East Greece at 41.09,25.46 close to North Macedonia/Bulgaria border in proximity to existing pipelines."
+CN-East,EUSE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+CN-East,EUE,as-the-crow-flies,6453,km,"Haversine between CN-East (lat:37.4, lon:105.6) to entry point to European gas backbone East Poland at 49.91,22.87 close to Ukraine/Slovakian border in proximity to existing pipelines."
+CN-East,EUE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+CN-East,EUNE,as-the-crow-flies,5914,km,"Haversine between CN-East (lat:37.4, lon:105.6) to entry point to European gas backbone North-East Estonia/Latvia/Russia at 57.53,27.34 at country border in proximity to existing pipelines."
+CN-East,EUNE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+EG,EUSW,as-the-crow-flies,3548,km,"Haversine between EG (lat:26.61, lon:30.24) to entry point to European gas backbone South-West Spain at 36.39,-5.64 at border to Morocco in proximity to existing pipelines."
+EG,EUSW,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+EG,EUS,as-the-crow-flies,1887,km,"Haversine between EG (lat:26.61, lon:30.24) to entry point to European gas backbone South Italy at 37.18,14.53 on Malta in proximity to existing pipelines."
+EG,EUS,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+EG,EUSE,as-the-crow-flies,1668,km,"Haversine between EG (lat:26.61, lon:30.24) to entry point to European gas backbone South-East Greece at 41.09,25.46 close to North Macedonia/Bulgaria border in proximity to existing pipelines."
+EG,EUSE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+EG,EUE,as-the-crow-flies,2666,km,"Haversine between EG (lat:26.61, lon:30.24) to entry point to European gas backbone East Poland at 49.91,22.87 close to Ukraine/Slovakian border in proximity to existing pipelines."
+EG,EUE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+EG,EUNE,as-the-crow-flies,3445,km,"Haversine between EG (lat:26.61, lon:30.24) to entry point to European gas backbone North-East Estonia/Latvia/Russia at 57.53,27.34 at country border in proximity to existing pipelines."
+EG,EUNE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+DZ,EUSW,as-the-crow-flies,945,km,"Haversine between DZ (lat:32.83, lon:3.75) to entry point to European gas backbone South-West Spain at 36.39,-5.64 at border to Morocco in proximity to existing pipelines."
+DZ,EUSW,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+DZ,EUS,as-the-crow-flies,1093,km,"Haversine between DZ (lat:32.83, lon:3.75) to entry point to European gas backbone South Italy at 37.18,14.53 on Malta in proximity to existing pipelines."
+DZ,EUS,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+DZ,EUSE,as-the-crow-flies,2128,km,"Haversine between DZ (lat:32.83, lon:3.75) to entry point to European gas backbone South-East Greece at 41.09,25.46 close to North Macedonia/Bulgaria border in proximity to existing pipelines."
+DZ,EUSE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+DZ,EUE,as-the-crow-flies,2465,km,"Haversine between DZ (lat:32.83, lon:3.75) to entry point to European gas backbone East Poland at 49.91,22.87 close to Ukraine/Slovakian border in proximity to existing pipelines."
+DZ,EUE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+DZ,EUNE,as-the-crow-flies,3274,km,"Haversine between DZ (lat:32.83, lon:3.75) to entry point to European gas backbone North-East Estonia/Latvia/Russia at 57.53,27.34 at country border in proximity to existing pipelines."
+DZ,EUNE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+KZ,EUSW,as-the-crow-flies,5433,km,"Haversine between KZ (lat:48.74, lon:60.84) to entry point to European gas backbone South-West Spain at 36.39,-5.64 at border to Morocco in proximity to existing pipelines."
+KZ,EUSW,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+KZ,EUS,as-the-crow-flies,3913,km,"Haversine between KZ (lat:48.74, lon:60.84) to entry point to European gas backbone South Italy at 37.18,14.53 on Malta in proximity to existing pipelines."
+KZ,EUS,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+KZ,EUSE,as-the-crow-flies,2883,km,"Haversine between KZ (lat:48.74, lon:60.84) to entry point to European gas backbone South-East Greece at 41.09,25.46 close to North Macedonia/Bulgaria border in proximity to existing pipelines."
+KZ,EUSE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+KZ,EUE,as-the-crow-flies,2725,km,"Haversine between KZ (lat:48.74, lon:60.84) to entry point to European gas backbone East Poland at 49.91,22.87 close to Ukraine/Slovakian border in proximity to existing pipelines."
+KZ,EUE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+KZ,EUNE,as-the-crow-flies,2407,km,"Haversine between KZ (lat:48.74, lon:60.84) to entry point to European gas backbone North-East Estonia/Latvia/Russia at 57.53,27.34 at country border in proximity to existing pipelines."
+KZ,EUNE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+LY,EUSW,as-the-crow-flies,2440,km,"Haversine between LY (lat:27.2, lon:17.91) to entry point to European gas backbone South-West Spain at 36.39,-5.64 at border to Morocco in proximity to existing pipelines."
+LY,EUSW,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+LY,EUS,as-the-crow-flies,1154,km,"Haversine between LY (lat:27.2, lon:17.91) to entry point to European gas backbone South Italy at 37.18,14.53 on Malta in proximity to existing pipelines."
+LY,EUS,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+LY,EUSE,as-the-crow-flies,1691,km,"Haversine between LY (lat:27.2, lon:17.91) to entry point to European gas backbone South-East Greece at 41.09,25.46 close to North Macedonia/Bulgaria border in proximity to existing pipelines."
+LY,EUSE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+LY,EUE,as-the-crow-flies,2560,km,"Haversine between LY (lat:27.2, lon:17.91) to entry point to European gas backbone East Poland at 49.91,22.87 close to Ukraine/Slovakian border in proximity to existing pipelines."
+LY,EUE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+LY,EUNE,as-the-crow-flies,3453,km,"Haversine between LY (lat:27.2, lon:17.91) to entry point to European gas backbone North-East Estonia/Latvia/Russia at 57.53,27.34 at country border in proximity to existing pipelines."
+LY,EUNE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+MA,EUSW,as-the-crow-flies,906,km,"Haversine between MA (lat:28.69, lon:-8.82) to entry point to European gas backbone South-West Spain at 36.39,-5.64 at border to Morocco in proximity to existing pipelines."
+MA,EUSW,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+MA,EUS,as-the-crow-flies,2366,km,"Haversine between MA (lat:28.69, lon:-8.82) to entry point to European gas backbone South Italy at 37.18,14.53 on Malta in proximity to existing pipelines."
+MA,EUS,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+MA,EUSE,as-the-crow-flies,3388,km,"Haversine between MA (lat:28.69, lon:-8.82) to entry point to European gas backbone South-East Greece at 41.09,25.46 close to North Macedonia/Bulgaria border in proximity to existing pipelines."
+MA,EUSE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+MA,EUE,as-the-crow-flies,3559,km,"Haversine between MA (lat:28.69, lon:-8.82) to entry point to European gas backbone East Poland at 49.91,22.87 close to Ukraine/Slovakian border in proximity to existing pipelines."
+MA,EUE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+MA,EUNE,as-the-crow-flies,4253,km,"Haversine between MA (lat:28.69, lon:-8.82) to entry point to European gas backbone North-East Estonia/Latvia/Russia at 57.53,27.34 at country border in proximity to existing pipelines."
+MA,EUNE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+NA,EUSW,as-the-crow-flies,6948,km,"Haversine between NA (lat:-21.91, lon:18.16) to entry point to European gas backbone South-West Spain at 36.39,-5.64 at border to Morocco in proximity to existing pipelines."
+NA,EUSW,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+NA,EUS,as-the-crow-flies,6581,km,"Haversine between NA (lat:-21.91, lon:18.16) to entry point to European gas backbone South Italy at 37.18,14.53 on Malta in proximity to existing pipelines."
+NA,EUS,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+NA,EUSE,as-the-crow-flies,7045,km,"Haversine between NA (lat:-21.91, lon:18.16) to entry point to European gas backbone South-East Greece at 41.09,25.46 close to North Macedonia/Bulgaria border in proximity to existing pipelines."
+NA,EUSE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+NA,EUE,as-the-crow-flies,7999,km,"Haversine between NA (lat:-21.91, lon:18.16) to entry point to European gas backbone East Poland at 49.91,22.87 close to Ukraine/Slovakian border in proximity to existing pipelines."
+NA,EUE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+NA,EUNE,as-the-crow-flies,8874,km,"Haversine between NA (lat:-21.91, lon:18.16) to entry point to European gas backbone North-East Estonia/Latvia/Russia at 57.53,27.34 at country border in proximity to existing pipelines."
+NA,EUNE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+RU-West,EUSW,as-the-crow-flies,4732,km,"Haversine between RU-West (lat:61.13, lon:50.41) to entry point to European gas backbone South-West Spain at 36.39,-5.64 at border to Morocco in proximity to existing pipelines."
+RU-West,EUSW,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+RU-West,EUS,as-the-crow-flies,3643,km,"Haversine between RU-West (lat:61.13, lon:50.41) to entry point to European gas backbone South Italy at 37.18,14.53 on Malta in proximity to existing pipelines."
+RU-West,EUS,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+RU-West,EUSE,as-the-crow-flies,2792,km,"Haversine between RU-West (lat:61.13, lon:50.41) to entry point to European gas backbone South-East Greece at 41.09,25.46 close to North Macedonia/Bulgaria border in proximity to existing pipelines."
+RU-West,EUSE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+RU-West,EUE,as-the-crow-flies,2110,km,"Haversine between RU-West (lat:61.13, lon:50.41) to entry point to European gas backbone East Poland at 49.91,22.87 close to Ukraine/Slovakian border in proximity to existing pipelines."
+RU-West,EUE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+RU-West,EUNE,as-the-crow-flies,1360,km,"Haversine between RU-West (lat:61.13, lon:50.41) to entry point to European gas backbone North-East Estonia/Latvia/Russia at 57.53,27.34 at country border in proximity to existing pipelines."
+RU-West,EUNE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+SA,EUSW,as-the-crow-flies,4955,km,"Haversine between SA (lat:24.14, lon:44.6) to entry point to European gas backbone South-West Spain at 36.39,-5.64 at border to Morocco in proximity to existing pipelines."
+SA,EUSW,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+SA,EUS,as-the-crow-flies,3201,km,"Haversine between SA (lat:24.14, lon:44.6) to entry point to European gas backbone South Italy at 37.18,14.53 on Malta in proximity to existing pipelines."
+SA,EUS,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+SA,EUSE,as-the-crow-flies,2589,km,"Haversine between SA (lat:24.14, lon:44.6) to entry point to European gas backbone South-East Greece at 41.09,25.46 close to North Macedonia/Bulgaria border in proximity to existing pipelines."
+SA,EUSE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+SA,EUE,as-the-crow-flies,3426,km,"Haversine between SA (lat:24.14, lon:44.6) to entry point to European gas backbone East Poland at 49.91,22.87 close to Ukraine/Slovakian border in proximity to existing pipelines."
+SA,EUE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+SA,EUNE,as-the-crow-flies,3960,km,"Haversine between SA (lat:24.14, lon:44.6) to entry point to European gas backbone North-East Estonia/Latvia/Russia at 57.53,27.34 at country border in proximity to existing pipelines."
+SA,EUNE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+TN,EUSW,as-the-crow-flies,1411,km,"Haversine between TN (lat:34.09, lon:9.66) to entry point to European gas backbone South-West Spain at 36.39,-5.64 at border to Morocco in proximity to existing pipelines."
+TN,EUSW,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+TN,EUS,as-the-crow-flies,558,km,"Haversine between TN (lat:34.09, lon:9.66) to entry point to European gas backbone South Italy at 37.18,14.53 on Malta in proximity to existing pipelines."
+TN,EUS,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+TN,EUSE,as-the-crow-flies,1591,km,"Haversine between TN (lat:34.09, lon:9.66) to entry point to European gas backbone South-East Greece at 41.09,25.46 close to North Macedonia/Bulgaria border in proximity to existing pipelines."
+TN,EUSE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+TN,EUE,as-the-crow-flies,2063,km,"Haversine between TN (lat:34.09, lon:9.66) to entry point to European gas backbone East Poland at 49.91,22.87 close to Ukraine/Slovakian border in proximity to existing pipelines."
+TN,EUE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+TN,EUNE,as-the-crow-flies,2924,km,"Haversine between TN (lat:34.09, lon:9.66) to entry point to European gas backbone North-East Estonia/Latvia/Russia at 57.53,27.34 at country border in proximity to existing pipelines."
+TN,EUNE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+TR,EUSW,as-the-crow-flies,3607,km,"Haversine between TR (lat:38.93, lon:35.57) to entry point to European gas backbone South-West Spain at 36.39,-5.64 at border to Morocco in proximity to existing pipelines."
+TR,EUSW,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+TR,EUS,as-the-crow-flies,1848,km,"Haversine between TR (lat:38.93, lon:35.57) to entry point to European gas backbone South Italy at 37.18,14.53 on Malta in proximity to existing pipelines."
+TR,EUS,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+TR,EUSE,as-the-crow-flies,893,km,"Haversine between TR (lat:38.93, lon:35.57) to entry point to European gas backbone South-East Greece at 41.09,25.46 close to North Macedonia/Bulgaria border in proximity to existing pipelines."
+TR,EUSE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+TR,EUE,as-the-crow-flies,1579,km,"Haversine between TR (lat:38.93, lon:35.57) to entry point to European gas backbone East Poland at 49.91,22.87 close to Ukraine/Slovakian border in proximity to existing pipelines."
+TR,EUE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+TR,EUNE,as-the-crow-flies,2152,km,"Haversine between TR (lat:38.93, lon:35.57) to entry point to European gas backbone North-East Estonia/Latvia/Russia at 57.53,27.34 at country border in proximity to existing pipelines."
+TR,EUNE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+UA,EUSW,as-the-crow-flies,3277,km,"Haversine between UA (lat:48.66, lon:31.27) to entry point to European gas backbone South-West Spain at 36.39,-5.64 at border to Morocco in proximity to existing pipelines."
+UA,EUSW,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+UA,EUS,as-the-crow-flies,1859,km,"Haversine between UA (lat:48.66, lon:31.27) to entry point to European gas backbone South Italy at 37.18,14.53 on Malta in proximity to existing pipelines."
+UA,EUS,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+UA,EUSE,as-the-crow-flies,957,km,"Haversine between UA (lat:48.66, lon:31.27) to entry point to European gas backbone South-East Greece at 41.09,25.46 close to North Macedonia/Bulgaria border in proximity to existing pipelines."
+UA,EUSE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+UA,EUE,as-the-crow-flies,624,km,"Haversine between UA (lat:48.66, lon:31.27) to entry point to European gas backbone East Poland at 49.91,22.87 close to Ukraine/Slovakian border in proximity to existing pipelines."
+UA,EUE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
+UA,EUNE,as-the-crow-flies,1020,km,"Haversine between UA (lat:48.66, lon:31.27) to entry point to European gas backbone North-East Estonia/Latvia/Russia at 57.53,27.34 at country border in proximity to existing pipelines."
+UA,EUNE,as-the-hake-swims,0,km,All distances are assumed to be onland. Set underwater fraction to 0 accordingly.
