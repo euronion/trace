@@ -26,7 +26,7 @@ repos:
 
 # Find common spelling mistakes in comments and docstrings
 - repo: https://github.com/codespell-project/codespell
-  rev: v2.1.0
+  rev: v2.2.2
   hooks:
   - id: codespell
     args: ['--ignore-regex="\b[A-Z]+\b"'] # Ignore capital case words, e.g. country codes
@@ -35,7 +35,7 @@ repos:
 
 # Formatting with "black" coding style
 - repo: https://github.com/psf/black
-  rev: 22.6.0
+  rev: 22.10.0
   hooks:
   # Format Python files
   - id: black
@@ -43,7 +43,7 @@ repos:
   - id: black-jupyter
 
 - repo: https://github.com/nbQA-dev/nbQA
-  rev: 1.4.0
+  rev: 1.5.3
   hooks:
     # Apply isort to Jupyter Python notebooks
   - id: nbqa-isort
