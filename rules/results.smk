@@ -47,3 +47,28 @@ rule extract_result:
         ),
     notebook:
         "../actions/extract_result.py.ipynb"
+
+
+rule create_zenodo_upload_files:
+    input:
+        costs=expand(
+            "data/technology-data/outputs/costs_{year}.csv", year=[2030, 2040, 2050]
+        ),
+        config=["config/config.default.yaml", "config/config.initial_paper.yaml"],
+        data=["data/"],
+        results=["results/"],
+        resources=[
+            "resources/demand_TRACES_2013.nc",
+            "resources/demand_annual_TRACES_2013.csv",
+            "resources/supply_TRACES_2013.nc",
+        ],
+        results_csv="results/results.csv",
+    output:
+        costs="zenodo/costs.zip",
+        config="zenodo/config.zip",
+        data="zenodo/data.zip",
+        results="zenodo/results.zip",
+        resources="zenodo/resources.zip",
+        results_csv="zenodo/results.csv",
+    notebook:
+        "../actions/create_zenodo_upload_files.py.ipynb"

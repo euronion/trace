@@ -19,6 +19,7 @@ dependencies:
 - matplotlib
 - seaborn
 - hvplot
+- tqdm
 
   # Modelling framework
 - pypsa
