@@ -29,7 +29,9 @@ update_config(config, specific_config)
 
 wildcard_constraints:
     year="\d+",
+    era_year="\d+",
     scenario="[-\w]+",
+    region="[A-Z]+",
 
 
 def get_scenario(scenario_name):
