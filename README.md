@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2020-2021 Johannes Hampp
+SPDX-FileCopyrightText: 2020-2022 Johannes Hampp
 SPDX-License-Identifier: CC-BY-4.0
 -->
 
@@ -9,11 +9,6 @@ SPDX-License-Identifier: CC-BY-4.0
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 # TRACE - Transporting Renewables as Chemical Energy
-
-> NOTE: 
-> This repository currently undergoing significant changes.
-> If you're encountering problems feel free to reach out using GitHub issues.
-> A new release with easier handling should become available in the next weeks.
 
 ## Setup and installation
 
@@ -31,12 +26,17 @@ SPDX-License-Identifier: CC-BY-4.0
 2. Setup your `python` environment:
 
     a. Install the `python` environment manager `conda`.
-    You need to either have [miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda](https://www.anaconda.com/) installed on your system.
+    You need a `conda` compatible package manager installed.
+    Recommended is [mamba](https://mamba.readthedocs.io/en/latest/).
+    Alternatively use [miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda](https://www.anaconda.com/).
 
     b. Setup your `python` environment:
 
     ```
         conda env create -f envs/environment.yaml
+
+        # or if you have mamba installed
+        mamba env create -f envs/environment.yaml
     ```
 
     This installs all the packages and `python` dependencies.
@@ -62,9 +62,12 @@ SPDX-License-Identifier: CC-BY-4.0
         (@v1.4) pkg> activate ./envs
         (trace) pkg> instantiate
     ```
-    
+4. (Optionatl) Setup a Gurobi solver license.
+   For details and how to obtain a free academic license (if you are eligible), see the [documentation](https://gurobi.com/).
+   If you don't want to use Gurobi you need to setup an [alternative linear solver compatible with PyPSA](https://pypsa.readthedocs.io/en/latest/installation.html#getting-a-solver-for-optimisation) and change the source code to be comptaible with the solver.
 ## Files and folders
 
+The repository contains the follwing folder and files:
 
 ```
 (trace): tree -L 2
@@ -106,9 +109,10 @@ SPDX-License-Identifier: CC-BY-4.0
 ├── resources   # (created automatically) intermediary files created during model creation
 │   └── ...
 ├── results     # (created automatically) Result files for each scenario/year/ESC/exporter-importer;
-                # Contains the optimised PyPSA networks and a CSV file with prominent results
+|   |           # Contains the optimised PyPSA networks and a CSV file with prominent results
 │   ├── default
 │   ├── lowhomogeneous
+│   ├── results.csv
 │   └── ...
 ├── rules       # Snakemake rule directory containing the workflow definitino for the model
 │   ├── esc_construction.smk
@@ -117,55 +121,19 @@ SPDX-License-Identifier: CC-BY-4.0
 │   └── solving.smk
 └── Snakefile   # Snakemake file to combine all workflow files into the complete workflow
 ```
-    
-## Solving a scenario
 
-Solving a scenario (i.e. set of assumptions like e.g. WACC, domestic demand, exporting/importing countries) use the snakemake
-command
+## Scenarios
 
-```
-    snakemake -jall results/<scenario>/results.csv
-```
+This model uses *scenarios* to define a number of parameters identical across multiple model runs.
+Scenarios are defined in `config/config.default.yaml` and `config/config.initial_paper.yaml`.
+Identically named scenarios from the second file take precedence over scenarios from the first file.
 
-were `<scenario>` is the name of the scenario listed under `scenarios` in `config.yaml`, e.g. `default` or `lowhomogeneous`.
-The command executes the necessary steps, solves the network(s) for all combinations of ESCs, exporting and importing countries,
-extracts the results and merges the main results into a single `results/<scenario>/results.csv` file for manual or automatic
-result analysis.
+Two central scenarios are the scenario `default` and `lowhomogeneous`.
+Both are similar except for `default` assuming 10% WACC (`wacc: "homogeneous"`) and
+`lowhomogeneous` assuming 5% WACC `wacc: "lowhomogeneous"`).
+The values for `wacc: <value>` are references to column entries in `data/wacc.csv`.
 
-In some cases scripts in the snakemake workflow can fail if too many rules are started simultaneously (an issue with jupyter notebooks)
-or memory consumption during solving exceeds the memory snakemake allocated to the solving process.
-To avoid these cases it is recommended to use the `--restart-times <N>` flag for `snakemake`, which
-automatically tries to re-run single failed rules `<N>` times and increases the allocated memory for the solving rules
-each time it fails (a brute force approach, but simple and it has proven to be reliable).
-
-E.g. for obtaining results for the scenario `default` run:
-
-```
-    snakemake -jall --restart-times 3 results/default/results.csv
-```
-
-Similarly a single country-year-ESC combination may be solved for a single scenario, e.g.:
-```
-    snakemake -jall --restart-times 3 results/default/2030/hvdc/ES-DE/results.csv
-```
-will produce two files in the directory, one is the `results.csv` file with extracted results
-from the solved network, which is stored as a PyPSA network as `network.nc` side-by-side to the
-`results.csv` file.
-
-## Running a sensitivity analysis / parameter sweep
-
-For sensitivity analysis and parameter sweeps, scenarios with modified input parameters are used.
-All currently implemented modifiers are listed in the `default` scenario in `config.yaml` with their default values.
-Defining a new scenario in the `config.yaml` and overwriting the desired modifiers allows for conducting a sensitivity analysis.
-Each scenario is solved separately as a stand-alone scenario as described above, e.g. scenario `sensitivity-1`:
-
-```
-    snakemake -jall --restart-times 3 results/sensitivity-1/results.csv
-```
-
-The results can then be combined and compared against the 'default' scenario to obtain the sensitivities.
-
-## Defining ESCs
+## Energy Supply Chains (ESCs)
 
 ESCs are defined in the `esc` subfolder as PyPSA networks.
 For each ESC, its specific subfolder is parsed and converted into a region-specific PyPSA network representing the ESC.
@@ -233,7 +201,7 @@ Following files corresponding to PyPSA components are used for described purpose
           At the beginning of each scenario year there might be a larger supply gap of a few hours/days, where no ship arrives due to unfavourable combinations of
             journey time and loading/unloading duration
             
-### LOHC
+### Special case: LOHC
 
 For LOHC transport the chemical costs also have to be taken into account.
 This is hard-coded into the model in `actions/create_network.py.ipynb` in the method `override_costs_for_special_cases(n)`.
@@ -246,7 +214,120 @@ The hard-coding modifies the following costs:
 * The generators for LOHC chemicals: capital_costs become marginal_costs (per t of LOHC additionally required in the model to compensate losses)
 * LOHC shipping lanes have an additional store for keeping track and transporting used, unloaded LOHC chemical
 
-### Conventions
+## Exporters and Importers
+
+Exporting and importing regions are defined in `config/config.default.yaml` under the key
+```
+regions:
+  TRACES:
+    "AU": "Australia"
+    "AR": "Argentina"
+    "DE": "Germany"
+    "DK": "Denmark"
+    "EG": "Egypt"
+    "ES": "Spain"
+    "MA": "Morocco"
+    "SA": "Saudi Arabia"
+```
+
+The model is setup to support imports from any of these regions to Germany (DE).
+For each region a complete row entry in `data/wacc.csv` is necessary.
+Further for each export-import relationship which is desired to be investigated, the different types of 
+distances (as-the-crow-flies, as-the-hake-swims, sea route) are provided via `data/distances.csv`.
+
+If a new region is supposed to be supported as importer or exporter, the new region has to be
+included in all three locations with a complete entry or else the model will fail with an `KeyError`
+when trying to run the model on a new region with incomplete entries.
+
+## Running the model
+
+> Note: This repository relies on `snakemake` as a workflow manager.
+> For more information and usage of `snakemake` see the [documentation](https://snakemake.readthedocs.io/).
+
+The model allows to simulate an energy supply chain (ESC) under various conditions.
+
+## Technology data (costs)
+
+Data technology costs (CAPEX, FOM, lifetime) are taken from the [technology-data GitHub repository](https://github.com/PyPSA/technology-data/)
+and downloaded automatically into `data/technology-data/outputs/costs_<year>.csv`.
+Depending on the `year` choosen for a scenario run (see below), the corresponding `costs_<year>.csv` file is used.
+## Technology data (efficiencies)
+
+Efficiencies for conversion processes, e.g. synthesis or hydrogen electrolysis are provided via `data/efficiencies.csv`.
+
+### For a single case
+
+A single model run or scenario run is a specific choice of the following:
+
+* `scenario` (from the `config.default.yaml` and `config.initial_paper.yaml` files)
+* energy supply chain (ESC) `esc`
+* exporting region `exporter`
+* importing region `importer`
+* year (technology assumption) `year`
+
+Use the following command where values `<...>` are substituted with the specific values:
+
+```
+    snakemake -jall results/<scenario>/<year>/<esc>/<exporter>-<importer>/results.csv
+    
+    # example
+    snakemake -jall results/default/2030/shipping-lch4/AR-DE/results.csv
+```
+
+The command executes the necessary steps, solves the network(s) for all combinations of ESCs, exporting and importing countries,
+extracts the results and merges the main results into a single `results/.../results.csv` file for manual or automatic result analysis.
+In the same folder as the `results.csv` file there will also be saved a `network.nc` file.
+This file is the solved, i.e. optimised, PyPSA network for the specific case modelled and can be opened using PyPSA
+
+```
+    import pypsa
+    network = pypsa.Network(<path to network.nc file>)
+```
+
+All entries in `results.csv` are based on the `network.nc` and extracted for convinience using the Python notebook `actions/extract_results.py.ipynb`.
+
+### Running multiple scenario runs
+
+Using the `snakemake` functionality of parameter spaces one or scenarios runs can be defined and solved easily.
+Each case to model and solve is specified by a row entry in `scenarios/default.csv`.
+Every row must contain a valid entry for all 5 columns, else the workflow will fail.
+
+Then all the scenario runs can be modelled and solved by calling
+
+```
+    snakemake -jall results/results.csv
+```
+
+This will create all the individual `results/.../results.csv` and `results/.../network.nc` files for each scenario run.
+In addition it will create a file `results/results.csv` containing all individual results files combined into a single file for convinience.
+
+## Sensitivity analysis
+
+Sensitivity analysis is implemented through different scenarios, see `config/config.initial_paper.yaml` example
+sensitivity scenarios and the `default` scenario in `config/config.default.yaml` for all implemented `modifiers` in the model.
+Scenario runs for the sensitivity analysis are run as standard scenario cases, see the instructions above.
+
+### Troubleshooting FAQ
+
+* Workflow stops with "Address is already in use" error messages:
+  In some cases scripts in the snakemake workflow can fail if too many `snakemake` rules are started simultaneously.
+  This issue is related to the use of Jupyter notebook by the model.
+  This problem cannot easily be avoided. Since the problem is not with the model but with the execution, an effective workaround
+  is to tell `snakemake` to simply try to rerun the failed affected rules by adding  the `--restart-times <N>` flag added to call, e.g.
+
+  ```
+    snakemake -jall --restart-times 3 results/results.csv
+  ```
+
+
+* "Python kernel died" during `solve_network`:
+   Memory consumption during solving step can exceeds the memory `snakemake` has allocated to the solving process.
+   The model is setup to increase the reserved memory per repetition of the same `solve_network` step if the previous
+   iteration has failed. Apply the same solution flags to `snakemake` as for the "Adress is already in use" problem bove.
+   
+  ```
+
+## Conventions
 
 * Chemicals are specified with their lower heating value (LHV) and use of LHV at this point is indicated
 * Other input chemicals like water or CO2 are specified by their weight (t)
@@ -262,10 +343,10 @@ The hard-coding modifies the following costs:
 * RES are always attached to the bus "electricity (exp)" (in attach_supply.py.ipynb). This bus name must therefore exist in each ESC.
 * In leap years (e.g. 2040) the leap day is ignored by dropping the 29th of February when encountered (= 365 days for all years)
 
-## Supply
+## Modelling of renewable electricity supply and supply curves
 
-* Supply time-series are synthetically generated (hourly curves, one representative year) using Global Energy GIS
-* Config for creating supply via `config.yaml`
+* Supply time-series are synthetically generated (hourly curves, one representative year) using GlobalEnergyGIS (Julia package)
+* Config for creating supply via `config/config.default.yaml`
 * Supply is attached to networks via `actions/attach_supply.py.ipynb`
     1. LCoE for all different supply quality classes is determined
     2. Domestic demand is compared to LCoEs
@@ -274,18 +355,6 @@ The hard-coding modifies the following costs:
     only the annual demand/supply).
     4. Residual RES are then attached to the network as PyPSA generators.
     
-## Solving
-
-By default the commercial solver Gurobi is used.
-Free academic licenses are available.
-We use the 'barrier' solving algorithm and skip the crossover, 
-as the additional accuracy from crossover is negligible for our problem.
-We also make use of the "PreDual = 2" option from Gurobi,
-which showed to dramatically increase solver speed for all ESCs involving long distance shipping.
-
-As a fallback method the model automatically switches back to the default gurobi solver methods and
-retries solving the scenario again.
-
 ## Citing
 
 This software is archived in Zenodo.

@@ -1,0 +1,25 @@
+# SPDX-FileCopyrightText: : 2022 Johannes Hampp
+#
+# SPDX-License-Identifier: CC0-1.0
+
+cff-version: 1.2.0
+message: If you use this model, please cite the following preprint on arXiv.
+title: Import options for chemical energy carriers from renewable sources to Germany
+type: software
+authors:
+  - orcid: 'https://orcid.org/0000-0002-1776-116X'
+    given-names: Johannes
+    family-names: Hampp
+  - given-names: Michael
+    family-names: Düren
+    orcid: 'https://orcid.org/0000-0002-6066-4744'
+  - given-names: Tom
+    family-names: Brown
+    orcid: 'https://orcid.org/0000-0001-5898-1911'
+identifiers:
+  - type: doi
+    value: 10.48550/arXiv.2107.01092
+  - type: url
+    value: 'https://arxiv.org/abs/2107.01092'
+license: GPL-3.0-or-later
+repository: https://github.com/euronion/trace
