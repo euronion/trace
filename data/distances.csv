@@ -69,6 +69,8 @@ MA,GREEV,sea route,2540,km,"Distance between Port Nador, Morocco and Piraeus, Gr
 MA,ITVCE,sea route,2885,km,"Distance between Port Nador, Morocco and Venice, Italy. Measured using https://sea-distances.org."
 MA,ESVLC,sea route,585,km,"Distance between Port Nador, Morocco and Valencia, Spain. Measured using https://sea-distances.org."
 MA,ESLCG,sea route,1389,km,"Distance between Port Nador, Morocco and La Coruna, Spain. Measured using https://sea-distances.org."
+MA-Xlinks,GBXlinks,as-the-crow-flies,0,km,"Connection for Xlinks project; specific route of 3800 km (since detour factor of 1.2 is applied: 3800km/1.2=~3170 km) exclusively subsea from Tan Tan, Morocco to Devon, United Kingdom, see https://xlinks.co/morocco-uk-power-project/ ."
+MA-Xlinks,GBXlinks,as-the-hake-swims,3170,km,"Connection for Xlinks project; specific route of 3800 km (since detour factor of 1.2 is applied: 3800km/1.2=~3170 km) exclusively subsea from Tan Tan, Morocco to Devon, United Kingdom, see https://xlinks.co/morocco-uk-power-project/ ."
 NA,GBMLF,sea route,9802,km,"Distance between Walvis Bay, Namibia and Milford Haven, United Kingdom. Measured using https://sea-distances.org."
 NA,BEZEE,sea route,10147,km,"Distance between Walvis Bay, Namibia and Zeebrugge, Belgium. Measured using https://sea-distances.org."
 NA,PLSWI,sea route,11523,km,"Distance between Walvis Bay, Namibia and Swinoujscie, Poland. Measured using https://sea-distances.org."
