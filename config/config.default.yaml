@@ -208,10 +208,7 @@ renewables:
       layers: ["polygons", "points"]
     wdpa_marine: false
     shipping_routes: false
-    gebco:
-      max_depth: false
-      max_altitude: false
-      max_slope: false
+    gebco: false
     technical_potential: 5.1 # Based on ENPRESO 85 W/m^2 and 3% land availability
     number_quality_classes: 50
     atlite:
@@ -253,17 +250,18 @@ renewables:
 
 regions:
   # Region definitions rely on the GADM database (https://gadm.org)
-  # Regions are identified by their full-name in the database
-  # and may be of level 0 (country) or GADM levels 1 and 2.
-  # "MA": ["Laâyoune - Boujdour - Sakia El Hamra", "Tan-Tan"] # Morocco
+  # Regions are identified by their full-name in the database for each level
+  # For each level parent levels need to be specified seperated by a "->",
+  # e.g. for a region containing Florida (USA) and Canada:
+  # "CA-USFL": ["United States -> Floida", "Canada"]
   "AR": ["Argentina"]
   "AU": ["Australia"]
   "CA": ["Canada"]
-  "CA-East": ["Manitoba", "Ontario", "Québec", "Newfoundland and Labrador", "New Brunswick", "Prince Edward Island", "Nova Scotia"]
+  "CA-East": ["Canada -> Manitoba", "Canada -> Ontario", "Canada -> Québec", "Canada -> Newfoundland and Labrador", "Canada -> New Brunswick", "Canada -> Prince Edward Island", "Canada -> Nova Scotia"]
   "CL": ["Chile"]
   "CN": ["China"]
-  "CN-East": ["Heilongjiang", "Nei Mongol", "Jilin", "Liaoning", "Beijing", "Hebei", "Tianjin", "Shanxi", "Shandong", "Shaanxi", "Henan", "Jiangsu", "Anhui", "Shanghai", "Hubei", "Chongqing", "Zhejiang", "Jiangxi", "Hunan", "Guizhou", "Fujian", "Guangxi", "Guangdong", "Hainan"]
-  "CN-West": ["Ningxia Hui", "Yunnan", "Sichuan", "Xizang", "Qinghai", "Gansu", "Xinjiang Uygur"]
+  "CN-East": ["China -> Heilongjiang", "China -> Nei Mongol", "China -> Jilin", "China -> Liaoning", "China -> Beijing", "China -> Hebei", "China -> Tianjin", "China -> Shanxi", "China -> Shandong", "China -> Shaanxi", "China -> Henan", "China -> Jiangsu", "China -> Anhui", "China -> Shanghai", "China -> Hubei", "China -> Chongqing", "China -> Zhejiang", "China -> Jiangxi", "China -> Hunan", "China -> Guizhou", "China -> Fujian", "China -> Guangxi", "China -> Guangdong", "China -> Hainan"]
+  "CN-West": ["China -> Ningxia Hui", "China -> Yunnan", "China -> Sichuan", "China -> Xizang", "China -> Qinghai", "China -> Gansu", "China -> Xinjiang Uygur"]
   "DE": ["Germany"]
   "DK": ["Denmark"]
   "DZ": ["Algeria"]
@@ -273,15 +271,17 @@ regions:
   "KZ": ["Kazakhstan"]
   "LY": ["Libya"]
   "MA": ["Morocco"]
+  "MA-Xlinks": ["Morocco -> Souss - Massa - Draâ", "Morocco -> Guelmim - Es-Semara", "Morocco -> Laâyoune - Boujdour - Sakia El Hamra"]
   "NA": ["Namibia"]
+  "OM": ["Oman"]
   "RU": ["Russia"]
-  "RU-West": ["Murmansk", "Nenets", "Yamal-Nenets", "Komi", "Karelia", "Arkhangel'sk", "Khanty-Mansiy", "Leningrad", "Vologda", "City of St. Petersburg", "Perm'", "Kirov", "Sverdlovsk", "Tomsk", "Kostroma", "Novgorod", "Yaroslavl'", "Tyumen'", "Sverdlovsk", "Sverdlovsk", "Pskov", "Udmurt", "Tver'", "Ivanovo", "Mariy-El", "Nizhegorod", "Omsk", "Vladimir", "Moscow City", "Moskva", "Chuvash", "Kurgan", "Tatarstan", "Novosibirsk", "Smolensk", "Kemerovo", "Chelyabinsk", "Mordovia", "Kaluga", "Ryazan'", "Bashkortostan", "Ul'yanovsk", "Tula", "Khakass", "Samara", "Penza", "Bryansk", "Orel", "Tambov", "Lipetsk", "Altay", "Orenburg", "Kursk", "Tuva", "Saratov", "Voronezh", "Gorno-Altay", "Belgorod", "Volgograd", "Rostov", "Astrakhan'", "Kalmyk", "Krasnodar", "Stavropol'", "Adygey", "Karachay-Cherkess", "Kabardin-Balkar", "Chechnya", "Ingush", "North Ossetia", "Dagestan"]
+  "RU-West": ["Russia -> Murmansk", "Russia -> Nenets", "Russia -> Yamal-Nenets", "Russia -> Komi", "Russia -> Karelia", "Russia -> Arkhangel'sk", "Russia -> Khanty-Mansiy", "Russia -> Leningrad", "Russia -> Vologda", "Russia -> City of St. Petersburg", "Russia -> Perm'", "Russia -> Kirov", "Russia -> Sverdlovsk", "Russia -> Tomsk", "Russia -> Kostroma", "Russia -> Novgorod", "Russia -> Yaroslavl'", "Russia -> Tyumen'", "Russia -> Sverdlovsk", "Russia -> Sverdlovsk", "Russia -> Pskov", "Russia -> Udmurt", "Russia -> Tver'", "Russia -> Ivanovo", "Russia -> Mariy-El", "Russia -> Nizhegorod", "Russia -> Omsk", "Russia -> Vladimir", "Russia -> Moscow City", "Russia -> Moskva", "Russia -> Chuvash", "Russia -> Kurgan", "Russia -> Tatarstan", "Russia -> Novosibirsk", "Russia -> Smolensk", "Russia -> Kemerovo", "Russia -> Chelyabinsk", "Russia -> Mordovia", "Russia -> Kaluga", "Russia -> Ryazan'", "Russia -> Bashkortostan", "Russia -> Ul'yanovsk", "Russia -> Tula", "Russia -> Khakass", "Russia -> Samara", "Russia -> Penza", "Russia -> Bryansk", "Russia -> Orel", "Russia -> Tambov", "Russia -> Lipetsk", "Russia -> Altay", "Russia -> Orenburg", "Russia -> Kursk", "Russia -> Tuva", "Russia -> Saratov", "Russia -> Voronezh", "Russia -> Gorno-Altay", "Russia -> Belgorod", "Russia -> Volgograd", "Russia -> Rostov", "Russia -> Astrakhan'", "Russia -> Kalmyk", "Russia -> Krasnodar", "Russia -> Stavropol'", "Russia -> Adygey", "Russia -> Karachay-Cherkess", "Russia -> Kabardin-Balkar", "Russia -> Chechnya", "Russia -> Ingush", "Russia -> North Ossetia", "Russia -> Dagestan"]
   "SA": ["Saudi Arabia"]
   "TN": ["Tunisia"]
   "TR": ["Turkey"]
   "UA": ["Ukraine"]
-  "US": ["United States"]
-  "US-East": ["Maine", "Vermont", "New Hampshire", "Minnesota", "Massachusetts", "Michigan", "New York", "Rhode Island", "Wisconsin", "Connecticut", "New Jersey", "Pennsylvania", "Iowa", "Ohio", "Delaware", "Maryland", "District of Columbia", "Indiana", "Illinois", "West Virginia", "Virginia", "Missouri", "Kentucky", "North Carolina", "Tennessee", "South Carolina", "Arkansas", "Georgia", "Alabama", "Mississippi", "Louisiana", "Florida"]
+  # "US": ["United States"] # Too big for ECMWF API. Requires https://github.com/PyPSA/atlite/pull/236 
+  "US-East": ["United States -> Maine", "United States -> Vermont", "United States -> New Hampshire", "United States -> Minnesota", "United States -> Massachusetts", "United States -> Michigan", "United States -> New York", "United States -> Rhode Island", "United States -> Wisconsin", "United States -> Connecticut", "United States -> New Jersey", "United States -> Pennsylvania", "United States -> Iowa", "United States -> Ohio", "United States -> Delaware", "United States -> Maryland", "United States -> District of Columbia", "United States -> Indiana", "United States -> Illinois", "United States -> West Virginia", "United States -> Virginia", "United States -> Missouri", "United States -> Kentucky", "United States -> North Carolina", "United States -> Tennessee", "United States -> South Carolina", "United States -> Arkansas", "United States -> Georgia", "United States -> Alabama", "United States -> Mississippi", "United States -> Louisiana", "United States -> Florida"]
 
 detour_factors:
   transmission_line: 1.2
