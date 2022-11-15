@@ -95,7 +95,7 @@ rule plot_scenario_lcoes:
     message:
         "Plotting LCoEs for all ESC/exporter/year combinations calculated for the scenario."
     input:
-        scenario_dir=directory("results/{scenario}"),
+        scenario_dir="results/{scenario}",
     output:
         fig=multiext(
             "results/{scenario}/lcoes",
