@@ -203,7 +203,7 @@ rule build_potentials_and_profiles:
         python="logs/build_potentials_and_profiles/{region}_{technology}.log",
         notebook="logs/build_potentials_and_profiles/{region}_{technology}.py.ipynb",
     benchmark:
-        "benchmarks/build_potentials_and_profiles/{region}_{technology}.csv",
+        "benchmarks/build_potentials_and_profiles/{region}_{technology}.csv"
     notebook:
         "../actions/build_potentials_and_profiles.py.ipynb"
 
@@ -214,7 +214,6 @@ rule combine_atlite_supply:
         profiles=expand(
             "resources/profiles/{region}_{technology}.nc",
             technology=["wind_offshore", "wind_onshore", "pvplant"],
-#            technology=["wind_offshore", "wind_onshore", "pvplant", "csp_tower"],
             allow_missing=True,
         ),
     output:
