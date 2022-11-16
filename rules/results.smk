@@ -79,7 +79,7 @@ rule combine_all_weighted_generator_timeseries:
             instances=custom_instance_pattern(hvdc_scenarios),
         ),
     output:
-        combined_timeseries="results/combined_weighted_generator_timerseries.nc",
+        combined_timeseries="results/combined_weighted_generator_timeseries.nc",
     threads: 1
     log:
         python="logs/combine_all_weighted_generator_timeseries.ipynb",
