@@ -1,0 +1,14 @@
+name,unit,carrier
+electricity (exp),MW,electricity
+battery (exp),MW,battery
+water (exp),m^3,water
+hydrogen (g) (exp),MW,hydrogen
+hydrogen (g) storage (exp),MWh,hydrogen
+methanol (exp),MW,methanol
+methanol storage (exp),m^3,methanol
+methanol (imp),MW,methanol
+heat (exp),MW,heat
+CO2 (g) (exp),t,CO2
+CO2 (l) (exp),t,CO2
+berth (exp),t,methanol
+berth (imp),t,methanol
