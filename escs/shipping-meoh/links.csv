@@ -1,8 +1,7 @@
 name,bus0,bus1,bus2,bus3,p_nom_extendable,p_min_pu,p_max_pu,scale_costs_based_on
 "battery inverter (charging, exp)",electricity (exp),battery (exp),,,True,0,1,bus0
 "battery inverter (discharging, exp)",battery (exp),electricity (exp),,,True,0,1,bus0
-seawater desalination (exp),electricity (exp),water (exp),,,True,0,1,bus1
-electrolysis (exp),electricity (exp),hydrogen (g) (exp),water (exp),,True,0,1,bus0
+electrolysis (exp),electricity (exp),hydrogen (g) (exp),,,True,0,1,bus0
 industrial heat pump medium temperature (exp),electricity (exp),heat (exp),,,True,0,1,bus1
 direct air capture (exp),electricity (exp),CO2 (g) (exp),heat (exp),,True,0,1,bus1
 methanolisation (exp),electricity (exp),methanol (exp),CO2 (g) (exp),hydrogen (g) (exp),True,0.9425,1,bus1
