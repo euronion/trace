@@ -1,2 +1,2 @@
-name,bus0,bus1
-H2 (l) transport ship,berth (exp),berth (imp)
+name,bus0,bus1,use_fuel
+H2 (l) transport ship,berth (exp),berth (imp),cargo
