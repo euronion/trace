@@ -1,0 +1,10 @@
+name,unit,carrier
+electricity (exp),MW,electricity
+battery (exp),MW,battery
+hydrogen (g) (exp),MW,hydrogen
+hydrogen (g) storage (exp),MW,hydrogen
+iron ore (exp),t/h,iron ore
+hot briquetted iron (exp),t/h,hot briquetted iron
+berth (exp),t/h,hot briquetted iron
+berth (imp),t/h,hot briquetted iron
+hot briquetted iron (imp),t/h,hot briquetted iron

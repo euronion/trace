@@ -73,6 +73,8 @@ direct iron reduction furnace,all,iron ore,1.59,t,hot briquetted iron,1,t,0.6289
 direct iron reduction furnace,all,hydrogen (g),2.1,MWh_LHV,hot briquetted iron,1,t,0.410846343467543,"63 kg H2/t steel for process ‘DRI-EAF_100% green H2’ according to documentation (raw input files for MPP model list 73 kg H2 / t steel, which seems to high and is probably incorrect).","Mission Possible Partnership (2022): Steel Model Documentation (https://mpp.gitbook.io/mpp-steel-model/model-overview/model-components/technologies, accessed: 2022-12-05)."
 direct iron reduction furnace,all,electricity,1.03,MWh,hot briquetted iron,1,t,0.970873786407767,Based on process ‘DRI-EAF_100% green H2’ reduced by electricity demand of process ‘EAF’.,"Mission Possible Partnership (2022): Steel Model (https://github.com/missionpossiblepartnership/mpp-steel-model/blob/9eca52db92bd2d9715f30e98ccaaf36677fdb516/mppsteel/data/import_data/Technology%20Business%20Cases.csv, accessed: 2022-12-03)."
 electric arc furnace,all,electricity,0.6395,MWh,steel,1,t,1.56372165754496,Based on process ‘EAF’.,"Mission Possible Partnership (2022): Steel Model (https://github.com/missionpossiblepartnership/mpp-steel-model/blob/9eca52db92bd2d9715f30e98ccaaf36677fdb516/mppsteel/data/import_data/Technology%20Business%20Cases.csv, accessed: 2022-12-03)."
-electric arc furnace,all,hot briquetted iron,1,t,steel,1,t,1,Do not use scrap but HBI as input; scrap would require higher input (in tonnes) as steel content is lower.,n/a
+electric arc furnace,all,hot briquetted iron,1,t,steel,1,t,1,Do not use scrap but HBI as input. Scrap would require higher input (in tonnes) as steel content is lower.,n/a
 ship loading,all,steel,1,t,berth,1,t,1,Loss-less (un-)loading,n/a
 ship unloading,all,berth,1,t,steel,1,t,1,Loss-less (un-)loading,n/a
+ship loading,all,hot briquetted iron,1,t,berth,1,t,1,Loss-less (un-)loading,n/a
+ship unloading,all,berth,1,t,hot briquetted iron,1,t,1,Loss-less (un-)loading,n/a

@@ -1,0 +1,5 @@
+name,bus,e_nom_extendable,e_cyclic
+battery storage (exp),battery (exp),True,True
+hydrogen storage tank incl. compressor (exp),hydrogen (g) storage (exp),True,True
+HBI storage (exp),hot briquetted iron (exp),True,True
+HBI storage (imp),hot briquetted iron (imp),True,True
