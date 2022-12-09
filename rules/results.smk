@@ -37,6 +37,7 @@ rule extract_result:
         network="results/{scenario}/{year}/{esc}/{exporter}-{importer}/network.nc",
     output:
         results="results/{scenario}/{year}/{esc}/{exporter}-{importer}/results.csv",
+    group: "esc"
     threads: 1
     params:
         scenario=lambda w: get_scenario(w["scenario"]),
