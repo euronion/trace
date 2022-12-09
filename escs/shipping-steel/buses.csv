@@ -3,9 +3,9 @@ electricity (exp),MW,electricity
 battery (exp),MW,battery
 hydrogen (g) (exp),MW,hydrogen
 hydrogen (g) storage (exp),MW,hydrogen
-iron ore (exp),t,iron ore
-hot briquetted iron (exp),t,hot briquetted iron
-steel (exp),t,steel
-berth (exp),t,hydrogen
-berth (imp),t,hydrogen
-steel (imp),t,steel
+iron ore (exp),t/h,iron ore
+hot briquetted iron (exp),t/h,hot briquetted iron
+steel (exp),t/h,steel
+berth (exp),t/h,steel
+berth (imp),t/h,steel
+steel (imp),t/h,steel
