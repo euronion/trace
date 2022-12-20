@@ -1,0 +1,2 @@
+name,pypsa_version,description
+HVDC to H2 to electricity,0.20.1,HVDC electricity export / import with option to store in battery or hydrogen storage on either exporter or importer side.

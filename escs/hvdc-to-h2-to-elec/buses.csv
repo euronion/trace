@@ -1,0 +1,13 @@
+name,unit,carrier
+electricity (exp),MW,electricity
+electricity (imp),MW,electricity
+battery (exp),MW,battery
+water (exp),m^3,water
+hydrogen (g) (exp),MW,hydrogen
+hydrogen (g) storage (exp),MW,hydrogen
+battery (imp),MW,battery
+hydrogen (g) (imp),MW,hydrogen
+hydrogen (g) storage (imp),MW,hydrogen
+hvdc (imp),MW,electricity
+hvdc (exp),MW,electricity
+hvdc submarine,MW,electricity
