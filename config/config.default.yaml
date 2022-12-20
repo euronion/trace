@@ -212,7 +212,7 @@ renewables:
       max_depth: false
       max_altitude: false
       max_slope: false
-    technical_potential: 5.1 # Based on ENPRESO 85 W/m^2 and 3% land availability
+    technical_potential: 17 # Based on ENPRESO 85 W/m^2 and 10% land availability
     number_quality_classes: 50
     atlite:
       method: "pv"
@@ -238,7 +238,7 @@ renewables:
       # Slopy regions as not very suitable for CSP, see:
       # Murphy et al (2019), table 12 / pg. 89 .
       max_slope: 3
-    technical_potential: 5.1 # Based on ENPRESO 85 W/m^2 and 3% land availability
+    technical_potential: 17 # Based on ENPRESO 85 W/m^2 and 10% land availability
     number_quality_classes: 50
     atlite:
       method: "csp"
@@ -253,23 +253,50 @@ renewables:
 
 regions:
   # Region definitions rely on the GADM database (https://gadm.org)
-  # Regions are identified by their full-name in the database
-  # and may be of level 0 (country) or GADM levels 1 and 2.
-  # "MA": ["Laâyoune - Boujdour - Sakia El Hamra", "Tan-Tan"] # Morocco
-  "MA": ["Morocco"]
-  "DE": ["Germany"]
-  "DK": ["Denmark"]
-  "ES": ["Spain"]
-  "AU": ["Australia"]
-  "AR": ["Argentina"]
-  "EG": ["Egypt"]
-  "SA": ["Saudi Arabia"]
-  "RU": ["Russia"]
-  "UA": ["Ukraine"]
-  "KZ": ["Kazakhstan"]
-  "DZ": ["Algeria"]
-  "TN": ["Tunisia"]
-  "NA": ["Namibia"]
+  # Regions are identified by their full-name in the database for each level
+  # For each level parent levels need to be specified seperated by a "->",
+  # e.g. for a region containing Florida (USA) and Canada:
+  # "CA-USFL": ["United States -> Floida", "Canada"]
+  "MA": [
+        "Morocco -> Tanger - Tétouan",
+        "Morocco -> Gharb - Chrarda - Béni Hssen",
+        "Morocco -> Taza - Al Hoceima - Taounate",
+        "Morocco -> Rabat - Salé - Zemmour - Zaer",
+        "Morocco -> Grand Casablanca",
+        "Morocco -> Fès - Boulemane",
+        "Morocco -> Oriental",
+        "Morocco -> Chaouia - Ouardigha",
+        "Morocco -> Doukkala - Abda",
+        "Morocco -> Tadla - Azilal",
+        "Morocco -> Meknès - Tafilalet",
+        "Morocco -> Marrakech - Tensift - Al Haouz",
+        "Morocco -> Souss - Massa - Draâ",
+        ]
+  "TN": [
+        "Tunisia -> Bizerte",
+        "Tunisia -> Ariana",
+        "Tunisia -> Tunis",
+        "Tunisia -> Manubah",
+        "Tunisia -> Béja",
+        "Tunisia -> Nabeul",
+        "Tunisia -> Ben Arous (Tunis Sud)",
+        "Tunisia -> Jendouba",
+        "Tunisia -> Zaghouan",
+        "Tunisia -> Siliana",
+        "Tunisia -> Le Kef",
+        "Tunisia -> Sousse",
+        "Tunisia -> Kairouan",
+        "Tunisia -> Monastir",
+        "Tunisia -> Mahdia",
+        "Tunisia -> Kassérine",
+        "Tunisia -> Sidi Bou Zid",
+        "Tunisia -> Sfax",
+        "Tunisia -> Gafsa",
+        "Tunisia -> Tozeur",
+        "Tunisia -> Gabès",
+        "Tunisia -> Kebili",
+        "Tunisia -> Médenine",
+        ]
 
 detour_factors:
   transmission_line: 1.2
@@ -279,7 +306,7 @@ detour_factors:
 # Which technology-data version to use for cost assumptions
 # May be either a branch (like e.g. "master") or a full-commit hash
 # see: https://github.com/PyPSA/technology-data
-technology_data: "master"
+technology_data: "update/hydrogen-tank-costs"
 
 solver:
   pypsa-eur: # taken from : https://github.com/PyPSA/pypsa-eur/blob/master/config.default.yaml (works well)
