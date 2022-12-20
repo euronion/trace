@@ -1,22 +1,74 @@
-# SPDX-FileCopyrightText: 2020-2021 Johannes Hampp
+# SPDX-FileCopyrightText: 2020-2022 Johannes Hampp
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-# Change scenario here or by using the --config scenario=... command line flag
 scenarios:
-  cern_link:
-        #+++ used in Snakefile +++ #
-        # Year used to select cost assumptions
-    YEARS: [2030]
-    IMPORTERS: ["CERN"]
-    ESCS: ["hvdc-to-elec", "pipeline-h2-to-elec", "shipping-lh2-to-elec"]
-    EXPORTERS: ["MA", "SA", "EG", "DZ", "TN"]
-        #--- used in Snakefile ---
+  annually_with_csp:
+    import_profile: "constant"
+    import_buffer: "annually"
+    supply_technologies: ["csp-tower", "offwind", "onwind", "solar-utility"]
 
-        # WACC scenario assumptions, see "data/wacc.csv"
-        # Currently supported: homogeneous, irena, inhomogeneous
-    wacc: "homogeneous-7.5"
+  annually_without_csp:
+    import_profile: "constant"
+    import_buffer: "annually"
+    supply_technologies: ["offwind", "onwind", "solar-utility"]
 
-        # Import profile (time-series) for import demand.
-        # Maybe any of the files in data/import_profiles/<import_profile>.csv
-    import_profile: "night-60_day-100"
+  quaterly_with_csp:
+    import_profile: "constant"
+    import_buffer: "quaterly"
+    supply_technologies: ["csp-tower", "offwind", "onwind", "solar-utility"]
+
+  quaterly_without_csp:
+    import_profile: "constant"
+    import_buffer: "quaterly"
+    supply_technologies: ["offwind", "onwind", "solar-utility"]
+
+  monthly_with_csp:
+    import_profile: "constant"
+    import_buffer: "monthly"
+    supply_technologies: ["csp-tower", "offwind", "onwind", "solar-utility"]
+
+  monthly_without_csp:
+    import_profile: "constant"
+    import_buffer: "monthly"
+    supply_technologies: ["offwind", "onwind", "solar-utility"]
+
+  biweekly_with_csp:
+    import_profile: "constant"
+    import_buffer: "biweekly"
+    supply_technologies: ["csp-tower", "offwind", "onwind", "solar-utility"]
+
+  biweekly_without_csp:
+    import_profile: "constant"
+    import_buffer: "biweekly"
+    supply_technologies: ["offwind", "onwind", "solar-utility"]
+
+  weekly_with_csp:
+    import_profile: "constant"
+    import_buffer: "weekly"
+    supply_technologies: ["csp-tower", "offwind", "onwind", "solar-utility"]
+
+  weekly_without_csp:
+    import_profile: "constant"
+    import_buffer: "weekly"
+    supply_technologies: ["offwind", "onwind", "solar-utility"]
+
+  daily_with_csp:
+    import_profile: "constant"
+    import_buffer: "daily"
+    supply_technologies: ["csp-tower", "offwind", "onwind", "solar-utility"]
+
+  daily_without_csp:
+    import_profile: "constant"
+    import_buffer: "daily"
+    supply_technologies: ["offwind", "onwind", "solar-utility"]
+
+  unbuffered_with_csp:
+    import_profile: "constant"
+    import_buffer: False
+    supply_technologies: ["csp-tower", "offwind", "onwind", "solar-utility"]
+
+  unbuffered_without_csp:
+    import_profile: "constant"
+    import_buffer: False
+    supply_technologies: ["offwind", "onwind", "solar-utility"]

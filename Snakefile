@@ -15,7 +15,7 @@ HTTP = HTTPRemoteProvider()
 
 
 # Specify config file
-configfile: "config/config.default.yaml"
+configfile: "config/config.cern_link.yaml"
 
 
 # Default configs - do not change
