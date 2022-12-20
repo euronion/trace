@@ -29,6 +29,9 @@ scenarios:
     # "custom" -> use "data/overwrite/demand.csv"
     synthetic_demand: "custom"
 
+    # Which supply technologies of the supply to include and use with the ESC
+    # currently supported technologies: ["csp-tower", "offwind", "onwind", "solar-utility"]
+    supply_technologies: ["csp-tower", "offwind", "onwind", "solar-utility"]
 
     # Set default marginal_cost and capital_cost for any component - generator, link, store -
     # if the cost is == 0
