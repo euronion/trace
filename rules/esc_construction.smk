@@ -40,7 +40,8 @@ rule create_network:
         additional_components="resources/additional_components.pkl",
     output:
         network="resources/networks/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
-    group: "esc"
+    group:
+        "esc"
     params:
         scenario=lambda w: get_scenario(w["scenario"]),
         era_year=config["renewables"]["era5_year"],
@@ -69,7 +70,8 @@ rule attach_import_profile:
         import_profile=get_import_profile_path,
     output:
         network="resources/networks_ip/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
-    group: "esc"
+    group:
+        "esc"
     threads: 1
     params:
         scenario=lambda w: get_scenario(w["scenario"]),
@@ -98,7 +100,8 @@ rule attach_supply:
             "resources/networks_ip_as/{scenario}/{year}/{esc}/{from}-{to}/network.nc"
         ),
         lcoes="results/{scenario}/{year}/{esc}/{from}-{to}/lcoes.csv",
-    group: "esc"
+    group:
+        "esc"
     threads: 1
     params:
         scenario=lambda w: get_scenario(w["scenario"]),
