@@ -37,6 +37,11 @@ def get_scenario(scenario_name):
     update_config(s, config["scenarios"][scenario_name])
     return s
 
+rule plot_rulegraph:
+    output:
+        svg="rulegraph.svg",
+    shell:
+        "snakemake --rulegraph plot_all_paper_figures | tail -n +6 | dot -Tsvg > {output.svg}"
 
 include: "rules/renewables.smk"
 include: "rules/esc_construction.smk"
