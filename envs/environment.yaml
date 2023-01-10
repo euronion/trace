@@ -57,5 +57,6 @@ dependencies:
 
   # Code style and quality checks
 - pre-commit
+- reuse
 
 - pip
