@@ -41,7 +41,10 @@ rule plot_rulegraph:
     output:
         svg="rulegraph.svg",
     shell:
-        "snakemake --rulegraph plot_all_paper_figures | tail -n +6 | dot -Tsvg > {output.svg}"
+        """
+        snakemake --rulegraph plot_all_paper_figures | tail -n +6 | dot -Tsvg > {output.svg}
+        reuse annotate --year 2023 --license CC-BY-4.0 --copyright="Johannes Hampp" {output.svg}
+        """
 
 include: "rules/renewables.smk"
 include: "rules/esc_construction.smk"
