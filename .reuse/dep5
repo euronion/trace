@@ -27,3 +27,7 @@ License: CC0-1.0
 Files: scenarios/*.csv
 Copyright: 2022 Johannes Hampp
 License: CC-BY-4.0
+
+Files: rulegraph.svg
+Copyright: 2023 Johannes Hampp
+License: CC-BY-4.0
