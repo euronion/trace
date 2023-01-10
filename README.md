@@ -8,100 +8,85 @@ SPDX-License-Identifier: CC-BY-4.0
 [![Snakemake](https://img.shields.io/badge/snakemake-≥6.2.0-brightgreen.svg?style=flat)](https://snakemake.readthedocs.io)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-# TRACE - Transporting Renewables as Chemical Energy
+# TRACE - Transporting Renewables as Chemical Energy - paper branch
 
-> NOTE: 
-> This repository currently undergoing significant changes.
-> If you're encountering problems feel free to reach out using GitHub issues.
-> A new release with easier handling should become available in the next weeks.
+## Reproducing study results (install & run instructions)
 
-## Setup and installation
+To reproduce the study results you need:
 
-1. Downloading the `git` repository:
-   
-    Download the main repository to somewhere (e.g. into a `projects` folder):
+* an up-to-date Python installation with the `conda` or `mamba` package manager installed
+* 
+* an Gurobi solver license setup for your machine (for optimisation)
 
-    ```
-        $ git clone https://github.com/euronion/trace.git
-    ```
+Then follow these instructions:
 
-    This repository contains the main workflow, the energy supply chain definitions
-    and all the necessary scripts tying it together.
+1. Install the necessary packages by creating a dedicated environment:
+   ```
+   mamba env create -f envs/environment.yaml
+   ```
+   Note: The results were created using the packages and versions from `envs/environment.used.yaml` which may be installed instead.
+2. Activate the new environment:
+   ```
+   conda activate trace
+   ```
+3. Run `snakemake`
+   ```
+   snakemake -call plot_all_paper_figures
+   ```
 
-2. Setup your `python` environment:
+   This operation may take a long time, depending on your internet connection (downloading) and computer resources (optimisation). The operation will download a lot of files, then create all scenario's PyPSA networks and run the optimisation on them. Finally, it will create all figures presented in the paper and the `.csv` files containing results.
+4. Results can then be found here:
+   * `results/results.csv`: Major results for all scenarios, may be opened using e.g. LibreOffice Calc or MS Excel
+   * `figures/`: Figures presented in the paper are automatically created
 
-    a. Install the `python` environment manager `conda`.
-    You need to either have [miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda](https://www.anaconda.com/) installed on your system.
+The results are automatically created using [`snakemake`](snakemake.readthedocs.io/) in the background as workflow management software. It runs the following steps in the correct order:
+![snakemake rulegraph](rulegraph.svg)
 
-    b. (Optional by highly recommended) Install `mamba`
-    ```
-        conda install -c conda-forge mamba
-    ```
-
-    c. Setup your `python` environment:
-
-    ```
-        mamba env create -f envs/environment.yaml
-    ```
-
-    This installs all the packages and `python` dependencies.
+Some of the rules are executed for each scenario which is not shown to keep the figures simple. The figure can be recreated using `snakemake -call plot_rulegraph`.
 
 ## Files and folders
 
 The following files and folders are contained or later created in your `trace` directory:
 
 ```
-$ tree -L 3
+$ tree -L 1
 .
 ├── actions     # Scripts for building and solving the model
-│   ├── attach_import_profiles.py.ipynb
-│   ├── attach_supply.py.ipynb
-│   ├── backup_run.py
-│   └── ...
 ├── config      # Input configuration for model and scenarios
-│   ├── config.cern_link.yaml
-│   ├── config.default.yaml
-│   └── ...
 ├── data        # Input data for the model
-│   ├── technology-data
-│   ├── distances.csv
-│   ├── efficiencies.csv
-│   ├── import_profiles
-│   ├── overwrite
-│   │   └── demand.csv # Annual electricity demand per region
-│   ├── shipping.csv
-│   └── wacc.csv
-├── envs        # Programming environment definitions for installing/reproducing the model
-│   ├── environment.yaml
-│   ├── environment.yaml.used
-├── escs        # ESC definitions which serve as input; will be modified to create ESC-exp-imp specific models
-│   ├── hvdc-to-elec
-│   ├── hvdc-to-h2
-│   ├── pipeline-ch4
-│   └── ...
+├── envs        # Python environment definitions
+├── escs        # ESC definitions; blueprints for building the PyPSA models
+|               # The blueprints contain technologies and how they are linked together
+├── figures     # (created automatically) Figures used in the paper based on results
 ├── LICENSES    # License files for all licenses used in this repository
-│   ├── CC0-1.0.txt
-│   ├── CC-BY-4.0.txt
-│   └── GPL-3.0-or-later.txt
-├── logs        # (created automatically) log files for each model step, scenario and ESC
-│   └── ...
+├── logs        # (created automatically) log files for each execute rule
 ├── README.md   # You are reading this
-├── resources   # (created automatically) intermediary files created during model creation
-│   └── ...
+├── resources   # (created automatically) intermediary files
 ├── results     # (created automatically) Result files for each scenario/year/ESC/exporter-importer;
 │               # Contains the optimised PyPSA networks and a CSV file with prominent results
-│   ├── default
-│   ├── lowhomogeneous
-│   └── ...
 ├── rules       # Snakemake rule directory containing the workflow definitino for the model
-│   ├── esc_construction.smk
-│   ├── renewables.smk
-│   ├── results.smk
-│   └── solving.smk
-└── Snakefile   # Snakemake file to combine all workflow files into the complete workflow
+└── Snakefile   # Snakemake file orchestrating the workflow
 ```
-    
-## Solving a scenario
+
+## Original documentation
+
+The following sections are from the original documentation and give an overview on how the model and repository works. These sections were written for a different publication and may not all apply to this publication.
+
+Original publication for which this documentation was written:
+
+```
+    @article{hampp2021import,
+      title={Import options for chemical energy carriers from renewable sources to Germany}, 
+      author={Johannes Hampp and Michael Düren and Tom Brown},
+      year={2021},
+      eprint={2107.01092},
+      archivePrefix={arXiv},
+      primaryClass={physics.soc-ph},
+      url={https://arxiv.org/abs/2107.01092}
+}
+```
+
+### Solving a scenario
 
 Solving a scenario (i.e. set of assumptions like e.g. WACC, domestic demand, exporting/importing countries) use the snakemake
 command
@@ -135,7 +120,7 @@ will produce two files in the directory, one is the `results.csv` file with extr
 from the solved network, which is stored as a PyPSA network as `network.nc` side-by-side to the
 `results.csv` file.
 
-## Running a sensitivity analysis / parameter sweep
+### Running a sensitivity analysis / parameter sweep
 
 For sensitivity analysis and parameter sweeps, scenarios with modified input parameters are used.
 All currently implemented modifiers are listed in the `default` scenario in `config.yaml` with their default values.
@@ -148,7 +133,7 @@ Each scenario is solved separately as a stand-alone scenario as described above,
 
 The results can then be combined and compared against the 'default' scenario to obtain the sensitivities.
 
-## Defining ESCs
+### Defining ESCs
 
 ESCs are defined in the `esc` subfolder as PyPSA networks.
 For each ESC, its specific subfolder is parsed and converted into a region-specific PyPSA network representing the ESC.
@@ -245,7 +230,7 @@ The hard-coding modifies the following costs:
 * RES are always attached to the bus "electricity (exp)" (in attach_supply.py.ipynb). This bus name must therefore exist in each ESC.
 * In leap years (e.g. 2040) the leap day is ignored by dropping the 29th of February when encountered (= 365 days for all years)
 
-## Supply
+### Supply
 
 * Supply time-series are synthetically generated (hourly curves, one representative year) using Global Energy GIS
 * Config for creating supply via `config.yaml`
@@ -257,7 +242,7 @@ The hard-coding modifies the following costs:
     only the annual demand/supply).
     4. Residual RES are then attached to the network as PyPSA generators.
     
-## Solving
+### Solving
 
 By default the commercial solver Gurobi is used.
 Free academic licenses are available.
@@ -269,7 +254,7 @@ which showed to dramatically increase solver speed for all ESCs involving long d
 As a fallback method the model automatically switches back to the default gurobi solver methods and
 retries solving the scenario again.
 
-## Paper and citing
+### Paper and citing
 
 This model is currently under peer-review.
 A preprint for this model is available on arXiv:
@@ -288,3 +273,12 @@ A preprint for this model is available on arXiv:
 
 This software is archived in Zenodo.
 A permanent record of the most recent release version can be found here: [![DOI](https://zenodo.org/badge/317544698.svg)](https://zenodo.org/badge/latestdoi/317544698) .
+
+### License
+
+* Model code: [GPLv3-or-later](LICENSES/GPL-3.0-or-later.txt)
+* Data: [CC-BY-4.0](LICENSES/CC-BY-4.0.txt)
+* Misc: [CC0](LICENSES/CC0-1.0.txt)
+
+The license under which a files is licensed is usually indicated in the beginning of the individual files.
+For some files the license is stated in the [dep5 file](.reuse/dep5).
