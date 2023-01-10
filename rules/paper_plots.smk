@@ -47,6 +47,8 @@ rule plot_RES_shares:
         "../actions/paper_plots/plot_RES_shares.py.ipynb"
 
 rule plot_import_route:
+    input:
+       gebco="resources/gebco/GEBCO_2021.nc",
     output:
         pdf="figures/import_route.pdf",
         png="figures/import_route.png",
