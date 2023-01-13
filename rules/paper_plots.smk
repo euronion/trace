@@ -51,6 +51,18 @@ rule plot_RES_shares:
         "../actions/paper_plots/plot_RES_shares.py.ipynb"
 
 
+rule plot_cost_compositions:
+    input:
+        results="results/results.csv",
+    output:
+        pdf="figures/cost_composition/{esc}_{exporter}.pdf",
+        png="figures/cost_composition/{esc}_{exporter}.png",
+    log:
+        python="logs/cost_composition/{esc}_{exporter}.log",
+    notebook:
+        "../actions/paper_plots/plot_cost_compositions.py.ipynb"
+
+
 rule plot_import_route:
     input:
         gebco="resources/gebco/GEBCO_2021.nc",
