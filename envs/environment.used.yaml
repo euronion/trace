@@ -270,6 +270,7 @@ dependencies:
   - libzip=1.9.2
   - libzlib=1.2.13
   - license-expression=1.2
+  - linopy=0.0.15
   - llvmlite=0.39.1
   - locket=1.0.0
   - logmuse=0.2.6
@@ -371,7 +372,7 @@ dependencies:
   - pyopenssl=22.1.0
   - pyparsing=3.0.9
   - pyproj=3.4.1
-  - pypsa=0.20.1
+  - pypsa=0.21.3
   - pyqt=5.15.7
   - pyqt5-sip=12.11.0
   - pyrsistent=0.19.2
