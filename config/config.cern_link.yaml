@@ -65,10 +65,10 @@ scenarios:
 
   unbuffered_with_csp:
     import_profile: "constant"
-    import_buffer: False
+    import_buffer: false
     supply_technologies: ["csp-tower", "offwind", "onwind", "solar-utility"]
 
   unbuffered_without_csp:
     import_profile: "constant"
-    import_buffer: False
+    import_buffer: false
     supply_technologies: ["offwind", "onwind", "solar-utility"]
