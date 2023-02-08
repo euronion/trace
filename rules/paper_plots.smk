@@ -3,6 +3,58 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 
+rule plot_figA:
+    input:
+        results="results/results.csv",
+    output:
+        pdf="figures/figA/figA.pdf",
+        png="figures/figA/figA.png",
+    log:
+        "logs/figA/figA.log",
+    notebook:
+        "../actions/paper_plots/plot_figA.py.ipynb"
+
+
+rule plot_figB:
+    input:
+        results="results/results.csv",
+    output:
+        pdf="figures/figB/{exporter}_{csp}.pdf",
+        png="figures/figB/{exporter}_{csp}.png",
+    log:
+        "logs/figB/{exporter}_{csp}.log",
+    wildcard_constraints:
+        csp="with_csp|without_csp",
+    notebook:
+        "../actions/paper_plots/plot_figB.py.ipynb"
+
+
+rule plot_figC:
+    input:
+        results="results/results.csv",
+    output:
+        pdf="figures/figC/{exporter}_{csp}.pdf",
+        png="figures/figC/{exporter}_{csp}.png",
+    log:
+        "logs/figC/{exporter}_{csp}.log",
+    wildcard_constraints:
+        csp="with_csp|without_csp",
+    notebook:
+        "../actions/paper_plots/plot_figC.py.ipynb"
+
+
+rule plot_figD:
+    input:
+        results="results/results.csv",
+    output:
+        pdf="figures/figD/{esc}_{exporter}.pdf",
+        png="figures/figD/{esc}_{exporter}.png",
+    log:
+        "logs/figD/{esc}_{exporter}.log",
+    notebook:
+        "../actions/paper_plots/plot_figD.py.ipynb"
+
+
 rule plot_LCoEs_by_flexibility:
     input:
         results="results/results.csv",
@@ -31,10 +83,12 @@ rule plot_storage_link_utilisation:
     input:
         results="results/results.csv",
     output:
-        pdf="figures/storage_link_utilisation/{esc}_{exporter}.pdf",
-        png="figures/storage_link_utilisation/{esc}_{exporter}.png",
+        pdf="figures/storage_link_utilisation/{exporter}_{csp}.pdf",
+        png="figures/storage_link_utilisation/{exporter}_{csp}.png",
     log:
-        "logs/plot_storage_link_utilisation/{esc}_{exporter}.log",
+        "logs/plot_storage_link_utilisation/{exporter}_{csp}.log",
+    wildcard_constraints:
+        csp="with_csp|without_csp",
     notebook:
         "../actions/paper_plots/plot_storage_link_utilisation.py.ipynb"
 
@@ -89,11 +143,27 @@ rule plot_all_paper_figures:
         ),
         expand(
             rules.plot_storage_link_utilisation.output.pdf,
-            esc=["hvdc-to-elec", "pipeline-h2-to-elec"],
             exporter=["MA", "TN"],
+            csp=["with_csp", "without_csp"],
         ),
         expand(
             rules.plot_RES_shares.output.pdf,
+            esc=["hvdc-to-elec", "pipeline-h2-to-elec"],
+            exporter=["MA", "TN"],
+        ),
+        rules.plot_figA.output.pdf,
+        expand(
+            rules.plot_figB.output.pdf,
+            exporter=["MA", "TN"],
+            csp=["with_csp", "without_csp"],
+        ),
+        expand(
+            rules.plot_figC.output.pdf,
+            exporter=["MA", "TN"],
+            csp=["with_csp", "without_csp"],
+        ),
+        expand(
+            rules.plot_figD.output.pdf,
             esc=["hvdc-to-elec", "pipeline-h2-to-elec"],
             exporter=["MA", "TN"],
         ),
