@@ -1,3 +1,0 @@
-name,bus,e_nom_extendable,e_cyclic,capital_cost
-battery storage (exp),battery (exp),True,True,0.1
-battery storage (imp),battery (imp),True,True,0.1
