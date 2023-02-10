@@ -29,6 +29,12 @@ scenarios:
     # "custom" -> use "data/overwrite/demand.csv"
     synthetic_demand: "custom"
 
+    # Whether to simplify shipping or not. Should only be used for large import volumes, where
+    # the shipping fleet behaves similar to a continuous link rather than discrete shipments
+    # False: Construct shipping schedules and determine number of non-overlapping fleets
+    # True: Construct single shipping fleet and penalise investment cost to try to align real shipping schedule costs
+    simplify_shipping: true
+
 
     # Set default marginal_cost and capital_cost for any component - generator, link, store -
     # if the cost is == 0
