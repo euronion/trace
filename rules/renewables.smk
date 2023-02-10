@@ -213,7 +213,7 @@ rule combine_atlite_supply:
     input:
         profiles=expand(
             "resources/profiles/{region}_{technology}.nc",
-            technology=["wind_offshore", "wind_onshore", "pvplant"],
+            technology=["wind_offshore", "wind_onshore", "pvplant"], # also supported: "csp-tower"
             allow_missing=True,
         ),
     output:

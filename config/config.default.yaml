@@ -30,8 +30,9 @@ scenarios:
     synthetic_demand: "custom"
 
     # Which supply technologies of the supply to include and use with the ESC
+    # the naming following the internal naming used in the technology data repository, i.e.:
     # currently supported technologies: ["csp-tower", "offwind", "onwind", "solar-utility"]
-    supply_technologies: ["csp-tower", "offwind", "onwind", "solar-utility"]
+    supply_technologies: ["offwind", "onwind", "solar-utility"]
 
     # Set default marginal_cost and capital_cost for any component - generator, link, store -
     # if the cost is == 0
