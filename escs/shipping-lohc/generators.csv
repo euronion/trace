@@ -1,2 +1,2 @@
-name,bus,p_nom_extendable,comment
-LOHC chemical (exp),LOHC (unloaded) (exp),True,Source of LOHC chemical.
+name,bus,carrier,p_nom_extendable,comment
+LOHC chemical (exp),LOHC (unloaded) (exp),H0-DBT,True,Source of LOHC chemical.
