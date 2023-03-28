@@ -16,7 +16,6 @@ from pathlib import Path
 import yaml
 
 if __name__ == "__main__":
-
     # Write the complete config into a temporary config file
     temp_dir = tempfile.TemporaryDirectory()
     config_path = Path(temp_dir.name) / "config.yaml"
