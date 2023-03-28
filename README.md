@@ -5,7 +5,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/euronion/trace/main.svg)](https://results.pre-commit.ci/latest/github/euronion/trace/main) 
 [![REUSE status](https://api.reuse.software/badge/github.com/euronion/trace/)](https://api.reuse.software/info/github.com/euronion/trace/)
-[![Snakemake](https://img.shields.io/badge/snakemake-≥6.2.0-brightgreen.svg?style=flat)](https://snakemake.readthedocs.io)
+[![Snakemake](https://img.shields.io/badge/snakemake-≥7.19.1-brightgreen.svg?style=flat)](https://snakemake.readthedocs.io)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 # TRACE - Transporting Renewables as Chemical Energy - paper branch
@@ -51,20 +51,29 @@ The following files and folders are contained or later created in your `trace` d
 ```
 $ tree -L 1
 .
+├── LICENSES    # Texts of the licenses used in this repository
 ├── actions     # Scripts for building and solving the model
+│   └── paper_plots # Specific scripts to create the plots from the paper
 ├── config      # Input configuration for model and scenarios
 ├── data        # Input data for the model
 ├── envs        # Python environment definitions
 ├── escs        # ESC definitions; blueprints for building the PyPSA models
-|               # The blueprints contain technologies and how they are linked together
+|   |           # The blueprints contain technologies and how they are linked together
+│   ├── hvdc-to-elec
+│   └── pipeline-h2-to-elec
 ├── figures     # (created automatically) Figures used in the paper based on results
-├── LICENSES    # License files for all licenses used in this repository
 ├── logs        # (created automatically) log files for each execute rule
 ├── README.md   # You are reading this
 ├── resources   # (created automatically) intermediary files
 ├── results     # (created automatically) Result files for each scenario/year/ESC/exporter-importer;
-│               # Contains the optimised PyPSA networks and a CSV file with prominent results
+│   |           # Contains the optimised PyPSA networks and a CSV file with prominent results
+│   ├── annually_with_csp
+│   ├── annually_without_csp
+│   ├── ...
+│   ├── weekly_with_csp
+│   └── weekly_without_csp
 ├── rules       # Snakemake rule directory containing the workflow definitino for the model
+├── scenarios   # Contains the scenarios modelled in this study
 └── Snakefile   # Snakemake file orchestrating the workflow
 ```
 
@@ -74,15 +83,23 @@ The following sections are from the original documentation and give an overview 
 
 Original publication for which this documentation was written:
 
+> Hampp, J., Düren, M., & Brown, T. (2023). Import options for chemical energy carriers from renewable sources to Germany. PLOS ONE, 18(2), e0262340. https://doi.org/10.1371/journal.pone.0281380
+
+For BiBTex:
+
 ```
-    @article{hampp2021import,
-      title={Import options for chemical energy carriers from renewable sources to Germany}, 
-      author={Johannes Hampp and Michael Düren and Tom Brown},
-      year={2021},
-      eprint={2107.01092},
-      archivePrefix={arXiv},
-      primaryClass={physics.soc-ph},
-      url={https://arxiv.org/abs/2107.01092}
+@article{hampp2023,
+    doi = {10.1371/journal.pone.0281380},
+    author = {Hampp, Johannes AND Düren, Michael AND Brown, Tom},
+    journal = {PLOS ONE},
+    publisher = {Public Library of Science},
+    title = {Import options for chemical energy carriers from renewable sources to Germany},
+    year = {2023},
+    month = {02},
+    volume = {18},
+    url = {https://doi.org/10.1371/journal.pone.0281380},
+    pages = {1-31},
+    number = {2},
 }
 ```
 
@@ -133,7 +150,7 @@ Each scenario is solved separately as a stand-alone scenario as described above,
 
 The results can then be combined and compared against the 'default' scenario to obtain the sensitivities.
 
-### Defining ESCs
+### ESC definitions and construction
 
 ESCs are defined in the `esc` subfolder as PyPSA networks.
 For each ESC, its specific subfolder is parsed and converted into a region-specific PyPSA network representing the ESC.
@@ -178,42 +195,6 @@ Following files corresponding to PyPSA components are used for described purpose
         - Battery inverter cost: halfed; cost is for bidirectional inverter, model deploys two inverters with same power rating (enforced by constrained), thus doubling the cost for inverters
         - transmission distances: between regions are considered based on `data/distances.csv` and link capital costs per distance are scaled with the distance.
 
-### Special case: Shipping
-        - Shipping is special as it is a non-continuous transportation method
-        - Shipping connections are defined with the non-standard PyPSA `ships.csv` in the respecitve ESC
-        - `ships.csv` is read by `create_network.py.ipynb` and then translated into comparable PyPSA compoenents
-        - Internally a ship is represented by a link for loading, a link for unloading and a link for representing energy loss during the journey and a store (cargo hold).
-            The energy loss during the journey is either the energy required for propulsion or boil-off, whatever is larger.
-            The idea is that boil-off may be used for propulsion as well and propulsion energy is always provided by the ship's cargo.
-        - A delivery schedule is exogeneously provided, letting the loading and unloading links work with fixed delay representing the loading/unloading process and
-            the travel time inbetween.
-        - Instead of a ship with a fixed maximum capacity we think of it more as a group of ships = convoy which all travel together without an upper limit on capacity.
-        - Additionally a constraint added in `solve_network.py.ipynb` for the solver ensures that for each convoy the annual loaded and unloaded amounts are equal.
-        - For each shipping connection, multiple convoys are added such that all possible combinations are accounted for.
-            In these combinations, the convoys can not load or unload while another convoy is loading/unloading.
-        - The convoys are scheduled such that a as-constant-as-possible supply may be build by the model, i.e. a convoy arrives always shortly after the previous
-            convoy left.
-        - Travel time may be artificially increased to achieve a more constant supply by ship and avoid longer periods were not shipment arrives
-            at the end of the year. The increase should be negiglible and in the range of a few hours per trip and is also logged for each scenario.
-        - Additionally convoys may arrive a few hours later to fill gaps in the scheduling (again to smoothen the supply)
-        - The model is provided with the investment costs per amount of cargo deliverd and may freely choose the amount to transport during for each shippment in each shipping "lane"
-        - Limitation of the exogeneous scheduling:
-          At the beginning of each scenario year there might be a larger supply gap of a few hours/days, where no ship arrives due to unfavourable combinations of
-            journey time and loading/unloading duration
-            
-### LOHC
-
-For LOHC transport the chemical costs also have to be taken into account.
-This is hard-coded into the model in `actions/create_network.py.ipynb` in the method `override_costs_for_special_cases(n)`.
-The following assumptions are made:
-* DBT is used as LOHC
-* Chemical costs are stored in cost database as 'LOHC chemical' in EUR/t
-* The LOHC / H2 ratio is taken from efficiencies.csv , "LOHC hydrogenation"
-
-The hard-coding modifies the following costs:
-* The generators for LOHC chemicals: capital_costs become marginal_costs (per t of LOHC additionally required in the model to compensate losses)
-* LOHC shipping lanes have an additional store for keeping track and transporting used, unloaded LOHC chemical
-
 ### Conventions
 
 * Chemicals are specified with their lower heating value (LHV) and use of LHV at this point is indicated
@@ -221,9 +202,9 @@ The hard-coding modifies the following costs:
 * bus units always represent a rate, i.e. "t/h" or "MW"
 * The demand of the importing region is specified in `<esc>/loads.csv` in MWh/h, conversion table for hydrogen:
 
-| energy carrier | hourly amount [t] | annual amount [t] | hourly amount [MWh] |annual amount [TWh] | HV assumed |
-|----------------|-------------------|-------------------|---------------------|--------------------|------------|
-| H2             | 410.96            | 3.6e6             | 13 698.65           | 120                | LHV        |
+| energy carrier | hourly amount [t] | annual amount [t] | hourly amount [MWh] | annual amount [TWh] | HV assumed |
+| -------------- | ----------------- | ----------------- | ------------------- | ------------------- | ---------- |
+| H2             | 410.96            | 3.6e6             | 13 698.65           | 120                 | LHV        |
 
 * "bus0" for links is always the input for which the cost.csv data is defined (preferred: electricity)
 * "bus1" for links is always the output of the link
@@ -232,8 +213,8 @@ The hard-coding modifies the following costs:
 
 ### Supply
 
-* Supply time-series are synthetically generated (hourly curves, one representative year) using Global Energy GIS
-* Config for creating supply via `config.yaml`
+* Supply time-series are synthetically generated (hourly curves, one representative year) using [atlite](atlite.readthedocs.io/)
+* Config used for creating the supply time-series via `config.yaml`
 * Supply is attached to networks via `actions/attach_supply.py.ipynb`
     1. LCoE for all different supply quality classes is determined
     2. Domestic demand is compared to LCoEs
@@ -253,26 +234,6 @@ which showed to dramatically increase solver speed for all ESCs involving long d
 
 As a fallback method the model automatically switches back to the default gurobi solver methods and
 retries solving the scenario again.
-
-### Paper and citing
-
-This model is currently under peer-review.
-A preprint for this model is available on arXiv:
-
-```
-    @misc{hampp2021import,
-      title={Import options for chemical energy carriers from renewable sources to Germany}, 
-      author={Johannes Hampp and Michael Düren and Tom Brown},
-      year={2021},
-      eprint={2107.01092},
-      archivePrefix={arXiv},
-      primaryClass={physics.soc-ph},
-      url={https://arxiv.org/abs/2107.01092}
-}
-```
-
-This software is archived in Zenodo.
-A permanent record of the most recent release version can be found here: [![DOI](https://zenodo.org/badge/317544698.svg)](https://zenodo.org/badge/latestdoi/317544698) .
 
 ### License
 
