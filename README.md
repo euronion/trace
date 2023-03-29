@@ -5,6 +5,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/euronion/trace/main.svg)](https://results.pre-commit.ci/latest/github/euronion/trace/main) 
 [![REUSE status](https://api.reuse.software/badge/github.com/euronion/trace/)](https://api.reuse.software/info/github.com/euronion/trace/)
+[![SWH](https://archive.softwareheritage.org/badge/origin/https://github.com/euronion/trace/)](https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/euronion/trace)
 [![Snakemake](https://img.shields.io/badge/snakemake-≥7.19.1-brightgreen.svg?style=flat)](https://snakemake.readthedocs.io)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
@@ -15,7 +16,6 @@ SPDX-License-Identifier: CC-BY-4.0
 To reproduce the study results you need:
 
 * an up-to-date Python installation with the `conda` or `mamba` package manager installed
-* 
 * an Gurobi solver license setup for your machine (for optimisation)
 
 Then follow these instructions:
@@ -178,10 +178,6 @@ Following files corresponding to PyPSA components are used for described purpose
     + special column 'scale_costs_based_on': This is an extension on the csv file. It specifies to which bus/energy carrier the 
         costs for this link in the cost data refers to. Values of this column are either 'bus0','bus1' or 'n/a' if no cost entry for this
         link exists because it is irrelevant.
-* 'ships.csv' : Own extension for shipping based on PyPSA components
-    + Contains properties of different types of ships
-    + Data there must match the ship types in the cost database
-    + for more details, see the 'Special case: Shipping' below
 * Naming conventions
     + Trailing "(exp)" or "(imp)" are ignored during building of the network in bus/link/store names)
     + Also ignored are leading descriptors in the same braket, e.g. "(charging, exp)" or "(What do you hear?, imp")
