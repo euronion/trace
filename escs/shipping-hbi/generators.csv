@@ -1,2 +1,2 @@
-name,bus,p_nom_extendable
-iron ore DRI-ready (exp),iron ore (exp),True
+name,carrier,bus,p_nom_extendable
+iron ore DRI-ready (exp),iron ore,iron ore (exp),True
