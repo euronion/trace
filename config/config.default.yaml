@@ -298,16 +298,18 @@ detour_factors:
 technology_data: "v0.4.0"
 
 solver:
-  pypsa-eur: # taken from : https://github.com/PyPSA/pypsa-eur/blob/master/config.default.yaml (works well)
+  pypsa-eur:              # based on: https://github.com/PyPSA/pypsa-eur/blob/master/config.default.yaml (works well)
     name: gurobi
-    method: 2 # barrier
+    Presolve: 1           # Conservative presolving; Aggressive consumes too much memory
+    PreSparsify: 2        # Force sparsify reduction in an attempt to reduce memory consumption
+    method: 2             # barrier
     crossover: 0
-    BarConvTol: 1.e-5
+    BarConvTol: 1.e-4
     FeasibilityTol: 1.e-6
     AggFill: 0
     PreDual: 0
     GURO_PAR_BARDENSETHRESH: 200
-    threads: 8
+    threads: 8            # Less threads less memory; more threads sometimes faster
     seed: 10              # Consistent seed for all plattforms
   default:
     name: gurobi
