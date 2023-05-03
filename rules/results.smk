@@ -7,6 +7,7 @@ scenarios = Paramspace(
     pd.read_csv("scenarios/default.csv", dtype=str, keep_default_na=False)
 )
 
+
 # Custom pattern for formatting Paramspace, as snakemake
 # does currently not allow for patterns without the wildcard_name included
 # see: https://stackoverflow.com/questions/71293563/custom-patterns-with-snakemakes-paramspace/71296522#71296522
