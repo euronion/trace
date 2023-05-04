@@ -1,2 +1,2 @@
-name,bus0,bus1
-NH3 (l) transport ship,berth (exp),berth (imp)
+name,bus0,bus1,use_fuel
+NH3 (l) transport ship,berth (exp),berth (imp),cargo

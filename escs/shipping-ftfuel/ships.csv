@@ -1,2 +1,2 @@
-name,bus0,bus1
-FT fuel transport ship,berth (exp),berth (imp)
+name,bus0,bus1,use_fuel
+FT fuel transport ship,berth (exp),berth (imp),cargo
