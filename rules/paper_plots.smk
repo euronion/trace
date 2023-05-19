@@ -147,6 +147,11 @@ rule plot_all_paper_figures:
             csp=["with_csp", "without_csp"],
         ),
         expand(
+            rules.plot_cost_compositions.output.pdf,
+            esc=["hvdc-to-elec", "pipeline-h2-to-elec"],
+            exporter=["MA", "TN"],
+        ),
+        expand(
             rules.plot_RES_shares.output.pdf,
             esc=["hvdc-to-elec", "pipeline-h2-to-elec"],
             exporter=["MA", "TN"],
