@@ -271,7 +271,7 @@ detour_factors:
 # Which technology-data version to use for cost assumptions
 # May be either a branch (like e.g. "master") or a full-commit hash
 # see: https://github.com/PyPSA/technology-data
-technology_data: "update/hydrogen-tank-costs"
+technology_data: "52bdf1b3436fa05a8729a72866aade9a3d6c3cea"
 
 solver:
   pypsa-eur: # taken from : https://github.com/PyPSA/pypsa-eur/blob/master/config.default.yaml (works well)
