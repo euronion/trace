@@ -1,5 +1,5 @@
 name,bus,e_nom_extendable,e_cyclic
 battery storage (exp),battery (exp),True,True
-hydrogen storage tank incl. compressor (exp),hydrogen (g) storage (exp),True,True
+hydrogen storage tank type 1 including compressor (exp),hydrogen (g) storage (exp),True,True
 H2 (l) storage tank (exp),hydrogen (l) (exp),True,True
 H2 (l) storage tank (imp),hydrogen (l) (imp),True,True

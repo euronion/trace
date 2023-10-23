@@ -1,7 +1,7 @@
 name,bus,e_nom_extendable,e_cyclic
 battery storage (exp),battery (exp),True,True
 CO2 storage tank (exp),CO2 (l) (exp),True,True
-hydrogen storage tank incl. compressor (exp),hydrogen (g) storage (exp),True,True
+hydrogen storage tank type 1 including compressor (exp),hydrogen (g) storage (exp),True,True
 methane storage tank incl. compressor (exp),methane (g) storage (exp),True,True
 LNG storage tank (exp),methane (l) storage (exp),True,True
 LNG storage tank (imp),methane (l) storage (imp),True,True
