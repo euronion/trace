@@ -25,8 +25,8 @@ rule create_additional_components:
     threads: 1
     log:
         python="logs/create_additional_components.log",
-    notebook:
-        "../actions/create_additional_components.py.ipynb"
+    script:
+        "../actions/create_additional_components.py"
 
 
 rule create_network:
@@ -47,9 +47,8 @@ rule create_network:
         era_year=config["renewables"]["era5_year"],
     log:
         python="logs/{scenario}/{year}/{esc}/{from}-{to}/create_network.log",
-        notebook="logs/{scenario}/{year}/{esc}/{from}-{to}/create_network.ipynb",
-    notebook:
-        "../actions/create_network.py.ipynb"
+    script:
+        "../actions/create_network.py"
 
 
 def get_import_profile_path(wildcards):
@@ -77,11 +76,8 @@ rule attach_import_profile:
         scenario=lambda w: get_scenario(w["scenario"]),
     log:
         python="logs/{scenario}/{year}/{esc}/{from}-{to}/attach_import_profile.log",
-        notebook=(
-            "logs/{scenario}/{year}/{esc}/{from}-{to}/attach_import_profile.ipynb"
-        ),
-    notebook:
-        "../actions/attach_import_profile.py.ipynb"
+    script:
+        "../actions/attach_import_profile.py"
 
 
 rule attach_supply:
@@ -108,6 +104,5 @@ rule attach_supply:
         renewable_details=config["renewables"],
     log:
         python="logs/{scenario}/{year}/{esc}/{from}-{to}/attach_supply.log",
-        notebook="logs/{scenario}/{year}/{esc}/{from}-{to}/attach_supply.ipynb",
-    notebook:
-        "../actions/attach_supply.py.ipynb"
+    script:
+        "../actions/attach_supply.py"

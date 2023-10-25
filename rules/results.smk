@@ -47,11 +47,8 @@ rule extract_result:
         scenario=lambda w: get_scenario(w["scenario"]),
     log:
         python="logs/{scenario}/{year}/{esc}/{exporter}-{importer}/extract_result.log",
-        notebook=(
-            "logs/{scenario}/{year}/{esc}/{exporter}-{importer}/extract_result.ipynb"
-        ),
-    notebook:
-        "../actions/extract_result.py.ipynb"
+    script:
+        "../actions/extract_result.py"
 
 
 rule extract_weighted_generator_timeseries:
@@ -64,11 +61,8 @@ rule extract_weighted_generator_timeseries:
         scenario=lambda w: get_scenario(w["scenario"]),
     log:
         python="logs/{scenario}/{year}/{esc}/{exporter}-{importer}/extract_weighted_generator_timeseries.ipynb",
-        notebook=(
-            "logs/{scenario}/{year}/{esc}/{exporter}-{importer}/extract_weighted_generator_timeseries.ipynb"
-        ),
-    notebook:
-        "../actions/extract_weighted_generator_timeseries.py.ipynb"
+    script:
+        "../actions/extract_weighted_generator_timeseries.py"
 
 
 # Use paramspace for all hvdc-to-elec scenarios
@@ -86,6 +80,5 @@ rule combine_all_weighted_generator_timeseries:
     threads: 1
     log:
         python="logs/combine_all_weighted_generator_timeseries.ipynb",
-        notebook=("logs/combine_all_weighted_generator_timeseries.ipynb"),
-    notebook:
-        "../actions/combine_all_weighted_generator_timeseries.py.ipynb"
+    script:
+        "../actions/combine_all_weighted_generator_timeseries.py"

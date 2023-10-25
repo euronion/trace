@@ -37,9 +37,8 @@ rule solve_network:
         mem_mb=lambda wildcards, attempt: attempt * 10000,
     log:
         python="logs/{scenario}/{year}/{esc}/{from}-{to}/solve_network.log",
-        notebook="logs/{scenario}/{year}/{esc}/{from}-{to}/solve_network.ipynb",
-    notebook:
-        "../actions/solve_network.py.ipynb"
+    script:
+        "../actions/solve_network.py"
 
 
 rule backup_scenario:
