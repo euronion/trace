@@ -309,7 +309,7 @@ solver:
     AggFill: 0
     PreDual: 0
     GURO_PAR_BARDENSETHRESH: 200
-    threads: 8            # Less threads less memory; more threads sometimes faster
+    threads: 4            # Less threads less memory; more threads sometimes faster
     seed: 10              # Consistent seed for all plattforms
   default:
     name: gurobi
