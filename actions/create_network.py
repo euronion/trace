@@ -255,7 +255,7 @@ def attach_costs(network):
             # generators -> attached to one bus, situation clear
             # links -> attached to >=2 buses, use additional column in .csv to determine the bus to scale to
             bus_unit = bus0_unit = bus1_unit = None
-            if component == "stores" or component == "generators":
+            if component in ["stores", "generators"]:
                 bus_unit = network.buses.loc[row["bus"]]["unit"]
             elif component == "links":
                 if row["scale_costs_based_on"] not in ["bus0", "bus1"]:
@@ -648,8 +648,7 @@ def add_shipping(n):
         # (e.g. same exporter as importer region)
 
         logger.info(
-            f"No distance between exporter and importer. "
-            f"Adding a direct pseudo connection without shipping schedule."
+            'No distance between exporter and importer. Adding a direct pseudo connection without shipping schedule.'
         )
 
         convoy_number = 1

@@ -124,7 +124,7 @@ def add_LOHC_chemical_constraint(n):
     lhs += linexpr((-1, generator_p_nom["LOHC chemical (exp)"]))[0]
 
     pypsa.linopt.define_constraints(
-        n, lhs, "<=", 0, "Generator", f"lohc_chemical__constraint"
+        n, lhs, "<=", 0, "Generator", "lohc_chemical__constraint"
     )
 
 
