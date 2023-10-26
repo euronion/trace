@@ -1,11 +1,6 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 # SPDX-FileCopyrightText: 2020-2021 Johannes Hampp
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
-
-# coding: utf-8
 
 import json
 import shutil

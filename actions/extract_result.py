@@ -1,10 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
+# SPDX-FileCopyrightText: 2023 Johannes Hampp
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
 
-# In[ ]:
-
-
-import csv
 import re
 
 import numpy as np
@@ -332,7 +329,6 @@ import seaborn as sns
 sns.set_style("whitegrid")
 import matplotlib.pyplot as plt
 
-
 # In[ ]:
 
 
@@ -464,4 +460,3 @@ for c in [c1, c2, c3]:
         plt.ylim(
             0,
         )
-

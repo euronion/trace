@@ -1,12 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
+# SPDX-FileCopyrightText: 2023 Johannes Hampp
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
 
-# In[ ]:
-
-
-from pathlib import Path
-
-import hvplot.pandas
 import hvplot.xarray
 import pypsa
 import xarray as xr
@@ -51,4 +46,3 @@ if __name__ == "__main__":
     ds = xr.merge([p_nom_opt, weighted_p_max_pu])
 
     ds.to_netcdf(snakemake.output[0])
-

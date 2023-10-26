@@ -1,15 +1,12 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
+# SPDX-FileCopyrightText: 2023 Johannes Hampp
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
 import pickle
 from pathlib import Path
 
 import numpy as np
-import pandas as pd
 import pypsa
 from _helpers import configure_logging
 
@@ -86,4 +83,3 @@ if __name__ == "__main__":
 
     with open(snakemake.output["additional_components"], "wb") as f:
         pickle.dump(override_component_attrs, f)
-

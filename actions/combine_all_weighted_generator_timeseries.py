@@ -1,8 +1,6 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
+# SPDX-FileCopyrightText: 2023 Johannes Hampp
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
 from pathlib import Path
@@ -43,4 +41,3 @@ if __name__ == "__main__":
     logger.info("Saving combined results...")
 
     ds.to_netcdf(snakemake.output["combined_timeseries"])
-

@@ -1,12 +1,9 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
+# SPDX-FileCopyrightText: 2023 Johannes Hampp
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
 import pickle
-from pathlib import Path
 
 import numpy as np
 import pypsa
@@ -232,4 +229,3 @@ if __name__ == "__main__":
                 f"Unoptimised network not saved."
                 f"Retrying with different solver config."
             )
-

@@ -1,8 +1,6 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
+# SPDX-FileCopyrightText: 2020-2023 Johannes Hampp
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 import calendar
 import logging
@@ -14,8 +12,7 @@ import numpy as np
 import pandas as pd
 import pypsa
 import xarray as xr
-from _helpers import (calculate_annual_investment, configure_logging,
-                      read_efficiencies)
+from _helpers import calculate_annual_investment, configure_logging, read_efficiencies
 
 logger = logging.getLogger(__name__)
 
@@ -328,4 +325,3 @@ if __name__ == "__main__":
     network.export_to_netcdf(snakemake.output["network"])
 
     supply.close()
-

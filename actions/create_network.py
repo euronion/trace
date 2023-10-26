@@ -1,7 +1,6 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
+# SPDX-FileCopyrightText: 2020-2023 Johannes Hampp
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 
 import logging
@@ -12,9 +11,14 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import pypsa
-from _helpers import (calculate_annual_investment, calculate_annuity,
-                      configure_logging, extract_technology, get_bus_unit,
-                      read_efficiencies)
+from _helpers import (
+    calculate_annual_investment,
+    calculate_annuity,
+    configure_logging,
+    extract_technology,
+    get_bus_unit,
+    read_efficiencies,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -837,4 +841,3 @@ if __name__ == "__main__":
     network = override_costs_for_special_cases(network)
 
     network.export_to_netcdf(snakemake.output["network"])
-

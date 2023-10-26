@@ -1,14 +1,10 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
+# SPDX-FileCopyrightText: 2023 Johannes Hampp
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 import logging
 import pickle
-import re
 
-import dateutil
 import numpy as np
 import pandas as pd
 import pypsa
@@ -105,4 +101,3 @@ if __name__ == "__main__":
         )
 
     network.export_to_netcdf(snakemake.output["network"])
-
