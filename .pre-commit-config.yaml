@@ -1,8 +1,6 @@
-# SPDX-FileCopyrightText: : 2022 The PyPSA-Eur Authors
+# SPDX-FileCopyrightText: : 2023 Johannes Hampp
 #
 # SPDX-License-Identifier: CC0-1.0
-
-# Copied from https://github.com/PyPSA/pypsa-eur/pull/302/files
 
 exclude: "^LICENSES"
 
@@ -35,7 +33,7 @@ repos:
 
 # Formatting with "black" coding style
 - repo: https://github.com/psf/black
-  rev: 23.10.0
+  rev: 23.10.1
   hooks:
   # Format Python files
   - id: black
@@ -61,11 +59,10 @@ repos:
   hooks:
   - id: snakefmt
 
-repos:
-  - repo: https://github.com/sourcery-ai/sourcery
-    rev: v0.8.0
-    hooks:
-      - id: sourcery
+- repo: https://github.com/sourcery-ai/sourcery
+  rev: v1.11.0
+  hooks:
+  - id: sourcery
 
 # Check for FSFE REUSE compliance (licensing)
 - repo: https://github.com/fsfe/reuse-tool
