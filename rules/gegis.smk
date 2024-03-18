@@ -14,7 +14,7 @@ if config["GlobalEnergyGIS"].get("init_gegis", False) is True:
         script:
             "../actions/set_GEGIS_base_dir.jl"
 
-# Download auxiliary datasets for GEGIS
+    # Download auxiliary datasets for GEGIS
     rule download_GEGIS_dataset:
         output:
             Path(config["GlobalEnergyGIS"]["base_dir"]) / "protected.jld",  # not full list, only dependencies for rules below (proxy all others)
@@ -22,7 +22,7 @@ if config["GlobalEnergyGIS"].get("init_gegis", False) is True:
         script:
             "../actions/download_GEGIS_datasets.jl"
 
-# Download ERA5 data for wind/solar/synthetic demand for GEGIS
+    # Download ERA5 data for wind/solar/synthetic demand for GEGIS
     rule download_GEGIS_era5:
         output:
             Path(config["GlobalEnergyGIS"]["base_dir"]) / "era5wind{year}.h5",
