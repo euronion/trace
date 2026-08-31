@@ -28,14 +28,14 @@ rule solve_network:
         additional_components="resources/additional_components.pkl",
     output:
         network="results/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
-    threads: config["solver"]["default"]["threads"]
-    params:
-        scenario=lambda w: get_scenario(w["scenario"]),
-    resources:
-        mem_mb=lambda wildcards, attempt: attempt * 10000,
     log:
         python="logs/{scenario}/{year}/{esc}/{from}-{to}/solve_network.log",
         notebook="logs/{scenario}/{year}/{esc}/{from}-{to}/solve_network.ipynb",
+    threads: config["solver"]["default"]["threads"]
+    resources:
+        mem_mb=lambda wildcards, attempt: attempt * 10000,
+    params:
+        scenario=lambda w: get_scenario(w["scenario"]),
     notebook:
         "../actions/solve_network.py.ipynb"
 
@@ -46,8 +46,8 @@ rule backup_scenario:
         costs="../technology-data/outputs/",
     output:
         tarchive="results/{scenario}/inputs.tar",
-    threads: 1
     log:
         python="logs/{scenario}/backup_run.log",
+    threads: 1
     script:
         "../actions/backup_run.py"

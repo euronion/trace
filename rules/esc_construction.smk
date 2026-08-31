@@ -22,9 +22,9 @@ rule download_technology_data:
 rule create_additional_components:
     output:
         additional_components="resources/additional_components.pkl",
-    threads: 1
     log:
         python="logs/create_additional_components.log",
+    threads: 1
     notebook:
         "../actions/create_additional_components.py.ipynb"
 
@@ -40,13 +40,13 @@ rule create_network:
         additional_components="resources/additional_components.pkl",
     output:
         network="resources/networks/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
+    log:
+        python="logs/{scenario}/{year}/{esc}/{from}-{to}/create_network.log",
+        notebook="logs/{scenario}/{year}/{esc}/{from}-{to}/create_network.ipynb",
     threads: 1
     params:
         scenario=lambda w: get_scenario(w["scenario"]),
         era_year=config["GlobalEnergyGIS"]["era_year"],
-    log:
-        python="logs/{scenario}/{year}/{esc}/{from}-{to}/create_network.log",
-        notebook="logs/{scenario}/{year}/{esc}/{from}-{to}/create_network.ipynb",
     notebook:
         "../actions/create_network.py.ipynb"
 
@@ -61,22 +61,22 @@ def get_import_profile_path(wildcards):
 
 
 rule attach_import_profile:
-    message:
-        "Attaching import profile ('ip') to network."
     input:
         network="resources/networks/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
         additional_components="resources/additional_components.pkl",
         import_profile=get_import_profile_path,
     output:
         network="resources/networks_ip/{scenario}/{year}/{esc}/{from}-{to}/network.nc",
-    threads: 1
-    params:
-        scenario=lambda w: get_scenario(w["scenario"]),
     log:
         python="logs/{scenario}/{year}/{esc}/{from}-{to}/attach_import_profile.log",
         notebook=(
             "logs/{scenario}/{year}/{esc}/{from}-{to}/attach_import_profile.ipynb"
         ),
+    threads: 1
+    params:
+        scenario=lambda w: get_scenario(w["scenario"]),
+    message:
+        "Attaching import profile ('ip') to network."
     notebook:
         "../actions/attach_import_profile.py.ipynb"
 
@@ -95,8 +95,6 @@ def demand_file(wildcards):
 
 
 rule attach_supply:
-    message:
-        "Attaching RES supply ('as') to network."
     input:
         supply="resources/supply_TRACES_{era_year}.nc".format(
             era_year=config["GlobalEnergyGIS"]["era_year"]
@@ -111,11 +109,13 @@ rule attach_supply:
             "resources/networks_ip_as/{scenario}/{year}/{esc}/{from}-{to}/network.nc"
         ),
         lcoes="resources/networks_ip_as/{scenario}/{year}/{esc}/{from}-{to}/lcoes.csv",
-    threads: 1
-    params:
-        scenario=lambda w: get_scenario(w["scenario"]),
     log:
         python="logs/{scenario}/{year}/{esc}/{from}-{to}/attach_supply.log",
         notebook="logs/{scenario}/{year}/{esc}/{from}-{to}/attach_supply.ipynb",
+    threads: 1
+    params:
+        scenario=lambda w: get_scenario(w["scenario"]),
+    message:
+        "Attaching RES supply ('as') to network."
     notebook:
         "../actions/attach_supply.py.ipynb"
