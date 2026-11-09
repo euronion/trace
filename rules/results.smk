@@ -5,6 +5,7 @@
 # Use paramspace to evaluate which scenarios to run
 scenarios = Paramspace(pd.read_csv("scenarios/default.csv", dtype=str))
 
+
 # Custom pattern for formatting Paramspace, as snakemake
 # does currently not allow for patterns without the wildcard_name included
 # see: https://stackoverflow.com/questions/71293563/custom-patterns-with-snakemakes-paramspace/71296522#71296522
@@ -24,10 +25,10 @@ rule all_scenario_results:
         ),
     output:
         results="results/results.csv",
-    threads: 1
     log:
         python="logs/combine_results.log",
         notebook="logs/combine_results.ipynb",
+    threads: 1
     notebook:
         "../actions/combine_results.py.ipynb"
 
@@ -37,13 +38,13 @@ rule extract_result:
         network="results/{scenario}/{year}/{esc}/{exporter}-{importer}/network.nc",
     output:
         results="results/{scenario}/{year}/{esc}/{exporter}-{importer}/results.csv",
-    threads: 1
-    params:
-        scenario=lambda w: get_scenario(w["scenario"]),
     log:
         python="logs/{scenario}/{year}/{esc}/{exporter}-{importer}/extract_result.log",
         notebook=(
             "logs/{scenario}/{year}/{esc}/{exporter}-{importer}/extract_result.ipynb"
         ),
+    threads: 1
+    params:
+        scenario=lambda w: get_scenario(w["scenario"]),
     notebook:
         "../actions/extract_result.py.ipynb"
